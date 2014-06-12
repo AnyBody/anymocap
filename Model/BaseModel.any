@@ -1,0 +1,46 @@
+#include "IncludeFile.any"
+
+Main = {
+  // MOCAP related setup
+  #include "<TRIAL_SPECIFIC_DATA>"
+  #include "<SUBJECT_SPECIFIC_DATA>"
+  #include "<LAB_SPECIFIC_DATA>"
+  #include "ModelSetup.any"
+  
+  // Include Environment model (e.g. global ref, forceplates etc.) 
+  #include "EnvironmentModel.any"
+  
+  // Configure and include the human model
+  #include "BodyModelConfiguration.any"
+  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+  
+  AnyFolder Studies = {
+
+    // Study for parameter identification (segment length, marker positions etc.) 
+    AnyOptKinStudy ParameterIdentification = {
+      #include "KinematicStudyForParameterIdentification.any"
+      Analysis = { AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;};    
+      ParameterOptimization.ConvergenceTol=1e-3; 
+    };
+    
+    // Study for running the inverse dynamic simulation
+    AnyBodyStudy InverseDynamics = { 
+      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
+      AnyFolder &BodyModel= Main.HumanModel.BodyModel;
+      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder ModelEnvironmentConnection ={
+        #include "<MOCAP_EXTRA_DRIVERS_FILE>"        
+      }; 
+      #include "InverseDynamicSettings.any"
+      nStep= Main.ModelSetup.nStep; 
+      Gravity = Main.ModelSetup.Gravity;
+      tStart = Main.ModelSetup.tStart; 
+      tEnd = Main.ModelSetup.tEnd;
+    };
+  };
+  
+  #include "../Project.Main.any"
+}; //Main
+
+
+

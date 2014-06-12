@@ -1,0 +1,4 @@
+// This empty placeholder file if no TrialSpecificData file is defined
+// Use the following syntax to define subject specific data file:
+// #path TRIAL_SPECIFIC_DATA "path/to/TrialSpecificData.any"
+//

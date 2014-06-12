@@ -1,0 +1,172 @@
+
+AnyFolder Mannequin = {
+  
+  AnyFolder Posture = {
+    
+    #ifdef MOCAP_INI_PELVIS_POS 
+    AnyVar PelvisPosX = MOCAP_INI_PELVIS_POS[0];
+    AnyVar PelvisPosY = MOCAP_INI_PELVIS_POS[1];
+    AnyVar PelvisPosZ = MOCAP_INI_PELVIS_POS[2];
+    #else
+    AnyVar PelvisPosX = 0.3333* (MOCAP_INI_RASIS[0]+MOCAP_INI_LASIS[0]+MOCAP_INI_SACRUM[0]);
+    AnyVar PelvisPosY = 0.3333* (MOCAP_INI_RASIS[1]+MOCAP_INI_LASIS[1]+MOCAP_INI_SACRUM[1]);
+    AnyVar PelvisPosZ = 0.3333* (MOCAP_INI_RASIS[2]+MOCAP_INI_LASIS[2]+MOCAP_INI_SACRUM[2]);
+    #endif
+    
+    #ifdef MOCAP_INI_PEVLIS_ROTATION_ZYX
+    AnyVar PelvisRotZ = MOCAP_INI_PEVLIS_ROTATION_ZYX[0];
+    AnyVar PelvisRotY = MOCAP_INI_PEVLIS_ROTATION_ZYX[1];
+    AnyVar PelvisRotX = MOCAP_INI_PEVLIS_ROTATION_ZYX[2];
+    #else    
+    #define PelvisRotMat
+    AnyMat33 PelvisRotMatrix = RotMat(MOCAP_INI_SACRUM, 
+                                      0.5*(MOCAP_INI_RASIS+MOCAP_INI_LASIS),
+                                      MOCAP_INI_LASIS)*RotMat(pi/2,x);
+    #endif
+                                  
+    
+    // These variables control the rotation of the thorax wrt the
+    // pelvis    
+    AnyVar PelvisThoraxExtension=MOCAP_INI_PELVIS_THORAX_EXTENSION ; 
+    AnyVar PelvisThoraxLateralBending=MOCAP_INI_PELVIS_THORAX_LATERALBENDING ;  
+    AnyVar PelvisThoraxRotation=MOCAP_INI_PELVIS_THORAX_ROTATION ;        
+    
+    AnyVar NeckExtension=MOCAP_INI_NECK_EXTENSION ;
+    AnyVar NeckLateralBending = MOCAP_INI_NECK_LATERALBENDING ;
+    AnyVar NeckRotation = MOCAP_INI_NECK_ROTATION ;
+       
+    AnyFolder Right = {
+      //Arm 
+      AnyVar SternoClavicularProtraction=-23;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=11.5;    //This value is not used for initial position
+      AnyVar SternoClavicularAxialRotation=-20; //This value is not used for initial position
+      
+      AnyVar GlenohumeralFlexion = MOCAP_INI_RIGHT_GH_FLEXION ; 
+      AnyVar GlenohumeralAbduction = MOCAP_INI_RIGHT_GH_EXTERNALROTATION ;
+      AnyVar GlenohumeralExternalRotation = MOCAP_INI_RIGHT_GH_ABDUCTION ;
+      
+      AnyVar ElbowFlexion = MOCAP_INI_RIGHT_ELBOW_FLEXION ; 
+      AnyVar ElbowPronation = MOCAP_INI_RIGHT_ELBOW_PRONATION ;       
+      AnyVar WristFlexion = MOCAP_INI_RIGHT_WRIST_FLEXION ;
+      AnyVar WristAbduction = MOCAP_INI_RIGHT_WRIST_ABDUCTION ;
+      
+      AnyVar HipFlexion = MOCAP_INI_RIGHT_HIP_FLEXION ;
+      AnyVar HipAbduction = MOCAP_INI_RIGHT_HIP_ABDUCTION ;
+      AnyVar HipExternalRotation = MOCAP_INI_RIGHT_HIP_EXTERNALROTATION ;
+      AnyVar KneeFlexion = MOCAP_INI_RIGHT_KNEE_FLEXION ;
+      AnyVar AnklePlantarFlexion = MOCAP_INI_RIGHT_ANKLE_PLANTAR_FLEXION ;
+      AnyVar SubTalarEversion = MOCAP_INI_RIGHT_SUBTALAR_EVERSION ;
+    };
+    AnyFolder Left = 
+    {
+      
+      //Arm
+      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
+      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
+      AnyVar SternoClavicularAxialRotation=.Right.SternoClavicularAxialRotation;
+      
+      AnyVar GlenohumeralFlexion = MOCAP_INI_LEFT_GH_FLEXION ; 
+      AnyVar GlenohumeralAbduction = MOCAP_INI_LEFT_GH_EXTERNALROTATION ;
+      AnyVar GlenohumeralExternalRotation = MOCAP_INI_LEFT_GH_ABDUCTION ;
+      
+      AnyVar ElbowFlexion = MOCAP_INI_LEFT_ELBOW_FLEXION ; 
+      AnyVar ElbowPronation = MOCAP_INI_LEFT_ELBOW_PRONATION ;       
+      AnyVar WristFlexion = MOCAP_INI_LEFT_WRIST_FLEXION ;
+      AnyVar WristAbduction = MOCAP_INI_LEFT_WRIST_ABDUCTION ;
+      
+      AnyVar HipFlexion = MOCAP_INI_LEFT_HIP_FLEXION ;
+      AnyVar HipAbduction = MOCAP_INI_LEFT_HIP_ABDUCTION ;
+      AnyVar HipExternalRotation = MOCAP_INI_LEFT_HIP_EXTERNALROTATION ;
+      AnyVar KneeFlexion = MOCAP_INI_LEFT_KNEE_FLEXION ;
+      AnyVar AnklePlantarFlexion = MOCAP_INI_LEFT_ANKLE_PLANTAR_FLEXION ;
+      AnyVar SubTalarEversion = MOCAP_INI_LEFT_SUBTALAR_EVERSION ;
+    };
+    
+    
+    
+  };
+  
+  AnyFolder PostureVel={  
+    //This controls the position of the pelvi wrt. to the global reference frame
+    AnyVar PelvisPosX=0;
+    AnyVar PelvisPosY=0;
+    AnyVar PelvisPosZ=0;
+    
+    //This controls the rotation of the pelvis wrt. to the global reference frame
+    AnyVar PelvisRotX=0;
+    AnyVar PelvisRotY=0;
+    AnyVar PelvisRotZ=0;
+    
+    // These variables control the rotation of the thorax wrt the
+    // pelvis    
+    AnyVar PelvisThoraxExtension=0; 
+    AnyVar PelvisThoraxLateralBending=0;  
+    AnyVar PelvisThoraxRotation=0;        
+    
+    AnyVar NeckExtension=0; 
+    AnyVar NeckLateralBending = 0;
+    AnyVar NeckRotation = 0;
+
+    
+    AnyFolder Right = {
+      //Arm 
+      AnyVar SternoClavicularProtraction=0;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=0;    //This value is not used for initial position
+      AnyVar SternoClavicularAxialRotation=0; //This value is not used for initial position
+      
+      AnyVar GlenohumeralFlexion =0; 
+      AnyVar GlenohumeralAbduction = 0; 
+      AnyVar GlenohumeralExternalRotation = 0; 
+      
+      AnyVar ElbowFlexion = 0.0;
+      AnyVar ElbowPronation = 0.0;
+      
+      AnyVar WristFlexion =0;
+      AnyVar WristAbduction =0;
+      
+      AnyVar HipFlexion = 0.0; 
+      AnyVar HipAbduction = 0.0; 
+      AnyVar HipExternalRotation = 0.0;
+      
+      AnyVar KneeFlexion = 0.0; 
+      
+      AnyVar AnklePlantarFlexion =0.0; 
+      AnyVar SubTalarEversion=0.0; 
+      
+    };
+    
+    AnyFolder Left = {
+      //all values are set to be equal to the right side values 
+      //feel free to change this!
+      
+      //Arm
+      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
+      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
+      AnyVar SternoClavicularAxialRotation=.Right.SternoClavicularAxialRotation;
+      
+      AnyVar GlenohumeralFlexion = .Right.GlenohumeralFlexion ; 
+      AnyVar GlenohumeralAbduction =.Right.GlenohumeralAbduction ;
+      AnyVar GlenohumeralExternalRotation =.Right.GlenohumeralExternalRotation ;
+      
+      AnyVar ElbowFlexion = .Right.ElbowFlexion; 
+      AnyVar ElbowPronation = .Right.ElbowPronation;       
+      AnyVar WristFlexion =.Right.WristFlexion;
+      AnyVar WristAbduction =.Right.WristAbduction;
+      
+      
+      
+      //Leg     
+      AnyVar HipFlexion =.Right.HipFlexion;  
+      AnyVar HipAbduction =.Right.HipAbduction;
+      AnyVar HipExternalRotation = .Right.HipExternalRotation;
+      AnyVar KneeFlexion = .Right.KneeFlexion;       
+      AnyVar AnklePlantarFlexion = .Right.AnklePlantarFlexion ;
+      AnyVar SubTalarEversion=.Right.SubTalarEversion; 
+      
+      
+    };
+  };
+};
+
+
+
