@@ -10,6 +10,13 @@ AnyFolder Mannequin = {
     #define PelvisRotMat
     AnyMat33 PelvisRotMatrix = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix;
     
+    // Pelvis rotation are needed for default mannequin drivers to work. They are there 
+    // calculated here directly from the pelvis roation matrix
+    RotAxisAnglesXYZ PelvisRotations(ROT = PelvisRotMatrix ) = {};
+    AnyVar PelvisRotZ = PelvisRotations.zRot;
+    AnyVar PelvisRotY = PelvisRotations.yRot;
+    AnyVar PelvisRotX = PelvisRotations.xRot;
+    
     // These variables control the rotation of the thorax wrt the
     // pelvis    
     AnyVar PelvisThoraxExtension=Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisThoraxExtension; 
