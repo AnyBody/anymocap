@@ -8,22 +8,6 @@
   #path BASE_MODEL_PATH "."
   #endif
   
-  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
-  #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
-  #endif
-  
-  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
-  #path MOCAP_TRIAL_SPECIFIC_DATA"Default_TrialSpecificData.any"
-  #endif
-  
-  #ifndef MOCAP_LAB_SPECIFIC_DATA
-  #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
-  #endif
-  
- #ifndef BODY_MODEL_CONFIG_FILE
- #path BODY_MODEL_CONFIG_FILE "BodyModelConfig_FullBody.any"
- // #path BODY_MODEL_CONFIG_FILE "LowerBody_BMConfiguration.any"
- #endif
    
  #ifndef TEMP_PATH
  #path TEMP_PATH "Tmp/"

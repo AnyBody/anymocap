@@ -1,6 +1,7 @@
  #path MOCAP_EXTRA_DRIVERS_FILE "ExtraDrivers.any"
  #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
- 
+ #path BODY_MODEL_CONFIG_FILE "BodyModelConfig_FullBody.any"
+
  
  AnyVec3 Gravity = -9.81*{0,1,0};
  
