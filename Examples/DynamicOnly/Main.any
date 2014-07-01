@@ -1,5 +1,0 @@
-#path SUBJECT_SPECIFIC_DATA "SubjectSpecificData.any"
-#path TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
-#path BASE_MODEL "../Model/BaseModel.any"
-
-#include "<BASE_MODEL>"
