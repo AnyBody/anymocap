@@ -10,16 +10,16 @@ AnyFolder &JntPos= Main.HumanModel.Mannequin.Posture;
 AnyFolder &JntVel= Main.HumanModel.Mannequin.PostureVel;
 AnyFolder &InterfaceRef = Main.HumanModel.BodyModel.Interface;
 
-//AnyKinEqSimpleDriver SCDriverLeft ={
-//  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Left.SternoClavicularAxialRotation;
-//  DriverPos = pi/180*{
-//    .JntPos.Left.SternoClavicularAxialRotation
-//  };
-//  DriverVel = pi/180*{
-//    .JntVel.Left.SternoClavicularAxialRotation
-//  };
-//  Reaction.Type={Off};
-//};
+AnyKinEqSimpleDriver SCDriverLeft ={
+  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Left.SternoClavicularAxialRotation;
+  DriverPos = pi/180*{
+    .JntPos.Left.SternoClavicularAxialRotation
+  };
+  DriverVel = pi/180*{
+    .JntVel.Left.SternoClavicularAxialRotation
+  };
+  Reaction.Type={Off};
+};
 AnyKinEqSimpleDriver SCDriverRight ={
   AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Right.SternoClavicularAxialRotation;
   DriverPos = pi/180*{
@@ -46,19 +46,19 @@ AnyKinEqSimpleDriver GlenohumeralExternalRotationRight ={
   WeightFun = {&Weight.fun};
 };
 
-//AnyKinEqSimpleDriver GlenohumeralExternalRotationLeft={
-//  AnyKinMeasureOrg &ref3 = .InterfaceRef.Left.GlenohumeralExternalRotation;
-//  DriverPos = pi/180*{
-//    .JntPos.Left.GlenohumeralExternalRotation
-//  };
-//  DriverVel = {
-//    .JntVel.Left.GlenohumeralExternalRotation
-//  };
-//  Reaction.Type={Off};
-//  CType = {Soft};
-//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.005}; }; };
-//  WeightFun = {&Weight.fun};
-//};
+AnyKinEqSimpleDriver GlenohumeralExternalRotationLeft={
+  AnyKinMeasureOrg &ref3 = .InterfaceRef.Left.GlenohumeralExternalRotation;
+  DriverPos = pi/180*{
+    .JntPos.Left.GlenohumeralExternalRotation
+  };
+  DriverVel = {
+    .JntVel.Left.GlenohumeralExternalRotation
+  };
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.005}; }; };
+  WeightFun = {&Weight.fun};
+  };
 
 
 AnyKinEqSimpleDriver WristAbductionRight ={
@@ -75,19 +75,19 @@ AnyKinEqSimpleDriver WristAbductionRight ={
   WeightFun = {&Weight.fun};
 };
 
-//AnyKinEqSimpleDriver WristAbductionLeft ={
-//  AnyKinMeasureOrg &ref3 = .InterfaceRef.Left.WristAbduction;
-//  DriverPos = pi/180*{
-//    .JntPos.Left.WristAbduction
-//  };
-//  DriverVel = {
-//    .JntVel.Left.WristAbduction
-//  };
-//  Reaction.Type={Off};
-//  CType = {Soft};
-//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.01}; }; };
-//  WeightFun = {&Weight.fun};
-//};  
+AnyKinEqSimpleDriver WristAbductionLeft ={
+  AnyKinMeasureOrg &ref3 = .InterfaceRef.Left.WristAbduction;
+  DriverPos = pi/180*{
+    .JntPos.Left.WristAbduction
+  };
+  DriverVel = {
+    .JntVel.Left.WristAbduction
+  };
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.01}; }; };
+  WeightFun = {&Weight.fun};
+};  
   
   
 AnyKinEqSimpleDriver RightEversionBrace={

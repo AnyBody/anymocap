@@ -1,0 +1,8 @@
+#path MOCAP_SUBJECT_SPECIFIC_DATA "SubjectSpecificData.any"
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
+#path MOCAP_BASE_MODEL "..\..\Model\BaseModel_Both.any"
+
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+#include "<MOCAP_BASE_MODEL>"
