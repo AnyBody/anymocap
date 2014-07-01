@@ -1,6 +1,8 @@
 // Detailed description can be found at:
 #include "Model/Description.any"
 
+#include "Model/IncludeFile.any"
+
 Main = {
   
    // This file controls all Input to run the C3D file.

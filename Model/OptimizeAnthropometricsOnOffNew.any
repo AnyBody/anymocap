@@ -1,22 +1,24 @@
   
-#class_template OptimizeAnthropometricsOnOff (PelvisWidthOnOff,\
-                                              ThighLengthOnOff,\
-                                              ShankLengthOnOff,\
-                                              FootLengthOnOff,\
-                                              HeadHeightOnOff,\
-                                              TrunkHeightOnOff,\
-                                              UpperArmLengthOnOff,\
-                                              LowerArmLengthOnOff,\
-                                              HumanModel,\
-                                              ParameterOptStudy ){
+#class_template OptimizeAnthropometricsOnOff (PelvisWidthOnOff="Off",
+                                              ThighLengthOnOff="Off",
+                                              ShankLengthOnOff="Off",
+                                              FootLengthOnOff="Off",
+                                              HeadHeightOnOff="Off",
+                                              TrunkHeightOnOff="Off",
+                                              UpperArmLengthOnOff="Off",
+                                              LowerArmLengthOnOff="Off",
+                                              HumanModel =1,
+                                              ParameterOptStudy = 1 ){
   
+  // These should be set as default values in the argument to the tempalte                                              
+  AnyFolder &HumanModelRef = Main.Studies.HumanModel;
+  AnyFolder &ParameterOptStudyRef = Main.Studies.ParameterIdentification;
   
-  
-  AnyFolder &ref=  ParameterOptStudy;
+  AnyFolder &ref= ParameterOptStudyRef;
   
   ref={
     
-    AnyFolder &Lengths=Main.HumanModel.Scaling.AnthroSegmentLengths;
+    AnyFolder &Lengths=.HumanModelRef.Scaling.AnthroSegmentLengths;
     
     #if PelvisWidthOnOff=="On"
     AnyDesVar PelvisWidth = {

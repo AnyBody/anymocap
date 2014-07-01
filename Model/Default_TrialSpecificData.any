@@ -1,15 +1,6 @@
-// Special switch to indicate if this trial is standing
-// reference.
-#define MOCAP_IS_STANDING_REFERENCE 0
 
 /// This is the name of the trial c3d file without extension
 AnyStringVar  TrialFileName = "Model";
-
-/// This is name of the accompaning calibration c3d file 
-/// Leave blank if the project does not use a 
-/// standing reference or dynamic reference
-AnyStringVar CalibrationTrialFileName = "";
-
 
 /// This is frame offset from the beginning of the C3D file 
 AnyInt C3DFirstFrameOffset = 2;

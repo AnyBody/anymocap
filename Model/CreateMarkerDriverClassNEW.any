@@ -1,11 +1,11 @@
 
 
-#class_template CreateMarkerDriver (MarkerName,\
-                                    MarkerPlacement,\
-                                    WeightX=1, WeightY=1, WeightZ=1,\
-                                    OptX="Off", OptY = "Off",OptZ="Off",\
-                                    ParameterOptStudy =1,\
-                                    HideMarkerCoordinates = 0,\
+#class_template CreateMarkerDriver (MarkerName,
+                                    MarkerPlacement,
+                                    WeightX=1, WeightY=1, WeightZ=1,
+                                    OptX="Off", OptY = "Off",OptZ="Off",
+                                    DefaultArguments =1,
+                                    HideMarkerCoordinates = 0,
                                     sRelOptScalingOnOff = "On"){
   
   // All of these should be include as arguments with default values                                      

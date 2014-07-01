@@ -2,49 +2,50 @@
 // Only include these oprations if the model uses a standing reference
 // recording
 
-#if MOCAP_STANDING_REFERENCE_FILE_NAME != ""
-
+#ifndef MOCAP_IS_STANDING_REFERENCE 
+  #define MOCAP_IS_STANDING_REFERENCE 0  
+#else
           
-     #if MOCAP_IS_STANDING_REFERENCE == 1
-       AnyOperationSequence Save_standing_reference_parameters = {
-         AnyOperationSetValue TouchMarkers = {
-           Source = ObjSearch("Main.ModelSetup.*.sRelOptEdit"     );
-           Target = Source;
-         };     
-         AnyOperationSetValue TouchSegLength =  {
-           Source = { 
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.PelvisWidth,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ThighLength,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ShankLength,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.FootLength,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.HeadHeight,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkHeight,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.UpperArmLength,
-             &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength};
-           Target = Source;
-         };     
-         AnyOperationMacro SaveToFile = {
-           MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 
-             strquote( TEMP_PATH+"/"+MOCAP_STANDING_REFERENCE_FILE_NAME+".anyset" )
-             ,
-             "classoperation Main.Studies.ParameterIdentification " +strquote("Save design") + "--file=" +
-             strquote(TEMP_PATH+"/"+MOCAP_STANDING_REFERENCE_FILE_NAME+".txt") 
-           };
-           
-         };
-         
-       };    
-    #else
-    AnyOperationMacro Load_standing_reference_parameters = {
-       MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" +
-         strquote(TEMP_PATH+"/"+MOCAP_STANDING_REFERENCE_FILE_NAME+".anyset" ),
-                    "classoperation Main" + strquote("Update Values")
-                    , 
-                    "classoperation Main.Studies.ParameterIdentification " +strquote("Load design") + "--file=" + 
-                    strquote(TEMP_PATH+"/"+MOCAP_STANDING_REFERENCE_FILE_NAME+".txt")
-                  };
-    };
-    #endif   
+  #if MOCAP_IS_STANDING_REFERENCE == 1
+    AnyOperationSequence Save_standing_reference_parameters = {
+      AnyOperationSetValue TouchMarkers = {
+        Source = ObjSearch("Main.ModelSetup.*.sRelOptEdit"     );
+        Target = Source;
+      };     
+      AnyOperationSetValue TouchSegLength =  {
+        Source = { 
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.PelvisWidth,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ThighLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ShankLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.FootLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.HeadHeight,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkHeight,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.UpperArmLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength};
+        Target = Source;
+      };     
+      AnyOperationMacro SaveToFile = {
+        MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 
+          strquote( TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".anyset" )
+          ,
+          "classoperation Main.Studies.ParameterIdentification " +strquote("Save design") + "--file=" +
+          strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".txt") 
+        };
+        
+      };
+      
+    };    
+ #else
+ AnyOperationMacro Load_standing_reference_parameters = {
+    MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" +
+      strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".anyset" ),
+                 "classoperation Main" + strquote("Update Values")
+                 , 
+                 "classoperation Main.Studies.ParameterIdentification " +strquote("Load design") + "--file=" + 
+                 strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".txt")
+               };
+ };
+ #endif   
     
 
 #endif

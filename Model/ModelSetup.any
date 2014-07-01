@@ -1,22 +1,21 @@
 
-//// Study for saving a loading the parameters from standing reference trials
-//#include "SaveLoad_StandingReferenceValues.any"
+  // Study for saving a loading the parameters from calibration trials 
+  //(dynamic or standing refereces)
+  #include "SaveLoad_StandingReferenceValues.any"
 
+  // Load default values for the Trial/Subject/Lab specific data files if 
+  // not specified by the user application 
   #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
-  #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
+    #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
   #endif
-  
   #ifndef MOCAP_TRIAL_SPECIFIC_DATA
-  #path MOCAP_TRIAL_SPECIFIC_DATA "Default_TrialSpecificData.any"
+    #path MOCAP_TRIAL_SPECIFIC_DATA "Default_TrialSpecificData.any"
   #endif
-  
   #ifndef MOCAP_LAB_SPECIFIC_DATA
-  #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
+    #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
   #endif
   
  
- 
-
 AnyFolder ModelSetup ={
   
     AnyFolder TrialSpecificData = {
@@ -49,6 +48,7 @@ AnyFolder ModelSetup ={
   };
   
   AnyFolder MocapDrivers = {
+    
 //    #include "<MOCAP_EXTRA_DRIVERS_FILE>"        
   };
   AnyFolder Measures = {
