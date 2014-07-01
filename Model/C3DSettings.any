@@ -22,8 +22,9 @@
       AutomaticInitialConditionOnOff = On;
       N = 2;
       AnyVar CutOffFrequency=12;
+       
       AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
-      W = {1/(SampleFreq*0.5)*CutOffFrequency};
+      W = {1/(iffun(eqfun(SampleFreq,0),100.0,SampleFreq)*0.5)*CutOffFrequency};
       Type = LowPass;
     };
     
