@@ -1,0 +1,15 @@
+ #path MOCAP_EXTRA_DRIVERS_FILE "ExtraDrivers.any"
+ #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
+ #path BODY_MODEL_CONFIG_FILE "BodyModelConfig.any"
+ 
+ AnyVec3 Gravity = -9.81*{0,0,1};
+ 
+   
+OptimizeAnthropometricsOnOff test(PelvisWidthOnOff="On",
+                                              ThighLengthOnOff="On",
+                                              ShankLengthOnOff="On",
+                                              FootLengthOnOff="Off",
+                                              HeadHeightOnOff="Off",
+                                              TrunkHeightOnOff="On",
+                                              UpperArmLengthOnOff="On",
+                                              LowerArmLengthOnOff="On") = {};
