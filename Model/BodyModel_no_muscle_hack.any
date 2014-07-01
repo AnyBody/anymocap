@@ -1,0 +1,34 @@
+  AnyFolder &Scaling = Main.HumanModel.Scaling;
+  AnyFolder BodyModel = {
+    AnyFolder &Interface = Main.HumanModel.BodyModel.Interface;
+    AnyFolder Trunk = {
+      AnyFolder &SegmentsLumbar = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar;
+      AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
+      AnyFolder &SegmentsCervicalSpine = Main.HumanModel.BodyModel.Trunk.SegmentsCervicalSpine ;
+      AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar ;
+      AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine ;
+    };
+    
+    AnyFolder Right = {
+      AnyFolder ShoulderArm = {
+        AnyFolder &Seg = .Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+        AnyFolder &rake = .Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.ArtificialRake;
+      };
+      AnyFolder Leg = {
+        AnyFolder &Seg = .Main.HumanModel.BodyModel.Right.Leg.Seg;
+        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Right.Leg.Jnt;
+      };
+    };
+    AnyFolder Left = {
+      AnyFolder ShoulderArm = {
+        AnyFolder &Seg = .Main.HumanModel.BodyModel.Left.ShoulderArm.Seg;
+        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Left.ShoulderArm.Jnt;
+        AnyFolder &rake = .Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.ArtificialRake;
+      };
+      AnyFolder Leg = {
+        AnyFolder &Seg = .Main.HumanModel.BodyModel.Left.Leg.Seg;
+        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Left.Leg.Jnt;
+      };
+    };
+  };

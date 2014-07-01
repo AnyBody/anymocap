@@ -1,0 +1,75 @@
+#include "IncludeFile.any"
+
+// HACK. Needed to load the model when no joint angles files exist
+//#define EXCLUDE_OPTIMIZED_DRIVERS
+
+
+Main = {
+
+#include "Operations.any"
+  
+#include "ModelSetup.any"
+  
+  // Include Environment model (e.g. global ref, forceplates etc.) 
+  #include "EnvironmentModel.any"
+  
+  // Configure and include the human model
+  #include "<BODY_MODEL_CONFIG_FILE>"
+  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+  
+  AnyFolder Studies = {
+
+//     Study for parameter identification (segment length, marker positions etc.) 
+    AnyOptKinStudy ParameterIdentification = {
+      #include "KinematicStudyForParameterIdentification.any"
+      Analysis = { AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;};    
+      ParameterOptimization.ConvergenceTol=1e-3; 
+    };
+
+    AnyBodyStudy KinematicStudy = { 
+      #include "BodyModel_no_muscle_hack.any" 
+      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
+      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder ModelEnvironmentConnection ={
+        AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
+//        AnyFolder &ExtraDrivers = Main.ModelSetup.MocapDrivers.ExtraDrivers;
+         #include "<MOCAP_EXTRA_DRIVERS_FILE>"   
+      }; 
+      #include "JointAngleOutputs.any"
+
+      Kinematics.PosAnalysisOnlyOnOff = On;
+      InitialConditions.PosAnalysisOnlyOnOff = On;
+      InitialConditions.SolverType = KinSolOverDeterminate;
+      Kinematics.SolverType = KinSolOverDeterminate;
+      Kinematics.KinematicTol=1e-5; 
+      nStep= Main.ModelSetup.nStep; 
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      tStart = Main.ModelSetup.tStart; 
+      tEnd = Main.ModelSetup.tEnd;
+    };
+    
+    
+    // Study for running the inverse dynamic simulation
+    AnyBodyStudy InverseDynamicsStudy = { 
+      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
+      AnyFolder &BodyModel= Main.HumanModel.BodyModel;
+      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder ModelEnvironmentConnection ={
+        #include "JointsAndDriversOptimized.any"
+      }; 
+      // Include markers for visualization, but exclude the driver part.
+      AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
+      MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
+      
+      #include "InverseDynamicSettings.any"
+      nStep= Main.ModelSetup.nStep-4; 
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb ; 
+      tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb ;
+    };
+  };
+  
+//  #include "../Project.Main.any"
+}; //Main
+
+

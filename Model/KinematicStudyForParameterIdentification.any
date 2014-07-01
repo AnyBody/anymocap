@@ -1,4 +1,4 @@
- AnyBodyStudy KinematicStudyForParameterIdentification= {
+AnyBodyStudy KinematicStudyForParameterIdentification= {
   //AnyFolder &C3DData = Main.Studies.InverseDynamics.C3DData;
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
   AnyFolder ModelEnvironmentConnection = {
@@ -7,7 +7,7 @@
    };
    
   // Construct body model with muscles excluded
-  #include "BodyModel_no_muscles.any" 
+  #include "BodyModel_no_muscle_hack.any" 
   
   
     Kinematics.PosAnalysisOnlyOnOff=On; //only run the position analysis 
@@ -27,4 +27,7 @@
     Kinematics.KinematicTol=1e-5; 
     
   };
+  AnyOperationMacro SaveParameters = {
+  };
+  AnyOperationMacro LoadParameters = {};
   
