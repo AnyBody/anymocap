@@ -7,12 +7,12 @@
                                               TrunkHeightOnOff="Off",
                                               UpperArmLengthOnOff="Off",
                                               LowerArmLengthOnOff="Off",
-                                              HumanModel =1,
-                                              ParameterOptStudy = 1 ){
+                                              HumanModel =HumanModel,
+                                              ParameterOptStudy = ParameterIdentification ){
   
   // These should be set as default values in the argument to the tempalte                                              
-  AnyFolder &HumanModelRef = Main.Studies.HumanModel;
-  AnyFolder &ParameterOptStudyRef = Main.Studies.ParameterIdentification;
+  AnyFolder &HumanModelRef = Main.HumanModel;
+  AnyFolder &ParameterOptStudyRef = Main.Studies.ParameterOptStudy ;
   
   AnyFolder &ref= ParameterOptStudyRef;
   

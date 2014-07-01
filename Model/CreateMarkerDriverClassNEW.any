@@ -6,13 +6,15 @@
                                     OptX="Off", OptY = "Off",OptZ="Off",
                                     DefaultArguments =1,
                                     HideMarkerCoordinates = 0,
-                                    sRelOptScalingOnOff = "On"){
+                                    sRelOptScalingOnOff = "On",
+                                    PARAMETER_ID_STUDY = ParameterIdentification,
+                                    MOCAP_DRIVER_FOLDER =  MocapDrivers,
+                                    C3D_OBJECT = C3DFileData,
+                                    BODY_MODEL_FOLDER = BodyModel
+                                    ){
   
   // All of these should be include as arguments with default values                                      
-  AnyFolder &ParameterOptStudyRef  = Main.Studies.ParameterIdentification;                                
-  AnyFolder &DriverFolderRef =  Main.ModelSetup.MocapDrivers;  
-  AnyFolder &C3DObjectRef = Main.ModelSetup.C3DFileData;
-  AnyFolder &BodyModelRef = Main.HumanModel.BodyModel;
+  AnyFolder &ParameterOptStudyRef  = Main.Studies.PARAMETER_ID_STUDY ;                                
                                       
   AnyVec3 RGB={1,0,0};  //color of initial markers
 
@@ -81,7 +83,7 @@
 //  #if BodyModelRef == "Use default"
 //  AnyFolder &InsertionNode1 = Main.HumanModel.BodyModel.MarkerPlacement;
 //  #else
-  AnyFolder &InsertionNode1 = BodyModelRef.MarkerPlacement;
+  AnyFolder &InsertionNode1 = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement;
 //  #endif
   
   InsertionNode1 ={
@@ -178,7 +180,7 @@
   
   
   
-  DriverFolderRef ={
+  Main.ModelSetup.MOCAP_DRIVER_FOLDER ={
         
     AnyFolder MarkerName ={
       AnyFunConst WeightFun ={Value = {WeightX,WeightY,WeightZ};};
@@ -192,8 +194,8 @@
           Line = On;
         };
         Linear.Ref=0;
-        AnyRefFrame &ref1 = ...InsertionNode1.MarkerName;
-        AnyParamFun &ref2 = ...C3DObjectRef.Points.Markers.MarkerName.PosInterpol;
+        AnyRefFrame &ref1 = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
+        AnyParamFun &ref2 = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol;
         WeightFun={&.WeightFun};
       };
     };
