@@ -22,7 +22,11 @@
  #endif
  
  // Include the AMMR library
- #include "C:\Program Files\AnyBody Technology\AnyBody.6.0\AMMR\Application\libdef.any"
+ #ifdef AMMR_PATH
+ #include "<AMMR_PATH>/Application\libdef.any"
+ #else
+ #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
+ #endif
  
  // Model specific include statements
 //  #include "AnatomicalJointAnglesTemplate.any"
