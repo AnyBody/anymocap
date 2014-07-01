@@ -1,0 +1,30 @@
+ AnyBodyStudy KinematicStudyForParameterIdentification= {
+  //AnyFolder &C3DData = Main.Studies.InverseDynamics.C3DData;
+  AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+  AnyFolder ModelEnvironmentConnection = {
+     AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
+     #include "<MOCAP_EXTRA_DRIVERS_FILE>"   
+   };
+   
+  // Construct body model with muscles excluded
+  #include "BodyModel_no_muscles.any" 
+  
+  
+    Kinematics.PosAnalysisOnlyOnOff=On; //only run the position analysis 
+    InitialConditions.PosAnalysisOnlyOnOff=On; //only run the position analysis 
+    
+    #if MOCAP_IS_STANDING_REFERENCE 
+    Kinematics.SingleStepOnOff = On;
+    #endif
+    nStep = 70;
+    Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+    tStart = Main.ModelSetup.tStart; 
+    tEnd = Main.ModelSetup.tEnd;
+    
+    InitialConditions.SolverType = KinSolOverDeterminate;
+    Kinematics.SolverType = KinSolOverDeterminate;
+    InitialConditions.KinematicTol=1e-3;
+    Kinematics.KinematicTol=1e-5; 
+    
+  };
+  

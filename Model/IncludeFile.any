@@ -1,0 +1,59 @@
+#ifndef INCLUDEFILE_ANY
+  #define INCLUDEFILE_ANY
+
+  // This ensures that all the necessary path statements exist if they are 
+  // not specified by the main file. 
+  
+  #ifndef BASE_MODEL_PATH
+  #path BASE_MODEL_PATH "."
+  #endif
+  
+  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
+  #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
+  #endif
+  
+  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
+  #path MOCAP_TRIAL_SPECIFIC_DATA"Default_TrialSpecificData.any"
+  #endif
+  
+  #ifndef MOCAP_LAB_SPECIFIC_DATA
+  #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
+  #endif
+  
+ #ifndef BODY_MODEL_CONFIG_FILE
+ #path BODY_MODEL_CONFIG_FILE "BodyModelConfig_FullBody.any"
+ // #path BODY_MODEL_CONFIG_FILE "LowerBody_BMConfiguration.any"
+ #endif
+   
+ #ifndef TEMP_PATH
+ #path TEMP_PATH "Tmp/"
+ #endif
+  
+ #ifndef ANYBODY_PATH_OUTPUT
+ #path ANYBODY_PATH_OUTPUT "Tmp"
+ #endif
+ 
+ #ifndef PROJECT_PATH
+ #path PROJECT_PATH "../"
+ #endif
+ 
+ // Include the AMMR library
+ #include "C:\Program Files\AnyBody Technology\AnyBody.6.0\AMMR\Application\libdef.any"
+ 
+ // Model specific include statements
+//  #include "AnatomicalJointAnglesTemplate.any"
+//  #include "RotationAxisAngles.any"
+ 
+ 
+// #include "<ANYBODY_PATH_TOOLBOX>/Mocap/CreateMarkerDriverClass.any"
+ #include "CreateMarkerDriverClassNEW.any"
+
+ #include "OptimizeAnthropometricsOnOffNew.any"
+ #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2AutoDetection.any"
+ //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2.any"
+ //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3AutoDetection.any"
+ //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3.any"
+ //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType4AutoDetection.any"
+ //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType4.any"
+ 
+#endif

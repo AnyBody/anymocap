@@ -1,0 +1,156 @@
+
+AnyFolder Mannequin = {
+  
+  AnyFolder Posture = {
+    
+    AnyVar PelvisPosX = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0];
+    AnyVar PelvisPosY = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1];
+    AnyVar PelvisPosZ = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2];
+    
+    #define PelvisRotMat
+    AnyMat33 PelvisRotMatrix = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix;
+    
+    // These variables control the rotation of the thorax wrt the
+    // pelvis    
+    AnyVar PelvisThoraxExtension=Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisThoraxExtension; 
+    AnyVar PelvisThoraxLateralBending=Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisThoraxLateralBending;  
+    AnyVar PelvisThoraxRotation=Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisThoraxRotation;        
+    
+    AnyVar NeckExtension=Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.NeckExtension;
+    AnyVar NeckLateralBending = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.NeckLateralBending ;
+    AnyVar NeckRotation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.NeckRotation ;
+       
+    AnyFolder Right = {
+      //Arm 
+      AnyVar SternoClavicularProtraction=-23;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=11.5;    //This value is not used for initial position
+      AnyVar SternoClavicularAxialRotation=-20; //This value is not used for initial position
+      
+      AnyVar GlenohumeralFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.GlenohumeralFlexion ; 
+      AnyVar GlenohumeralAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.GlenohumeralAbduction ;
+      AnyVar GlenohumeralExternalRotation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.GlenohumeralExternalRotation;
+      
+      AnyVar ElbowFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.ElbowFlexion; 
+      AnyVar ElbowPronation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.ElbowPronation ;       
+      AnyVar WristFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.WristFlexion ;
+      AnyVar WristAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.WristAbduction ;
+      
+      AnyVar HipFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.HipFlexion ;
+      AnyVar HipAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.HipAbduction ;
+      AnyVar HipExternalRotation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.HipExternalRotation ;
+      AnyVar KneeFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.KneeFlexion ;
+      AnyVar AnklePlantarFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.AnklePlantarFlexion;
+      AnyVar SubTalarEversion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Right.SubTalarEversion;
+    };
+    AnyFolder Left = {
+      
+      //Arm
+      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
+      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
+      AnyVar SternoClavicularAxialRotation=.Right.SternoClavicularAxialRotation;
+      
+      AnyVar GlenohumeralFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.GlenohumeralFlexion ; 
+      AnyVar GlenohumeralAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.GlenohumeralAbduction ;
+      AnyVar GlenohumeralExternalRotation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.GlenohumeralExternalRotation;
+      
+      AnyVar ElbowFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.ElbowFlexion; 
+      AnyVar ElbowPronation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.ElbowPronation ;       
+      AnyVar WristFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.WristFlexion ;
+      AnyVar WristAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.WristAbduction ;
+      
+      AnyVar HipFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.HipFlexion ;
+      AnyVar HipAbduction = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.HipAbduction ;
+      AnyVar HipExternalRotation = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.HipExternalRotation ;
+      AnyVar KneeFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.KneeFlexion ;
+      AnyVar AnklePlantarFlexion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.AnklePlantarFlexion;
+      AnyVar SubTalarEversion = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.Left.SubTalarEversion;
+    };
+    
+    
+    
+  };
+  
+  AnyFolder PostureVel={  
+    //This controls the position of the pelvi wrt. to the global reference frame
+    AnyVar PelvisPosX=0;
+    AnyVar PelvisPosY=0;
+    AnyVar PelvisPosZ=0;
+    
+    //This controls the rotation of the pelvis wrt. to the global reference frame
+    AnyVar PelvisRotX=0;
+    AnyVar PelvisRotY=0;
+    AnyVar PelvisRotZ=0;
+    
+    // These variables control the rotation of the thorax wrt the
+    // pelvis    
+    AnyVar PelvisThoraxExtension=0; 
+    AnyVar PelvisThoraxLateralBending=0;  
+    AnyVar PelvisThoraxRotation=0;        
+    
+    AnyVar NeckExtension=0; 
+    AnyVar NeckLateralBending = 0;
+    AnyVar NeckRotation = 0;
+
+    
+    AnyFolder Right = {
+      //Arm 
+      AnyVar SternoClavicularProtraction=0;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=0;    //This value is not used for initial position
+      AnyVar SternoClavicularAxialRotation=0; //This value is not used for initial position
+      
+      AnyVar GlenohumeralFlexion =0; 
+      AnyVar GlenohumeralAbduction = 0; 
+      AnyVar GlenohumeralExternalRotation = 0; 
+      
+      AnyVar ElbowFlexion = 0.0;
+      AnyVar ElbowPronation = 0.0;
+      
+      AnyVar WristFlexion =0;
+      AnyVar WristAbduction =0;
+      
+      AnyVar HipFlexion = 0.0; 
+      AnyVar HipAbduction = 0.0; 
+      AnyVar HipExternalRotation = 0.0;
+      
+      AnyVar KneeFlexion = 0.0; 
+      
+      AnyVar AnklePlantarFlexion =0.0; 
+      AnyVar SubTalarEversion=0.0; 
+      
+    };
+    
+    AnyFolder Left = {
+      //all values are set to be equal to the right side values 
+      //feel free to change this!
+      
+      //Arm
+      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
+      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
+      AnyVar SternoClavicularAxialRotation=.Right.SternoClavicularAxialRotation;
+      
+      AnyVar GlenohumeralFlexion = .Right.GlenohumeralFlexion ; 
+      AnyVar GlenohumeralAbduction =.Right.GlenohumeralAbduction ;
+      AnyVar GlenohumeralExternalRotation =.Right.GlenohumeralExternalRotation ;
+      
+      AnyVar ElbowFlexion = .Right.ElbowFlexion; 
+      AnyVar ElbowPronation = .Right.ElbowPronation;       
+      AnyVar WristFlexion =.Right.WristFlexion;
+      AnyVar WristAbduction =.Right.WristAbduction;
+      
+      
+      
+      //Leg     
+      AnyVar HipFlexion =.Right.HipFlexion;  
+      AnyVar HipAbduction =.Right.HipAbduction;
+      AnyVar HipExternalRotation = .Right.HipExternalRotation;
+      AnyVar KneeFlexion = .Right.KneeFlexion;       
+      AnyVar AnklePlantarFlexion = .Right.AnklePlantarFlexion ;
+      AnyVar SubTalarEversion=.Right.SubTalarEversion; 
+      
+      
+    };
+  };
+};
+
+
+

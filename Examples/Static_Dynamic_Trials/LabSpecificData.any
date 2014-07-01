@@ -1,0 +1,7 @@
+// Defines the vertical (up) lab direction in the cordinates system 
+// of the C3D files (x,y,z)
+#define MOCAP_LAB_VERTICAL {0,0,1}
+
+
+#path MOCAP_EXTRA_DRIVERS_FILE "Hammel_ExtraDrivers.any"
+#path MOCAP_MARKER_PROTOCOL_FILE "HammelMarkerProtocol.any"

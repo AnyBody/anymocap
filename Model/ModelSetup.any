@@ -1,0 +1,50 @@
+
+//// Study for saving a loading the parameters from standing reference trials
+//#include "SaveLoad_StandingReferenceValues.any"
+
+AnyFolder ModelSetup ={
+  
+    AnyFolder TrialSpecificData = {
+        #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
+    };
+  
+    AnyFolder SubjectSpecificData = {
+        #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
+    };
+  
+    AnyFolder LabSpecificData = {
+        #include "<MOCAP_LAB_SPECIFIC_DATA>"
+    };
+  
+   // This is the C3D used for the analysis
+  AnyInputC3D C3DFileData =   {
+    #include "C3DSettings.any"
+  };
+
+  // Start and End times for the c3d file.
+  AnyIntVar FirstFrame = C3DFileData.Header.FirstFrameNo + TrialSpecificData.C3DFirstFrameOffset ; 
+  AnyIntVar LastFrame = C3DFileData.Header.LastFrameNo - TrialSpecificData.C3DLastFrameOffset ;
+  AnyFloatVar tStart = FirstFrame/C3DFileData.Header.VideoFrameRate;
+  AnyFloatVar tEnd = LastFrame/C3DFileData.Header.VideoFrameRate;
+  
+  AnyIntVar nStep =(LastFrame-FirstFrame+1);
+  
+  AnyFolder MarkersClasses = {
+    #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+  };
+  
+  AnyFolder MocapDrivers = {
+//    #include "<MOCAP_EXTRA_DRIVERS_FILE>"        
+  };
+  AnyFolder Measures = {
+  
+  };
+  
+
+  
+  //markers adds macros automatically into this folder
+  AnyFolder Macros =  {};
+  
+};
+
+
