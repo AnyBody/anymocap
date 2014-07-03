@@ -17,10 +17,7 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
     #include "KinematicSettings.any"
   
   
-    #if MOCAP_IS_STANDING_REFERENCE 
-    Kinematics.SingleStepOnOff = On;
-    #endif
-    nStep = 70;
+    nStep = min({70, Main.ModelSetup.nStep});
     Gravity = Main.ModelSetup.LabSpecificData.Gravity;
     tStart = Main.ModelSetup.tStart; 
     tEnd = Main.ModelSetup.tEnd;
