@@ -23,8 +23,16 @@
   // This defines what forceplates are included in 
   // lab/experiment
   AnyFolder ForcePlates = {
+    // HACK_WORKAROUND: Force plates cause problems in standing 
+    // reference recording with only one time frame 
+    #ifdef MOCAP_IS_STANDING_REFERENCE 
+       #if MOCAP_IS_STANDING_REFERENCE == 0
+           #define _EXCLUDE_FORCE_PLATES_
+       #endif
+    #endif
     
-    #if MOCAP_IS_STANDING_REFERENCE == 0
+    #ifndef _EXCLUDE_FORCE_PLATES_
+    
     ForcePlateType2AutoDetection Plate1 (
     PlateName = Plate1,
     Folder =Main.ModelSetup.C3DFileData,
