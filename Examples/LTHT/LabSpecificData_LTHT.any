@@ -24,7 +24,6 @@
   // lab/experiment
   AnyFolder ForcePlates = {
     
-    #if MOCAP_IS_STANDING_REFERENCE == 0
     ForcePlateType2AutoDetection Plate1 (
     PlateName = Plate1,
     Folder =Main.ModelSetup.C3DFileData,
@@ -65,25 +64,6 @@
       Switch_DrawForceVectorFromCOP = On;
     }; 
     
-    ForcePlateType2AutoDetection Plate3 (
-    PlateName = Plate3,
-    Folder =Main.ModelSetup.C3DFileData,
-    Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
-    Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
-    No=2,
-    VerticalDirection ="Z",
-    HeightTolerance=0.07,
-    VelThreshold=2.2,
-    Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx3,
-    Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy3,
-    Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz3,
-    Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx3,
-    My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My3,
-    Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz3,
-    FootPresent=1)
-    ={
-      Switch_DrawForceVectorFromCOP = On;
-    };    
+ 
     
-    #endif
   };
