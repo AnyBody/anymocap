@@ -1,11 +1,10 @@
    
 // Only include these oprations if the model uses a standing reference
 // recording
-
 #ifndef MOCAP_IS_STANDING_REFERENCE 
   #define MOCAP_IS_STANDING_REFERENCE 0  
 #else
-          
+  Main.ModelSetup.Macros = {        
   #if MOCAP_IS_STANDING_REFERENCE == 1
     AnyOperationSequence Save_standing_reference_parameters = {
       AnyOperationSetValue TouchMarkers = {
@@ -26,10 +25,10 @@
       };     
       AnyOperationMacro SaveToFile = {
         MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 
-          strquote( TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".anyset" )
+          strquote( TEMP_PATH+"/"+ Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName+".anyset" )
           ,
           "classoperation Main.Studies.ParameterIdentification " +strquote("Save design") + "--file=" +
-          strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".txt") 
+          strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".txt") 
         };
         
       };
@@ -38,14 +37,15 @@
  #else
  AnyOperationMacro Load_standing_reference_parameters = {
     MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" +
-      strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".anyset" ),
+      strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".anyset" ),
                  "classoperation Main" + strquote("Update Values")
                  , 
                  "classoperation Main.Studies.ParameterIdentification " +strquote("Load design") + "--file=" + 
-                 strquote(TEMP_PATH+"/"+Main.TrialSpecificData.CalibrationTrialFileName +".txt")
+                 strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".txt")
                };
  };
  #endif   
-    
+};
+
 
 #endif

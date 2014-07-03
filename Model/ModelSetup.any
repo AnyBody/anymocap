@@ -12,10 +12,6 @@
   #endif
   
   
-  // Study for saving a loading the parameters from calibration trials 
-  //(dynamic or standing refereces)
-  #include "SaveLoad_StandingReferenceValues.any"
-
   
  
 AnyFolder ModelSetup ={
@@ -32,6 +28,12 @@ AnyFolder ModelSetup ={
       #include "<MOCAP_LAB_SPECIFIC_DATA>"
     };
   
+  // Study for saving a loading the parameters from calibration trials 
+  //(dynamic or standing refereces)
+  #include "SaveLoad_StandingReferenceValues.any"
+
+    
+    
    // This is the C3D used for the analysis
   AnyInputC3D C3DFileData =   {
     #include "C3DSettings.any"
