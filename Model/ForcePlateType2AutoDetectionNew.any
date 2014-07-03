@@ -147,16 +147,10 @@
   
   
   
-  AnyInt   EndFrame =Folder.Header.FirstFrameNo-1+(Folder.Header.LastFrameNo-Folder.Header.FirstFrameNo+1)* Folder.Header.NoAnalogSamplesPer3DFrame;
-  AnyFloatVar  tStart = Folder.Header.FirstFrameNo/Folder.Header.VideoFrameRate;
-  AnyFloatVar   tEnd =  Folder.Header.LastFrameNo/Folder.Header.VideoFrameRate;
-  
-  AnyInt AnalogData=EndFrame-Folder.Header.FirstFrameNo;
-  AnyFloat Time=tStart+(iarr(0,AnalogData)*(tEnd-tStart)/AnalogData);
-  
-  
-
-  
+  AnyFloatVar tStart = Folder.Header.FirstFrameNo/Folder.Header.VideoFrameRate;
+  AnyFloatVar tEnd =  (Folder.Header.LastFrameNo+1)/Folder.Header.VideoFrameRate;
+  AnyInt NoAnalogData= (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo +1)*Folder.Header.NoAnalogSamplesPer3DFrame;
+  AnyFloat Time= farr( tStart, (tEnd-tStart)/NoAnalogData,  NoAnalogData);
   
   
   AnyFunInterpol load ={
