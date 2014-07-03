@@ -49,9 +49,9 @@ OptX="On",OptY="On",OptZ="Off"
 CreateMarkerDriver RFHD (
 MarkerName= RFHD, 
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="Off",OptY="Off",OptZ="On" 
+OptX="Off",OptY="Off",OptZ="Off" 
 ) = {
-  sRelOpt = {0.09,0.07,0.07}; 
+  sRelOpt = {0.11,0.06,0.045}; 
   //  sRelOpt = {0.08,0.06,0.07};
 };
 
@@ -59,9 +59,9 @@ OptX="Off",OptY="Off",OptZ="On"
 CreateMarkerDriver LFHD (
 MarkerName= LFHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="Off",OptY="Off",OptZ="On"
+OptX="Off",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {0.09,0.07,-0.07};
+  sRelOpt = {0.11,0.06,-0.045};
   //  sRelOpt = {0.08,0.06,-0.07};
 };
 
@@ -123,7 +123,7 @@ MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
-  sRelOpt = {-0.055,0.48,0};
+  sRelOpt = {-0.055,0.49,0};
 };
 
 //// Lower Extremity Markers
@@ -176,7 +176,7 @@ MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="Off" , OptY="Off" , OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt = {0.09, -0.025, 0.00};
+  sRelOpt = {0.013, -0.025, 0.00};
 };
 
 // Marker on the Right Heel
@@ -246,7 +246,7 @@ MarkerName= LTOE,
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX="Off",OptY="On" ,OptZ="Off"
 ) = {
-  sRelOpt = {0.09, -0.025, -0.0};
+  sRelOpt = {0.13, -0.025, -0.0};
 };
 
 // Marker on the Left Heel

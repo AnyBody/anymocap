@@ -4,7 +4,6 @@
 // #include "<ANYBODY_PATH_BODY>\Documentation\BodyModel.parameters.any"
 // ----------------------------------------------------------
 
-#path BM_DRAWSETTINGS_FILE "DrawSettings.any"
 #define BM_TRUNK_NECK ON
 #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
 #path BM_SCALING_ANTHRO_FILE "AnyMan.any"

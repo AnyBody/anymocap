@@ -24,11 +24,11 @@
     };
     AnyFolder Left = {
       #if BM_ARM_LEFT != OFF 
-//      AnyFolder ShoulderArm = {
-//        AnyFolder &Seg = .Main.HumanModel.BodyModel.Left.ShoulderArm.Seg;
-//        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Left.ShoulderArm.Jnt;
-//        AnyFolder &rake = .Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.ArtificialRake;
-//      };
+      AnyFolder ShoulderArm = {
+        AnyFolder &Seg = .Main.HumanModel.BodyModel.Left.ShoulderArm.Seg;
+        AnyFolder &Jnt = .Main.HumanModel.BodyModel.Left.ShoulderArm.Jnt;
+        AnyFolder &rake = .Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.ArtificialRake;
+      };
       #endif
       
       AnyFolder Leg = {

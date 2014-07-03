@@ -1,44 +1,96 @@
 #include "IncludeFile.any"
 
-Main = {
+// HACK WORKAROUND. Needed to load the model when no joint angles files exist
+//#define EXCLUDE_OPTIMIZED_DRIVERS
 
-#include "ModelSetup.any"
+
+Main = {
+    
   
-  // Include Environment model (e.g. global ref, forceplates etc.) 
+  // Mocap related setup
+  #include "ModelSetup.any"
+  
+  // Include Environment model
+  // e.g. global reference, forceplates etc.
   #include "EnvironmentModel.any"
   
   // Configure and include the human model
   #include "<BODY_MODEL_CONFIG_FILE>"
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
   
+  
   AnyFolder Studies = {
 
-//     Study for parameter identification (segment length, marker positions etc.) 
+    // Study for parameter identification
+    // optimization of segment length and marker positions. 
     AnyOptKinStudy ParameterIdentification = {
       #include "KinematicStudyForParameterIdentification.any"
-      Analysis = { AnyOperation &ref = ..InverseDynamics.Kinematics;};    
+      Analysis = { AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;};    
       ParameterOptimization.ConvergenceTol=1e-3; 
     };
 
-    // Study for running the inverse dynamic simulation
-    AnyBodyStudy InverseDynamics = { 
+    // Kinematic study to generate joint angles
+    // used in the inverse dynamics study
+    AnyBodyStudy KinematicStudy = { 
+      // HACK_WORKAROUND We need to include a special body model with no muscles.
+      #include "BodyModel_no_muscle_hack.any" 
+      
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
-      AnyFolder &BodyModel= Main.HumanModel.BodyModel;
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection ={
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
-        #include "<MOCAP_EXTRA_DRIVERS_FILE>"        
+        // HACK WORKAROUND. I would like to just reference the extra drivers
+        // similar to how the marker drivers are refereced aboved.
+        //    AnyFolder &ExtraDrivers = Main.ModelSetup.MocapDrivers.ExtraDrivers;
+        // However, it doesn't work because of ref-bug. Instead I include the drivers directly
+         #include "<MOCAP_EXTRA_DRIVERS_FILE>"  
       }; 
-      #include "InverseDynamicSettings.any"
+      
+      // HACK WORKAROUND. It is necessary write joint angles to a file. 
+      #include "JointAngleOutputs.any"
+      
+      #include "KinematicSettings.any"
+      
+      InitialConditions.PreOperation= {AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles;  };
       nStep= Main.ModelSetup.nStep; 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.tStart; 
       tEnd = Main.ModelSetup.tEnd;
     };
-  };
+    
+    
+    // Study for running the inverse dynamic simulation
+    AnyBodyStudy InverseDynamicsStudy = { 
+      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
+      AnyFolder &BodyModel= Main.HumanModel.BodyModel;
+      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder ModelEnvironmentConnection ={
+        #include "JointsAndDriversOptimized.any"
+      }; 
+      
+      // Include markers but exclude the driver part (for visualization)
+      AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
+      MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
+      
+      #include "InverseDynamicSettings.any"
+      
+      // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
+      // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
+      tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb ; 
+      tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb ;
+      nStep= Main.ModelSetup.nStep-4; 
+      
+      InitialConditions.PreOperation = {AnyOperation &SetView = Main.ModelViews.All_without_marker_arrows;};
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+    };
+    
+  };// Study
   
-//  #include "../Project.Main.any"
+  // Definitions of different model view (i.e. with/without muscles)
+  #include "ModelViews.any"
+  
+  // Macros to excute the model
+  #include "RunApplication.any"  
 }; //Main
-
 
 
