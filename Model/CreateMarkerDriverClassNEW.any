@@ -4,18 +4,13 @@
                                     MarkerPlacement,
                                     WeightX=1, WeightY=1, WeightZ=1,
                                     OptX="Off", OptY = "Off",OptZ="Off",
-                                    DefaultArguments =1,
-                                    HideMarkerCoordinates = 0,
                                     sRelOptScalingOnOff = "On",
-                                    PARAMETER_ID_STUDY = ParameterIdentification,
-                                    MOCAP_DRIVER_FOLDER =  MocapDrivers,
+                                    PARAMETER_OPT_STUDY = ParameterIdentification,
                                     C3D_OBJECT = C3DFileData,
                                     BODY_MODEL_FOLDER = BodyModel
                                     ){
   
-  // All of these should be include as arguments with default values                                      
-  AnyFolder &ParameterOptStudyRef  = Main.Studies.PARAMETER_ID_STUDY ;                                
-                                      
+  
   AnyVec3 RGB={1,0,0};  //color of initial markers
 
     
@@ -80,24 +75,10 @@
  
  #endif  
   
-//  #if BodyModelRef == "Use default"
-//  AnyFolder &InsertionNode1 = Main.HumanModel.BodyModel.MarkerPlacement;
-//  #else
-  AnyFolder &InsertionNode1 = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement;
-//  #endif
-  
-  InsertionNode1 ={
+  AnyFolder &MarkerInsertionNode = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement;
+  MarkerInsertionNode = {
     
     AnyRefNode MarkerName={
-      
-      
-      
-      
-      
-      //sRel=.ScalingNode.sRel+.Scale(..sRelOptEdit*.ScalingNode.ARel');
-//      sRel=.ScalingNode.sRel+.GeomScale(..sRelOptEdit)*.ScalingNode.ARel';
-//      ARel=.ScalingNode.ARel;
-      
       #if sRelOptScalingOnOff == "On"
         sRel= .AnatomicalFrame.sRel+ (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
       #else
@@ -106,73 +87,66 @@
       ARel= .AnatomicalFrame.ARel;
       
       
+      AnyDrawVector XDir =   {
+        #if OptX =="On" 
+        Line.RGB={0,1,0};
+        #endif
+        #if OptX =="Off" 
+        Line.RGB={1,0,0};
+        #endif
+        Vec = {size,0, 0};
+        #include "DrawVector.any"
+        Text="X";
+      };
+      
+      AnyDrawVector YDir =   {
+        #if OptY =="On" 
+        Line.RGB={0,1,0};
+        #endif
+        #if OptY =="Off" 
+        Line.RGB={1,0,0};
+        #endif
+        Vec = {0,size, 0};
+        #include "DrawVector.any"
+        Text="Y";
+      };
+      
+      AnyDrawVector ZDir =   {
+        #if OptZ =="On" 
+        Line.RGB={0,1,0};
+        #endif
+        #if OptZ =="Off" 
+        Line.RGB={1,0,0};
+        #endif
+        Vec = {0,0,size};
+        #include "DrawVector.any"
+        Text="Z";
+      };
+
    
-      
-      
-      #if HideMarkerCoordinates == 0
-      
       #if OptX =="On" 
-      
-      AnyDrawVector XDir =   {
-        Line.RGB={0,1,0};
-        Vec = {size,0, 0};
-        #include "DrawVector.any"
-        Text="X";
+      AnyDesVar DesVarX = {
+        Val = ...sRelOptEdit[0];    
+        Min=-100;
+        Max=100;      
       };
       #endif
       
-      #if OptY =="On" 
-      
-      AnyDrawVector YDir =   {
-        Line.RGB={0,1,0};
-        Vec = {0,size, 0};
-        #include "DrawVector.any"
-        Text="Y";
-      };
-      #endif      
-      
-      #if OptZ =="On" 
-      
-      AnyDrawVector ZDir =   {
-        Line.RGB={0,1,0};
-        Vec = {0,0,size};
-        #include "DrawVector.any"
-        Text="Z";
+      #if OptY =="On"
+      AnyDesVar DesVarY = {
+        Val = ...sRelOptEdit[1];   
+        Min=-100;
+        Max=100;      
       };
       #endif
       
-      
-      #if OptX =="Off" 
-      
-      AnyDrawVector XDir =   {
-        Line.RGB={1,0,0};
-        Vec = {size,0, 0};
-        Text="X";
-        #include "DrawVector.any"
+      #if OptZ =="On"
+      AnyDesVar DesVarZ = {
+        Val = ...sRelOptEdit[2];   
+        Min=-100;
+        Max=100;      
       };
-      #endif
-      
-      #if OptY =="Off" 
-      
-      AnyDrawVector YDir =   {
-        Vec = {0,size, 0};
-        Line.RGB={1,0,0};
-        #include "DrawVector.any"
-        Text="Y";
-      };
-      #endif      
-      
-      #if OptZ =="Off" 
-      
-      AnyDrawVector ZDir =   {
-        Line.RGB={1,0,0};
-        Vec = {0,0,size};
-        #include "DrawVector.any"
-        Text="Z";
-      };
-      #endif      
-      
-    #endif
+      #endif    
       
       
     }; //create the marker 
@@ -180,13 +154,12 @@
   
   
   
-  Main.ModelSetup.MOCAP_DRIVER_FOLDER ={
-        
-    AnyFolder MarkerName ={
-      AnyFunConst WeightFun ={Value = {WeightX,WeightY,WeightZ};};
+//  Main.ModelSetup.MOCAP_DRIVER_FOLDER ={
+//        
+//    AnyFolder MarkerName ={
       
-      AnyKinDriverMarker Driver =    {
-        AnyDrawKinMeasure Draw =         {
+      AnyKinDriverMarker Driver = {
+        AnyDrawKinMeasure Draw = {
           Visible = Off;
           Opacity = 1;
           Label = Off;
@@ -196,38 +169,31 @@
         Linear.Ref=0;
         AnyRefFrame &ref1 = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
         AnyParamFun &ref2 = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol;
-        WeightFun={&.WeightFun};
+        AnyFolder Weights = {
+            AnyFunConst f ={Value = {WeightX,WeightY,WeightZ};};
+        };
+        WeightFun={&Weights.f};
       };
-    };
-    
-  };  
+//    };
+//    
+//  };  
 
-  ParameterOptStudyRef={
-    
-    
+  Main.Studies.PARAMETER_OPT_STUDY ={
+
     #if OptX =="On" 
-    AnyDesVar MarkerName##X = {
-      Val = ..sRelOptEdit[0];    
-      Min=-100;
-      Max=100;      
-    };
+    AnyDesVar &MarkerName##X =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarX ;
     #endif
     
     #if OptY =="On"
-    AnyDesVar MarkerName##Y = {
-      Val = ..sRelOptEdit[1];   
-      Min=-100;
-      Max=100;      
-    };
+    AnyDesVar &MarkerName##Y =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarY ;
     #endif
     
     #if OptZ =="On"
-    AnyDesVar MarkerName##Z = {
-      Val = ..sRelOptEdit[2];   
-      Min=-100;
-      Max=100;      
-    };
-    #endif    
+    AnyDesVar &MarkerName##Z =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarZ ;
+    #endif        
+    
+    
+    
   };
   
   
