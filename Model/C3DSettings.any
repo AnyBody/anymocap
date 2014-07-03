@@ -8,7 +8,25 @@
     MarkerUseCamMaskOnOff = Off;
     PointsScaleFactor = 1/1000;
     MarkerDrawOnOff =On;
+    #ifdef MOCAP_IS_STANDING_REFERENCE 
+    #if MOCAP_IS_STANDING_REFERENCE == 1
+    #define DISABLE_C3D_FILTERS
+    #endif
+    #endif
+    
+    
+    // HACK_WORKAROUND. We need to disable filters when 
+    // using standing refernce recordings that often only 
+    // has 1 time step.
+    #ifdef DISABLE_C3D_FILTERS
+    MarkerFilterIndex =-1;
+    AnalogFilterIndex =-1;
+    #undef DISABLE_C3D_FILTERS
+    #else
+    MarkerFilterIndex =0;
     AnalogFilterIndex =1;
+    #endif 
+    
     
     Filter =  {
       N = 2;
