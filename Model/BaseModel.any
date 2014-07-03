@@ -80,7 +80,7 @@ Main = {
       // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
       tStart = Main.ModelSetup.tStart+2*Kinematics.ApproxVelAccPerturb ; 
       tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb ;
-      nStep= Main.ModelSetup.nStep-4; 
+      nStep= max({1, Main.ModelSetup.nStep-4}); 
       
       InitialConditions.PreOperation = {AnyOperation &SetView = Main.ModelViews.All_without_marker_arrows;};
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
