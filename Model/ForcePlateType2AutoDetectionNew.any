@@ -117,7 +117,7 @@
       {
         FileName = "box";
         AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
-        AnyVar LoadRatio = ...OnOff*vnorm(...Force.Flocal) / MaxLoad  ;
+        AnyVar LoadRatio = ...OnOff*vnorm(...Force.Flocal) / (MaxLoad+ 0.001)  ;
         RGB = 0.45*{1,1,1} ;
         ScaleXYZ=.Size/0.30;
         Opacity =0.20+ ...OnOff*(0.05+ 0.4* LoadRatio);
