@@ -1,0 +1,151 @@
+
+// HACK_WORKAROUND. Using defines statements is necessary 
+// nice the ref bug forces us to include the ExtraDrivers.any
+// in several places. 
+#ifndef _EXTRA_DRIVERS_
+#define _EXTRA_DRIVERS_
+
+Main.EnvironmentModel.GlobalRef = {
+  AnyRefNode RotNode = {ARel = RotMat(pi/2,x); AnyDrawRefFrame drw = {};};
+};
+
+#endif
+
+
+AnyFolder Extra_StandingReferenceDrivers = {
+
+  // This ensures the foot is flat on the ground in the 
+AnyKinEqSimpleDriver RightFootGroundDriver={
+   AnyKinRotational rot = {
+     AnyRefFrame &foot = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot.AnatomicalFrame;
+     AnyRefFrame &ground = Main.EnvironmentModel.GlobalRef.RotNode;
+     Type = RotAxesAngles;
+     Axis1 = y; Axis2 = z;  Axis3 = x;
+   };
+  MeasureOrganizer = {1,2};
+  DriverPos  ={0,0};
+  DriverVel = {0,0};
+  Reaction.Type={Off,Off};
+  CType = {Soft,Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1,0.1}; }; };
+  WeightFun = {&Weight.fun};
+};  
+
+AnyKinEqSimpleDriver LeftFootGroundDriver={
+   AnyKinRotational rot = {
+     AnyRefFrame &foot = Main.HumanModel.BodyModel.Left.Leg.Seg.Foot.AnatomicalFrame;
+     AnyRefFrame &ground = Main.EnvironmentModel.GlobalRef.RotNode;
+     Type = RotAxesAngles;
+     Axis1 = y; Axis2 = z; Axis3 = x;
+   };
+  MeasureOrganizer = {1,2};
+  DriverPos  ={0,0};
+  DriverVel = {0,0};
+  Reaction.Type={Off,Off};
+  CType = {Soft,Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1,0.1}; }; };
+  WeightFun = {&Weight.fun};
+}; 
+
+
+AnyKinEqSimpleDriver SkullGroundDriver={
+  AnyKinRotational Rot = {
+     AnyRefFrame &ref0 = Main.HumanModel.BodyModel.Trunk.SegmentsThorax.SkullSeg.AnatomicalFrame;
+     AnyRefFrame &ref1 = Main.EnvironmentModel.GlobalRef.RotNode;
+     Type = RotAxesAngles;
+     Axis1 = y; Axis2 = z; Axis3 = x;
+  };
+  MeasureOrganizer = {1,2};
+  DriverPos={0,0};
+  DriverVel={0,0};
+  Reaction.Type={Off,Off};
+  CType = {Soft,Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.01,0.01}; }; };
+  WeightFun = {&Weight.fun};
+};  
+
+
+AnyKinEqSimpleDriver SternoClavicularProtractionLeft ={
+  AnyKinMeasureOrg &ref =Main.HumanModel.BodyModel.Interface.Left.SternoClavicularProtraction;
+  DriverPos = pi/180*{
+    ..JntPos.Left.SternoClavicularProtraction
+  };
+  DriverVel = pi/180*{
+    ..JntVel.Left.SternoClavicularProtraction
+  };
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.005}; }; };
+  WeightFun = {&Weight.fun};
+};
+AnyKinEqSimpleDriver SternoClavicularProtractionRight ={
+  AnyKinMeasureOrg &ref =Main.HumanModel.BodyModel.Interface.Right.SternoClavicularProtraction;
+  DriverPos = pi/180*{
+    ..JntPos.Right.SternoClavicularProtraction
+  };
+  DriverVel = {
+    ..JntVel.Right.SternoClavicularProtraction
+  };
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.005}; }; };
+  WeightFun = {&Weight.fun};
+};
+
+
+
+AnyKinEqSimpleDriver ThoraxRotation={
+  AnyKinMeasureOrg &ref = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxRotation;
+  DriverPos= pi/180*{
+    ..JntPos.PelvisThoraxRotation
+  };
+  DriverVel={0};
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={1}; }; };
+  WeightFun = {&Weight.fun};
+};             
+AnyKinEqSimpleDriver ThoraxExtension ={
+  AnyKinMeasureOrg &ref = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxExtension ;
+  DriverPos=pi/180*{
+    ..JntPos.PelvisThoraxExtension
+  };
+  DriverVel={0};
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.05}; }; };
+  WeightFun = {&Weight.fun};
+}; 
+AnyKinEqSimpleDriver ThoraxLateralBending ={
+  AnyKinMeasureOrg &ref = Main.HumanModel.BodyModel.Interface.Trunk.PelvisThoraxLateralBending ;
+  DriverPos=pi/180*{
+    ..JntPos.PelvisThoraxLateralBending
+  };
+  DriverVel={0};
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={1}; }; };
+  WeightFun = {&Weight.fun};
+}; 
+
+AnyKinEqSimpleDriver Right_KneeFlexion={
+  AnyKinMeasureOrg &ref1= Main.HumanModel.BodyModel.Interface.Right.KneeFlexion; 
+  DriverPos={0};
+  DriverVel={0};
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={1}; }; };
+  WeightFun = {&Weight.fun};
+};
+AnyKinEqSimpleDriver Left_KneeFlexion={
+  AnyKinMeasureOrg &ref1= Main.HumanModel.BodyModel.Interface.Left.KneeFlexion; 
+  DriverPos={0};
+  DriverVel={0};
+  Reaction.Type={Off};
+  CType = {Soft};
+  AnyFolder Weight = { AnyFunConst fun =  { Value ={1}; }; };
+  WeightFun = {&Weight.fun};
+};
+
+
+};

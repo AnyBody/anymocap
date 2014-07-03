@@ -1,0 +1,9 @@
+AnyFolder &JntPos= Main.HumanModel.Mannequin.Posture;  
+AnyFolder &JntVel= Main.HumanModel.Mannequin.PostureVel;
+
+
+#ifdef MOCAP_IS_STANDING_REFERENCE
+#if MOCAP_IS_STANDING_REFERENCE == 1
+#include "ExtraDrivers_StandingReference.any"
+#endif 
+#endif
