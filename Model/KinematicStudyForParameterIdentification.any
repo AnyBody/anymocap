@@ -6,7 +6,9 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
      // similar to how the marker drivers are refereced aboved.
      //    AnyFolder &ExtraDrivers = Main.ModelSetup.MocapDrivers.ExtraDrivers;
      // However, it doesn't work because of ref-bug. Instead I include the drivers directly
-      #include "<MOCAP_EXTRA_DRIVERS_FILE>"  
+        #ifdef MOCAP_EXTRA_DRIVERS_FILE
+        #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
+        #endif
    };
    
   // Construct body model with muscles excluded
