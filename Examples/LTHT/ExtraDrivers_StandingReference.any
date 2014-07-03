@@ -6,7 +6,7 @@
 #define _EXTRA_DRIVERS_
 
 Main.EnvironmentModel.GlobalRef = {
-  AnyRefNode RotNode = {ARel = RotMat(pi/2,x); AnyDrawRefFrame drw = {};};
+  AnyRefNode RotNode = {ARel = RotMat(pi/2,x); };
 };
 
 #endif

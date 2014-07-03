@@ -56,9 +56,9 @@ AnyFolder Right = {
   
   AnyVar GlenohumeralFlexion = 0;
   AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 65;
+  AnyVar GlenohumeralExternalRotation = 45;
   AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = -65;
+  AnyVar ElbowPronation = 55;
   AnyVar WristFlexion = 0;
   AnyVar WristAbduction = 0;
   
@@ -74,9 +74,9 @@ AnyFolder Left = {
   
   AnyVar GlenohumeralFlexion = 0;
   AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 65;
+  AnyVar GlenohumeralExternalRotation = 45;
   AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = -65;
+  AnyVar ElbowPronation = 55;
   AnyVar WristFlexion = 0;
   AnyVar WristAbduction = 0;
   

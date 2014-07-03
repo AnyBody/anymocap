@@ -2,13 +2,17 @@
 #define HIDE_MARKER_CORDINATE_SYSTEMS 0
 #endif
 
-// Marker on the Left Posterior Superior Iliac
+
+
+
+
+
 CreateMarkerDriver LPSIS ( 
 MarkerName= LPSIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On", OptY="On", OptZ="On"
+OptX="Off", OptY="Off", OptZ="On"
 ) = {
-  sRelOpt ={-0.06727544, -0.025, -0.045};
+  sRelOpt ={-0.05, 0.01, -0.045};
 };
 
 
@@ -16,9 +20,9 @@ OptX="On", OptY="On", OptZ="On"
 CreateMarkerDriver RPSIS (
 MarkerName= RPSIS, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On", OptY="On", OptZ="On"
+OptX="Off", OptY="Off", OptZ="On"
 ) = {
-  sRelOpt = {-0.06727544, -0.025, 0.045};  
+  sRelOpt = {-0.05, 0.01, 0.045};  
 };
 
 
@@ -27,18 +31,18 @@ OptX="On", OptY="On", OptZ="On"
 CreateMarkerDriver RASIS (
 MarkerName= RASIS, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On",OptY="On",OptZ="Off"
+OptX="On",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt =  {0.11, -0.025, 0.13};
+  sRelOpt =  {0.125, -0.025, 0.13};
 };
 
 // Marker on the Left Anterior Superior Iliac
 CreateMarkerDriver LASIS (
 MarkerName= LASIS ,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On",OptY="On",OptZ="Off"
+OptX="On",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt =  {0.11, -0.025, -0.13};
+  sRelOpt =  {0.125, -0.025, -0.13};
 };
 //};
 
@@ -75,7 +79,7 @@ Coef2= 1-2 )= {};
 CreateMarkerDriver RBHD (
 MarkerName= RBHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="On" ,OptY="Off" ,OptZ="On" 
+OptX="On" ,OptY="On" ,OptZ="On" 
 ) = {
   sRelOpt = {-0.07,0.05,0.08};
 };
@@ -84,7 +88,7 @@ OptX="On" ,OptY="Off" ,OptZ="On"
 CreateMarkerDriver LBHD (
 MarkerName= LBHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
-OptX="On",OptY="Off",OptZ= "On" ,
+OptX="On",OptY="On",OptZ= "On" ,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt = {-0.07,0.05,-0.08};
@@ -99,10 +103,9 @@ Coef2= 1-2) = {};
 
 
 //// Thorax
-#if 0
 // Marker on the Sternum
-CreateMarkerDriver STRN (
-MarkerName= STRN,  
+CreateMarkerDriver STERN (
+MarkerName= STERN,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
 OptX="On",OptY="On",OptZ="Off",  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0
@@ -117,7 +120,7 @@ MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
 OptX="On",OptY="On",OptZ="Off",  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0
 ) = {
-  sRelOpt = {0.085,0.42,0.0};
+  sRelOpt = {0.095,0.42,0.0};
 };
 
 // Marker on the Thoracic Vertebra 10
@@ -127,7 +130,7 @@ MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
 OptX="Off",OptY="On",OptZ="Off",  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0
 ) = {
-  sRelOpt = {-0.052,0.187,0};
+  sRelOpt = {-0.06,0.18,0};
 };
 
 // Marker on the Cervical Vertebra 10
@@ -137,297 +140,537 @@ MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=5.0,WeightY=5.0,WeightZ=5.0
 ) = {
-  sRelOpt = {-0.055,0.49,0};
+  sRelOpt = {-0.055,0.47,0};
 };
 
-//// Lower Extremity Markers
 
-// Marker on the Right Thigh
-CreateMarkerDriver RTHI ( 
-MarkerName=  RTHI,
-MarkerPlacement =Right.Leg.Seg.Thigh, 
-OptX="On",OptY="On",OptZ="On",
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
-)= {
-  sRelOpt = {0.00, -0.15, 0.1};
-  //sRelOpt = {-0.06486408, -0.2624565, 0.1101061};
-};
 
-// Marker on the Right Knee
-CreateMarkerDriver RKNE (
-MarkerName= RKNE,
+// LEG ANATOMICAL MAKERS 
+
+   // Lateral Knee
+CreateMarkerDriver R_LKNEE (
+MarkerName= R_LKNEE,
 MarkerPlacement= Right.Leg.Seg.Thigh,
 OptX="Off",OptY="Off",OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt = {0.00, -0.3982615, 0.06503701};
+  sRelOpt = {0.00, -0.398, 0.0650};
 };
-
-
-// Marker on the Right Tibia
-CreateMarkerDriver RTIB (
-MarkerName= RTIB, 
-MarkerPlacement=Right.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  //sRelOpt = {-0.02698881, -0.1875574, 0.110279};
-  sRelOpt = {0.0, -0.1, 0.05};
-};
-
-// Marker on the Right Lateral Ankle
-CreateMarkerDriver RANK ( 
-MarkerName= RANK ,
-MarkerPlacement=Right.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt = {-0.03, -0.395, 0.045};
-};
-
-// Marker on the Right Toe
-CreateMarkerDriver RTOE (
-MarkerName= RTOE,  
-MarkerPlacement=Right.Leg.Seg.Foot,
-OptX="Off" , OptY="Off" , OptZ="Off",
+CreateMarkerDriver L_LKNEE (
+MarkerName= L_LKNEE,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="Off",OptY="Off",OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt = {0.14, -0.05, 0.00};
+  sRelOpt = {0.00, -0.398, -0.0650};
 };
 
-// Marker on the Right Heel
-CreateMarkerDriver RHEE (
-MarkerName= RHEE ,
+   // Medial Knee
+CreateMarkerDriver R_MKNEE (
+MarkerName= R_MKNEE,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="Off",OptY="On",OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.00, -0.398, -0.0650};
+};
+CreateMarkerDriver L_MKNEE (
+MarkerName= L_MKNEE,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="Off",OptY="On",OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.00, -0.398, 0.0650};
+};
+
+   // Lateral Ankle
+CreateMarkerDriver R_LMAL ( 
+MarkerName= R_LMAL ,
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.02, -0.38, 0.045};
+};
+CreateMarkerDriver L_LMAL ( 
+MarkerName= L_LMAL ,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.02, -0.38, -0.045};
+};
+
+   // Medial Ankle
+CreateMarkerDriver R_MMAL ( 
+MarkerName= R_MMAL ,
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.00, -0.365, -0.05};
+};
+CreateMarkerDriver L_MMAL ( 
+MarkerName= L_MMAL ,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.00, -0.365, 0.05};
+};
+
+    // Heel 
+CreateMarkerDriver R_HEEL_CALC (
+MarkerName= R_HEEL_CALC ,
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="Off", OptY="Off" , OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt =  {-0.085, -0.06, -0.001512914};
 };
-// Marker on the Right Metatarsel 5
-//CreateMarkerDriver RMT5 (
-//MarkerName= RMT5,  
-//MarkerPlacement=Right.Leg.Seg.Foot, 
-//OptX="Off",OptY="Off",OptZ="Off",  
-//WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-// BodyModelRef=Main.HumanModel.BodyModel,
-// C3DObject=Main.ModelSetup.C3DFileData,
-// DriverFolder = .MarkerDrivers,
-// //) = {
-//  sRelOpt =  {0.1269346, -0.07634046, 0.03170642};
-//};
-
-
-// Marker on the Left Thigh
-CreateMarkerDriver LTHI ( 
-MarkerName= LTHI ,
-MarkerPlacement=Left.Leg.Seg.Thigh,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt = {0.0, -0.28, -0.1}; 
-  //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
-};
-
-// Marker on the Left Knee
-CreateMarkerDriver LKNE ( 
-MarkerName= LKNE ,
-MarkerPlacement=Left.Leg.Seg.Thigh,
-OptX="Off",OptY="Off",OptZ="Off"
-) = {
-  sRelOpt = {0.00, -0.3982615, -0.06503701};
-};
-
-// Marker on the Left Tibia
-CreateMarkerDriver LTIB (
-MarkerName= LTIB,
-MarkerPlacement=Left.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt = {0.0, -0.1, -0.05};
-  //sRelOpt = {0.007298208, -0.2526878, -0.06747357};
-};
-
-// Marker on the Left Ankle
-CreateMarkerDriver LANK (
-MarkerName= LANK,
-MarkerPlacement=Left.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt = {-0.03, -0.395, -0.045};
-};
-
-// Marker on the Left Toe
-CreateMarkerDriver LTOE (
-MarkerName= LTOE, 
+CreateMarkerDriver L_HEEL_CALC (
+MarkerName= L_HEEL_CALC ,
 MarkerPlacement=Left.Leg.Seg.Foot,
-OptX="Off",OptY="On" ,OptZ="Off"
-) = {
-  sRelOpt = {0.14, -0.05, -0.0};
-};
-
-// Marker on the Left Heel
-CreateMarkerDriver LHEE(
-MarkerName= LHEE, 
-MarkerPlacement=Left.Leg.Seg.Foot,
-OptX="Off", OptY="Off", OptZ="Off",
+OptX="Off", OptY="Off" , OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt =  {-0.085, -0.06, 0.001512914};
+  sRelOpt =  {-0.085, -0.06, -0.001512914};
 };
 
-// Marker on the Right Metatarsel 5
-//CreateMarkerDriver LMT5 (
-//MarkerName= LMT5,  
-//MarkerPlacement=Left.Leg.Seg.Foot, 
-//OptX="Off",OptY="Off",OptZ="Off",  
-//WeightX=1.0,WeightY=1.0,WeightZ=1.0,
-// BodyModelRef=Main.HumanModel.BodyModel,
-// C3DObject=Main.ModelSetup.C3DFileData,
-// DriverFolder = .MarkerDrivers,
-// //) = {
-//  sRelOpt = {0.1269346, -0.07634046, -0.03170642};
-//};
+   // Toe1 metatarsal
+CreateMarkerDriver R_TOE_1_MET (
+MarkerName= R_TOE_1_MET ,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX="On" , OptY="On" , OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.145, -0.085, -0.045};
+};   
+CreateMarkerDriver L_TOE_1_MET (
+MarkerName= L_TOE_1_MET ,  
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX="On" , OptY="On" , OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.145, -0.085, 0.045};
+};   
 
-//// Trunk markers
+   // Toe5 metatarsal
+CreateMarkerDriver R_TOE_5_MET (
+MarkerName= R_TOE_5_MET ,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX="On" , OptY="On" , OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.12, -0.1, 0.06};
+};   
+CreateMarkerDriver L_TOE_5_MET (
+MarkerName= L_TOE_5_MET ,  
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX="On" , OptY="On" , OptZ="On",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.12, -0.1, -0.06};
+};   
+
+   // Toe2 metatarsal
+CreateMarkerDriver R_TOE_2_MET (
+MarkerName= R_TOE_2_MET ,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX="Off" , OptY="On" , OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.125, -0.06, 0.0};
+};   
+CreateMarkerDriver L_TOE_2_MET (
+MarkerName= L_TOE_2_MET ,  
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX="Off" , OptY="On" , OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.125, -0.06, 0.0};
+};   
 
 
+// ARM ANATOMICAL MAKERS 
+
+   // Shoulder
 CreateMarkerDriver RSHO (
 MarkerName= RSHO,  
 MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off"
+OptX="On",OptY="On",OptZ="On",
+WeightX=0.01,WeightY=0.01,WeightZ=0.01
 ) = {
-  sRelOpt = {0.03,0.01,-0.04};
-  //sRelOpt = {0.035, 0.005,-0.04};  
-  //sRelOpt = {0.02,-0.015,0.02};
+  sRelOpt = {0.055,0.02,0.01};
 };
-
-
-// Marker on the Left Acromio-clavicular joint
 CreateMarkerDriver LSHO (
 MarkerName= LSHO,  
 MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off"
+OptX="On",OptY="On",OptZ="On",
+WeightX=0.01,WeightY=0.01,WeightZ=0.01
 ) = {
-  sRelOpt = {0.03,-0.01,-0.04};
-  //sRelOpt = {0.035,-0.005,-0.04};
+  sRelOpt = {0.055,-0.02,0.01};
 };
 
-// Marker on the Right Upper Arm
-CreateMarkerDriver RUPA (
-MarkerName= RUPA,  
-MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
-OptX="On",OptY="On",OptZ="On"
+CreateMarkerDriver RAC (
+MarkerName= RAC ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
+OptX="On",OptY="Off",OptZ="Off",
+WeightX=0.1,WeightY=1,WeightZ=1
 ) = {
-  sRelOpt ={0.03,-0.24,0.01}; 
+  sRelOpt = {0.015,0.01,-0.035};
+};
+CreateMarkerDriver LAC (
+MarkerName= LAC ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
+OptX="On",OptY="Off",OptZ="Off",
+WeightX=0.1,WeightY=1,WeightZ=1
+) = {
+  sRelOpt = {0.015,-0.01,-0.035};
 };
 
 
-// Marker on the Left Upper Arm
-CreateMarkerDriver LUPA (
-MarkerName= LUPA,  
-MarkerPlacement=Left.ShoulderArm.Seg.Humerus,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt ={-0.03,-0.19,0.01}; 
-};
 
-// Marker on the Right Elbow
-CreateMarkerDriver RELB (
-MarkerName= RELB,  
+
+   // Lateral elbow 
+CreateMarkerDriver RLELB (
+MarkerName= RLELB ,  
 MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
 OptX="Off",OptY="Off",OptZ="Off"
 ) = {
   sRelOpt = {0.045,-0.35, 0.015};
 };
-
-
-// Marker on the Left Elbow
-CreateMarkerDriver LELB (
-MarkerName= LELB,  
+CreateMarkerDriver LLELB (
+MarkerName= LLELB ,  
 MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
 OptX="Off",OptY="Off",OptZ="Off"
 ) = {
   sRelOpt = {-0.045,-0.35, 0.015};
 };
 
-// Marker on the Left Radius
-CreateMarkerDriver LFRA (
-MarkerName= LFRA,  
-MarkerPlacement=Left.ShoulderArm.Seg.Radius,
-OptX="On",OptY="On",OptZ="On"
+   // Medial Elbow
+CreateMarkerDriver RMELB (
+MarkerName= RMELB ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="Off"
 ) = {
-  sRelOpt = {-0.13, 0.03, 0.01};
+  sRelOpt = {-0.045,-0.35, 0.015};
 };
-
-
-// Marker on the Right Radius
-CreateMarkerDriver RFRA (
-MarkerName= RFRA,  
-MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
-OptX="On",OptY="On",OptZ="On"
+CreateMarkerDriver LMELB (
+MarkerName= LMELB ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="Off"
 ) = {
-  sRelOpt = {-0.13, -0.03, 0.01};
+  sRelOpt = {0.045,-0.35, 0.015};
 };
-
-// Marker on the Right Wrist A
-CreateMarkerDriver RWRA (
-MarkerName= RWRA,  
+  
+   // Wrist A
+CreateMarkerDriver RRSP (
+MarkerName= RRSP ,  
 MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
 OptX="Off",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {-0.22, -0.07, 0.025};
+  sRelOpt = {-0.21, -0.05, 0.00};
 };
-
-
-// Marker on the Right Wrist B
-CreateMarkerDriver RWRB (
-MarkerName= RWRB,  
-MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
-OptX="On" ,OptY="On",OptZ="Off",  
-WeightX=0.1,WeightY=0.1,WeightZ=0.1
-) = {
-  sRelOpt = {-0.22, 0.05, 0.025};
-};
-
-
-// Marker on the Left Wrist A
-CreateMarkerDriver LWRA (
-MarkerName= LWRA,  
-MarkerPlacement=Left.ShoulderArm.Seg.Radius,
-OptX="Off",OptY="Off",OptZ="Off"
-) = {
-  sRelOpt = {-0.22, 0.07, 0.025};
-};
-
-// Marker on the Left Wrist B
-CreateMarkerDriver LWRB (
-MarkerName= LWRB,  
+CreateMarkerDriver LRSP (
+MarkerName= LRSP ,  
 MarkerPlacement=Left.ShoulderArm.Seg.Radius, 
-OptX="On"  ,OptY="On" ,OptZ="Off",  
-WeightX=0.1,WeightY=0.1,WeightZ=0.1
+OptX="Off",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {-0.22, -0.05, 0.025};
+  sRelOpt = {-0.21, 0.05, 0.00};
 };
 
+  // Wrist B
+CreateMarkerDriver RUSP (
+MarkerName= RUSP ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
+OptX="On",OptY="On",OptZ="Off"
+) = {
+  sRelOpt = {-0.21, 0.03, 0.00};
+};
+CreateMarkerDriver LUSP (
+MarkerName= LUSP ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius, 
+OptX="On",OptY="On",OptZ="Off"
+) = {
+  sRelOpt = {-0.21, -0.03, 0.00};
+};
 
-
-// Marker on the Right Finger
-CreateMarkerDriver RFIN (
-MarkerName= RFIN,  
+ // Hand 2
+CreateMarkerDriver RM2 (
+MarkerName= RM2,  
+MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
+OptX="On" ,OptY="On",OptZ="Off"
+) = {
+  sRelOpt = {-0.07,-0.035,0.02};
+};
+CreateMarkerDriver LM2 (
+MarkerName= LM2 ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
+OptX="On" ,OptY="On",OptZ="Off"
+) = {
+  sRelOpt = {-0.07, -0.035,-0.02};
+}; 
+ 
+ // Hand 5
+CreateMarkerDriver RM5 (
+MarkerName= RM5 ,  
 MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
 OptX="Off" ,OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {-0.065,-0.02,0.02};
+  sRelOpt = {-0.07,0.02,0.01};
 };
-
-
-
-// Marker on the Left Finger
-CreateMarkerDriver LFIN (
-MarkerName= LFIN,  
+CreateMarkerDriver LM5 (
+MarkerName= LM5 ,  
 MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
 OptX="Off" ,OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {-0.065,-0.02,-0.02};
+  sRelOpt = {-0.07,0.02,-0.01};
+}; 
+
+
+
+//// TRACKING MARKERS  ////
+
+    // Right Thigh
+CreateMarkerDriver R_THI_1 (
+MarkerName= R_THI_1 ,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, 0.1};
+};
+CreateMarkerDriver R_THI_2 (
+MarkerName= R_THI_2 ,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, 0.1};
+};
+CreateMarkerDriver R_THI_3 (
+MarkerName= R_THI_3 ,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, 0.1};
+};
+CreateMarkerDriver R_THI_4 (
+MarkerName= R_THI_4 ,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, 0.1};
 };
 
-#endif
+
+  // Left Thigh
+CreateMarkerDriver L_THI_1 (
+MarkerName= L_THI_1 ,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, -0.1};
+};
+CreateMarkerDriver L_THI_2 (
+MarkerName= L_THI_2 ,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, -0.1};
+};
+CreateMarkerDriver L_THI_3 (
+MarkerName= L_THI_3 ,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, -0.1};
+};
+CreateMarkerDriver L_THI_4 (
+MarkerName= L_THI_4 ,
+MarkerPlacement= Left.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.04, -0.27, -0.1};
+};
+
+
+  // Right Shank
+
+CreateMarkerDriver R_LEG_1 (
+MarkerName= R_LEG_1 ,
+MarkerPlacement= Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, 0.08};
+};
+CreateMarkerDriver R_LEG_2 (
+MarkerName= R_LEG_2 ,
+MarkerPlacement= Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, 0.08};
+};
+CreateMarkerDriver R_LEG_3 (
+MarkerName= R_LEG_3 ,
+MarkerPlacement= Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, 0.08};
+};
+CreateMarkerDriver R_LEG_4 (
+MarkerName= R_LEG_4 ,
+MarkerPlacement= Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, 0.08};
+};
+
+
+   // Left shank
+CreateMarkerDriver L_LEG_1 (
+MarkerName= L_LEG_1 ,
+MarkerPlacement= Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, -0.08};
+};
+CreateMarkerDriver L_LEG_2 (
+MarkerName= L_LEG_2 ,
+MarkerPlacement= Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, -0.08};
+};
+CreateMarkerDriver L_LEG_3 (
+MarkerName= L_LEG_3 ,
+MarkerPlacement= Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, -0.08};
+};
+CreateMarkerDriver L_LEG_4 (
+MarkerName= L_LEG_4 ,
+MarkerPlacement= Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.01, -0.19, -0.08};
+};
+
+// Right Upper arm
+CreateMarkerDriver RUARM1 (
+MarkerName= RUARM1 ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver RUARM2 (
+MarkerName= RUARM2 ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver RUARM3 (
+MarkerName= RUARM3 ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver RUARM4 (
+MarkerName= RUARM4 ,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={0.03,-0.19,0.02}; 
+};
+
+
+  // left upper arm 
+CreateMarkerDriver LUARM1 (
+MarkerName= LUARM1 ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={-0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver LUARM2 (
+MarkerName= LUARM2 ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={-0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver LUARM3 (
+MarkerName= LUARM3 ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={-0.03,-0.19,0.02}; 
+};
+CreateMarkerDriver LUARM4 (
+MarkerName= LUARM4 ,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={-0.03,-0.19,0.02}; 
+};
+
+// right lower arm
+CreateMarkerDriver RLARM1 (
+MarkerName= RLARM1,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, 0.01, 0.01};
+};
+CreateMarkerDriver RLARM2 (
+MarkerName= RLARM2,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, 0.01, 0.01};
+};
+CreateMarkerDriver RLARM3 (
+MarkerName= RLARM3,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, 0.01, 0.01};
+};
+CreateMarkerDriver RLARM4 (
+MarkerName= RLARM4,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, 0.01, 0.01};
+};
+
+  // Left lower arm 
+CreateMarkerDriver LLARM1 (
+MarkerName= LLARM1,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, -0.01, 0.01};
+};
+CreateMarkerDriver LLARM2 (
+MarkerName= LLARM2,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, -0.01, 0.01};
+};
+CreateMarkerDriver LLARM3 (
+MarkerName= LLARM3,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, -0.01, 0.01};
+};
+CreateMarkerDriver LLARM4 (
+MarkerName= LLARM4,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.1, -0.01, 0.01};
+};
+
 
