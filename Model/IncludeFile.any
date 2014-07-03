@@ -37,7 +37,7 @@
  #include "CreateMarkerDriverClassNEW.any"
  #include "RotationAxisAngles.any"
  #include "OptimizeAnthropometricsOnOffNew.any"
- #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2AutoDetection.any"
+ #include "ForcePlateType2AutoDetectionNew.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3AutoDetection.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3.any"
