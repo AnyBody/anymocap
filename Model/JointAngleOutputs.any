@@ -1,5 +1,27 @@
 AnyFolder JointAngleOutputs = {
  
+ 
+  AnyVar Time = .t;
+  AnyVector JntDriverTrunk = {
+    .BodyModel.Interface.Trunk.PelvisPosX.Pos,
+    .BodyModel.Interface.Trunk.PelvisPosY.Pos,
+    .BodyModel.Interface.Trunk.PelvisPosZ.Pos,
+    .BodyModel.Interface.Trunk.PelvisRotX.Pos,
+    .BodyModel.Interface.Trunk.PelvisRotY.Pos,
+    .BodyModel.Interface.Trunk.PelvisRotZ.Pos,
+    .BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos,
+    .BodyModel.Interface.Trunk.PelvisThoraxLateralBending.Pos,
+    .BodyModel.Interface.Trunk.PelvisThoraxRotation.Pos,
+    #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
+    .BodyModel.Interface.Trunk.NeckJoint.Pos
+    #endif
+    #if BM_TRUNK_NECK == ON
+    .BodyModel.Interface.Trunk.SkullThoraxFlexion.Pos,
+    .BodyModel.Interface.Trunk.SkullThoraxLateralBending.Pos,
+    .BodyModel.Interface.Trunk.SkullThoraxRotation.Pos
+    #endif
+  }';
+ 
   AnyOutputFile OutputFile1 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
     SepSign = " ";
@@ -25,6 +47,16 @@ AnyFolder JointAngleOutputs = {
   
  
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
+  
+  
+    AnyVector JntDriverLeftLegTD = {
+    .BodyModel.Interface.Left.HipFlexion.Pos,
+    .BodyModel.Interface.Left.HipAbduction.Pos,
+    .BodyModel.Interface.Left.HipExternalRotation.Pos,
+    .BodyModel.Interface.Left.KneeFlexion.Pos,
+    .BodyModel.Interface.Left.AnklePlantarFlexion.Pos,
+    .BodyModel.Interface.Left.SubTalarEversion.Pos
+  }';
 
   AnyOutputFile OutputFile2 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
@@ -44,6 +76,15 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_LEG_RIGHT == CONST_LEG_MODEL_TLEM  
 
+  AnyVector JntDriverRightLegTD = {
+    .BodyModel.Interface.Right.HipFlexion.Pos,
+    .BodyModel.Interface.Right.HipAbduction.Pos,
+    .BodyModel.Interface.Right.HipExternalRotation.Pos,
+    .BodyModel.Interface.Right.KneeFlexion.Pos,
+    .BodyModel.Interface.Right.AnklePlantarFlexion.Pos,
+    .BodyModel.Interface.Right.SubTalarEversion.Pos
+  }';
+  
   AnyOutputFile OutputFile3 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
     SepSign = " ";
@@ -64,6 +105,15 @@ AnyFolder JointAngleOutputs = {
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_Leg 
 
+  AnyVector JntDriverLeftLeg = {
+    .BodyModel.Interface.Left.HipFlexion.Pos,
+    .BodyModel.Interface.Left.HipAbduction.Pos,
+    .BodyModel.Interface.Left.HipExternalRotation.Pos,
+    .BodyModel.Interface.Left.KneeFlexion.Pos,
+    .BodyModel.Interface.Left.AnklePlantarFlexion.Pos,
+    .BodyModel.Interface.Left.AnkleEversion.Pos
+  }';
+  
   AnyOutputFile OutputFile4 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
     SepSign = " ";
@@ -81,6 +131,14 @@ AnyFolder JointAngleOutputs = {
   
   
   #if BM_LEG_RIGHT== CONST_LEG_MODEL_Leg 
+  AnyVector JntDriverRightLeg = {
+    .BodyModel.Interface.Right.HipFlexion.Pos,
+    .BodyModel.Interface.Right.HipAbduction.Pos,
+    .BodyModel.Interface.Right.HipExternalRotation.Pos,
+    .BodyModel.Interface.Right.KneeFlexion.Pos,
+    .BodyModel.Interface.Right.AnklePlantarFlexion.Pos,
+    .BodyModel.Interface.Right.AnkleEversion.Pos
+  }';
 
   AnyOutputFile OutputFile5 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
@@ -100,6 +158,18 @@ AnyFolder JointAngleOutputs = {
   
   
   #if BM_ARM_LEFT == ON
+  AnyVector JntDriverLeftArm  = {
+    .BodyModel.Interface.Left.SternoClavicularProtraction.Pos,
+    .BodyModel.Interface.Left.SternoClavicularElevation.Pos,
+    .BodyModel.Interface.Left.SternoClavicularAxialRotation.Pos,
+    .BodyModel.Interface.Left.GlenohumeralFlexion.Pos,
+    .BodyModel.Interface.Left.GlenohumeralExternalRotation.Pos,
+    .BodyModel.Interface.Left.GlenohumeralAbduction.Pos,
+    .BodyModel.Interface.Left.ElbowFlexion.Pos,
+    .BodyModel.Interface.Left.ElbowPronation.Pos,
+    .BodyModel.Interface.Left.WristFlexion.Pos,
+    .BodyModel.Interface.Left.WristAbduction.Pos
+  }';
 
   AnyOutputFile OutputFile6 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
@@ -121,7 +191,19 @@ AnyFolder JointAngleOutputs = {
 
     
   #if BM_ARM_RIGHT == ON
-
+  AnyVector JntDriverRightArm  = {
+    .BodyModel.Interface.Right.SternoClavicularProtraction.Pos,
+    .BodyModel.Interface.Right.SternoClavicularElevation.Pos,
+    .BodyModel.Interface.Right.SternoClavicularAxialRotation.Pos,
+    .BodyModel.Interface.Right.GlenohumeralFlexion.Pos,
+    .BodyModel.Interface.Right.GlenohumeralExternalRotation.Pos,
+    .BodyModel.Interface.Right.GlenohumeralAbduction.Pos,
+    .BodyModel.Interface.Right.ElbowFlexion.Pos,
+    .BodyModel.Interface.Right.ElbowPronation.Pos,
+    .BodyModel.Interface.Right.WristFlexion.Pos,
+    .BodyModel.Interface.Right.WristAbduction.Pos
+  }';
+  
   AnyOutputFile OutputFile7 = {
     FileName = TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
     SepSign = " ";

@@ -1,11 +1,26 @@
 
-#ifndef EXCLUDE_OPTIMIZED_DRIVERS
 
 AnyFolder JointsAndDrivers = {
   
-  // Aliases for convenient referencing
-//  AnyFolder &JntPos=...HumanModel.Mannequin.Posture;  
-//  AnyFolder &JntVel=...HumanModel.Mannequin.PostureVel;  
+  #ifdef TRANSFER_JOINT_ANGLES 
+    AnyOperationSetValue Transfer = 
+    {
+         Source = {&Main.Studies.KinematicStudy.Output.JointAngleOutputs.Time};
+         Target = {&.Time};
+    };  
+    
+   AnyVector Time = DesignVar(0.0*farr(0.0,1.0,Main.Studies.KinematicStudy.nStep) ); 
+  
+  #endif
+  
+  
+  
+  #ifndef EXCLUDE_OPTIMIZED_DRIVERS
+
+  
+  
+
+  
   
 
   
@@ -154,9 +169,9 @@ AnyFolder JointsAndDrivers = {
   #endif
   
   
-  
-};
 #endif
+};
+
 
 
 

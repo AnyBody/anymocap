@@ -1,5 +1,7 @@
 #include "../../../../Model/IncludeFile.any"
 
+//#define TRANSFER_JOINT_ANGLES
+
 // HACK WORKAROUND. Needed to load the model when no joint angles files exist
 #define EXCLUDE_OPTIMIZED_DRIVERS
 

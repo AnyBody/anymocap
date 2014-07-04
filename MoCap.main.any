@@ -1,3 +1,9 @@
+// HACK WORKAROUND. Needed to load the model when no joint angles files exist
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+//#define TRANSFER_JOINT_ANGLES
+
+
 // Detailed description can be found at:
 #include "Model/Description.any"
 
