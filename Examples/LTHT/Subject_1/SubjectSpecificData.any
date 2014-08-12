@@ -5,7 +5,7 @@
 Main.ModelSetup.SubjectSpecificData = {
 
  AnyFolder Anthropometrics={
-  AnyVar BodyMass = 60;
+  AnyVar BodyMass = 70;
   AnyVar BodyHeight = 175;
   
   

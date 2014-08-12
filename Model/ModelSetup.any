@@ -1,32 +1,32 @@
 
   // Load default values for the Trial/Subject/Lab specific data files if 
   // not specified by the user application 
-  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
-    #path MOCAP_TRIAL_SPECIFIC_DATA "Default_TrialSpecificData.any"
-  #endif
-  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
-    #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
-  #endif
   #ifndef MOCAP_LAB_SPECIFIC_DATA
     #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
   #endif
-  
-  
-  
+  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
+    #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
+  #endif  
+  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
+    #path MOCAP_TRIAL_SPECIFIC_DATA "Default_TrialSpecificData.any"
+  #endif
+
  
 AnyFolder ModelSetup ={
-  
+    AnyFolder LabSpecificData = {
+      #include "<MOCAP_LAB_SPECIFIC_DATA>"
+    };
+    
+    AnyFolder SubjectSpecificData = {
+      #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
+    };
+    
     AnyFolder TrialSpecificData = {
       #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
     };
   
-    AnyFolder SubjectSpecificData = {
-      #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
-    };
-  
-    AnyFolder LabSpecificData = {
-      #include "<MOCAP_LAB_SPECIFIC_DATA>"
-    };
+
+
   
   // Study for saving a loading the parameters from calibration trials 
   //(dynamic or standing refereces)

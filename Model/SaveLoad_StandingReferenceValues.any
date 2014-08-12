@@ -1,14 +1,22 @@
    
 // Only include these oprations if the model uses a standing reference
 // recording
-#ifndef MOCAP_IS_STANDING_REFERENCE 
-  #define MOCAP_IS_STANDING_REFERENCE 0  
-#else
+ #ifdef MOCAP_IS_STANDING_REFERENCE 
+   #if MOCAP_IS_STANDING_REFERENCE == 1
+       #define _SAVE_STANDING_REFERNCE_PARAMETERS_
+   #else 
+       #define _LOAD_STANDING_REFERNCE_PARAMETERS_
+   #endif
+ #endif
+ 
+ 
+    
+    
+#ifdef _SAVE_STANDING_REFERNCE_PARAMETERS_
   Main.ModelSetup.Macros = {        
-  #if MOCAP_IS_STANDING_REFERENCE == 1
-    AnyOperationSequence Save_standing_reference_parameters = {
+   AnyOperationSequence Save_standing_reference_parameters = {
       AnyOperationSetValue TouchMarkers = {
-        Source = ObjSearch("Main.ModelSetup.*.sRelOptEdit"     );
+        Source = ObjSearch("Main.ModelSetup.MocapDrivers.*.sRelOptEdit"     );
         Target = Source;
       };     
       AnyOperationSetValue TouchSegLength =  {
@@ -25,27 +33,33 @@
       };     
       AnyOperationMacro SaveToFile = {
         MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 
-          strquote( TEMP_PATH+"/"+ Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName+".anyset" )
-          ,
-          "classoperation Main.Studies.ParameterIdentification " +strquote("Save design") + "--file=" +
-          strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".txt") 
+          strquote( TEMP_PATH +"/"+ MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName+".anyset" )
         };
         
       };
-      
-    };    
- #else
- AnyOperationMacro Load_standing_reference_parameters = {
-    MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" +
-      strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".anyset" ),
-                 "classoperation Main" + strquote("Update Values")
-                 , 
-                 "classoperation Main.Studies.ParameterIdentification " +strquote("Load design") + "--file=" + 
-                 strquote(TEMP_PATH+"/"+Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".txt")
-               };
- };
- #endif   
-};
-
-
+    };
+    AnyFolder &PostOperationRef  =  Main.RunApplication.PostOperations;
+    PostOperationRef = {
+      AnyOperation &Save_Standing_Reference_Parameters = .Save_standing_reference_parameters;
+    };
+  };
 #endif
+ 
+ 
+ 
+#ifdef _LOAD_STANDING_REFERNCE_PARAMETERS_
+Main.ModelSetup.Macros = {        
+  AnyOperationMacro Load_standing_reference_parameters = {
+    MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" +
+      strquote(TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.CalibrationTrialFileName +".anyset" ),
+      "classoperation Main" + strquote("Update Values")
+    };
+  };
+  AnyFolder &PreOperationRef  =  Main.RunApplication.PreOperations;
+  PreOperationRef = {
+    AnyOperation &Load_standing_reference_parameters = .Load_standing_reference_parameters;
+  };
+};
+#endif
+
+

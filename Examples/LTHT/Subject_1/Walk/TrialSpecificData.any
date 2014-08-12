@@ -1,5 +1,5 @@
 
-#define MOCAP_IS_STANDING_REFERENCE 1
+#define MOCAP_IS_STANDING_REFERENCE 0
 
 AnyStringVar CalibrationTrialFileName ="Static";
 
@@ -12,28 +12,11 @@ AnyInt C3DFirstFrameOffset = 0;
 /// This is frame offset from the end of the C3D file 
 AnyInt C3DLastFrameOffset = 0;
 
-
 // This sets the path to where the C3D file is stored
 #path MOCAP_C3D_DATA_PATH "."
+
 // This prefix is added to all output files.
 #define MOCAP_OUTPUT_FILENAME_PREFIX ""
-
-
-// This defines how the model segments are optimized
-// In this static calibration trial all segment length are
-// optimized/calibarated
-OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
-PelvisWidthOnOff = "On" , 
-ThighLengthOnOff= "On", 
-ShankLengthOnOff= "On", 
-FootLengthOnOff= "On", 
-HeadHeightOnOff= "On", 
-TrunkHeightOnOff= "On", 
-UpperArmLengthOnOff= "On",
-LowerArmLengthOnOff= "On",
-HumanModel = Main.HumanModel,
-ParameterOptStudy = Main.Studies.ParameterIdentification
-) ={};
 
 
 /// The following settings define the initial posture of the
@@ -72,10 +55,10 @@ AnyFolder Right = {
   AnyVar SubTalarEversion = 0;
   
   AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 45;
-  AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = 55;
+  AnyVar GlenohumeralAbduction = 10;
+  AnyVar GlenohumeralExternalRotation = 0;
+  AnyVar ElbowFlexion = 10;
+  AnyVar ElbowPronation = 0;
   AnyVar WristFlexion = 0;
   AnyVar WristAbduction = 0;
   
@@ -90,10 +73,10 @@ AnyFolder Left = {
   AnyVar SubTalarEversion = 0;
   
   AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 45;
-  AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = 55;
+  AnyVar GlenohumeralAbduction = 10;
+  AnyVar GlenohumeralExternalRotation = 0;
+  AnyVar ElbowFlexion = 10;
+  AnyVar ElbowPronation = 0;
   AnyVar WristFlexion = 0;
   AnyVar WristAbduction = 0;
   

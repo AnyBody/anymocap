@@ -14,5 +14,39 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
 
 
 
+#class_template Create4clusterRectangleConstraint (name, marker1, marker2, marker3, marker4,
+PARAMETER_OPT_STUDY = ParameterIdentification){
+  Main.Studies.PARAMETER_OPT_STUDY = {
+     // equal oposing sides in the rectancular cluster
+    AnyDesMeasure name##_SideConstraint1 = {
+         Type = EqualToZero;
+         Val = vnorm(marker1.sRelOptEdit-marker2.sRelOptEdit) - vnorm(marker3.sRelOptEdit-marker4.sRelOptEdit);
+     };
+     // equal oposing sides in the rectancular cluster
+     AnyDesMeasure name##_SideConstraint2= {
+         Type = EqualToZero;
+         Val = vnorm(marker2.sRelOptEdit-marker3.sRelOptEdit) - vnorm(marker4.sRelOptEdit-marker1.sRelOptEdit);
+     };
+     // equal diagonals in the cluster
+     AnyDesMeasure name##_DiagonalConstraint= {
+         Type = EqualToZero;
+         Val = vnorm(marker1.sRelOptEdit-marker3.sRelOptEdit) - vnorm(marker2.sRelOptEdit-marker4.sRelOptEdit);
+     };
+  };
+  
+  
+};
 
+#class_template Create4clusterParallelogramConstraint (name, marker1, marker2, marker3, marker4,
+PARAMETER_OPT_STUDY = ParameterIdentification){
+  Main.Studies.PARAMETER_OPT_STUDY = {
+     // equal oposing sides in the rectancular cluster
+    AnyDesMeasure name##_ParallelogramConstraint = {
+         Type = EqualToZero;
+         Val = vnorm(marker4.sRelOptEdit+ marker2.sRelOptEdit - marker1.sRelOptEdit - marker3.sRelOptEdit);
+     };
+  };
+  
+  
+};
 

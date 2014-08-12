@@ -1,19 +1,27 @@
 Main = {
   AnyOperationSequence RunApplication = {
+    AnyOperationSequence PreOperations = {AnyOperationDummy dummy = {};};
+    
     AnyOperation &RunParameterIdentification = Main.Studies.ParameterIdentification.ParameterOptimization;
+    
     AnyOperationMacro SaveParameters = {
       MacroStr = {"classoperation Main.Studies.ParameterIdentification" + strquote("Save design") + "--file=" +
                   strquote(TEMP_PATH + "/"+ MOCAP_OUTPUT_FILENAME_PREFIX + 
                   Main.ModelSetup.TrialSpecificData.TrialFileName + "_OptimizedParameters.txt")};
     };
+    
     AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
+    
     AnyOperationMacro LoadParameters = {
       MacroStr = {"classoperation Main.Studies.ParameterIdentification" + strquote("Load design") + "--file=" +
                   strquote(TEMP_PATH + "/"+ MOCAP_OUTPUT_FILENAME_PREFIX + 
                   Main.ModelSetup.TrialSpecificData.TrialFileName + "_OptimizedParameters.txt"),
                   "classoperation Main"+strquote("Update Values") };
     };
+    
     AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicsStudy.InverseDynamics;
     
+    AnyOperationSequence PostOperations = {AnyOperationDummy dummy = {};};
+
   };
 };

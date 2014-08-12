@@ -9,19 +9,6 @@
 // This defines which body parts are included
 #path BODY_MODEL_CONFIG_FILE "BodyModelConfig_LTHT.any"
 
-// This defines how the model segments are optimized
-OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
-PelvisWidthOnOff = "On" , 
-ThighLengthOnOff= "On", 
-ShankLengthOnOff= "On", 
-FootLengthOnOff= "On", 
-HeadHeightOnOff= "On", 
-TrunkHeightOnOff= "On", 
-UpperArmLengthOnOff= "On",
-LowerArmLengthOnOff= "On",
-HumanModel = Main.HumanModel,
-ParameterOptStudy = Main.Studies.ParameterIdentification
-) ={};
 
 ///////     OTHER SETUP         ///////      
 
