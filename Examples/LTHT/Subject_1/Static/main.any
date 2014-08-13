@@ -1,21 +1,13 @@
-#include "../../../../Model/IncludeFile.any"
-
 //#define TRANSFER_JOINT_ANGLES
 
 // HACK WORKAROUND. Needed to load the model when no joint angles files exist
 #define EXCLUDE_OPTIMIZED_DRIVERS
 
-Main = {
-  
-   // This file controls all Input to run the C3D file.
-   // If you want to run the model on your own data this is the place to start:
-   #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
-   #path MOCAP_SUBJECT_SPECIFIC_DATA "../SubjectSpecificData.any"
-   #path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData_LTHT.any"
+// This file controls all Input to run the C3D file.
+// If you want to run the model on your own data this is the place to start:
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_SUBJECT_SPECIFIC_DATA "../SubjectSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData_LTHT.any"
 
-  
-  // This is where the magic happens. No need to change something here:
-  #include "<BASE_MODEL_PATH>/BaseModel.any" 
-  
-}; //Main
-
+// This is where the magic happens. No need to change something here:
+#include "<BASE_MODEL_PATH>/BaseModel.any" 
