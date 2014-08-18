@@ -1,0 +1,12 @@
+ // ----------------------------------------------------------
+// Model configuration:
+// For more info on body model configuration options please load the model and double click on: 
+// #include "<ANYBODY_PATH_BODY>\Documentation\BodyModel.parameters.any"
+// ----------------------------------------------------------
+
+#define BM_TRUNK_NECK ON
+#define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
+#path BM_MANNEQUIN_FILE "<BASE_MODEL_PATH>/Mannequin.any" 
+#path BM_SCALING_ANTHRO_FILE "<BASE_MODEL_PATH>/AnyMan.any"
+#define BM_MANNEQUIN_DRIVER_DEFAULT ON
+

@@ -5,9 +5,9 @@ AnyFolder EnvironmentModel = {
     Origin={0,0,0};
     AnyDrawRefFrame drw={ScaleXYZ=0.2*{1,1,1};};
   };  
-  
-  AnyFolder &ForcePlates = Main.ModelSetup.LabSpecificData.ForcePlates;
-  
+  AnyFolder ForcePlates = {
+     #include "<MOCAP_FORCE_PLATE_FILE>"
+  };
 };
 
 

@@ -24,8 +24,9 @@ AnyFolder ModelSetup ={
     AnyFolder TrialSpecificData = {
       #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
     };
-  
-
+    
+   // This file check if all the defines are made correctly 
+   #include "CheckMocapConfiguration.any"
 
   
   // Study for saving a loading the parameters from calibration trials 

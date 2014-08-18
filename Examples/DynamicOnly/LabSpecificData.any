@@ -1,6 +1,6 @@
  #path MOCAP_EXTRA_DRIVERS_FILE "ExtraDrivers.any"
  #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
- 
+ #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
  
  AnyVec3 Gravity = -9.81*{0,0,1};
  
