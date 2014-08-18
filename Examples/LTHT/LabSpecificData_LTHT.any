@@ -2,6 +2,7 @@
 
 #path MOCAP_EXTRA_DRIVERS_FILE "ExtraDrivers_LTHT.any"
 #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol_LTHT.any"
+#path MOCAP_FORCE_PLATE_FILE "ForcePlates_LTHT.any"
 
 
 ///////     MOCAP BODYMODEL CONFIGURATION      ///////     
@@ -14,50 +15,3 @@
 
 AnyVec3 Gravity = -9.81*{0,1,0};
 
-// This defines what forceplates are included in 
-// lab/experiment
-AnyFolder ForcePlates = {
-  
-  ForcePlateType2AutoDetection Plate1 (
-  PlateName = Plate1,
-  Folder =Main.ModelSetup.C3DFileData,
-  Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
-  Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
-  No=0,
-  VerticalDirection ="Z",
-  HeightTolerance=0.07,
-  VelThreshold=2.2,
-  Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx1,
-  Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy1,
-  Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz1,
-  Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx1,
-  My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My1,
-  Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz1,
-  FootPresent=1)
-  ={
-    Switch_DrawForceVectorFromCOP = On;
-  };
-  
-  ForcePlateType2AutoDetection Plate2 (
-  PlateName = Plate2,
-  Folder =Main.ModelSetup.C3DFileData,
-  Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
-  Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
-  No=1,
-  VerticalDirection ="Z",
-  HeightTolerance=0.07,
-  VelThreshold=2.2,
-  Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx2,
-  Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy2,
-  Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz2,
-  Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx2,
-  My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My2,
-  Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz2,
-  FootPresent=1)
-  ={
-    Switch_DrawForceVectorFromCOP = On;
-  }; 
-  
-  
-  
-};
