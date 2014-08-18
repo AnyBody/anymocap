@@ -1,0 +1,23 @@
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
+
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+#include "../../Model/BaseModel.any"
+
+
+
+
+Main = {
+  
+// Override the weight definition of a specific marker
+ModelSetup.MocapDrivers.LTHI = {ConstMarkerWeightX=0;};
+
+
+// Overriding a specific marker to use the c3d weighting
+ModelSetup.C3DFileData.ConstructWeightFunUsingResidualOnOff  = On;
+ModelSetup.MocapDrivers.RKNE = {
+  MarkerWeightsPtr = &Main.ModelSetup.C3DFileData.Points.Markers.RKNE.Weight;
+};
+
+}; 
