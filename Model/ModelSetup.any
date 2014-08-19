@@ -48,7 +48,15 @@ AnyFolder ModelSetup ={
   AnyIntVar nStep =(LastFrame-FirstFrame+1);
   
   AnyFolder MocapDrivers = {
+    #ifdef MOCAP_MARKER_PROTOCOL_FILE
     #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+    #endif
+    
+    #ifdef MOCAP_MARKER_PROTOCOL_FILE_1
+    #include "<MOCAP_MARKER_PROTOCOL_FILE_1>"
+    #endif
+    
+    
   };
   
   AnyFolder Measures = {

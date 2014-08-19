@@ -7,24 +7,20 @@
 #endif
 
 #ifndef BODY_MODEL_CONFIG_FILE 
-#path BODY_MODEL_CONFIG_FILE  "BodyModelConfig_FullBody.any"
+#path BODY_MODEL_CONFIG_FILE  "ExampleFiles/BodyModelConfig_FullBody.any"
 #endif
 
 
 #ifndef MOCAP_EXTRA_DRIVERS_FILE 
-#path MOCAP_EXTRA_DRIVERS_FILE "EmptyDummyFile.any"
-#endif
-
-#ifndef MOCAP_EXTRA_DRIVERS_FILE 
-#path MOCAP_EXTRA_DRIVERS_FILE "EmptyDummyFile.any"
+#path MOCAP_EXTRA_DRIVERS_FILE "ExampleFiles/ExtraDrivers_PlugInGait.any"
 #endif
 
 #ifndef MOCAP_MARKER_PROTOCOL_FILE 
-#path MOCAP_MARKER_PROTOCOL_FILE "EmptyDummyFile.any"
+#path MOCAP_MARKER_PROTOCOL_FILE "ExampleFiles/MarkerProtocol_PlugInGait.any"
 #endif
 
 #ifndef MOCAP_FORCE_PLATE_FILE 
-#path MOCAP_FORCE_PLATE_FILE "EmptyDummyFile.any"
+#path MOCAP_FORCE_PLATE_FILE "ExampleFiles/ForcePlates_Type2.any"
 #endif
 
 
