@@ -9,15 +9,39 @@
 
 
 Main = {
+   
+  ModelSetup.MocapDrivers = {
+    
+    CreateMarkerDriver LTHI ( 
+      MarkerName= LTHI ,
+      MarkerPlacement=Left.Leg.Seg.Thigh,
+      WeightX=1.0,WeightY=1.0,WeightZ=1.0) 
+     = { sRelOpt = {0.0, -0.28, -0.1}; };
+   
+   };
   
 // Override the weight definition of a specific marker
 ModelSetup.MocapDrivers.LTHI = {ConstMarkerWeightX=0;};
 
 
-// Overriding a specific marker to use the c3d weighting
+// Using the C3D residuals as weights
 ModelSetup.C3DFileData.ConstructWeightFunUsingResidualOnOff  = On;
-ModelSetup.MocapDrivers.RKNE = {
-  MarkerWeightsPtr = &Main.ModelSetup.C3DFileData.Points.Markers.RKNE.Weight;
-};
+
+  ModelSetup.MocapDrivers = {
+    
+      CreateMarkerDriver LKNE ( 
+          MarkerName= LKNE ,
+          MarkerPlacement=Left.Leg.Seg.Thigh,
+          UseC3DWeightResiduals  = "On"
+      ) = {  sRelOpt = {0.00, -0.3982615, -0.06503701};  };
+
+   };
+
+
+// Overiding all other settings, to use an arbitrary interpolation
+// function as weights
+  ModelSetup.MocapDrivers.RKNE = {
+    MarkerWeightsPtr = &Main.ModelSetup.C3DFileData.Points.Markers.RKNE.Weight;
+  };
 
 }; 

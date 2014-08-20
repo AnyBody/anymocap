@@ -199,23 +199,23 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0
 
 
 // Marker on the Left Thigh
-CreateMarkerDriver LTHI ( 
-MarkerName= LTHI ,
-MarkerPlacement=Left.Leg.Seg.Thigh,
-OptX="On",OptY="On",OptZ="On"
-) = {
-  sRelOpt = {0.0, -0.28, -0.1}; 
-  //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
-};
+//CreateMarkerDriver LTHI ( 
+//MarkerName= LTHI ,
+//MarkerPlacement=Left.Leg.Seg.Thigh,
+//OptX="On",OptY="On",OptZ="On"
+//) = {
+//  sRelOpt = {0.0, -0.28, -0.1}; 
+//  //sRelOpt= {-0.03870067, -0.2822034, -0.10036};
+//};
 
 // Marker on the Left Knee
-CreateMarkerDriver LKNE ( 
-MarkerName= LKNE ,
-MarkerPlacement=Left.Leg.Seg.Thigh,
-OptX="Off",OptY="Off",OptZ="Off"
-) = {
-  sRelOpt = {0.00, -0.3982615, -0.06503701};
-};
+//CreateMarkerDriver LKNE ( 
+//MarkerName= LKNE ,
+//MarkerPlacement=Left.Leg.Seg.Thigh,
+//OptX="Off",OptY="Off",OptZ="Off"
+//) = {
+//  sRelOpt = {0.00, -0.3982615, -0.06503701};
+//};
 
 // Marker on the Left Tibia
 CreateMarkerDriver LTIB (

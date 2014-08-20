@@ -5,12 +5,12 @@ AnyStringVar CalibrationTrialFileName ="Static";
 
 
 /// This is the name of the trial c3d file without extension
-AnyStringVar  TrialFileName = ANYBODY_NAME_MAINFILEDIR;
+TrialFileName = ANYBODY_NAME_MAINFILEDIR;
 
 /// This is frame offset from the beginning of the C3D file 
-AnyInt C3DFirstFrameOffset = 0;
+C3DFirstFrameOffset = 0;
 /// This is frame offset from the end of the C3D file 
-AnyInt C3DLastFrameOffset = 0;
+C3DLastFrameOffset = 0;
 
 
 // This sets the path to where the C3D file is stored
@@ -38,7 +38,7 @@ ParameterOptStudy = Main.Studies.ParameterIdentification
 
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
-AnyFolder InitialPositionOfBody= {
+InitialPositionOfBody= {
 
 
 ///// Initial pelvis position
@@ -49,53 +49,53 @@ AnyFolder InitialPositionOfBody= {
 // An alternative way to specify the initial pelvis position/rotation is to 
 // construct the position vector and rotation matrix from the values in the C3D file. 
 #define MarkerPos(label) Main.ModelSetup.C3DFileData.Points.Markers.label.PosInterpol(Main.ModelSetup.tStart)
-AnyVec3 PelvisPos = (1/4)*( MarkerPos(RASIS) + MarkerPos(LASIS) + MarkerPos(LPSIS) + MarkerPos(RPSIS) );
-AnyMat33 PelvisRotationMatrix = RotMat( 0.5*(MarkerPos(LPSIS) + MarkerPos(RPSIS)) , 
+PelvisPos = (1/4)*( MarkerPos(RASIS) + MarkerPos(LASIS) + MarkerPos(LPSIS) + MarkerPos(RPSIS) );
+PelvisRotationMatrix = RotMat( 0.5*(MarkerPos(LPSIS) + MarkerPos(RPSIS)) , 
                                        0.5*( MarkerPos(RASIS) + MarkerPos(LASIS)),
                                         MarkerPos(LASIS) )*RotMat(pi/2,x);                              
 
-AnyVar PelvisThoraxExtension = 0;
-AnyVar PelvisThoraxLateralBending = 0;
-AnyVar PelvisThoraxRotation = 0;
+PelvisThoraxExtension = 0;
+PelvisThoraxLateralBending = 0;
+PelvisThoraxRotation = 0;
 
-AnyVar NeckExtension = 0;
-AnyVar NeckLateralBending = 0;
-AnyVar NeckRotation = 0;
+NeckExtension = 0;
+NeckLateralBending = 0;
+NeckRotation = 0;
 
-AnyFolder Right = {
+Right = {
   
-  AnyVar HipFlexion = 0;
-  AnyVar HipAbduction = 0;
-  AnyVar HipExternalRotation = 0;
-  AnyVar KneeFlexion = 0;
-  AnyVar AnklePlantarFlexion = 0;
-  AnyVar SubTalarEversion = 0;
+  HipFlexion = 0;
+  HipAbduction = 0;
+  HipExternalRotation = 0;
+  KneeFlexion = 0;
+  AnklePlantarFlexion = 0;
+  SubTalarEversion = 0;
   
-  AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 45;
-  AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = 55;
-  AnyVar WristFlexion = 0;
-  AnyVar WristAbduction = 0;
+  GlenohumeralFlexion = 0;
+  GlenohumeralAbduction = 80;
+  GlenohumeralExternalRotation = 45;
+  ElbowFlexion = 15;
+  ElbowPronation = 55;
+  WristFlexion = 0;
+  WristAbduction = 0;
   
 };
-AnyFolder Left = {
+Left = {
   
-  AnyVar HipFlexion = 0;
-  AnyVar HipAbduction = 0;
-  AnyVar HipExternalRotation = 0;
-  AnyVar KneeFlexion = 0;
-  AnyVar AnklePlantarFlexion = 0;
-  AnyVar SubTalarEversion = 0;
+  HipFlexion = 0;
+  HipAbduction = 0;
+  HipExternalRotation = 0;
+  KneeFlexion = 0;
+  AnklePlantarFlexion = 0;
+  SubTalarEversion = 0;
   
-  AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 80;
-  AnyVar GlenohumeralExternalRotation = 45;
-  AnyVar ElbowFlexion = 15;
-  AnyVar ElbowPronation = 55;
-  AnyVar WristFlexion = 0;
-  AnyVar WristAbduction = 0;
+  GlenohumeralFlexion = 0;
+  GlenohumeralAbduction = 80;
+  GlenohumeralExternalRotation = 45;
+  ElbowFlexion = 15;
+  ElbowPronation = 55;
+  WristFlexion = 0;
+  WristAbduction = 0;
   
 };
 

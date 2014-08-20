@@ -13,5 +13,5 @@
 
 ///////     OTHER SETUP         ///////      
 
-AnyVec3 Gravity = -9.81*{0,1,0};
+Gravity = -9.81*{0,1,0};
 

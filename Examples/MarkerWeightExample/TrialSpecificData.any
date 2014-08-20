@@ -1,11 +1,11 @@
 
 /// This is the name of the trial c3d file without extension
-AnyStringVar  TrialFileName = "Dynamic";
+TrialFileName = "Dynamic";
 
 /// This is frame offset from the beginning of the C3D file 
-AnyInt C3DFirstFrameOffset = 2;
+C3DFirstFrameOffset = 2;
 /// This is frame offset from the end of the C3D file 
-AnyInt C3DLastFrameOffset = 2;
+C3DLastFrameOffset = 2;
 
 
 // This sets the path to where the C3D file is stored
@@ -17,71 +17,66 @@ AnyInt C3DLastFrameOffset = 2;
 
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
-AnyFolder InitialPositionOfBody= {
-
-
-///// Initial pelvis position
-//AnyVec3 PelivsPos = {0,0,0};
-///// Inital Pelvis rotation 
-//AnyMat33 PelvisRotationMatrix = RotMat(0,z)*RotMat(0,y)*RotMat(0,x);
+InitialPositionOfBody= {
   
-// An alternative way to specify the initial pelvis position/rotation is to 
-// construct the position vector and rotation matrix from the values in the C3D file. 
-AnyVec3 Pelvis_RASIS = Main.ModelSetup.C3DFileData.Points.Markers.RASI.PosInterpol(Main.ModelSetup.tStart);
-AnyVec3 Pelvis_LASIS = Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.tStart);
-AnyVec3 Pelvis_SACRUM = 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.tStart)
-                              +Main.ModelSetup.C3DFileData.Points.Markers.LPSI.PosInterpol(Main.ModelSetup.tStart));
-AnyMat33 PelvisRotationMatrix = RotMat(Pelvis_SACRUM , 
-                                      0.5*(Pelvis_LASIS +Pelvis_RASIS ),
-                                      Pelvis_LASIS )*RotMat(pi/2,x);                              
-AnyVec3 PelvisPos = (1/3)*( Pelvis_RASIS + Pelvis_LASIS + Pelvis_SACRUM );
-
-AnyVar PelvisThoraxExtension = 0;
-AnyVar PelvisThoraxLateralBending = 0;
-AnyVar PelvisThoraxRotation = 0;
-
-AnyVar NeckExtension = 0;
-AnyVar NeckLateralBending = 0;
-AnyVar NeckRotation = 0;
-
-AnyFolder Right = {
+  AnyVec3 Pelvis_RASIS = Main.ModelSetup.C3DFileData.Points.Markers.RASI.PosInterpol(Main.ModelSetup.tStart);
+  AnyVec3 Pelvis_LASIS = Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.tStart);
+  AnyVec3 Pelvis_SACRUM = 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.tStart)
+                         +Main.ModelSetup.C3DFileData.Points.Markers.LPSI.PosInterpol(Main.ModelSetup.tStart));
   
-  AnyVar HipFlexion = 0;
-  AnyVar HipAbduction = 0;
-  AnyVar HipExternalRotation = 0;
-  AnyVar KneeFlexion = 0;
-  AnyVar AnklePlantarFlexion = 0;
-  AnyVar SubTalarEversion = 0;
+  PelvisRotationMatrix = RotMat(Pelvis_SACRUM , 
+                                0.5*(Pelvis_LASIS +Pelvis_RASIS ),
+                                Pelvis_LASIS )*RotMat(pi/2,x);                              
   
-  AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 0;
-  AnyVar GlenohumeralExternalRotation = 0;
-  AnyVar ElbowFlexion = 0;
-  AnyVar ElbowPronation = 0;
-  AnyVar WristFlexion = 0;
-  AnyVar WristAbduction = 0;
+  PelvisPos = (1/3)*( Pelvis_RASIS + Pelvis_LASIS + Pelvis_SACRUM );
   
-};
-AnyFolder Left = {
+  PelvisThoraxExtension = 0;
+  PelvisThoraxLateralBending = 0;
+  PelvisThoraxRotation = 0;
   
-  AnyVar HipFlexion = 0;
-  AnyVar HipAbduction = 0;
-  AnyVar HipExternalRotation = 0;
-  AnyVar KneeFlexion = 0;
-  AnyVar AnklePlantarFlexion = 0;
-  AnyVar SubTalarEversion = 0;
+  NeckExtension = 0;
+  NeckLateralBending = 0;
+  NeckRotation = 0;
   
-  AnyVar GlenohumeralFlexion = 0;
-  AnyVar GlenohumeralAbduction = 0;
-  AnyVar GlenohumeralExternalRotation = 0;
-  AnyVar ElbowFlexion = 0;
-  AnyVar ElbowPronation = 0;
-  AnyVar WristFlexion = 0;
-  AnyVar WristAbduction = 0;
+  Right = {
+    
+    HipFlexion = 0;
+    HipAbduction = 0;
+    HipExternalRotation = 0;
+    KneeFlexion = 0;
+    AnklePlantarFlexion = 0;
+    SubTalarEversion = 0;
+    
+    GlenohumeralFlexion = 0;
+    GlenohumeralAbduction = 0;
+    GlenohumeralExternalRotation = 0;
+    ElbowFlexion = 0;
+    ElbowPronation = 0;
+    WristFlexion = 0;
+    WristAbduction = 0;
+    
+  };
+  Left = {
+    
+    HipFlexion = 0;
+    HipAbduction = 0;
+    HipExternalRotation = 0;
+    KneeFlexion = 0;
+    AnklePlantarFlexion = 0;
+    SubTalarEversion = 0;
+    
+    GlenohumeralFlexion = 0;
+    GlenohumeralAbduction = 0;
+    GlenohumeralExternalRotation = 0;
+    ElbowFlexion = 0;
+    ElbowPronation = 0;
+    WristFlexion = 0;
+    WristAbduction = 0;
+    
+  };
   
-};
-
-
-
-
+  
+  
+  
 }; // InitialPositionOfBody
+
