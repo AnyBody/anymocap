@@ -3,6 +3,8 @@
                                     WeightX=1, WeightY=1, WeightZ=1,
                                     OptX="Off", OptY = "Off",OptZ="Off",
                                     sRelOptScalingOnOff = "On",
+                                    FilterCutOffFrequency = 0,
+                                    FilterOrder = 2,
                                     UseC3DWeightResiduals = "Off",
                                     PARAMETER_OPT_STUDY = ParameterIdentification,
                                     C3D_OBJECT = C3DFileData,
@@ -169,6 +171,10 @@
 //    AnyFolder MarkerName ={
       
       AnyKinDriverMarker Driver = {
+        
+        
+        
+        
         AnyDrawKinMeasure Draw = {
           Visible = Off;
           Opacity = 1;
@@ -177,8 +183,36 @@
           Line = On;
         };
         Linear.Ref=0;
-        AnyRefFrame &ref1 = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
-        AnyParamFun &ref2 = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol;
+        AnyRefFrame &MarkerRef = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
+        
+        #if FilterCutOffFrequency > 0
+   	  /// A lowpass butterworth filter
+   	    AnyFunButterworthFilter LowPassFilter = 
+   	    {
+   	     	FilterForwardBackwardOnOff = On;
+   	     	AutomaticInitialConditionOnOff = On;
+   	     	N = FilterOrder;
+            W = {1/(Main.ModelSetup.C3D_OBJECT.Filter.Fs[0]*0.5)*FilterCutOffFrequency };
+   	      Type = LowPass;
+   	    };
+  	  
+          // Filter the data
+          AnyMatrix FilteredPos = LowPassFilter(Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.Pos');
+          
+          /// Interpolation function of the lowpass filtered data
+          AnyFunInterpol FilteredPosInterpol = 
+          {
+            Type = PiecewiseLinear;
+            T = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol.T;
+            Data = .FilteredPos;
+          };
+          
+        #else
+        
+        AnyParamFun &InterpolRef = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol;
+        #endif
+        
+        
         WeightFun={.MarkerWeightsPtr};
       };
 //    };
