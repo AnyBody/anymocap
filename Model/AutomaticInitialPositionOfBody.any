@@ -1,0 +1,128 @@
+#class_template AutomaticInitialBodyPosition (Folder = InitialPositionOfBody) {
+
+#var AnyVec3 RASIS = {-0.13,1,0};
+#var AnyVec3 LASIS = {0.13,1,0};
+#var AnyVec3 SACRUM = {0,1,-0.14} ;
+#var AnyVec3 RKNEE = PelvisPos +{0,-0.5,0.15}*PelvisRotationMatrix';
+#var AnyVec3 LKNEE= PelvisPos +{0,-0.5,-0.15}*PelvisRotationMatrix';
+#var AnyVec3 RANKLE= {0,0,0};
+#var AnyVec3 LANKLE= {0,0,0};
+#var AnyVec3 RTOE= {0,0,0};
+#var AnyVec3 LTOE= {0,0,0};
+#var AnyVec3 RSHOULDER= PelvisPos +{0,0.6,0.15}*PelvisRotationMatrix';
+#var AnyVec3 LSHOULDER= PelvisPos +{0,0.6,-0.15}*PelvisRotationMatrix';
+  
+  
+
+                                      
+   #var AnyVec3 PelvisPos = (1/3)*( RASIS + LASIS + SACRUM );
+   #var AnyMat33 PelvisRotationMatrix = RotMat(SACRUM , 
+                                      0.5*(LASIS +RASIS ),
+                                      LASIS )*RotMat(pi/2,x);                              
+
+   #var AnyVar PelvisThoraxExtension = 0;
+   #var AnyVar PelvisThoraxLateralBending = 0;
+   #var AnyVar PelvisThoraxRotation = 0;
+   
+   #var AnyVar NeckExtension = 0;
+   #var AnyVar NeckLateralBending = 0;
+   #var AnyVar NeckRotation = 0;
+
+AnyFolder Right = {
+  
+  #var AnyVar HipFlexion = 0;
+  #var AnyVar HipAbduction = 0;
+  #var AnyVar HipExternalRotation = 0;
+  #var AnyVar KneeFlexion = 0;
+  #var AnyVar AnklePlantarFlexion = 0;
+  #var AnyVar SubTalarEversion = 0;
+  
+  #var AnyVar GlenohumeralFlexion = 0;
+  #var AnyVar GlenohumeralAbduction = 0;
+  #var AnyVar GlenohumeralExternalRotation = 0;
+  #var AnyVar ElbowFlexion = 0;
+  #var AnyVar ElbowPronation = 0;
+  #var AnyVar WristFlexion = 0;
+  #var AnyVar WristAbduction = 0;
+  
+};
+AnyFolder Left = {
+  
+  #var AnyVar HipFlexion = 0;
+  #var AnyVar HipAbduction = 0;
+  #var AnyVar HipExternalRotation = 0;
+  #var AnyVar KneeFlexion = 0;
+  #var AnyVar AnklePlantarFlexion = 0;
+  #var AnyVar SubTalarEversion = 0;
+        
+  #var AnyVar GlenohumeralFlexion = 0;
+  #var AnyVar GlenohumeralAbduction = 0;
+  #var AnyVar GlenohumeralExternalRotation = 0;
+  #var AnyVar ElbowFlexion = 0;
+  #var AnyVar ElbowPronation = 0;
+  #var AnyVar WristFlexion = 0;
+  #var AnyVar WristAbduction = 0;
+
+  
+};
+
+
+AnyFolder &InitPosRef= .Folder;
+
+
+InitPosRef= {
+                                         
+
+PelvisPos = .PelvisPos;
+// Inital Pelvis rotation 
+PelvisRotationMatrix = .PelvisRotationMatrix;                              
+
+PelvisThoraxExtension = .PelvisThoraxExtension;
+PelvisThoraxLateralBending = .PelvisThoraxLateralBending ;
+PelvisThoraxRotation = .PelvisThoraxRotation ;
+
+NeckExtension = .NeckExtension ;
+NeckLateralBending = .NeckLateralBending ;
+NeckRotation = .NeckRotation ;
+
+Right = {
+  
+  HipFlexion = ..Right.HipFlexion ;
+  HipAbduction = ..Right.HipAbduction ;
+  HipExternalRotation = ..Right.HipExternalRotation ;
+  KneeFlexion = ..Right.KneeFlexion ;
+  AnklePlantarFlexion = ..Right.AnklePlantarFlexion ;
+  SubTalarEversion = ..Right.SubTalarEversion ;
+  
+  GlenohumeralFlexion = ..Right.GlenohumeralFlexion ;
+  GlenohumeralAbduction = ..Right.GlenohumeralAbduction ;
+  GlenohumeralExternalRotation = ..Right.GlenohumeralExternalRotation ;
+  ElbowFlexion = ..Right.ElbowFlexion ;
+  ElbowPronation = ..Right.ElbowPronation ;
+  WristFlexion = ..Right.WristFlexion ;
+  WristAbduction = ..Right.WristAbduction ;
+  
+};
+Left = {
+  
+  HipFlexion = ..Left.HipFlexion ;
+  HipAbduction = ..Left.HipAbduction ;
+  HipExternalRotation = ..Left.HipExternalRotation ;
+  KneeFlexion = ..Left.KneeFlexion ;
+  AnklePlantarFlexion = ..Left.AnklePlantarFlexion ;
+  SubTalarEversion = ..Left.SubTalarEversion ;
+  
+  GlenohumeralFlexion = ..Left.GlenohumeralFlexion ;
+  GlenohumeralAbduction = ..Left.GlenohumeralAbduction ;
+  GlenohumeralExternalRotation = ..Left.GlenohumeralExternalRotation ;
+  ElbowFlexion = ..Left.ElbowFlexion ;
+  ElbowPronation = ..Left.ElbowPronation ;
+  WristFlexion = ..Left.WristFlexion ;
+  WristAbduction = ..Left.WristAbduction ;
+
+  
+};
+
+
+};
+};
