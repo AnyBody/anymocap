@@ -1,0 +1,17 @@
+// Detailed description can be found at:
+#include "Model/Description.any"
+
+
+// HACK WORKAROUND. Needed to load the model when no joint angles files exist
+#define EXCLUDE_OPTIMIZED_DRIVERS
+  
+// This file controls all Input to run the C3D file.
+// If you want to run the model on your own data this is the place to start:
+#path MOCAP_TRIAL_SPECIFIC_DATA "Model/ExampleFiles/TrialSpecificData.any"
+#path MOCAP_SUBJECT_SPECIFIC_DATA "Model/ExampleFiles/SubjectSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "Model/ExampleFiles/LabSpecificData.any"
+
+  
+// This is where the magic happens. No need to change something here:
+#include "Model/AnyMocapModel.any" 
+  
