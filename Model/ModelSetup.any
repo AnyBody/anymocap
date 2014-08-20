@@ -1,24 +1,38 @@
 
-AnyFolder ModelSetup ={
+#ifndef MOCAP_LAB_SPECIFIC_DATA
+  #path MOCAP_LAB_SPECIFIC_DATA "ExampleFiles/LabSpecificData.any"
+#endif
+
+#ifndef MOCAP_SUBJECT_SPECIFIC_DATA
+  #path MOCAP_SUBJECT_SPECIFIC_DATA "ExampleFiles/SubjectSpecificData.any"
+#endif
+
+#ifndef MOCAP_TRIAL_SPECIFIC_DATA
+  #path MOCAP_TRIAL_SPECIFIC_DATA "ExampleFiles/TrialSpecificData.any"
+#endif
+
+
+
+AnyFolder ModelSetup = {
+    // The folder Lab/Subject/TrialSpecificData folders are
+    // created using macros. This ensures that any required 
+    // variables get a default value if they are not specified
+    // by the user.
+  
     CreateLabFolder LabSpecificData = {
-      #ifdef MOCAP_LAB_SPECIFIC_DATA
-        #include "<MOCAP_LAB_SPECIFIC_DATA>"
-      #endif
+      #include "<MOCAP_LAB_SPECIFIC_DATA>"
     };
     
     CreateSubjectFolder SubjectSpecificData = {
-      #ifdef MOCAP_SUBJECT_SPECIFIC_DATA
-         #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
-      #endif
+      #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
     };
     
     CreateTrialFolder TrialSpecificData = {
-      #ifdef MOCAP_TRIAL_SPECIFIC_DATA
         #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
-      #endif
     };
     
-   // This file check if all the defines are made correctly 
+   // This file checks if all the defines statements 
+   // are made correctly.
    #include "CheckMocapConfiguration.any"
 
   
@@ -27,8 +41,7 @@ AnyFolder ModelSetup ={
   #include "SaveLoad_StandingReferenceValues.any"
 
     
-    
-   // This is the C3D used for the analysis
+   // This is the C3D file used for the analysis
   AnyInputC3D C3DFileData =   {
     #include "C3DSettings.any"
   };
@@ -42,6 +55,7 @@ AnyFolder ModelSetup ={
   AnyIntVar nStep =(LastFrame-FirstFrame+1);
   
   AnyFolder MocapDrivers = {
+    
     #ifdef MOCAP_MARKER_PROTOCOL_FILE
     #include "<MOCAP_MARKER_PROTOCOL_FILE>"
     #endif
@@ -50,11 +64,9 @@ AnyFolder ModelSetup ={
     #include "<MOCAP_MARKER_PROTOCOL_FILE_1>"
     #endif
     
-    
   };
   
   AnyFolder Measures = {
-  
   };
   
 
