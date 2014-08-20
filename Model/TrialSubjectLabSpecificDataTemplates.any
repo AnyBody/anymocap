@@ -1,0 +1,111 @@
+#class_template CreateLabFolder {
+
+#var AnyVec3 Gravity = -9.81*{0,0,1};
+
+
+};
+
+#class_template CreateTrialFolder {
+
+
+/// This is the name of the trial c3d file without extension
+#var AnyStringVar  TrialFileName = ANYBODY_NAME_MAINFILEDIR;
+
+/// This is frame offset from the beginning of the C3D file 
+#var AnyInt C3DFirstFrameOffset = 2;
+/// This is frame offset from the end of the C3D file 
+#var AnyInt C3DLastFrameOffset = 2;
+
+
+/// The following settings define the initial posture of the
+/// model (e.g. at load time)
+AnyFolder InitialPositionOfBody= {
+  // Initial pelvis position
+  #var AnyVec3 PelvisPos = {0,0,0};
+  // Inital Pelvis rotation 
+  #var AnyMat33 PelvisRotationMatrix = RotMat(0.0,z)*RotMat(0.0,y)*RotMat(0.0,x);
+    
+  #var AnyVar PelvisThoraxExtension = 0;
+  #var AnyVar PelvisThoraxLateralBending = 0;
+  #var AnyVar PelvisThoraxRotation = 0;
+  
+  #var AnyVar NeckExtension = 0;
+  #var AnyVar NeckLateralBending = 0;
+  #var AnyVar NeckRotation = 0;
+  
+  AnyFolder Right = {
+    
+    #var AnyVar HipFlexion = 0;
+    #var AnyVar HipAbduction = 0;
+    #var AnyVar HipExternalRotation = 0;
+    #var AnyVar KneeFlexion = 0;
+    #var AnyVar AnklePlantarFlexion = 0;
+    #var AnyVar SubTalarEversion = 0;
+    
+    #var AnyVar GlenohumeralFlexion = 0;
+    #var AnyVar GlenohumeralAbduction = 0;
+    #var AnyVar GlenohumeralExternalRotation = 0;
+    #var AnyVar ElbowFlexion = 0;
+    #var AnyVar ElbowPronation = 0;
+    #var AnyVar WristFlexion = 0;
+    #var AnyVar WristAbduction = 0;
+    
+  };
+  AnyFolder Left = {
+    
+    #var AnyVar HipFlexion = 0;
+    #var AnyVar HipAbduction = 0;
+    #var AnyVar HipExternalRotation = 0;
+    #var AnyVar KneeFlexion = 0;
+    #var AnyVar AnklePlantarFlexion = 0;
+    #var AnyVar SubTalarEversion = 0;
+    
+    #var AnyVar GlenohumeralFlexion = 0;
+    #var AnyVar GlenohumeralAbduction = 0;
+    #var AnyVar GlenohumeralExternalRotation = 0;
+    #var AnyVar ElbowFlexion = 0;
+    #var AnyVar ElbowPronation = 0;
+    #var AnyVar WristFlexion = 0;
+    #var AnyVar WristAbduction = 0;
+    
+  };
+ };
+};
+
+#class_template CreateSubjectFolder {
+
+
+ AnyFolder Anthropometrics={
+  #var AnyVar BodyMass = 64.4;
+  #var AnyVar BodyHeight = 1.76;
+  
+  
+  // These antrhopometric data will be used as initial guess for 
+  // the optimization alogorithm the optimization algoritm will
+  // allow changes to the segment lengths 
+  #var AnyVar ThighLengthIni= 0.41; 
+  #var AnyVar ShankLengthIni= 0.42;
+  #var AnyVar FootLengthIni=0.25;
+  #var AnyVar PelvisWidthIni=0.16; ///< distance between hip joints
+  
+  #var AnyVar HeadHeightIni =0.14;///< height in neutral position from  C1HatNode to top of head
+  #var AnyVar TrunkHeightIni =0.620233;///< height in neautral position from  C1HatNode to L5SacrumJnt
+  #var AnyVar UpperArmLengthIni = 0.30;
+  #var AnyVar LowerArmLengthIni =0.23;
+  #var AnyVar HandLengthIni = 0.182;
+  #var AnyVar HandBreadthIni = 0.085;
+  
+};
+
+
+
+
+
+
+
+
+
+
+
+
+};

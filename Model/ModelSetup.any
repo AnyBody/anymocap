@@ -1,27 +1,21 @@
 
-  // Load default values for the Trial/Subject/Lab specific data files if 
-  // not specified by the user application 
-  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
-    #path MOCAP_TRIAL_SPECIFIC_DATA "Default_TrialSpecificData.any"
-  #endif
-  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA 
-    #path MOCAP_SUBJECT_SPECIFIC_DATA "Default_SubjectSpecificData.any"
-  #endif  
-  #ifndef MOCAP_LAB_SPECIFIC_DATA
-    #path MOCAP_LAB_SPECIFIC_DATA "Default_LabSpecificData.any"
-  #endif
- 
 AnyFolder ModelSetup ={
-    AnyFolder LabSpecificData = {
-      #include "<MOCAP_LAB_SPECIFIC_DATA>"
+    CreateLabFolder LabSpecificData = {
+      #ifdef MOCAP_LAB_SPECIFIC_DATA
+        #include "<MOCAP_LAB_SPECIFIC_DATA>"
+      #endif
     };
     
-    AnyFolder SubjectSpecificData = {
-      #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
+    CreateSubjectFolder SubjectSpecificData = {
+      #ifdef MOCAP_SUBJECT_SPECIFIC_DATA
+         #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
+      #endif
     };
     
-    AnyFolder TrialSpecificData = {
-      #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
+    CreateTrialFolder TrialSpecificData = {
+      #ifdef MOCAP_TRIAL_SPECIFIC_DATA
+        #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
+      #endif
     };
     
    // This file check if all the defines are made correctly 
