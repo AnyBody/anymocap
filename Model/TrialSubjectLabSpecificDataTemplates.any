@@ -76,8 +76,8 @@ AnyFolder InitialPositionOfBody= {
 
 
  AnyFolder Anthropometrics={
-  #var AnyVar BodyMass = 64.4;
-  #var AnyVar BodyHeight = 1.76;
+  #var AnyVar BodyMass = 72;
+  #var AnyVar BodyHeight = 1.82;
   
   
   // These antrhopometric data will be used as initial guess for 

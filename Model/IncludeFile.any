@@ -4,8 +4,8 @@
   // This ensures that all the necessary path statements exist if they are 
   // not specified by the main file. 
   
-  #ifndef BASE_MODEL_PATH
-  #path BASE_MODEL_PATH "."
+  #ifndef ANYMOCAP_MODEL_PATH
+  #path ANYMOCAP_MODEL_PATH "."
   #endif
   
    

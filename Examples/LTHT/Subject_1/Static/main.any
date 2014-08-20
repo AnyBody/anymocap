@@ -10,4 +10,4 @@
 #path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData_LTHT.any"
 
 // This is where the magic happens. No need to change something here:
-#include "../../../../Model/BaseModel.any" 
+#include "../../../../Model/AnyMocapModel.any" 

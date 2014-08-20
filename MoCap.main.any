@@ -19,7 +19,7 @@ Main = {
 
   
   // This is where the magic happens. No need to change something here:
-  #include "Model/BaseModel.any" 
+  #include "Model/AnyMocapModel.any" 
   
 }; //Main
 
