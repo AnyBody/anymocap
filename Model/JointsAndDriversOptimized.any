@@ -13,14 +13,17 @@ AnyFolder JointsAndDrivers = {
   
   #endif
   
-  
-  
-  #ifndef EXCLUDE_OPTIMIZED_DRIVERS
+  // HACK workaround to avoid loading the drivers unless the files exist
+  #ifndef JOINT_AND_DRIVERS_OPTIMIZED
+     #ifndef EXCLUDE_OPTIMIZED_DRIVERS
+     #define JOINT_AND_DRIVERS_OPTIMIZED 1
+     #else
+     #define JOINT_AND_DRIVERS_OPTIMIZED 0
+     #endif
+  #endif
 
-  
-  
 
-  
+#if JOINT_AND_DRIVERS_OPTIMIZED == 1
   
 
   
