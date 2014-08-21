@@ -14,13 +14,15 @@ ModelSetup.TrialSpecificData = {
       LASIS= Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.tStart);
       SACRUM= 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.tStart)
                                     +Main.ModelSetup.C3DFileData.Points.Markers.LPSI.PosInterpol(Main.ModelSetup.tStart));
-  };
+      RKNEE = Main.ModelSetup.C3DFileData.Points.Markers.RKNE.PosInterpol(Main.ModelSetup.tStart);
+      LKNEE = Main.ModelSetup.C3DFileData.Points.Markers.LKNE.PosInterpol(Main.ModelSetup.tStart);
+      RANKLE = Main.ModelSetup.C3DFileData.Points.Markers.RANK.PosInterpol(Main.ModelSetup.tStart);
+      LANKLE = Main.ModelSetup.C3DFileData.Points.Markers.LANK.PosInterpol(Main.ModelSetup.tStart);
+      RTOE = Main.ModelSetup.C3DFileData.Points.Markers.RTOE.PosInterpol(Main.ModelSetup.tStart);
+      LTOE = Main.ModelSetup.C3DFileData.Points.Markers.LTOE.PosInterpol(Main.ModelSetup.tStart);
+   };
   
 };
-
-
-
-
 
 
 };
