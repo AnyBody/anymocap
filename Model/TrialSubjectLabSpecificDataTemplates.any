@@ -20,10 +20,19 @@
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
 AnyFolder InitialPositionOfBody= {
+  
+  #var AnyVar PelvisPosX = 0.0;
+  #var AnyVar PelvisPosY = 0.0;
+  #var AnyVar PelvisPosZ = 0.0;
+  
+  #var AnyVar PelvisRotX = 0.0;
+  #var AnyVar PelvisRotY = 0.0;
+  #var AnyVar PelvisRotZ = 0.0;
+  
   // Initial pelvis position
-  #var AnyVec3 PelvisPos = {0,0,0};
+  #var AnyVec3 PelvisPos = {PelvisPosX ,PelvisPosY,PelvisPosZ};
   // Inital Pelvis rotation 
-  #var AnyMat33 PelvisRotationMatrix = RotMat(0.0,z)*RotMat(0.0,y)*RotMat(0.0,x);
+  #var AnyMat33 PelvisRotationMatrix = RotMat(PelvisRotZ,z)*RotMat(PelvisRotY,y)*RotMat(PelvisRotX,x);
     
   #var AnyVar PelvisThoraxExtension = 0;
   #var AnyVar PelvisThoraxLateralBending = 0;
@@ -50,6 +59,38 @@ AnyFolder InitialPositionOfBody= {
     #var AnyVar WristFlexion = 0;
     #var AnyVar WristAbduction = 0;
     
+    AnyFolder Finger1 ={
+        #var AnyVar CMCDeviation= 0;
+        #var AnyVar CMCFlexion= 0;
+        #var AnyVar MCPFlexion= 0;
+        #var AnyVar MCPDeviation=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger2 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger3 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger4 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger5 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };                 
+    
   };
   AnyFolder Left = {
     
@@ -68,9 +109,40 @@ AnyFolder InitialPositionOfBody= {
     #var AnyVar WristFlexion = 0;
     #var AnyVar WristAbduction = 0;
     
-  };
- };
-};
+    AnyFolder Finger1 ={
+        #var AnyVar CMCDeviation= 0;
+        #var AnyVar CMCFlexion= 0;
+        #var AnyVar MCPFlexion= 0;
+        #var AnyVar MCPDeviation=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger2 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger3 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger4 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };
+
+    AnyFolder Finger5 ={
+        #var AnyVar MCPFlexion=0;
+        #var AnyVar PIPFlexion=0;
+        #var AnyVar DIPFlexion=0;
+    };        
+  };//Left
+ }; // InitialPositionOfBody
+};// Template
 
 #class_template CreateSubjectFolder {
 
