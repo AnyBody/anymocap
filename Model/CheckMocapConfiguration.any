@@ -17,6 +17,9 @@
 
 #ifndef MOCAP_MARKER_PROTOCOL_FILE 
 #path MOCAP_MARKER_PROTOCOL_FILE "ExampleFiles/MarkerProtocol_PlugInGait.any"
+// HACK workaround add a dummy designvar when the model is loaded with out
+// markers
+Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
 #ifndef MOCAP_FORCE_PLATE_FILE 

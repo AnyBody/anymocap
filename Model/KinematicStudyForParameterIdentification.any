@@ -1,6 +1,5 @@
 // HACK WORKAROUND Added a dummy AnyDesVar to handle the case where no DesVars are created.
 
-AnyDesVar dummy = {Val = 0;};
 
 AnyBodyStudy KinematicStudyForParameterIdentification= {
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
