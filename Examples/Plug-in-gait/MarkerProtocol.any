@@ -166,10 +166,9 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 CreateMarkerDriver T10 (
 MarkerName= T10,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX="Off",OptY="On",OptZ="Off",  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX="Off",OptY="On",OptZ="Off"
 ) = {
-  sRelOpt = {-0.052,0.187,0};
+  sRelOpt = {-0.05,0.187,0};
 };
 #endif
 
@@ -177,12 +176,10 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 // Marker on the Cervical Vertebra 10
 CreateMarkerDriver C7 (
 MarkerName= C7,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX="Off",OptY="Off",OptZ="Off",  
-WeightX=5.0,WeightY=5.0,WeightZ=5.0
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg
 ) = {
-  sRelOpt = {-0.055,0.47,0};
-  sRelOptDelta = {0.00,0.02,0};
+  sRelOpt = {-0.05,0.47,0};
+  sRelOptDelta = {0.01,0.02,0};
 };
 #endif
 
@@ -192,10 +189,7 @@ WeightX=5.0,WeightY=5.0,WeightZ=5.0
 // Marker on the Right Thigh
 CreateMarkerDriver RTHI ( 
 MarkerName=  RTHI,
-MarkerPlacement =Right.Leg.Seg.Thigh, 
-OptX="On",OptY="On",OptZ="On",
-WeightX=1.0,WeightY=1.0,WeightZ=1.0
-)= {
+MarkerPlacement =Right.Leg.Seg.Thigh)= {
   sRelOpt = {0.00, -0.15, 0.1};
 };
 #endif

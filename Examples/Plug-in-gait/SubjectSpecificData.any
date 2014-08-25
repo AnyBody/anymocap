@@ -1,6 +1,6 @@
 Anthropometrics={
-  BodyMass = 75;
-  BodyHeight = 1.83;
+  BodyMass = 66;
+  BodyHeight = 1.75;
   
   
   // These antrhopometric data will be used as initial guess for 
