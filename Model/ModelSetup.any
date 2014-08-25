@@ -40,6 +40,8 @@ AnyFolder ModelSetup = {
   //(dynamic or standing refereces)
   #include "SaveLoad_StandingReferenceValues.any"
 
+  #include "SaveLoadParameters.any"
+  
     
    // This is the C3D file used for the analysis
   AnyInputC3D C3DFileData =   {

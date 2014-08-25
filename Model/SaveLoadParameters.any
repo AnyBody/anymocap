@@ -1,0 +1,60 @@
+  Main.ModelSetup.Macros = {        
+   AnyOperationSequence Save_parameters= {
+      AnyOperationSetValue TouchMarkers = {
+        Source = ObjSearch("Main.ModelSetup.MocapDrivers.*.sRelOptEdit"     );
+        Target = Source;
+      };     
+      AnyOperationSetValue TouchSegLength =  {
+        Source = { 
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.PelvisWidth,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ThighLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ShankLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.FootLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.HeadHeight,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkHeight,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.UpperArmLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength};
+        Target = Source;
+      };     
+      AnyOperationMacro SaveToFile = {
+        MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 
+          strquote( TEMP_PATH +"/"+ MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName +".anyset" )
+        };
+        
+      };
+    };
+    AnyFolder &PostOperationRef1  =  Main.RunApplication.PostOperations;
+    PostOperationRef1 = {
+      AnyOperation &Save_parameters = .Save_parameters;
+    };
+  };
+ 
+ 
+Main.ModelSetup.Macros = {
+  
+  #define _GET_VALID_INDEX(X) iffun(gtfun(NumElemOf(Main.ModelSetup.TrialSpecificData.LoadParametersFrom), X), X, 0)
+  #define _LOAD_MACRO(X) iffun( gtfun(NumElemOf(Main.ModelSetup.TrialSpecificData.LoadParametersFrom), X) ,\
+                                  "classoperation Main " + strquote("Load Values") +" --file=" + strquote(TEMP_PATH+MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.LoadParametersFrom[ _GET_VALID_INDEX(X)]+".anyset") ,\
+                                  "")
+ 
+  AnyOperationMacro Load_parameters = {
+    MacroStr  = { _LOAD_MACRO(0),
+                  _LOAD_MACRO(1),
+                  _LOAD_MACRO(2),
+                  _LOAD_MACRO(3),
+                  _LOAD_MACRO(4),
+                  _LOAD_MACRO(5),
+                  _LOAD_MACRO(6),
+                  _LOAD_MACRO(7),
+                  _LOAD_MACRO(8)
+                };   
+  };
+  #undef _LOAD_MACRO
+  #undef _GET_VALID_INDEX
+  AnyFolder &PreOperationRef1  =  Main.RunApplication.PreOperations;
+  PreOperationRef1 = {
+    AnyOperation &Load_parameters = .Load_parameters ;
+  };
+};
+
+

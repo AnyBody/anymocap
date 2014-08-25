@@ -11,6 +11,10 @@
 /// This is the name of the trial c3d file without extension
 #var AnyStringVar  TrialFileName = ANYBODY_NAME_MAINFILEDIR;
 
+// The calibraiton filename (static/dynamic) from which to load the
+// the optimized parameters.
+#var AnyString LoadParametersFrom = {TrialFileName};
+
 /// This is frame offset from the beginning of the C3D file 
 #var AnyInt C3DFirstFrameOffset = 2;
 /// This is frame offset from the end of the C3D file 

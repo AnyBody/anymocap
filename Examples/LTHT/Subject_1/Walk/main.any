@@ -1,7 +1,7 @@
 //#define TRANSFER_JOINT_ANGLES
 
 // HACK WORKAROUND. Needed to load the model when no joint angles files exist
-//#define EXCLUDE_OPTIMIZED_DRIVERS
+#define EXCLUDE_OPTIMIZED_DRIVERS
 
 
 // This file controls all Input to run the C3D file.
