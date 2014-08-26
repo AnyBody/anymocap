@@ -1,3 +1,6 @@
 // This is the name of the trial c3d file without extension
 TrialFileName = "Dynamic";
 
+Main.Studies.ParameterIdentification = {
+AnyDesVar Dummy = {Val = 0;};
+};
