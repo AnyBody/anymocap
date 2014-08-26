@@ -1,7 +1,10 @@
 
-#define MOCAP_IS_STANDING_REFERENCE 1
-
-AnyStringVar CalibrationTrialFileName ="Static";
+// This is a application specific flag for 
+// using special markers/drivers for this trial.
+// See the marker protocol file:
+// #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+#define CALIBRATION_TRAIL_MARKER_SET
+#define CALIBRATION_TRAIL_EXTRA_DRIVERS
 
 
 /// This is the name of the trial c3d file without extension
@@ -21,7 +24,7 @@ C3DLastFrameOffset = 0;
 
 // This defines how the model segments are optimized
 // In this static calibration trial all segment length are
-// optimized/calibarated
+// optimized/calibrated
 OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
 PelvisWidthOnOff = "On" , 
 ThighLengthOnOff= "On", 

@@ -1,8 +1,4 @@
 
-#define MOCAP_IS_STANDING_REFERENCE 0
-
-AnyStringVar CalibrationTrialFileName ="Static";
-
 LoadParametersFrom = {"Static"};
 
 /// This is the name of the trial c3d file without extension
