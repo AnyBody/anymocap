@@ -3,8 +3,8 @@
 // using special markers/drivers for this trial.
 // See the marker protocol file:
 // #include "<MOCAP_MARKER_PROTOCOL_FILE>"
-#define CALIBRATION_TRAIL_MARKER_SET
-#define CALIBRATION_TRAIL_EXTRA_DRIVERS
+#define USE_STANDING_REFERENCE_MARKERS
+#define USE_STANDING_REFERENCE_AUXILARY_DRIVERS
 
 
 /// This is the name of the trial c3d file without extension

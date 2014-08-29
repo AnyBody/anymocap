@@ -13,8 +13,8 @@ Main.EnvironmentModel.GlobalRef = {
 // These drivers are included for all trials.
 #define _STERNO_CLAVICULA_DRIVER
 
-#ifdef CALIBRATION_TRAIL_EXTRA_DRIVERS
-   // These drivers are included in the standing reference trial
+// These drivers are included in the standing reference trial
+#ifdef USE_STANDING_REFERENCE_AUXILARY_DRIVERS
    #define _FOOT_FLAT_ON_GROUND_DRIVER
    #define _SKULL_LOOK_STRAIGHT_DRIVER
    #define _STERNO_CLAVICULA_PROTRACTION_DRIVER

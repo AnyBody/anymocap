@@ -83,7 +83,7 @@
 
 // These are the markers only used in 
 // the static trials
-#ifdef CALIBRATION_TRAIL_MARKER_SET
+#ifdef USE_STANDING_REFERENCE_MARKERS
 #define _LPSIS
 #define _RPSIS
 #define _RASIS
