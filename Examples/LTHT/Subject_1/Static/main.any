@@ -9,5 +9,9 @@
 #path MOCAP_SUBJECT_SPECIFIC_DATA "../SubjectSpecificData.any"
 #path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData_LTHT.any"
 
-// This is where the magic happens. No need to change something here:
-#include "../../../../Model/AnyMocapModel.any" 
+
+#ifndef ANYMOCAP
+#path ANYMOCAP "../../../../Model/AnyMocapModel.any"
+#endif
+
+#include "<ANYMOCAP>"

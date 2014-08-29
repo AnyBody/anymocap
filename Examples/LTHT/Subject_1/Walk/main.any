@@ -11,6 +11,8 @@
 #path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData_LTHT.any"
 
 
-// This is where the magic happens. No need to change something here:
+#ifndef ANYMOCAP
+#path ANYMOCAP "../../../../Model/AnyMocapModel.any"
+#endif
 
-#include "../../../../Model/AnyMocapModel.any" 
+#include "<ANYMOCAP>"

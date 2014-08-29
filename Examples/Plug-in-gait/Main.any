@@ -4,4 +4,8 @@
 
 #define EXCLUDE_OPTIMIZED_DRIVERS
 
-#include "../../Model/AnyMocapModel.any"
+#ifndef ANYMOCAP
+#path ANYMOCAP "../../Model/AnyMocapModel.any"
+#endif
+
+#include "<ANYMOCAP>"
