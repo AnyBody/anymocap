@@ -6,7 +6,7 @@
 
 
 // This is the name of the trial c3d file without extension
-TrialFileName = "DynamicOnly";
+TrialFileName = "Plug-in-gait";
 
 /// This is frame offset from the beginning of the C3D file 
 C3DFirstFrameOffset = 2;
@@ -32,6 +32,7 @@ InitialPositionOfBody= {
                                         Pelvis_LASIS )*RotMat(pi/2,x);                              
   PelvisPos = (1/3)*( Pelvis_RASIS + Pelvis_LASIS + Pelvis_SACRUM );
   
+    
   PelvisThoraxExtension = 0;
   PelvisThoraxLateralBending = 0;
   PelvisThoraxRotation = 0;
@@ -42,11 +43,11 @@ InitialPositionOfBody= {
 
   Right = {
   
-    HipFlexion = 0;
-    HipAbduction = 0;
+    HipFlexion = 26.54894;
+    HipAbduction = 8.313687;
     HipExternalRotation = 0;
-    KneeFlexion = 0;
-    AnklePlantarFlexion = 0;
+    KneeFlexion = -2.131877;
+    AnklePlantarFlexion = 2.90032;
     SubTalarEversion = 0;
   
     GlenohumeralFlexion = 0;
@@ -60,11 +61,11 @@ InitialPositionOfBody= {
 };
   Left = {
   
-    HipFlexion = 0;
-    HipAbduction = 0;
+    HipFlexion = -24.09937;
+    HipAbduction = 0.6660672;
     HipExternalRotation = 0;
-    KneeFlexion = 0;
-    AnklePlantarFlexion = 0;
+    KneeFlexion = -0.1293966;
+    AnklePlantarFlexion = -9.499957;
     SubTalarEversion = 0;
   
     GlenohumeralFlexion = 0;
@@ -76,8 +77,6 @@ InitialPositionOfBody= {
     WristAbduction = 0;
   
 };
-
-
 
 
 }; // InitialPositionOfBody
