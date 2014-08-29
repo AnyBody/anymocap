@@ -14,7 +14,7 @@
  #endif
   
  #ifndef ANYBODY_PATH_OUTPUT
- #path ANYBODY_PATH_OUTPUT "Tmp"
+ #path ANYBODY_PATH_OUTPUT "<TEMP_PATH>"
  #endif
  
  #ifndef PROJECT_PATH
@@ -23,7 +23,7 @@
  
  // Include the AMMR library
  #ifdef AMMR_PATH
- #include "<AMMR_PATH>/Application\libdef.any"
+ #include "<AMMR_PATH>\Application\libdef.any"
  #else
  #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
  #endif
