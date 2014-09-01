@@ -8,15 +8,15 @@
   #path ANYMOCAP_MODEL_PATH "."
   #endif
   
-   
+  
  #ifndef TEMP_PATH
- #path TEMP_PATH "Tmp/"
+ #path TEMP_PATH "<ANYBODY_PATH_MAINFILEDIR>/Tmp/"
  #endif
   
  #ifndef ANYBODY_PATH_OUTPUT
- #path ANYBODY_PATH_OUTPUT "<TEMP_PATH>"
+ #path ANYBODY_PATH_OUTPUT "<ANYBODY_PATH_MAINFILEDIR>"
  #endif
- 
+  
  #ifndef PROJECT_PATH
  #path PROJECT_PATH "../"
  #endif
