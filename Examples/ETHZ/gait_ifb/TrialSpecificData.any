@@ -6,7 +6,7 @@
 
 
 // This is the name of the trial c3d file without extension
-TrialFileName = "gait_ifb_set_including_back";
+TrialFileName = "gait_ifb";
 
 /// This is frame offset from the beginning of the C3D file 
 C3DFirstFrameOffset = 2;
