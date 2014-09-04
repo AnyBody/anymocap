@@ -1,0 +1,65 @@
+// This is the name of the trial without '.c3d' extension
+TrialFileName = "Dynamic";
+
+C3DFirstFrameOffset = 20;
+C3DLastFrameOffset = 0;
+
+/// The following settings define the initial posture of the
+/// model (e.g. at load time)
+InitialPositionOfBody= {
+
+  PelvisPosX = 0;
+  PelvisPosY = 0;
+  PelvisPosZ = 0;
+  
+  PelvisRotZ = 0;
+  PelvisRotY = 0;
+  PelvisRotX = 0;
+    
+  PelvisThoraxExtension = 0;
+  PelvisThoraxLateralBending = 0;
+  PelvisThoraxRotation = 0;
+  
+  NeckExtension = 0;
+  NeckLateralBending = 0;
+  NeckRotation = 0;
+
+  Right = {
+  
+    HipFlexion = 26;
+    HipAbduction = 8;
+    HipExternalRotation = 0;
+    KneeFlexion = -2;
+    AnklePlantarFlexion = 3;
+    SubTalarEversion = 0;
+  
+    GlenohumeralFlexion = 0;
+    GlenohumeralAbduction = 0;
+    GlenohumeralExternalRotation = 0;
+    ElbowFlexion = 0;
+    ElbowPronation = 0;
+    WristFlexion = 0;
+    WristAbduction = 0;
+  
+};
+  Left = {
+  
+    HipFlexion = -24;
+    HipAbduction = 1;
+    HipExternalRotation = 0;
+    KneeFlexion =0;
+    AnklePlantarFlexion = -9;
+    SubTalarEversion = 0;
+  
+    GlenohumeralFlexion = 0;
+    GlenohumeralAbduction = 0;
+    GlenohumeralExternalRotation = 0;
+    ElbowFlexion = 0;
+    ElbowPronation = 0;
+    WristFlexion = 0;
+    WristAbduction = 0;
+  
+};
+
+
+}; // InitialPositionOfBody
