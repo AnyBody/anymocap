@@ -68,9 +68,6 @@ AnyFolder ModelSetup = {
     
   };
   
-  AnyFolder Measures = {
-  };
-  
 
   
   //markers adds macros automatically into this folder
