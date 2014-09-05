@@ -26,12 +26,17 @@ AnyFolder JointsAndDrivers = {
 #if JOINT_AND_DRIVERS_OPTIMIZED == 1
   
 
-  
-  AnyKinEqInterPolDriver JntDriverTrunk = {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+  AnyKinDriver JntDriverTrunk = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasureOrg &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
     AnyKinMeasureOrg &PelvisPosZ = ...BodyModel.Interface.Trunk.PelvisPosZ;
@@ -53,12 +58,19 @@ AnyFolder JointsAndDrivers = {
     #endif
   };
   
+  
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
-  AnyKinEqInterPolDriver JntDriverLeftLegTD = {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+  AnyKinDriver JntDriverLeftLegTD = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
     AnyKinMeasureOrg &HipExternalRotation = ...BodyModel.Interface.Left.HipExternalRotation;
@@ -71,11 +83,17 @@ AnyFolder JointsAndDrivers = {
   
   
   #if BM_LEG_RIGHT == CONST_LEG_MODEL_TLEM  
-  AnyKinEqInterPolDriver JntDriverRightLegTD =  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+  AnyKinDriver JntDriverRightLegTD = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
     AnyKinMeasureOrg &HipExternalRotation = ...BodyModel.Interface.Right.HipExternalRotation;
@@ -89,12 +107,17 @@ AnyFolder JointsAndDrivers = {
   
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_Leg 
-  AnyKinEqInterPolDriver JntDriverLeftLeg = 
-  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+  AnyKinDriver JntDriverLeftLeg = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
     AnyKinMeasureOrg &HipExternalRotation = ...BodyModel.Interface.Left.HipExternalRotation;
@@ -107,12 +130,17 @@ AnyFolder JointsAndDrivers = {
   
   
   #if BM_LEG_RIGHT== CONST_LEG_MODEL_Leg 
-  AnyKinEqInterPolDriver JntDriverRightLeg = 
-  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+  AnyKinDriver JntDriverRightLeg = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
     AnyKinMeasureOrg &HipExternalRotation = ...BodyModel.Interface.Right.HipExternalRotation;
@@ -126,13 +154,17 @@ AnyFolder JointsAndDrivers = {
   
   
   #if BM_ARM_LEFT == ON
-  AnyKinEqInterPolDriver JntDriverLeftArm = 
-  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
-
+  AnyKinDriver JntDriverLeftArm = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Left.SternoClavicularProtraction;
     AnyKinMeasureOrg &SternoClavicularElevation=...BodyModel.Interface.Left.SternoClavicularElevation;
     AnyKinMeasureOrg &SternoClavicularAxialRotation=...BodyModel.Interface.Left.SternoClavicularAxialRotation;
@@ -149,13 +181,17 @@ AnyFolder JointsAndDrivers = {
   
   
   #if BM_ARM_RIGHT == ON
-  AnyKinEqInterPolDriver JntDriverRightArm = 
-  {
-    FileErrorContinueOnOff = On;
-    Type = Bspline;
-    BsplineOrder = 4;
-    FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
-
+  AnyKinDriver JntDriverRightArm = {
+    AnyFunInterpol InterpolatedData = {
+      AnyInputFile FileReader = {
+          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
+          FileErrorContinueOnOff = On;
+      };
+      Type  = Bspline;
+      BsplineOrder = 4;
+      Data = FileReader.Data;
+      T = FileReader.T;
+    };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Right.SternoClavicularProtraction;
     AnyKinMeasureOrg &SternoClavicularElevation=...BodyModel.Interface.Right.SternoClavicularElevation;
     AnyKinMeasureOrg &SternoClavicularAxialRotation=...BodyModel.Interface.Right.SternoClavicularAxialRotation;
