@@ -1,0 +1,23 @@
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
+
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+#include "../../Model/AnyMocapModel.any"
+
+
+
+
+Main = {
+   
+ModelSetup.MocapDrivers = {
+    
+    CreateMarkerDriver LTHI ( 
+      MarkerName= LTHI ,
+      MarkerPlacement=Left.Leg.Seg.Thigh,
+      FilterCutOffFrequency = 10,
+      FilterOrder = 2
+     ) = { sRelOpt = {0.0, -0.28, -0.1}; };
+   
+ }; // MocapDrivers
+}; //Main
