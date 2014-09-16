@@ -3,17 +3,11 @@
 
 AnyBodyStudy KinematicStudyForParameterIdentification= {
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
-  AnyFolder ModelEnvironmentConnection = {
-     AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
-     // HACK WORKAROUND. I would like to just reference the extra drivers
-     // similar to how the marker drivers are refereced aboved.
-     //    AnyFolder &ExtraDrivers = Main.ModelSetup.MocapDrivers.ExtraDrivers;
-     // However, it doesn't work because of ref-bug. Instead I include the drivers directly
-        #ifdef MOCAP_EXTRA_DRIVERS_FILE
-        #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
-        #endif
-   };
-   
+      AnyFolder ModelEnvironmentConnection ={
+        AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
+        AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
+      }; 
+      
   // Construct body model with muscles excluded
   #include "BodyModel_no_muscle_hack.any" 
 

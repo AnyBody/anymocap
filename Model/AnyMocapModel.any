@@ -40,15 +40,7 @@ Main = {
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection ={
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
-        
-        // HACK WORKAROUND. I would like to just reference the extra drivers
-        // similar to how the marker drivers are refereced aboved.
-        //    AnyFolder &ExtraDrivers = Main.ModelSetup.MocapDrivers.ExtraDrivers;
-        // However, it doesn't work because of the ref-bug. Instead we include the 
-        // drivers directly
-        #ifdef MOCAP_EXTRA_DRIVERS_FILE
-        #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
-        #endif
+        AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
       }; 
       
       // HACK WORKAROUND. It is necessary write joint angles to a file. 

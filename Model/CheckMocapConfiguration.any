@@ -22,6 +22,10 @@
 Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
+#ifndef MOCAP_EXTRA_DRIVERS_FILE 
+#path MOCAP_EXTRA_DRIVERS_FILE "ExampleFiles/ExtraDrivers_PlugInGait.any"
+#endif
+
 #ifndef MOCAP_FORCE_PLATE_FILE 
 #path MOCAP_FORCE_PLATE_FILE "ExampleFiles/ForcePlates_Type2.any"
 #endif
