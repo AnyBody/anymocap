@@ -35,3 +35,6 @@ Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #endif
 
+#ifndef MOCAP_C3DSETTINGS 
+#path  MOCAP_C3DSETTINGS  "C3DSettings.any"
+#endif

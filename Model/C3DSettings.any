@@ -8,13 +8,7 @@
     MarkerUseCamMaskOnOff = Off;
     PointsScaleFactor = 1/1000;
     MarkerDrawOnOff =On;
-    #ifdef MOCAP_IS_STANDING_REFERENCE 
-    #if MOCAP_IS_STANDING_REFERENCE == 1
-    #define DISABLE_C3D_FILTERS
-    #endif
-    #endif
-    
-    
+   
     // HACK_WORKAROUND. We need to disable filters when 
     // using recordings which has less data than 3 times filter order
     // This approach assumes a filter order of 2.
@@ -22,8 +16,8 @@
     AnalogFilterIndex = iffun(gtfun((Header.FirstFrameNo-Header.LastFrameNo+1)*Header.NoAnalogSamplesPer3DFrame,6 ), 1 ,-1);    
     
     Filter =  {
-      N = 2;
-      Fc = {5};
+      N = Main.ModelSetup.LabSpecificData.MarkerDataFilterOrder;
+      Fc = {Main.ModelSetup.LabSpecificData.MarkerDataCutOffFrequency };
       Type = LowPass;
     };
     
@@ -31,8 +25,8 @@
     AnyFunButterworthFilter LowPassFilter = {
       FilterForwardBackwardOnOff = On;
       AutomaticInitialConditionOnOff = On;
-      N = 2;
-      AnyVar CutOffFrequency=12;
+      N = Main.ModelSetup.LabSpecificData.AnalogDataFilterOrder ;
+      AnyVar CutOffFrequency=Main.ModelSetup.LabSpecificData.AnalogDataFilterCutOffFrequency ;
        
       AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
       W = {1/(iffun(eqfun(SampleFreq,0),100.0,SampleFreq)*0.5)*CutOffFrequency};

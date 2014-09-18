@@ -8,7 +8,13 @@
 
 // Gravity = -9.81*{0,0,1};
 
-
+// MarkerDataFilterOrder = 2;
+// MarkerDataCutOffFrequency = 5;
+// 
+// AnalogDataFilterOrder = 2;
+// AnalogDataFilterCutOffFrequency = 12;
+ 
+ 
 // TODO: Other things that could be added to the LabSpecificFile...
 // -C3D filter cutoff frequencies. 
 // -
