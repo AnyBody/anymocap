@@ -8,10 +8,6 @@
 // This is the name of the trial c3d file without extension
 TrialFileName = "Plug-in-gait";
 
-/// This is frame offset from the beginning of the C3D file 
-C3DFirstFrameOffset = 2;
-/// This is frame offset from the end of the C3D file 
-C3DLastFrameOffset = 2;
 
 
 /// The following settings define the initial posture of the

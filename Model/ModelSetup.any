@@ -44,17 +44,14 @@ AnyFolder ModelSetup = {
   
     
    // This is the C3D file used for the analysis
-  AnyInputC3D C3DFileData =   {
-    #include "C3DSettings.any"
+  AnyInputC3D C3DFileData =  {
+	#include "<MOCAP_C3DSETTINGS>"
   };
-
-  // Start and End times for the c3d file.
-  AnyIntVar FirstFrame = C3DFileData.Header.FirstFrameNo + TrialSpecificData.C3DFirstFrameOffset ; 
-  AnyIntVar LastFrame = C3DFileData.Header.LastFrameNo - TrialSpecificData.C3DLastFrameOffset ;
-  AnyFloatVar tStart = FirstFrame/C3DFileData.Header.VideoFrameRate;
-  AnyFloatVar tEnd = LastFrame/C3DFileData.Header.VideoFrameRate;
   
-  AnyIntVar nStep =(LastFrame-FirstFrame+1);
+  AnyFloat tStart = TrialSpecificData.tStart;
+  AnyFloat tEnd = TrialSpecificData.tEnd;
+  AnyInt nStep = TrialSpecificData.nStep;
+
   
   AnyFolder MocapDrivers = {
     #include "<MOCAP_MARKER_PROTOCOL_FILE>"

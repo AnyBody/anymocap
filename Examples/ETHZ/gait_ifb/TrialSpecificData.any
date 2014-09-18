@@ -8,11 +8,10 @@
 // This is the name of the trial c3d file without extension
 TrialFileName = "gait_ifb";
 
-/// This is frame offset from the beginning of the C3D file 
-C3DFirstFrameOffset = 2;
-/// This is frame offset from the end of the C3D file 
-C3DLastFrameOffset = 2;
-
+/// This the C3D frame where the analysis starts 
+FirstFrame = .C3DFileData.Header.FirstFrameNo;
+/// This the C3D frame where the analysis ends 
+LastFrame = .C3DFileData.Header.LastFrameNo;
 
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
