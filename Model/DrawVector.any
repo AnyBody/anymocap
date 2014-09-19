@@ -1,4 +1,13 @@
- AnyVar size=0.05;
+
+Line = { 
+#var AnyVec3 RGB1 = { iffun(.is_optimized,0, 1), iffun(.is_optimized,1, 0), 0};
+#var AnyVec3 RGB2 = RGB1;
+#var AnyVec3 RGB3 = RGB2;
+#var AnyVec3 RGB4 = RGB3;
+#var AnyVec3 RGB5 = RGB4;
+#var RGB = RGB5; 
+};
+#var AnyVar size=0.05;
 Visible = On;
 Line.Style = Line3DStyleFull;
 Line.Thickness=0.1*size;

@@ -1,7 +1,18 @@
 //This force plate has dynamic detection of which foot is touching the plate
-#class_template ForcePlateType2AutoDetection (PlateName, Folder,AnySeg &Limb1,AnySeg &Limb2, No,VerticalDirection,HeightTolerance,VelThreshold, Fx, Fy, Fz, Mx,My,Mz,FootPresent){
+#class_template ForcePlateType2AutoDetection (PlateName,
+                                              Folder,
+                                              AnySeg &Limb1,
+                                              AnySeg &Limb2, 
+                                              No,
+                                              VerticalDirection,
+                                              HeightTolerance,
+                                              VelThreshold,
+                                              Fx,Fy,Fz,
+                                              Mx,My,Mz,
+                                              FootPresent){
   
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
+  #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
 
   AnyFixedRefFrame Corners ={
     AnyVar CoordinateSystemSize= 0.1;
@@ -9,7 +20,11 @@
     AnyRefNode c01={
       AnyInt i=0;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][1],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][2]};
+      sRel=0.001*{
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
         Vec = {0.0,0,0};  //use zero length
@@ -22,7 +37,10 @@
     AnyRefNode c02={
       AnyInt i=1;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][1],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][2]};
+      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
         Vec = {0.0,0,0};  //use zero length
@@ -35,7 +53,9 @@
     AnyRefNode c03={
       AnyInt i=2;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][1],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][2]};
+      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       
       AnyDrawVector  DrawName = {
@@ -49,7 +69,9 @@
     AnyRefNode c04={
       AnyInt i=3;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][1],Folder.Groups.FORCE_PLATFORM.CORNERS.Data[No][i][2]};
+      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
         Vec = {0.0,0,0};  //use zero length
@@ -116,8 +138,7 @@
       AnyDrawSurf DrwBox = 
       {
         FileName = "box";
-        AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
-        AnyVar LoadRatio = ...OnOff*vnorm(...Force.Flocal) / (MaxLoad+ 0.001)  ;
+        AnyVar LoadRatio = ...OnOff*vnorm(...Force.Flocal) / (...MaxLoad+ 0.001)  ;
         RGB = 0.45*{1,1,1} ;
         ScaleXYZ=.Size/0.30;
         Opacity =0.20+ ...OnOff*(0.05+ 0.4* LoadRatio);
