@@ -1,0 +1,46 @@
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+
+
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+#include "../../Model/AnyMocapModel.any"
+
+Main = {
+Studies.ParameterIdentification= {
+    
+  // This illustrate how we can insert a DesVar to a KinOptStudy, and 
+  // how it changes the color of the arrow to green.
+  
+// The following macro will add a 
+#define OPTIMIZE_MARKER_POS(NAME, DIR) AnyDesVar &NAME##_##DIR= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB= {0,1,0};
+
+// If it is necessary to add the same marker direction in different parameter optimization studies
+// or color the arrow with difrent colors, then use the macros below.
+// The macro with the highest number takes precedence when coloring the arrows. 
+#define OPTIMIZE_MARKER_POS_1(NAME, DIR, R, G, B) AnyDesVar &NAME##_##DIR##_1= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB1= {R,G,B};
+#define OPTIMIZE_MARKER_POS_2(NAME, DIR, R, G, B) AnyDesVar &NAME##_##DIR##_1= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB1= {R,G,B};
+#define OPTIMIZE_MARKER_POS_3(NAME, DIR, R, G, B) AnyDesVar &NAME##_##DIR##_1= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB1= {R,G,B};
+#define OPTIMIZE_MARKER_POS_4(NAME, DIR, R, G, B) AnyDesVar &NAME##_##DIR##_1= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB1= {R,G,0};
+#define OPTIMIZE_MARKER_POS_5(NAME, DIR, R, G, B) AnyDesVar &NAME##_##DIR##_1= Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.DesVar##DIR;\
+                                    Main.ModelSetup.MocapDrivers.NAME.MarkerInsertionNode.NAME.Arrows.DIR.Line.RGB1= {R,G,B};
+
+                                    
+                                    
+                                    //  // This shows how to add the same DesVar if a model contains multiple
+//  // KinOptStudy classes. The arrow color is overridden by the second DesVar.
+//  // If multiple DesVars are created which link to the same arrow the highest number 
+//  // in take presendence. 
+//  #define OPT_MARKER_DIR_OTHERSTUDY(name, dir, number) AnyDesVar &name##_##number##_##dir = Main.ModelSetup.MocapDrivers.name.DesVarX; Main.ModelSetup.MocapDrivers.name.dir##ArrowRGB##number= {1,1,0};
+//     
+OPTIMIZE_MARKER_POS(CLAV,Z)
+OPTIMIZE_MARKER_POS_1(STRN,X,1,1,0)
+
+   
+   
+};
+};
