@@ -180,8 +180,9 @@ AnyFolder InitialPositionOfBody= {
   #var AnyVar FootLengthIni=0.25;
   #var AnyVar PelvisWidthIni=0.16; ///< distance between hip joints
   
-  #var AnyVar HeadHeightIni =0.14;///< height in neutral position from  C1HatNode to top of head
-  #var AnyVar TrunkHeightIni =0.620233;///< height in neautral position from  C1HatNode to L5SacrumJnt
+  #var AnyVar HeadHeightIni = 0.14;///< height in neutral position from  C1HatNode to top of head
+  #var AnyVar TrunkHeightIni = 0.620233;///< height in neautral position from  C1HatNode to L5SacrumJnt
+  #var AnyVar TrunkWidthIni = 0.332;
   #var AnyVar UpperArmLengthIni = 0.30;
   #var AnyVar LowerArmLengthIni =0.23;
   #var AnyVar HandLengthIni = 0.182;
