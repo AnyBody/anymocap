@@ -5,8 +5,10 @@
                                               FootLengthOnOff="Off",
                                               HeadHeightOnOff="Off",
                                               TrunkHeightOnOff="Off",
+                                              TrunkWidthOnOff = "Off",
                                               UpperArmLengthOnOff="Off",
                                               LowerArmLengthOnOff="Off",
+                                              HandLengthOnOff = "Off",
                                               HumanModel =HumanModel,
                                               ParameterOptStudy = ParameterIdentification ){
   
@@ -23,12 +25,17 @@
     #if PelvisWidthOnOff=="On"
     AnyDesVar PelvisWidth = {
       Val = .Lengths.PelvisWidth;
+      Min = 0.01;
+      Max = 1;
     };
     #endif
     
     #if ThighLengthOnOff =="On"
     AnyDesVar ThighLengths = {
       Val =.Lengths.Right.ThighLength;
+      Min = 0.01;
+      Max = 2;
+
     };
     #endif    
     
@@ -36,12 +43,16 @@
     #if ShankLengthOnOff =="On" 
     AnyDesVar ShankLengths = {
       Val = .Lengths.Right.ShankLength;
+      Min = 0.01;
+      Max = 2;
     };
     #endif
     
     #if FootLengthOnOff =="On"
     AnyDesVar FootLengths = {
       Val = .Lengths.Right.FootLength;
+      Min = 0.01;
+      Max = 1;
     };
     #endif
     
@@ -70,26 +81,50 @@
     #if HeadHeightOnOff =="On"
     AnyDesVar HeadHeight = {
       Val = .Lengths.HeadHeight;
+      Min = 0.01;
+      Max = 1;
     };
     #endif
     
     #if TrunkHeightOnOff =="On"
     AnyDesVar TrunkHeight = {
       Val = .Lengths.TrunkHeight;
+      Min = 0.01;
+      Max = 2;
     };
     #endif
-    
+    #if TrunkWidthOnOff =="On"
+    AnyDesVar TrunkWidth = {
+      Val = .Lengths.TrunkWidth ;
+      Min = 0.01;
+      Max = 2;
+    };
+    #endif    
     #if UpperArmLengthOnOff=="On"
     AnyDesVar UpperArmLength = {
       Val = .Lengths.UpperArmLength ;
+      Min = 0.01;
+      Max = 1;
     };
     #endif
     
     #if LowerArmLengthOnOff =="On"
     AnyDesVar LowerArmLength = {
       Val = .Lengths.LowerArmLength ;
+      Min = 0.01;
+      Max = 1;
     };
     #endif
+    
+    #if HandLengthOnOff =="On"
+    AnyDesVar HandLength = {
+      Val = .Lengths.HandLength ;
+      Min = 0.01;
+      Max = 1;
+    };
+    #endif
+    
+    
     
   };
   

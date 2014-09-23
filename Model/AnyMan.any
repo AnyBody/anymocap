@@ -79,6 +79,7 @@ AnyFolder AnthroSegmentLengths = {
   AnyVar PelvisWidth = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.PelvisWidthIni); //distance between hip joints
   AnyVar HeadHeight = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.HeadHeightIni );//height in neutral position from  C1HatNode to top of head
   AnyVar TrunkHeight = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.TrunkHeightIni );//height in neautral position from  C1HatNode to L5SacrumJnt
+  AnyVar TrunkWidth = DesignVar (Main.ModelSetup.SubjectSpecificData.Anthropometrics.TrunkWidthIni );//Width from acromium to acromieautral position from  C1HatNode to L5SacrumJnt
   AnyVar UpperArmLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.UpperArmLengthIni );
   AnyVar LowerArmLength =DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.LowerArmLengthIni );
   AnyVar HandLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.HandLengthIni );
