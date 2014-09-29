@@ -31,6 +31,14 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0,T0,T0};
+          #endif
+
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -65,6 +73,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -88,6 +103,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -112,6 +134,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -124,7 +153,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasureOrg &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
     AnyKinMeasureOrg &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
     AnyKinMeasureOrg &AnkleEversion = ...BodyModel.Interface.Left.AnkleEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
+    Reaction.Type=1000*{Off,Off,Off,Off,Off,Off};
   };
   #endif
   
@@ -135,6 +164,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -159,6 +195,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;
@@ -186,6 +229,13 @@ AnyFolder JointsAndDrivers = {
       AnyInputFile FileReader = {
           FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
           FileErrorContinueOnOff = On;
+          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+          //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
+          // to a bug 6.1 beta
+          ReloadOnOff = Off;
+          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
+          #endif
       };
       Type  = Bspline;
       BsplineOrder = 4;

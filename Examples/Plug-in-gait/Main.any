@@ -2,7 +2,7 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
 
-#define EXCLUDE_OPTIMIZED_DRIVERS
+//#define EXCLUDE_OPTIMIZED_DRIVERS
 
 #ifndef ANYMOCAP
 #path ANYMOCAP "../../Model/AnyMocapModel.any"
