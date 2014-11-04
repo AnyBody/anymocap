@@ -26,7 +26,7 @@ Main = {
     AnyOptKinStudy ParameterIdentification = {
       #include "KinematicStudyForParameterIdentification.any"
       Analysis = { AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;};    
-      ParameterOptimization.ConvergenceTol=1e-3; 
+      ParameterOptimization.ConvergenceTol=1e-4; 
     };
 
     // Kinematic study to generate joint angles
