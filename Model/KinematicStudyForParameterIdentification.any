@@ -17,7 +17,9 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
     nStep = min({70, Main.ModelSetup.nStep});
     Gravity = Main.ModelSetup.LabSpecificData.Gravity;
     tStart = Main.ModelSetup.tStart; 
-    tEnd = Main.ModelSetup.tEnd;
+    // HACK WORKAROUND We substract a little to avoid a bug
+    // which sometimes occur with AnyInterpolation Function. 
+    tEnd = Main.ModelSetup.tEnd - 0.001;
     
     InitialConditions.PreOperation= {
       AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
