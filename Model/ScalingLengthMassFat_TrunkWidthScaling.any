@@ -189,7 +189,7 @@ AnyFolder Scaling = {
       
       AnyFunTransform3DLin ScaleFunction = 
       {
-        ScaleMat = {{(.ms/.ls)^0.5, 0, 0},{0, (.ms/.ls)^0.5, 0},{0, 0, .ls}};
+        ScaleMat = {{.ms/(.ls*.ls), 0, 0},{0, .ls, 0},{0, 0, .ls}};
         Offset = {0, 0, 0};
       };      
     };
@@ -206,7 +206,8 @@ AnyFolder Scaling = {
       AnyVar ls = LengthScale;
       AnyVar ws = WidthScale;
       AnyFunTransform3DLin ScaleFunction = {
-        ScaleMat = {{.ms/(.ws *.ls), 0, 0},{0, .ls, 0},{0, 0, .ws}};
+        // This breaks the default concept of LengthMassFat scaling.
+        ScaleMat = {{ .ws , 0, 0},{0, .ls, 0},{0, 0, .ws}};
         Offset = {0,0,0};
       };
     };
@@ -216,14 +217,29 @@ AnyFolder Scaling = {
       AnyVar ms = ..MassScaling.Head.MassScale;
       AnyVar ls = LengthScale;
       AnyFunTransform3DLin ScaleFunction = {
-        ScaleMat = {{(.ms/.ls)^0.5, 0, 0},{0, .ls, 0},{0, 0, (.ms/.ls)^0.5}};
+        ScaleMat = {{.ls, 0, 0},{0, .ls, 0},{0, 0, .ls}};
         Offset = {0,0,0};
       };
     };
     
     
     AnyFolder Cervical = {
-      AnyFunTransform3DLin &ScaleFunction = .Head.ScaleFunction;
+      AnyVar LengthScale = (..AnthroSegmentLengths.NeckLength / ..StandardParameters.Neck.Length);
+      // HackWorkAround to add the width to the standard parameters
+      AnyFolder &stdpar = ..StandardParameters;
+      stdpar = {
+        AnyFolder Neck = {
+           AnyVar Length = 0.1357; // Distance beween the C7T1 joint to C1C0 joint. 
+        };
+      };
+      AnyVar ms = ..MassScaling.Cervical.MassScale;
+      AnyVar ls = LengthScale;
+      AnyFunTransform3DLin ScaleFunction = {
+        // This breaks the default concept of LengthMassFat scaling.
+        ScaleMat = {{ (.ms/.ls)^0.5 , 0, 0},{0, .ls, 0},{0, 0, (.ms/.ls)^0.5}};
+        Offset = {0,0,0};
+      };
+    
     };
     
     AnyFolder &PelvisSeg = Pelvis;    

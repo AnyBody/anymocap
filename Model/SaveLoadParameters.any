@@ -10,8 +10,10 @@
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ThighLength,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.ShankLength,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.Right.FootLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.NeckLength,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.HeadHeight,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkHeight,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkWidth ,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.UpperArmLength,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength};
         Target = Source;
