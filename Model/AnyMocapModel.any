@@ -77,7 +77,10 @@ Main = {
       tEnd = Main.ModelSetup.tEnd-2*Kinematics.ApproxVelAccPerturb ;
       nStep= max({1, Main.ModelSetup.nStep-4}); 
       
-      InitialConditions.PreOperation = {AnyOperation &SetView = Main.ModelViews.All_without_marker_arrows;};
+      InverseDynamics.PreOperation = {
+        AnyOperation &SetView = Main.ModelViews.All_without_marker_arrows; 
+      };
+      
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
     };
     
