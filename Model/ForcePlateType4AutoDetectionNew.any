@@ -1,27 +1,26 @@
 #import "AnyTest_Templates.any"
 
-#class_template ForcePlateType2AutoDetection (PlateName,
+#class_template ForcePlateType4AutoDetection (PlateName,
                                               Folder,
-                                              AnySeg &Limb1,
-                                              AnySeg &Limb2, 
-                                              No,
-                                              VerticalDirection,
+                                              AnyRefFrame &Limb1,
+                                              AnyRefFrame &Limb2, 
+                                              No,VerticalDirection,
                                               HeightTolerance,
-                                              VelThreshold,
-                                              Fx,Fy,Fz,
+                                              VelThreshold, 
+                                              Fx, Fy, Fz, 
                                               Mx,My,Mz,
                                               FootPresent){
   
+  #var AnyFloat Cal = Folder.Groups.FORCE_PLATFORM.CAL_MATRIX[No];  
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
-  #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
-
+  
   AnyIntVar Force_Plate_Type = Folder.Groups.FORCE_PLATFORM.TYPE.Data[No];
-  ASSERT_EQ AssertForcePlateType (
+  ASSERT_EQ CorrectForcePlateType (
    val1 = .Force_Plate_Type, 
-   val2 = 2,
+   val2 = 4,
    Err = "Force-plate type appears to inconsistant with this force-plate template"
   ) = {};
-    
+  
   
   AnyFixedRefFrame Corners ={
     AnyVar CoordinateSystemSize= 0.1;
@@ -30,9 +29,9 @@
       AnyInt i=0;
       AnyInt plnr=No;
       sRel=0.001*{
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -47,9 +46,9 @@
       AnyInt i=1;
       AnyInt plnr=No;
       sRel=0.001*{
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -64,9 +63,10 @@
       AnyInt i=2;
       AnyInt plnr=No;
       sRel=0.001*{
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       
       AnyDrawVector  DrawName = {
@@ -80,9 +80,11 @@
     AnyRefNode c04={
       AnyInt i=3;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
+      sRel=0.001*{
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
         Vec = {0.0,0,0};  //use zero length
@@ -90,7 +92,6 @@
         Text = "4"; //make reference to name
         Line.RGB={1,0,0};//make reference to color
       };
-      
     };
     
     AnyRefNode PlateCenter={
@@ -99,12 +100,9 @@
       AnyVec3 p2=0.5*(.c01.sRel+.c04.sRel);
       AnyVec3 p3=0.5*(.c01.sRel+.c02.sRel);
       ARel =RotMat(p1,p2,p3);
-      
+      //      AnyDrawRefFrame drw={ScaleXYZ=..CoordinateSystemSize*{1,1,1};RGB={0,1,0};};
     };
-    
   };
-  
-  
   
   
   AnySeg ForcePlate={
@@ -125,18 +123,16 @@
     {
       TriggerConst = iffun(gteqfun(.z_check,0), 1, 0);
       Type = MSG_Message ;
-      Message = "The older AMTI origin has its Z value as positive. So this value is converted automatically. Please refer to www.c3d.org/HTML/type21.htm.";
-    };
+      Message = "The Origin of this force plate is written as positive. So this value will be converted as negative automatically. Please refer to www.c3d.org/HTML/type41.htm ";
+    };    
     //Transducer location      
-    AnyRefNode TransducerLocation =
-    {
+    AnyRefNode TransducerLocation ={
       AnyFloat Origins= Folder.Groups.FORCE_PLATFORM.ORIGIN.Data;
       AnyVar xdist=.z_check*Origins[.plnr][0]*Folder.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
       AnyVar ydist=.z_check*Origins[.plnr][1]*Folder.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
       AnyVar zdist=.z_check*Origins[.plnr][2]*Folder.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
-      
       sRel={xdist,ydist,zdist};
-//      AnyDrawRefFrame drw={ScaleXYZ=0.4*{1,1,1};RGB={1,0,0};};
+      AnyDrawRefFrame drw={ScaleXYZ=0.4*{1,1,1};RGB={1,0,0};};
     };
     
     AnyRefNode PlateGraphics =
@@ -156,8 +152,7 @@
         Opacity =0.20+ ...OnOff*(0.05+ 0.4* LoadRatio);
         Face=-1;
       };
-    };
-    
+    };   
   };  
   
   AnyKinEqSimpleDriver ForcePlateDriver ={
@@ -177,8 +172,6 @@
     Reaction.Type = {Off,Off,Off,Off,Off,Off};
   };
   
-  
-  
   AnyFloatVar tStart = Folder.Header.FirstFrameNo/Folder.Header.VideoFrameRate;
   AnyFloatVar tEnd =  (Folder.Header.LastFrameNo+1)/Folder.Header.VideoFrameRate;
   AnyInt NoAnalogData= (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo +1)*Folder.Header.NoAnalogSamplesPer3DFrame;
@@ -188,9 +181,8 @@
   AnyFunInterpol load ={
     Type=PiecewiseLinear;
     T=.Time;
-    Data={Fx,Fy,Fz,Mx,My,Mz};
+    Data=.Cal'*{Fx,Fy,Fz,Mx,My,Mz};
   }; 
-  
   
   AnyVar FzTotal=load(ForcePlateDriver.t)[2];
   AnyVar OnOff=iffun(gtfun(-FzTotal,10.0),1.0,0.0);
@@ -198,8 +190,9 @@
   AnyForce3D Force ={
     
     AnyRefFrame  &ref=.ForcePlate.TransducerLocation ;
-    Flocal= .OnOff*{.load(.ForcePlateDriver.t)[0],.load(.ForcePlateDriver.t)[1],.load(.ForcePlateDriver.t)[2]};
-    AnyDrawVector DrawForce =     {
+    Flocal=.OnOff*{.load(.ForcePlateDriver.t)[0],.load(.ForcePlateDriver.t)[1],.load(.ForcePlateDriver.t)[2]};
+    AnyDrawVector DrawForce = 
+    {
       AnyRefFrame &ref=.ref;
       Vec=.Flocal*1/1000;
       PointAway = Off;
@@ -211,12 +204,9 @@
       Line.End.Length = 4*0.01;
       GlobalCoord=Off;
     };
-    
-    
   };  
   
-  
-  AnyMoment3D Moment =
+  AnyMoment3D Moment = 
   {
     AnyRefFrame  &ref=.ForcePlate.TransducerLocation ;
     Mlocal=.OnOff*{.load(.ForcePlateDriver.t)[3],.load(.ForcePlateDriver.t)[4],.load(.ForcePlateDriver.t)[5]}*Folder.PointsScaleFactor;
@@ -238,12 +228,12 @@
   {
      AnyForceMomentMeasure2 NetEffectMeasure = 
      {
-       AnyRefFrame& ref = ..ForcePlate;
-       AnyForceBase& Forces = ..Force;
-       AnyForceBase& Moments = ..Moment;
-       
-       AnyVec3 Flocal = F*ref.Axes;
-       AnyVec3 Mlocal = M*ref.Axes;
+         AnyRefFrame& ref = ..ForcePlate;
+         AnyForceBase& Forces = ..Force;
+         AnyForceBase& Moments = ..Moment;
+         
+         AnyVec3 Flocal = F*ref.Axes;
+         AnyVec3 Mlocal = M*ref.Axes;
      };
      
      AnyVar fx = NetEffectMeasure.Flocal[0]; 
@@ -264,14 +254,14 @@
      AnyRefFrame& ref_ForcePlate = .ForcePlate;
      ref_ForcePlate  = 
      {
-       AnyDrawSphere COP_ball = 
-       {
-         RGB = {0,1,0};
-         ScaleXYZ = 0.015 *{1,1,1};
-         //Opacity = iffun(gtfun(..fz, -10.0), 0.0, 1.0);
-         Opacity = ..OnOff;
-         Position = {..Vx, ..Vy, ..Vz};
-       };       
+        AnyDrawSphere COP_ball = 
+        {
+            RGB = {0,1,0};
+            ScaleXYZ = 0.015 *{1,1,1};
+            //Opacity = iffun(gtfun(..fz, -10.0), 0.0, 1.0);
+            Opacity = ..OnOff;
+            Position = {..Vx, ..Vy, ..Vz};
+        };       
      };
      
      AnyDrawLine Line = 
@@ -289,7 +279,7 @@
      };
      
   };  
-  
+   
   #if VerticalDirection=="X"
   AnyIntArray Index={1,2,0};
   #endif
@@ -379,5 +369,3 @@
     };
   };
 };
-
-
