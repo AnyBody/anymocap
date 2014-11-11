@@ -7,8 +7,8 @@ Anthropometrics={
   // the optimization alogorithm the optimization algoritm will
   // allow changes to the segment lengths 
   ThighLengthIni= 0.41; 
-  ShankLengthIni= 0.42;
-  FootLengthIni=0.25;
+  ShankLengthIni= 0.40;
+  FootLengthIni=0.22;
   PelvisWidthIni=0.16; ///< distance between hip joints
   
   HeadHeightIni =0.13;///< height in neutral position from  C1HatNode to top of head
