@@ -2,29 +2,7 @@
 
 AnyFolder JointsAndDrivers = {
   
-  #ifdef TRANSFER_JOINT_ANGLES 
-    AnyOperationSetValue Transfer = 
-    {
-         Source = {&Main.Studies.KinematicStudy.Output.JointAngleOutputs.Time};
-         Target = {&.Time};
-    };  
-    
-   AnyVector Time = DesignVar(0.0*farr(0.0,1.0,Main.Studies.KinematicStudy.nStep) ); 
-  
-  #endif
-  
-  // HACK workaround to avoid loading the drivers unless the files exist
-  #ifndef JOINT_AND_DRIVERS_OPTIMIZED
-     #ifndef EXCLUDE_OPTIMIZED_DRIVERS
-     #define JOINT_AND_DRIVERS_OPTIMIZED 1
-     #else
-     #define JOINT_AND_DRIVERS_OPTIMIZED 0
-     #endif
-  #endif
-
-
-#if JOINT_AND_DRIVERS_OPTIMIZED == 1
-  
+ 
 
   AnyKinDriver JntDriverTrunk = {
     AnyFunInterpol InterpolatedData = {
@@ -34,7 +12,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0,T0,T0};
           #endif
@@ -76,7 +54,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
           #endif
@@ -106,7 +84,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
           #endif
@@ -137,7 +115,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
           #endif
@@ -167,7 +145,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
           #endif
@@ -198,7 +176,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
           #endif
@@ -232,7 +210,7 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = Off;
+          ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
           Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
           #endif
@@ -258,7 +236,6 @@ AnyFolder JointsAndDrivers = {
   #endif
   
   
-#endif
 };
 
 

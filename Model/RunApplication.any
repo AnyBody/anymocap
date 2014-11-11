@@ -32,6 +32,9 @@ Main = {
       AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
     };
     
+    AnyOperationMacro UpdateValues = {
+      MacroStr = {"classoperation Main" + strquote("Update Values")};
+    };
     
     AnyOperationSequence InverseDynamics = {
       AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicsStudy.InverseDynamics;
