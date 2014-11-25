@@ -15,9 +15,20 @@
   #var AnyVar ConstMarkerWeightY = WeightY;
   #var AnyVar ConstMarkerWeightZ = WeightZ;
   AnyFunConst FunConstMarkerWeights ={ Value = {.ConstMarkerWeightX , .ConstMarkerWeightY , .ConstMarkerWeightZ };};
-
-
+  
+  
   #if UseC3DWeightResiduals == "On"
+    // TODO: Add check that residuals are created. This not possible here since eqfun is not implemented for enum's
+//    AnyMessage check_that_residual_are_created= 
+//    {
+//      TriggerPreProcess = eqfun(Main.ModelSetup.C3D_OBJECT.ConstructWeightFunUsingResidualOnOff, Off);
+//      Type = MSG_ErrorFatal;
+//      Message = "To use C3D residual weights, please activate ConstructWeightFunUsingResidualOnOff in the C3D object";
+//    };
+    Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.Weight.OutputValues = 
+      {{0, ConstMarkerWeightX },
+       {0, ConstMarkerWeightY },
+       {0, ConstMarkerWeightZ}};
     #var AnyObjectPtrVar MarkerWeightsPtr = &Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.Weight;
   #else
     #var AnyObjectPtrVar MarkerWeightsPtr = &FunConstMarkerWeights;
