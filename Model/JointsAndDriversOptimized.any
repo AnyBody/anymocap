@@ -1,8 +1,8 @@
 
 
 AnyFolder JointsAndDrivers = {
-  
- 
+  // Macro for initializing a empty mxn matrix
+  #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
 
   AnyKinDriver JntDriverTrunk = {
     AnyFunInterpol InterpolatedData = {
@@ -14,7 +14,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0,T0,T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
 
       };
@@ -56,7 +56,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -86,7 +86,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -117,7 +117,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -147,7 +147,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -178,7 +178,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -212,7 +212,7 @@ AnyFolder JointsAndDrivers = {
           // to a bug 6.1 beta
           ReloadOnOff = On;
           T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
-          Data0 = 0.0*{T0,T0,T0, T0,T0,T0, T0,T0,T0, T0};
+          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
