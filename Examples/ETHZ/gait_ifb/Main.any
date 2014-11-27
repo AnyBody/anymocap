@@ -2,6 +2,8 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_LAB_SPECIFIC_DATA "../LabSpecificData.any"
 
+#path AMMR_PATH "e:\Users\JDT\AMMRs\ABT\1.6\Trunk\AMMR-public\"
+
 #define EXCLUDE_OPTIMIZED_DRIVERS
 
 #ifndef ANYMOCAP

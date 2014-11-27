@@ -1,0 +1,29 @@
+#path MOCAP_SUBJECT_SPECIFIC_DATA "SubjectSpecificData.any"
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
+
+#define EXCLUDE_OPTIMIZED_DRIVERS
+
+#ifndef ANYMOCAP
+#path ANYMOCAP "../../Model/AnyMocapModel.any"
+#endif
+
+#include "<ANYMOCAP>"
+
+
+#import "../../Model/Normalized_abscissa_template.any"
+Main = {
+  Main.Studies.KinematicStudy = {
+    
+     Normalized_Absicssa Left_GaitCycle (Study = Main.Studies.KinematicStudy) = {
+        Event1 = Main.ModelSetup.C3DFileData.Groups.EVENT.TIMES.Data[0][1];
+        Event2 = Main.ModelSetup.C3DFileData.Groups.EVENT.TIMES.Data[3][1];
+     };
+     Normalized_Absicssa Right_GaitCycle (Study = Main.Studies.KinematicStudy) = {
+        Event1 = Main.ModelSetup.C3DFileData.Groups.EVENT.TIMES.Data[1][1];
+        Event2 = Main.ModelSetup.C3DFileData.Groups.EVENT.TIMES.Data[2][1];
+     };
+     
+  };
+
+};
