@@ -182,8 +182,7 @@
   AnyFloatVar tStart = Folder.Header.FirstFrameNo/Folder.Header.VideoFrameRate;
   AnyFloatVar tEnd =  (Folder.Header.LastFrameNo+1)/Folder.Header.VideoFrameRate;
   AnyInt NoAnalogData= (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo +1)*Folder.Header.NoAnalogSamplesPer3DFrame;
-  AnyFloat Time= farr( tStart, (tEnd-tStart)/NoAnalogData,  NoAnalogData);
-  
+  AnyFloat Time= farr( tStart, (tEnd-tStart)/( NoAnalogData - 1) ,  NoAnalogData);
   
   AnyFunInterpol load ={
     Type=PiecewiseLinear;
