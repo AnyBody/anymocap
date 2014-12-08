@@ -10,7 +10,7 @@
   
   
  #ifndef TEMP_PATH
- #path TEMP_PATH "<ANYBODY_PATH_MAINFILEDIR>/Tmp/"
+ #path TEMP_PATH "Tmp/"
  #endif
   
  #ifndef ANYBODY_PATH_OUTPUT
@@ -43,6 +43,7 @@
  #import "ForcePlateType4AutoDetectionNew.any"
  #import "TrialSubjectLabSpecificDataTemplates.any"
  #import "AutomaticInitialPositionOfBody.any"
+ #import "Normalized_abscissa_template.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2.any"
 // #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3AutoDetection.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3.any"
