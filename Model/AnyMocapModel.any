@@ -1,9 +1,5 @@
 #include "IncludeFile.any"
 
-// HACK WORKAROUND. Needed to load the model when no joint angles files exist
-//#define EXCLUDE_OPTIMIZED_DRIVERS
-
-
 Main = {
     
   
