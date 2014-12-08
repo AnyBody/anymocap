@@ -7,13 +7,17 @@
 
   #var AnyVar Event1 = Study.tStart;
   #var AnyVar Event2 = Study.tEnd;
+  
+  AnyVar start_val = -100*(Event1 - Study.tStart)/(Event2-Event1);
+  
+  AnyVar step_val = iffun(eqfun(Study.nStep,1),
+                          1.0, 
+                          ( 100*(Study.tEnd-Study.tStart)/(Event2-Event1) ) /
+                           iffun(eqfun(Study.nStep,1), 1, Study.nStep-1)  );
                  
   // The (0*t) term is hack to make AMS include the expression in the output folder. 
-  AnyFloat Abscissa = 0*Study.t + 
-                          farr( -100*(Event1 - Study.tStart)/(Event2-Event1) ,
-                                ( 100*(Study.tEnd-Study.tStart)/(Event2-Event1) ) /(Study.nStep-1),
-                                Study.nStep 
-                               )[Study.iStep];  
+  AnyFloat Abscissa = 0*Study.t + farr( start_val, step_val , Study.nStep )[Study.iStep];  
+
 };
 
 
