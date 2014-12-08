@@ -3,4 +3,4 @@
  InitialConditions.SolverType = KinSolOverDeterminate;
  Kinematics.SolverType = KinSolOverDeterminate;
  InitialConditions.KinematicTol=1e-3;
- Kinematics.KinematicTol=1e-4; 
+ Kinematics.KinematicTol=1e-5; 
