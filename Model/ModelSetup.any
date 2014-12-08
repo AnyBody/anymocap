@@ -19,17 +19,18 @@ AnyFolder ModelSetup = {
     // variables get a default value if they are not specified
     // by the user.
   
-    CreateLabFolder LabSpecificData = {
-      #include "<MOCAP_LAB_SPECIFIC_DATA>"
+    CreateTrialFolder TrialSpecificData = {
+        #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
     };
-    
+
     CreateSubjectFolder SubjectSpecificData = {
       #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
     };
     
-    CreateTrialFolder TrialSpecificData = {
-        #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
+    CreateLabFolder LabSpecificData = {
+      #include "<MOCAP_LAB_SPECIFIC_DATA>"
     };
+    
     
    // This file checks if all the defines statements 
    // are made correctly.
@@ -63,7 +64,29 @@ AnyFolder ModelSetup = {
 
   
   //markers adds macros automatically into this folder
-  AnyFolder Macros =  {};
+  AnyFolder Macros =  {
+//    AnyOperationMacro SaveOutputToHDF = {
+//       MacroStr = { "classoperation Main.Studies.KinematicStudy.Output" + strquote("Save data") +
+//                    "--type= " + strquote("Deep") + 
+//                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_KinematicStudy.anydata.h5"),
+//                    
+//                    "classoperation Main.Studies.InverseDynamicsStudy.Output" + strquote("Save data") +
+//                    "--type= " + strquote("Deep") + 
+//                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicsStudy.anydata.h5")};
+//    };
+//    AnyOperationMacro LoadOutputToHDF = {
+//       MacroStr = { "classoperation Main.Studies.KinematicStudy.Output" + strquote("Load data") +
+//                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_KinematicStudy.anydata.h5"),
+//                    
+//                    "classoperation Main.Studies.InverseDynamicsStudy.Output" + strquote("Load data") +
+//                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicsStudy.anydata.h5")};
+//    };
+// 
+};
   
 };
 
