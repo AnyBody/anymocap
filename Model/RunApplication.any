@@ -1,13 +1,16 @@
 Main = {
+//  AnyOperationSequence SaveModel = {
+//    AnyOperation &SaveAnySetParameters = .RunApplication.SaveParameters;
+//
+//};
+//  AnyOperationSequence LoadModel = {};
+  
+  
+  
   AnyOperationSequence RunApplication = {
     
     AnyOperationSequence LoadParameters = {
-         AnyOperationMacro LoadDesign = {
-           MacroStr = {"classoperation Main.Studies.ParameterIdentification" + strquote("Load design") + "--file=" +
-                       strquote(TEMP_PATH + "/"+ MOCAP_OUTPUT_FILENAME_PREFIX + 
-                       Main.ModelSetup.TrialSpecificData.TrialFileName + "_OptimizedParameters.txt"),
-                       "classoperation Main"+strquote("Update Values") };
-         };    
+        AnyOperationDummy placeholder_operation= {};
     };
     
     
@@ -18,13 +21,7 @@ Main = {
     
     
     AnyOperationSequence SaveParameters = {
-       AnyOperationMacro SaveDesign = {
-         MacroStr = {"classoperation Main.Studies.ParameterIdentification" + strquote("Save design") + "--file=" +
-                     strquote(TEMP_PATH + "/"+ MOCAP_OUTPUT_FILENAME_PREFIX + 
-                     Main.ModelSetup.TrialSpecificData.TrialFileName + "_OptimizedParameters.txt")};
-       };
-    
-    
+        AnyOperationDummy placeholder_operation= {};
     };
     
     
