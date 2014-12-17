@@ -1,0 +1,135 @@
+#class_template KinLimitsDriver2(AnyKinMeasure &KinMeasure ) {
+
+  
+#var AnyVar LowerLimit; 
+#var AnyVar HighLimit;
+  
+#var AnyVar DriverPhaseIn = 0.05*(HighLimit - LowerLimit) ;
+#var AnyVar LowerLimitHard= -1.99*pi;//LowerLimit - DriverPhaseIn ;
+#var AnyVar HighLimitHard= 1.99*pi;//HighLimit + DriverPhaseIn ;
+
+#var AnyVar CoeffFactor = 8;
+#var AnyInt PowerIndex = 6;
+
+AnyFunInterpol JointLimitErrorFunction= 
+{
+ 
+  #var AnyIntVar T_left_steps = 100;
+  AnyVar T_left_delta = (.LowerLimit - .LowerLimitHard)/T_left_steps;
+  AnyVector T_left_base = farr(.LowerLimitHard, T_left_delta, T_left_steps+1);
+  AnyVector T_left = T_left_base ;
+  AnyVector T_left_offset = T_left_base - .LowerLimit;
+  AnyVector Data_left = pow(-1, .PowerIndex)*.CoeffFactor*pow(T_left_offset, .PowerIndex) ;
+  
+  #var AnyIntVar T_mid_steps = 100;
+  AnyVar T_mid_delta = (.HighLimit - .LowerLimit)/T_mid_steps;
+  AnyVector T_mid = arrcat(
+  arrcat( 
+  (.LowerLimit + T_mid_delta) - {3/4*T_mid_delta, 2/4*T_mid_delta, 1/4*T_mid_delta},
+  farr(.LowerLimit + T_mid_delta , T_mid_delta, T_mid_steps-1)
+  ),
+  (.HighLimit - T_mid_delta) + {1/4*T_mid_delta, 2/4*T_mid_delta, 3/4*T_mid_delta}
+  );
+  AnyVector Data_mid = arrcat(arrcat({0.0, 0.0, 0.0}, 0.0*farr(0.0, 1.0, T_mid_steps-1)), {0.0, 0.0, 0.0});
+  
+  #var AnyIntVar T_right_steps = 100;
+  AnyVar T_right_delta = (.HighLimitHard - .HighLimit)/T_right_steps;
+  AnyVector T_right_base = farr(.HighLimit, T_right_delta, T_right_steps+1);  
+  AnyVector T_right = T_right_base;
+  AnyVector T_right_offset = T_right_base - .HighLimit;
+  AnyVector Data_right = pow(1, .PowerIndex)*.CoeffFactor*pow(T_right_offset, .PowerIndex);
+  
+  AnyVector T_total = arrcat(arrcat(T_left, T_mid), T_right);
+  AnyVector Data_total = arrcat(arrcat(Data_left, Data_mid), Data_right);
+  
+  Type = Bspline;
+  T = T_total ;
+  Data = {Data_total} ;
+};
+
+
+AnyKinMeasureFunComb1 JointLimitMeasure = {
+  Functions = {&.JointLimitErrorFunction};
+  AnyKinMeasure &ref = .KinMeasure;
+};
+
+AnyKinEqSimpleDriver JointLimitDriver = 
+{
+  AnyKinMeasureFunComb1 & ref = .JointLimitMeasure;
+  DriverPos = {0};
+  DriverVel = {0};
+  Reaction.Type = {Off};
+  CType = {Soft};
+  AnyFunConst ConstFun = { Value = {1}; };
+  WeightFun = {&ConstFun};      
+};
+
+
+};
+
+
+
+
+
+#class_template KinLimitsDriver(AnyKinMeasure &KinMeasure ) {
+
+  
+#var AnyVar LowerLimit; 
+#var AnyVar HighLimit;
+  
+#var AnyVar DriverPhaseIn = 0.05*(HighLimit - LowerLimit) ;
+#var AnyVar LowerLimitHard= LowerLimit - DriverPhaseIn ;
+#var AnyVar HighLimitHard= HighLimit + DriverPhaseIn ;
+
+#var AnyVar ErrorAtHardLimit = 0.05;
+
+#var AnyVar MeasureConversion = 1;
+
+
+AnyFunInterpol JointLimitErrorFunction= 
+{
+ 
+  AnyVar x_max = 1e8;
+  AnyVar x_min = -1e8;
+  AnyFloat x_arr = { x_min , .LowerLimitHard, .LowerLimit, .HighLimit, .HighLimitHard, x_max };
+  
+  AnyVar ValueAtPositiveExtreame = .ErrorAtHardLimit * (x_max - .HighLimitHard) / ( .HighLimitHard - .HighLimit) +.ErrorAtHardLimit ;
+  AnyVar ValueAtNegativeExtreame = .ErrorAtHardLimit * (x_min - .LowerLimitHard ) / ( .LowerLimitHard - .LowerLimit ) +.ErrorAtHardLimit ;
+  
+  
+  AnyFloat data = {  ValueAtNegativeExtreame ,.ErrorAtHardLimit,0,0, .ErrorAtHardLimit, ValueAtPositiveExtreame    };
+  
+  Type = PiecewiseLinear ;
+  T = x_arr ;
+  Data = {data } ;
+};
+
+AnyFunInterpol &FT = JointLimitErrorFunction;
+AnyFloat Test = {FT (-10.0), FT( 5.0), FT (0.0), FT (5.0), FT (10.0)}; 
+
+AnyKinMeasureFunComb1 JointLimitMeasure = {
+  AnyKinMeasureLinComb ConvertedMeasure = {
+    AnyKinMeasure &ref = ..KinMeasure;
+    Coef  = {{..MeasureConversion }};
+    OutDim = 1;
+  };
+  Functions = {&.JointLimitErrorFunction};
+};
+
+AnyKinEqSimpleDriver JointLimitDriver = 
+{
+  AnyKinMeasureFunComb1 & ref = .JointLimitMeasure;
+  DriverPos = {0};
+  DriverVel = {0};
+  Reaction.Type = {Off};
+  CType = {Soft};
+  AnyFunConst ConstFun = { Value = {1}; };
+  WeightFun = {&ConstFun};      
+};
+
+
+};
+
+
+
+
