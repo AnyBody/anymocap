@@ -15,7 +15,9 @@
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkHeight,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.TrunkWidth ,
           &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.UpperArmLength,
-          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength};
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.LowerArmLength,
+          &Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths.HandLength
+        };
         Target = Source;
       };     
       AnyOperationMacro SaveToFile = {
