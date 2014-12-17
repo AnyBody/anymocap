@@ -21,9 +21,13 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
     // which sometimes occur with AnyInterpolation Function. 
     tEnd = Main.ModelSetup.tEnd - 0.001;
     
-    InitialConditions.PreOperation= {
-      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
-    };
+//    InitialConditions.PreOperation= {
+//      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
+//    };
+//    Kinematics.PreOperation= {
+//      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
+//    };
+
 
   };
   AnyOperationMacro SaveParameters = {

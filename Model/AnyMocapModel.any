@@ -44,7 +44,7 @@ Main = {
       
       #include "KinematicSettings.any"
       
-      InitialConditions.PreOperation= {AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles;  };
+//      InitialConditions.PreOperation= {AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles;  };
       nStep= Main.ModelSetup.nStep; 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.tStart; 
