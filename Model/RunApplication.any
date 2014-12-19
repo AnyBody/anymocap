@@ -15,7 +15,8 @@ Main = {
     
     
     AnyOperationSequence ParameterIdentification = {
-      AnyOperation &StartParameterOpt = Main.Studies.ParameterIdentification.ParameterOptimization;
+        AnyOperationDummy placeholder_operation= {};
+//      AnyOperation &StartParameterOpt = Main.Studies.ParameterIdentification.ParameterOptimization;
       
     };
     
