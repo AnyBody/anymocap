@@ -14,7 +14,7 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
     #include "KinematicSettings.any"
   
   
-    nStep = min({70, Main.ModelSetup.nStep});
+    nStep = min({100, Main.ModelSetup.nStep});
     Gravity = Main.ModelSetup.LabSpecificData.Gravity;
     tStart = Main.ModelSetup.tStart; 
     // HACK WORKAROUND We substract a little to avoid a bug
