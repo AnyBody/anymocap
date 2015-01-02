@@ -138,7 +138,7 @@ AnyFolder Right = {
   #var AnyVar HipFlexion = .RightHipRotations.zRot*180/pi;
   #var AnyVar HipAbduction = -.RightHipRotations.xRot*180/pi;
   #var AnyVar HipExternalRotation = 0;
-  #var AnyVar KneeFlexion = .RightKneeRotations.zRot*180/pi;
+  #var AnyVar KneeFlexion = -.RightKneeRotations.zRot*180/pi;
   #var AnyVar AnklePlantarFlexion = -.RightAnkleRotations.zRot*180/pi;
   #var AnyVar SubTalarEversion = 0;
   
@@ -156,7 +156,7 @@ AnyFolder Left = {
   #var AnyVar HipFlexion = .LeftHipRotations.zRot*180/pi;
   #var AnyVar HipAbduction = .LeftHipRotations.xRot*180/pi;
   #var AnyVar HipExternalRotation = 0;
-  #var AnyVar KneeFlexion = .LeftKneeRotations.zRot*180/pi;
+  #var AnyVar KneeFlexion = -.LeftKneeRotations.zRot*180/pi;
   #var AnyVar AnklePlantarFlexion = -.LeftAnkleRotations.zRot*180/pi;
   #var AnyVar SubTalarEversion = 0;
         
