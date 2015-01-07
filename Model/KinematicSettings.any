@@ -2,5 +2,5 @@
  InitialConditions.PosAnalysisOnlyOnOff = On;
  InitialConditions.SolverType = KinSolOverDeterminate;
  Kinematics.SolverType = KinSolOverDeterminate;
- InitialConditions.KinematicTol=1e-3;
+ InitialConditions.KinematicTol=1e-5;
  Kinematics.KinematicTol=1e-5; 
