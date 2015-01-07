@@ -1,31 +1,22 @@
 
-
-// HACK_WORKAROUND. Using defines statements is necessary 
-// nice the ref bug forces us to include the ExtraDrivers.any
-// in several places. 
-#ifndef _EXTRA_DRIVERS_
-#define _EXTRA_DRIVERS_
-
 Main.EnvironmentModel.GlobalRef = {
   AnyRefNode RotNode = {ARel = RotMat(pi/2,x); };
 };
 
 // These drivers are included for all trials.
-#define _STERNO_CLAVICULA_DRIVER
+//#define _STERNO_CLAVICULA_DRIVER
+#define _HARD_NECK_DRIVER
 
 // These drivers are included in the standing reference trial
-#ifdef USE_STANDING_REFERENCE_AUXILARY_DRIVERS
+#ifdef _STANDING_REFERENCE_
    #define _FOOT_FLAT_ON_GROUND_DRIVER
-   #define _SKULL_LOOK_STRAIGHT_DRIVER
-   #define _STERNO_CLAVICULA_PROTRACTION_DRIVER
+//   #define _SKULL_LOOK_STRAIGHT_DRIVER
+//   #define _STERNO_CLAVICULA_PROTRACTION_DRIVER
    #define _THORAX_ROTATION_DRIVER
    #define _THORAX_LATERAL_BENDING_DRIVER
    #define _THORAX_EXTENSION_DRIVER
-   #define _EXTENDED_KNEE_DRIVER
+//   #define _EXTENDED_KNEE_DRIVER
 #endif
-
-#endif
-
 
 
 AnyFolder ExtraDrivers = {
@@ -119,6 +110,24 @@ AnyKinEqSimpleDriver SkullGroundDriver={
   WeightFun = {&Weight.fun};
 };  
 #endif
+
+
+#ifdef _HARD_NECK_DRIVER
+
+AnyKinEqSimpleDriver HardNeckDriver ={
+  AnyKinMeasureOrg &ref =Main.HumanModel.BodyModel.Interface.Trunk.NeckJoint;
+  DriverPos = pi/180*{
+    .JntPos.NeckExtension
+  };
+  DriverVel = pi/180*{
+    .JntVel.NeckExtension
+  };
+  Reaction.Type={Off};
+};
+
+
+#endif
+
 
 #ifdef _STERNO_CLAVICULA_PROTRACTION_DRIVER
 AnyKinEqSimpleDriver SternoClavicularProtractionLeft ={

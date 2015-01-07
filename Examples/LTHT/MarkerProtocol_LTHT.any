@@ -1,10 +1,10 @@
 // These are all tracking markers present in all trials
   
 // Head markers
-#define _RFHD
-#define _LFHD
-#define _RBHD
-#define _LBHD
+//#define _RFHD
+//#define _LFHD
+//#define _RBHD
+//#define _LBHD
 
 // Pelvis Cluster
 #define _L_PEL_U
@@ -12,28 +12,28 @@
 #define _R_PEL_L
 #define _R_PEL_U
 
-// Foot markers
-#define _RM2
-#define _LM2
-#define _RM5
-#define _LM5
+// Hand markers
+//#define _RM2
+//#define _LM2
+//#define _RM5
+//#define _LM5
 
 // Shoulder markers
-#define _RAC
-#define _LAC
+//#define _RAC
+//#define _LAC
 
 // Foot markers
-#define _R_HEEL_CALC
-#define _L_HEEL_CALC
-#define _R_TOE_1_MET
-#define _L_TOE_1_MET
-#define _R_TOE_5_MET
-#define _L_TOE_5_MET
-#define _R_TOE_2_MET
-#define _L_TOE_2_MET
+#define _R_CALC
+#define _L_CALC
+#define _RMT1
+#define _LMT1
+#define _RMT5
+#define _LMT5
+#define _RMT2
+#define _LMT2
 
 // Trunk markers
-#define _STERN
+#define _STRN
 #define _CLAV
 #define _T10
 #define _C7
@@ -60,30 +60,30 @@
 #define _L_LEG_4
 
 // Arm Cluster markers
-#define _RUARM1
-#define _RUARM2
-#define _RUARM3
-#define _RUARM4
-
-#define _LUARM1
-#define _LUARM2
-#define _LUARM3
-#define _LUARM4
-
-#define _RLARM1
-#define _RLARM2
-#define _RLARM3
-#define _RLARM4
-
-#define _LLARM1
-#define _LLARM2
-#define _LLARM3
-#define _LLARM4
+//#define _RUARM1
+//#define _RUARM2
+//#define _RUARM3
+//#define _RUARM4
+//
+//#define _LUARM1
+//#define _LUARM2
+//#define _LUARM3
+//#define _LUARM4
+//
+//#define _RLARM1
+//#define _RLARM2
+//#define _RLARM3
+//#define _RLARM4
+//
+//#define _LLARM1
+//#define _LLARM2
+//#define _LLARM3
+//#define _LLARM4
 
 
 // These are the markers only used in 
 // the static trials
-#ifdef USE_STANDING_REFERENCE_MARKERS
+#ifdef _STANDING_REFERENCE_
 #define _LPSIS
 #define _RPSIS
 #define _RASIS
@@ -96,22 +96,24 @@
 #define _L_LMAL
 #define _R_MMAL
 #define _L_MMAL
-#define _RSHO
-#define _LSHO
-#define _RLELB
-#define _LLELB
-#define _RMELB
-#define _LMELB
-#define _RRSP
-#define _LRSP
-#define _RUSP
-#define _LUSP
+//#define _RSHO
+//#define _LSHO
+//#define _RLELB
+//#define _LLELB
+//#define _RMELB
+//#define _LMELB
+//#define _RRSP
+//#define _LRSP
+//#define _RUSP
+//#define _LUSP
 
-// These are parameter constraints only used
-// the static trials
-#define _PelvisframeConstraint
-#define _ForeHeadSymmetryConstraint
-#define _BackHeadSymmetryConstraint
+// These switches enable contraints on 
+// design variables. 
+//#define _ForeHeadSymmetryConstraint
+//#define _BackHeadSymmetryConstraint
+#define _RKneeMarkerSymmetryConstraint
+#define _LKneeMarkerSymmetryConstraint
+
 #endif
 
 
@@ -144,6 +146,19 @@ DesVar2 = RBHDZ,
 Coef2= 1-2) = {};
 #endif
 
+#ifdef _LKneeMarkerSymmetryConstraint
+CreateConstraint LKneeMarkerSymmetryConstraint (
+DesVar1 = L_LKNEEZ,
+DesVar2 = L_MKNEEZ
+)= {};
+#endif
+
+#ifdef _RKneeMarkerSymmetryConstraint
+CreateConstraint RKneeMarkerSymmetryConstraint (
+DesVar1 = R_LKNEEZ,
+DesVar2 = R_MKNEEZ 
+)= {};
+#endif
 
 
 
@@ -153,7 +168,7 @@ MarkerName= LPSIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX= "Off", OptY= "Off", OptZ= "On"
 ) = {
-  sRelOpt ={-0.07, 0.01, -0.045};
+  sRelOpt ={-0.06, 0.01, -0.045};
 };
 #endif
 
@@ -164,7 +179,7 @@ MarkerName= RPSIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX="Off", OptY="Off", OptZ="On"
 ) = {
-  sRelOpt = {-0.07, 0.01, 0.045};  
+  sRelOpt = {-0.06, 0.01, 0.045};  
 };
 #endif
 
@@ -296,9 +311,9 @@ OptX="On",OptY="On",OptZ= "On"
 
 //// Thorax
 // Marker on the Sternum
-#ifdef _STERN
-CreateMarkerDriver STERN (
-MarkerName= STERN,  
+#ifdef _STRN
+CreateMarkerDriver STRN (
+MarkerName= STRN,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
 OptX="On",OptY="On",OptZ="Off"  
 ) = {
@@ -351,7 +366,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver R_LKNEE (
 MarkerName= R_LKNEE,
 MarkerPlacement= Right.Leg.Seg.Thigh,
-OptX="Off",OptY="Off",OptZ="Off"
+OptX="Off",OptY="Off",OptZ="On"
 ) = {
   sRelOpt = {0.00, -0.398, 0.0650};
 };
@@ -361,7 +376,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver L_LKNEE (
 MarkerName= L_LKNEE,
 MarkerPlacement= Left.Leg.Seg.Thigh,
-OptX="Off",OptY="Off",OptZ="Off"
+OptX="Off",OptY="Off",OptZ="On"
 ) = {
   sRelOpt = {0.00, -0.398, -0.0650};
 };
@@ -423,6 +438,7 @@ OptX="On",OptY="On",OptZ="On"
 };
 #endif
 
+#ifdef _L_MMAL
 CreateMarkerDriver L_MMAL ( 
 MarkerName= L_MMAL ,
 MarkerPlacement=Left.Leg.Seg.Shank,
@@ -430,33 +446,34 @@ OptX="On",OptY="On",OptZ="On"
 ) = {
   sRelOpt = {0.00, -0.365, 0.05};
 };
+#endif
 
     // Heel 
-#ifdef _R_HEEL_CALC
-CreateMarkerDriver R_HEEL_CALC (
-MarkerName= R_HEEL_CALC ,
+#ifdef _R_CALC
+CreateMarkerDriver R_CALC (
+MarkerName= R_CALC ,
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="Off", OptY="Off" , OptZ="Off"
 ) = {
-  sRelOpt =  {-0.085, -0.06, -0.001512914};
+  sRelOpt =  {-0.085, -0.07, -0.001512914};
 };
 #endif
 
-#ifdef _L_HEEL_CALC
-CreateMarkerDriver L_HEEL_CALC (
-MarkerName= L_HEEL_CALC ,
+#ifdef _L_CALC
+CreateMarkerDriver L_CALC (
+MarkerName= L_CALC ,
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX="Off", OptY="Off" , OptZ="Off"
 ) = {
-  sRelOpt =  {-0.085, -0.06, -0.001512914};
+  sRelOpt =  {-0.085, -0.07, -0.001512914};
 };
 #endif
 
 
    // Toe1 metatarsal
-#ifdef _R_TOE_1_MET
-CreateMarkerDriver R_TOE_1_MET (
-MarkerName= R_TOE_1_MET ,  
+#ifdef _RMT1
+CreateMarkerDriver RMT1(
+MarkerName= RMT1,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="On" , OptY="On" , OptZ="On"
 ) = {
@@ -464,9 +481,9 @@ OptX="On" , OptY="On" , OptZ="On"
 };   
 #endif
 
-#ifdef _L_TOE_1_MET
-CreateMarkerDriver L_TOE_1_MET (
-MarkerName= L_TOE_1_MET ,  
+#ifdef _LMT1
+CreateMarkerDriver LMT1(
+MarkerName= LMT1,  
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX="On" , OptY="On" , OptZ="On"
 ) = {
@@ -476,9 +493,9 @@ OptX="On" , OptY="On" , OptZ="On"
 
 
    // Toe5 metatarsal
-#ifdef _R_TOE_5_MET
-CreateMarkerDriver R_TOE_5_MET (
-MarkerName= R_TOE_5_MET ,  
+#ifdef _RMT5
+CreateMarkerDriver RMT5(
+MarkerName= RMT5,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="On" , OptY="On" , OptZ="On"
 ) = {
@@ -486,9 +503,9 @@ OptX="On" , OptY="On" , OptZ="On"
 };   
 #endif
 
-#ifdef _L_TOE_5_MET
-CreateMarkerDriver L_TOE_5_MET (
-MarkerName= L_TOE_5_MET ,  
+#ifdef _LMT5
+CreateMarkerDriver LMT5(
+MarkerName= LMT5,  
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX="On" , OptY="On" , OptZ="On"
 ) = {
@@ -498,9 +515,9 @@ OptX="On" , OptY="On" , OptZ="On"
 
 
    // Toe2 metatarsal
-#ifdef _R_TOE_2_MET
-CreateMarkerDriver R_TOE_2_MET (
-MarkerName= R_TOE_2_MET ,  
+#ifdef _RMT2
+CreateMarkerDriver RMT2 (
+MarkerName= RMT2 ,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 OptX="Off" , OptY="On" , OptZ="Off"
 ) = {
@@ -508,9 +525,9 @@ OptX="Off" , OptY="On" , OptZ="Off"
 };   
 #endif
 
-#ifdef _L_TOE_2_MET
-CreateMarkerDriver L_TOE_2_MET (
-MarkerName= L_TOE_2_MET ,  
+#ifdef _LMT2
+CreateMarkerDriver LMT2(
+MarkerName= LMT2,  
 MarkerPlacement=Left.Leg.Seg.Foot,
 OptX="Off" , OptY="On" , OptZ="Off"
 ) = {
