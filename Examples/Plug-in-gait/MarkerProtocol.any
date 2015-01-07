@@ -42,8 +42,8 @@
  #define _RWRB
  #define _LWRA
  #define _LWRB
- #define _RFIN
- #define _LFIN
+// #define _RFIN
+// #define _LFIN
  
 
 #ifdef _LPSI

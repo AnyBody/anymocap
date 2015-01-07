@@ -13,6 +13,8 @@
   
   #var AnyFloat Cal = Folder.Groups.FORCE_PLATFORM.CAL_MATRIX[No];  
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
+  #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
+
   
   AnyIntVar Force_Plate_Type = Folder.Groups.FORCE_PLATFORM.TYPE.Data[No];
   ASSERT_EQ CorrectForcePlateType (

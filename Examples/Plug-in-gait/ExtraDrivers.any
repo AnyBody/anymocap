@@ -7,9 +7,10 @@
 
 
 #define _CLAVICULA_AXIAL_ROTATION_LOCK
-#define _GLENOHUMERAL_EXTERNALROTATION_SUPPORT
-#define _WRIST_ABDUCTION_SUPPORT
-#define _SUBTALER_EVERSION_SUPPORT
+#define _GLENOHUMERAL_EXTERNALROTATION_DRIVER
+#define _WRIST_ABDUCTION_DRIVER
+#define _WRIST_FLEXION_DRIVER
+#define _SUBTALER_EVERSION_DRIVER
 
 
 
@@ -43,7 +44,7 @@ AnyKinEqSimpleDriver SCDriverRight ={
 };
 #endif
 
-#ifdef _GLENOHUMERAL_EXTERNALROTATION_SUPPORT
+#ifdef _GLENOHUMERAL_EXTERNALROTATION_DRIVER
 AnyKinEqSimpleDriver GlenohumeralExternalRotationRight ={
   AnyKinMeasureOrg &ref3 = .InterfaceRef.Right.GlenohumeralExternalRotation;
   DriverPos = pi/180*{
@@ -74,38 +75,9 @@ AnyKinEqSimpleDriver GlenohumeralExternalRotationLeft={
 #endif
 
 
-#ifdef _WRIST_ABDUCTION_SUPPORT
-AnyKinEqSimpleDriver WristAbductionRight ={
-  AnyKinMeasureOrg &ref3 = .InterfaceRef.Right.WristAbduction;
-  DriverPos = pi/180*{
-    .JntPos.Right.WristAbduction
-  };
-  DriverVel = {
-    .JntVel.Right.WristAbduction
-  };
-  Reaction.Type={Off};
-  CType = {Soft};
-  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.01}; }; };
-  WeightFun = {&Weight.fun};
-};
-
-AnyKinEqSimpleDriver WristAbductionLeft ={
-  AnyKinMeasureOrg &ref3 = .InterfaceRef.Left.WristAbduction;
-  DriverPos = pi/180*{
-    .JntPos.Left.WristAbduction
-  };
-  DriverVel = {
-    .JntVel.Left.WristAbduction
-  };
-  Reaction.Type={Off};
-  CType = {Soft};
-  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.01}; }; };
-  WeightFun = {&Weight.fun};
-};  
-#endif
   
 
-#ifdef _SUBTALER_EVERSION_SUPPORT
+#ifdef _SUBTALER_EVERSION_DRIVER
 AnyKinEqSimpleDriver RightEversionBrace={
   AnyKinMeasureOrg &ref1= .InterfaceRef.Right.SubTalarEversion; 
   DriverPos= pi/180*{
@@ -130,9 +102,56 @@ AnyKinEqSimpleDriver LefEversionBrace={
   WeightFun = {&Weight.fun};
 };
 #endif
+
+
+#ifdef _WRIST_ABDUCTION_DRIVER
+AnyKinEqSimpleDriver WristAbductionRight ={
+  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Right.WristAbduction;
+  DriverPos = pi/180*{.JntPos.Right.WristAbduction };
+  DriverVel = { .JntVel.Right.WristAbduction };
+  Reaction.Type={Off};
+//  CType = {Soft};
+//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1}; }; };
+//  WeightFun = {&Weight.fun};
+};
+
+AnyKinEqSimpleDriver WristAbductionLeft ={
+  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Left.WristAbduction;
+  DriverPos = pi/180*{ .JntPos.Left.WristAbduction };
+  DriverVel = { .JntVel.Left.WristAbduction };
+  Reaction.Type={Off};
+//  CType = {Soft};
+//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1}; }; };
+//  WeightFun = {&Weight.fun};
+};  
+#endif
+
+#ifdef _WRIST_FLEXION_DRIVER
+AnyKinEqSimpleDriver WristFlexionRight ={
+  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Right.WristFlexion;
+  DriverPos = pi/180*{.JntPos.Right.WristFlexion};
+  DriverVel = { .JntVel.Right.WristFlexion};
+  Reaction.Type={Off};
+//  CType = {Soft};
+//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1}; }; };
+//  WeightFun = {&Weight.fun};
+};
+
+AnyKinEqSimpleDriver WristFlexionLeft ={
+  AnyKinMeasureOrg &ref3 = Main.HumanModel.BodyModel.Interface.Left.WristFlexion;
+  DriverPos = pi/180*{ .JntPos.Left.WristFlexion};
+  DriverVel = { .JntVel.Left.WristFlexion};
+  Reaction.Type={Off};
+//  CType = {Soft};
+//  AnyFolder Weight = { AnyFunConst fun =  { Value ={0.1}; }; };
+//  WeightFun = {&Weight.fun};
+};  
+#endif
+
+
   
 #undef _CLAVICULA_AXIAL_ROTATION_LOCK
-#undef _GLENOHUMERAL_EXTERNALROTATION_SUPPORT
-#undef _WRIST_ABDUCTION_SUPPORT
-#undef _SUBTALER_EVERSION_SUPPORT  
+#undef _GLENOHUMERAL_EXTERNALROTATION_DRIVER
+#undef _WRIST_ABDUCTION_DRIVER
+#undef _SUBTALER_EVERSION_DRIVER 
 };
