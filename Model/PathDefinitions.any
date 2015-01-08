@@ -1,0 +1,31 @@
+// This ensures that all the necessary path statements exist if they are 
+// not specified by the main file. 
+
+#ifndef INCLUDEFILE_ANY
+  #define INCLUDEFILE_ANY
+
+ #ifndef ANYMOCAP_MODEL_PATH
+   #path ANYMOCAP_MODEL_PATH "."
+ #endif
+  
+ #ifndef TEMP_PATH
+   #path TEMP_PATH "Tmp/"
+ #endif
+  
+ #ifndef ANYBODY_PATH_OUTPUT
+   #path ANYBODY_PATH_OUTPUT "<ANYBODY_PATH_MAINFILEDIR>"
+ #endif
+  
+ #ifndef PROJECT_PATH
+   #path PROJECT_PATH "../"
+ #endif
+ 
+ // Include the AMMR library
+ #ifdef AMMR_PATH
+   #include "<AMMR_PATH>\Application\libdef.any"
+ #else
+   #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
+ #endif
+ 
+ 
+#endif
