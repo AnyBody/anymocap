@@ -1,6 +1,6 @@
 
-
 AnyFolder JointsAndDrivers = {
+#ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   // Macro for initializing a empty mxn matrix
   #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
 
@@ -235,7 +235,7 @@ AnyFolder JointsAndDrivers = {
   };
   #endif
   
-  
+ #endif 
 };
 
 
