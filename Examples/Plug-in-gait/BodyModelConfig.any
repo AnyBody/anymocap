@@ -5,6 +5,7 @@
 // ----------------------------------------------------------
 
 #define BM_TRUNK_NECK ON
+#define BM_TRUNK_NECK_MUSCLES CONST_MUSCLES_SIMPLE  
 #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
 #path BM_MANNEQUIN_FILE "<ANYMOCAP_MODEL_PATH>/Mannequin.any" 
 #path BM_SCALING_ANTHRO_FILE "<ANYMOCAP_MODEL_PATH>/AnyMan.any"
