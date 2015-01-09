@@ -1,0 +1,5 @@
+#ifndef ANYMOCAP
+#path ANYMOCAP "../../"
+#endif
+
+#include "<ANYMOCAP>/Model/AnyMocapModel.any"  

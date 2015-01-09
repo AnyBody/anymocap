@@ -11,7 +11,7 @@
                                               Mx,My,Mz,
                                               FootPresent){
   
-  #var AnyFloat Cal = Folder.Groups.FORCE_PLATFORM.CAL_MATRIX[No];  
+  #var AnyFloat Cal = Folder.Groups.FORCE_PLATFORM.CAL_MATRIX.Data[No];  
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
   #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
 

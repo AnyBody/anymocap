@@ -1,9 +1,9 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 
 
-#define EXCLUDE_OPTIMIZED_DRIVERS
+#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
 
-#include "../../Model/AnyMocapModel.any"
+#include "LoadAnyMocap.any"
 
 Main = {
 Studies.ParameterIdentification= {

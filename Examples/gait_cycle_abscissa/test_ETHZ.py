@@ -1,10 +1,10 @@
 
 def test(anytest):
-    macro = [[anytest.load_macro('gait_ifb/Main.any'),
+    macro = [[anytest.load_macro('Main.any'),
               'exit']]
     outputlist = anytest.app.start_macro(macro)
     
-    anytest.check_output_log(outputlist)  
+    anytest.check_model_load_failure(outputlist)
 
     
     

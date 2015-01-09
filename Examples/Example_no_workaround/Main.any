@@ -2,4 +2,4 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
 
-#include "<AMMR_PATH>/Applicaiton/AnyMocap/Model.any"
+#include "LoadAnyMocap.any"
