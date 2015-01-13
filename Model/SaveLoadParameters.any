@@ -52,7 +52,8 @@ Main.ModelSetup.Macros = {
                   _LOAD_MACRO(6),
                   _LOAD_MACRO(7),
                   _LOAD_MACRO(8),
-                  "classoperation Main " + strquote("Update Values")
+                  "classoperation Main " + strquote("Update Values"),
+                  "reset"
                 };   
   };
   #undef _LOAD_MACRO
