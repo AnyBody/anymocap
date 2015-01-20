@@ -1,6 +1,12 @@
  Kinematics.PosAnalysisOnlyOnOff = On;
  InitialConditions.PosAnalysisOnlyOnOff = On;
- InitialConditions.SolverType = KinSolOverDeterminate;
- Kinematics.SolverType = KinSolOverDeterminate;
  InitialConditions.KinematicTol=1e-5;
  Kinematics.KinematicTol=1e-5; 
+ 
+ #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+ Kinematics.Solver = &Kinematics.SolverOptions.KinSolOverDet1;
+ InitialConditions.Solver = Kinematics.Solver;
+ #else
+ Kinematics.SolverType = KinSolOverDeterminate;
+ InitialConditions.SolverType = Kinematics.SolverType;
+ #endif
