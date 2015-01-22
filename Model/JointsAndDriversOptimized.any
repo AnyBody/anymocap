@@ -7,7 +7,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverTrunk = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -44,12 +44,11 @@ AnyFolder JointsAndDrivers = {
     #endif
   };
   
-  
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
   AnyKinDriver JntDriverLeftLegTD = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -79,7 +78,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLegTD = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -110,7 +109,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLeg = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -140,7 +139,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLeg = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -171,7 +170,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftArm = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
@@ -205,7 +204,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightArm = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
-          FileName = TEMP_PATH+"/"+MOCAP_OUTPUT_FILENAME_PREFIX+Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
+          FileName = TEMP_PATH + "/" + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
           FileErrorContinueOnOff = On;
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
