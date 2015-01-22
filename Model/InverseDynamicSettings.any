@@ -1,10 +1,13 @@
 Kinematics.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
 InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
 
-//InitialConditions.SolverType = KinSolOverDeterminate;
-//Kinematics.SolverType = KinSolOverDeterminate;
-InitialConditions.SolverType = KinSolDeterminate;
-Kinematics.SolverType = KinSolDeterminate;
+ InitialConditions.KinematicTol=1e-5; 
+ Kinematics.KinematicTol=1e-5; 
 
-Kinematics.KinematicTol=1e-5; 
-
+ #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+ Kinematics.Solver = &Kinematics.SolverOptions.KinSolDet1;
+ InitialConditions.Solver = Kinematics.Solver;
+ #else
+ Kinematics.SolverType = KinSolDeterminate;
+ InitialConditions.SolverType = Kinematics.SolverType;
+ #endif
