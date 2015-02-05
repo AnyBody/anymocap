@@ -1,0 +1,85 @@
+    
+    ForcePlateType2AutoDetection Floor (
+    PlateName = Floor ,
+    Folder =Main.ModelSetup.C3DFileData,
+    Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
+    No=0,
+    VerticalDirection ="Z",
+    HeightTolerance=0.07,
+    VelThreshold=2.2,
+    Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx1,
+    Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy1,
+    Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz1,
+    Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx1,
+    My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My1,
+    Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz1,
+    FootPresent=1)
+    ={
+      Switch_DrawForceVectorFromCOP = On;
+    };
+    
+    ForcePlateType2AutoDetection Step1 (
+    PlateName = Step1 ,
+    Folder =Main.ModelSetup.C3DFileData,
+    Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
+    No=1,
+    VerticalDirection ="Z",
+    HeightTolerance=0.07,
+    VelThreshold=2.2,
+    Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx2,
+    Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy2,
+    Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz2,
+    Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx2,
+    My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My2,
+    Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz2,
+    FootPresent=1)
+    ={
+      Switch_DrawForceVectorFromCOP = On;
+      SurfaceOffset = {0,-0.3, 0.175};
+    }; 
+
+    ForcePlateType2AutoDetection Step2 (
+    PlateName = Step2 ,
+    Folder =Main.ModelSetup.C3DFileData,
+    Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
+    No=0,
+    VerticalDirection ="Z",
+    HeightTolerance=0.07,
+    VelThreshold=2.2,
+    Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx1,
+    Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy1,
+    Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz1,
+    Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx1,
+    My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My1,
+    Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz1,
+    FootPresent=1)
+    ={
+      Switch_DrawForceVectorFromCOP = On;
+      SurfaceOffset = {0,0.60, 0.35};
+    };
+    
+    
+    ForcePlateType2AutoDetection Step3 (
+    PlateName = Step3 ,
+    Folder =Main.ModelSetup.C3DFileData,
+    Limb1=  Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    Limb2=  Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
+    No=1,
+    VerticalDirection ="Z",
+    HeightTolerance=0.07,
+    VelThreshold=2.2,
+    Fx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fx2,
+    Fy=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fy2,
+    Fz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Fz2,
+    Mx=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mx2,
+    My=Main.ModelSetup.C3DFileData.Analog.DataFiltered.My2,
+    Mz=Main.ModelSetup.C3DFileData.Analog.DataFiltered.Mz2,
+    FootPresent=1)
+    ={
+      Switch_DrawForceVectorFromCOP = On;
+      SurfaceOffset = {0,0.28, 0.525};
+    }; 
+    

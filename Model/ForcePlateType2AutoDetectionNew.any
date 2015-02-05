@@ -10,11 +10,23 @@
                                               VelThreshold,
                                               Fx,Fy,Fz,
                                               Mx,My,Mz,
-                                              FootPresent){
+                                              FootPresent
+                                              ){
   
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
   #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
 
+  
+  #var AnyVec3 SurfaceOffset = {0,0,0};
+  
+  #var AnyVec3 SurfaceCorner_c01 = Corners.Origin + Corners.c01.sRel * Corners.Axes' + SurfaceOffset;
+  #var AnyVec3 SurfaceCorner_c02 = Corners.Origin + Corners.c02.sRel * Corners.Axes' + SurfaceOffset;
+  #var AnyVec3 SurfaceCorner_c03 = Corners.Origin + Corners.c03.sRel * Corners.Axes' + SurfaceOffset;
+  #var AnyVec3 SurfaceCorner_c04 = Corners.Origin + Corners.c04.sRel * Corners.Axes' + SurfaceOffset;
+  
+  
+  
+  
   AnyIntVar Force_Plate_Type = Folder.Groups.FORCE_PLATFORM.TYPE.Data[No];
   ASSERT_EQ AssertForcePlateType (
    val1 = .Force_Plate_Type, 
@@ -106,7 +118,6 @@
   
   
   
-  
   AnySeg ForcePlate={
     Mass=0.0;
     Jii={0,0,0};
@@ -139,24 +150,35 @@
 //      AnyDrawRefFrame drw={ScaleXYZ=0.4*{1,1,1};RGB={1,0,0};};
     };
     
-    AnyRefNode PlateGraphics =
-    {
-      sRel={0,0,0.05};
-      AnyVec3 Size={
-          vnorm(..Corners.c01.sRel-..Corners.c02.sRel,2),
-          vnorm(..Corners.c02.sRel-..Corners.c03.sRel,2),
-          0.1
+    AnyRefNode PlateSurface = {
+      sRel = ( 0.25*(
+               ..SurfaceCorner_c01 +
+               ..SurfaceCorner_c02 +
+               ..SurfaceCorner_c03 +
+               ..SurfaceCorner_c04 ) - .r0)*.Axes0;
+        
+        
+      AnyRefNode SurfaceGraphics = {
+         sRel={0,0,0.03};
+         AnyVec3 Size={
+          vnorm( ...SurfaceCorner_c01 - ...SurfaceCorner_c02 ,2),
+          vnorm( ...SurfaceCorner_c02 - ...SurfaceCorner_c03 ,2),
+          0.06
       };
-      AnyDrawSurf DrwBox = 
-      {
-        FileName = "box";
-        AnyVar LoadRatio = ...OnOff*vnorm(...Force.Flocal) / (...MaxLoad+ 0.001)  ;
-        RGB = 0.45*{1,1,1} ;
-        ScaleXYZ=.Size/0.30;
-        Opacity =0.20+ ...OnOff*(0.05+ 0.4* LoadRatio);
-        Face=-1;
+
+         AnyDrawSurf DrwSurfaceBox = 
+         {
+           FileName = "box";
+           AnyVar LoadRatio = ....InContactOnOff * ....OnOff*vnorm(....Force.Flocal) / (....MaxLoad+ 0.001)  ;
+           RGB = 0.45*{1,1,1} ;
+           ScaleXYZ= .Size/0.30;
+           Opacity =0.20+ ....InContactOnOff *....OnOff*(0.05+ 0.4* LoadRatio);
+           Face=-1;
+           Visible = On;
+         };    
       };
     };
+
     
   };  
   
@@ -193,6 +215,12 @@
   
   AnyVar FzTotal=load(ForcePlateDriver.t)[2];
   AnyVar OnOff=iffun(gtfun(-FzTotal,10.0),1.0,0.0);
+  AnyVar InContactOnOff = iffun( eqfun(0, ContactDetectionLimb2.NodeWithInBox.WithinBoxAndVelBelowThreshold +
+                                          ContactDetectionLimb1.NodeWithInBox.WithinBoxAndVelBelowThreshold)
+                                   , 0, 1);
+  
+  
+  
   
   AnyForce3D Force ={
     
@@ -237,7 +265,8 @@
   {
      AnyForceMomentMeasure2 NetEffectMeasure = 
      {
-       AnyRefFrame& ref = ..ForcePlate;
+       AnyRefFrame& ref = ..ForcePlate.PlateSurface;
+       AnySeg& refseg = ..ForcePlate;
        AnyForceBase& Forces = ..Force;
        AnyForceBase& Moments = ..Moment;
        
@@ -258,9 +287,11 @@
      AnyVar Vy= mx/fzz;
      AnyVar Vz= 0;     
      
-     AnyVar OnOff=.OnOff;
+     AnyVar OnOff=.OnOff * .InContactOnOff ;
+     
+     
 
-     AnyRefFrame& ref_ForcePlate = .ForcePlate;
+     AnyRefFrame& ref_ForcePlate = .ForcePlate.PlateSurface;
      ref_ForcePlate  = 
      {
        AnyDrawSphere COP_ball = 
@@ -278,7 +309,7 @@
        p0 = {.Vx, .Vy, .Vz};
        p1 = p0+0.004*.OnOff*{.fx, .fy, .fz};
        Visible = ..Switch_DrawForceVectorFromCOP ;
-       AnyRefFrame &ref = ..ForcePlate;
+       AnyRefFrame &ref = ..ForcePlate.PlateSurface ;
        
        Line.RGB ={0,0,1};
        Line.Thickness = 0.01;
@@ -308,7 +339,7 @@
     AnyVec3 P2= .Limb1.ToeLateralContactNode.r;
     AnyVar P2Vel= vnorm(.Limb1.HeelContactNodeLow.rDot,2);
     
-    #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ContactDetection.any"
+    #include "ContactDetectionNew.any"
     
     AnyMuscleModelUsr1 InContactMuscle = {
       F0 = 0;
@@ -346,7 +377,7 @@
     AnyVec3 P2= .Limb2.ToeLateralContactNode.r;
     AnyVar P2Vel= vnorm(.Limb2.HeelContactNodeLow.rDot,2);
     
-    #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ContactDetection.any"
+    #include "ContactDetectionNew.any"
     
     AnyMuscleModelUsr1 InContactMuscle = {
       F0 = 0;

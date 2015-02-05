@@ -1,0 +1,12 @@
+#path MOCAP_SUBJECT_SPECIFIC_DATA "SubjectSpecificData.any"
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+#path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
+
+//#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
+#path TEMP_PATH "."
+
+#include "LoadAnyMocap.any"
+
+Main = {
+ModelSetup.C3DFileData.ConstructWeightFunUsingResidualOnOff  = On;
+};
