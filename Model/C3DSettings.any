@@ -12,8 +12,9 @@
     // HACK_WORKAROUND. We need to disable filters when 
     // using recordings which has less data than 3 times filter order
     // This approach assumes a filter order of 2.
-    MarkerFilterIndex = iffun(gtfun(Header.FirstFrameNo-Header.LastFrameNo+1,6 ), 0 ,-1);
-    AnalogFilterIndex = iffun(gtfun((Header.FirstFrameNo-Header.LastFrameNo+1)*Header.NoAnalogSamplesPer3DFrame,6 ), 1 ,-1);    
+    MarkerFilterIndex = iffun(gtfun(Header.LastFrameNo-Header.FirstFrameNo+1,Main.ModelSetup.LabSpecificData.MarkerDataFilterOrder*3 ), 0 ,-1) ;
+    AnalogFilterIndex = iffun(gtfun((Header.LastFrameNo-Header.FirstFrameNo+1)*Header.NoAnalogSamplesPer3DFrame,
+                                     Main.ModelSetup.LabSpecificData.AnalogDataFilterOrder*3 ), 1 ,-1);    
     
     Filter =  {
       N = Main.ModelSetup.LabSpecificData.MarkerDataFilterOrder;
