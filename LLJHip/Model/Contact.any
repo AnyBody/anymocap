@@ -1,0 +1,69 @@
+ AnyForceSurfaceContact FSurf = 
+{ 
+  AnySurface &sMaster = Main.BodyModelRef.Right.Leg.Seg.Thigh.HipJoint.Origo2.FemurImplant;
+  AnySurface &sSlave = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos.CupNode.PelvisImplant;
+  
+  PressureModule = 0.9e10; //Vol Pen
+  
+  ForceViewOnOff = On;
+  MeshRefinementMaster = 0;
+  MeshRefinementSlave = 0;
+  SingleSidedOnOff= Off;
+  AnyDrawForceSurface drw = 
+  {
+  };
+ 
+};
+
+AnyForce ArtificialStiffness = 
+{
+  AnyVar k=100000; 
+  AnyVar lr=0.001;
+  AnyVar er=-0.03;
+  AnyKinPLine lin = 
+  {
+    //Ref = -1;
+    AnyRefFrame &r1= Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos;
+    AnyRefFrame &r2 = Main.BodyModelRef.Right.Leg.Seg.Thigh.FemHeadNode;
+  };
+  AnyVar l0 = lr/(er+1);
+  AnyVar eps0 = 0.001;
+  AnyVar eps = (lin.Pos[0]-l0)/l0;
+  
+  AnyFloat Val = {iffun(gteqfun(eps,0.0),iffun(gtfun(eps,2*eps0),-k^2*(eps-eps0),-k*(eps^2/eps0)),0.0)};
+  
+  AnyVar EqStiffness = k/l0;
+  F = Val;
+};
+
+
+AnyKinPLine ArtificialSpring = 
+{
+  AnyRefFrame &r1= Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos;
+  AnyRefFrame &r2 = Main.BodyModelRef.Right.Leg.Seg.Thigh.FemHeadNode;
+  
+  AnyDrawPLine drw = 
+  {
+    Thickness = 0.005;
+    RGB = {0,0,1};
+  };
+};
+
+
+ AnyForceSurfaceContact ImpingementSurfCupNeck = 
+{ 
+  AnySurface &sMaster = Main.BodyModelRef.Right.Leg.Seg.Thigh.FemImplantNode.Stem;
+  AnySurface &sSlave = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos.CupNode.PelvisImplant;
+  
+  PressureModule = 0.9e10; //Vol Pen
+  
+  ForceViewOnOff = On;
+  MeshRefinementMaster = 0;
+  MeshRefinementSlave = 0;
+  SingleSidedOnOff= Off;
+  
+  AnyDrawForceSurface drw = 
+  {
+  };
+};
+

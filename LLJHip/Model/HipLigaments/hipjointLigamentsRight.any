@@ -1,0 +1,99 @@
+AnyFolder Ligaments_R= {
+  
+  
+  // including the Pubo-Femoral ligament
+  AnyLigamentModelPol PuboFemLigRight = {
+    L0 = 0.09;           // no scaling L = 0.0875 to 0.0937
+    eps1 = 0.1;     
+    F1 = 80;       
+    a0 = 0;
+    a1 = 3;
+  };
+  
+  AnyViaPointLigament PuboFemLigPRight = {
+    AnyRefNode &Ori = Main.BodyModelRef.Right.Leg.Seg.Thigh.PuboFemIns;
+    AnyRefNode &End = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.PuboFemOrig;
+    
+    AnyLigamentModelPol &Model = .PuboFemLigRight;
+    AnyDrawPLine drw = {
+      Thickness = 0.005;
+      Opacity = 0.2;
+      RGB = {1,0,0};
+    };
+  };
+  
+  
+  
+  
+  // including the Lateral Ilio-Femoral ligament
+  
+  AnyLigamentModelPol IlioFemLatLigRight =  {
+    L0 = 0.06;    // no scaling L = 0.0536 to 0.0768
+    eps1 = 0.1;     
+    F1 = 300;       
+    a0 = 0;
+    a1 = 3;
+  };
+  AnyViaPointLigament IlioFemLatLigPRight = {
+    AnyRefNode &Ori = Main.BodyModelRef.Right.Leg.Seg.Thigh.IlioFemLatIns2;
+    AnyRefNode &End = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.IlioFemLatOrig;
+    AnyLigamentModelPol &Model = .IlioFemLatLigRight;
+    AnyDrawPLine drw = {
+      Thickness = 0.005;
+      Opacity = 0.2;
+      RGB = {1,0,0};
+    };
+  };
+  
+  
+  
+  
+  // including the Anterior Ilio-Femoral ligament
+  
+  
+  AnyLigamentModelPol IlioFemAntLigRight =  {
+    L0 = 0.06;   // no scaling L = 0.0645 to 0.0768    
+    eps1 = 0.1;     
+    F1 = 300;       
+    a0 = 0;
+    a1 = 3;
+  };
+  AnyViaPointLigament IlioFemAntLigPRight = {
+    AnyRefNode &Ori = Main.BodyModelRef.Right.Leg.Seg.Thigh.IlioFemAntIns2;
+    AnyRefNode &End = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.IlioFemAntOrig;
+    AnyLigamentModelPol &Model = .IlioFemAntLigRight;
+    AnyDrawPLine drw = {
+      Thickness = 0.005;
+      Opacity = 0.2;
+      RGB = {1,0,0};
+    };
+  };
+  
+  
+  
+  // including the Ischio-Femoral ligament
+  
+  
+  AnyLigamentModelPol IschioFemLigRight = {
+    L0 = 0.025;     // no scaling L = 0.0195 to 0.0313;    
+    eps1 = 0.1;     
+    F1 = 130;       
+    a0 = 0;
+    a1 = 3;
+  };   
+  AnyViaPointLigament IschioFemLigPRight = {
+    AnyRefNode &Ori = Main.BodyModelRef.Right.Leg.Seg.Thigh.IschioFemIns;
+    AnyRefNode &End = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.Muscles.IschioFemOrig;
+    
+    AnyLigamentModelPol &Model = .IschioFemLigRight;
+    AnyDrawPLine drw = {
+      Opacity = 0.2;
+      Thickness = 0.005;
+      RGB = {1,0,0};
+    };
+  };
+  
+};
+
+
+

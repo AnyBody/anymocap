@@ -1,0 +1,39 @@
+// Create Contact Force:
+
+
+// Steps to calculate Contact Force for force dependent kinemtaics from Flores et al. 2006 "Dynamics of Multibody Systems with Spherical Clearence Joints"
+// Geometry
+AnyVar ROuter = Main.Parameters.LLJ_CupDia*0.5;//0.02550; // "m" Radius of outer Cyl/Sphere
+AnyVar RInner = Main.Parameters.LLJ_BallDia*0.5;//0.02500; // "m" Radius of inner Cyl/Sphere
+AnyVar Clearance = ROuter - RInner;
+// Material Properties
+AnyVar PoissonsI = 0.3; // " " Poissons Ratio for Inner Sphere fix from Flores et al. 2006
+AnyVar YoungsI = 0.8e9; //Youngs Modulus for HDPE = 0.8 e9; Youngs Modulus for Steel = 2.07e11 "N/m^2" for inner Sphere
+AnyVar PoissonsO = 0.3; // " " Poissons Ratio for Outer Sphere fix from Flores et al. 2006
+AnyVar YoungsO = 0.8e9; //Youngs Modulus for HDPE = 0.8 e9; Youngs Modulus for Steel = 2.07e11 "N/m^2" for Outer Sphere
+AnyVar SigmaI = (1-(PoissonsI)^2)/YoungsI; // Material Constant for inner Sphere
+AnyVar SigmaO = (1-(PoissonsO)^2)/YoungsO; // Material Constant for outer Sphere
+AnyVar ConstantK = (4/(SigmaI + SigmaO)*3)*(((RInner * ROuter)/(RInner + ROuter))^0.5); // System Material Constant K
+// Calculating the Contact Force
+AnyKinPLine PLine = 
+{
+  AnyRefFrame &SphereO = Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.Hip.PelvisNode; //Main.Studies.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.HipJointRight;//Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.Hip.PelvisNode ;//Main.Studies.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.HipJointRight;
+  AnyRefFrame &SphereI = Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.Hip.ThighNode; //Main.Studies.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+};
+AnyVar Delta = PLine.Pos[0] - Clearance;
+AnyVar ForceN = ConstantK * Delta^1.5;
+AnyForce ContactForce ={
+  AnyKinPLine &ref= .PLine;
+  F={
+    iffun(ltfun(.Delta,0),0.0,-1*.ForceN)
+  };
+};
+AnyVec3 DirectionPL = Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.Hip.PelvisNode.r - Main.Studies.HumanModel.BodyModel.Right.Leg.Jnt.Hip.ThighNode.r; //Main.Studies.InverseDynamicStudy.PLine;
+
+// include spring:
+      AnyVar Stiffness= 80;
+      AnyVar Pretension =-1.5;     
+      AnyForce FSpring1 ={
+        AnyKinPLine &ref=.PLine;
+        F= {ref.Pos[0]*.Stiffness+.Pretension};
+};  

@@ -1,0 +1,30 @@
+// with this switch you can include force dependent kinematics
+#ifndef LLJ_FDK 
+#define LLJ_FDK 0
+#endif
+// with these switches you can chose between Hip Reaction Forces calulated with STL-contact or analytical
+// if you run fdk you need one of those options switched on
+#ifndef LLJ_contactHRF     
+#define LLJ_contactHRF     1
+#endif
+#ifndef LLJ_analyticalHRF  
+#define LLJ_analyticalHRF  0
+#endif
+
+// with these switches you can choose if the THR is on the reght or left side 
+#ifndef LLJ_RightSide 
+#define LLJ_RightSide 0
+#endif
+#ifndef LLJ_LeftSide 
+#define LLJ_LeftSide 0
+#endif
+
+// with this switch you can include the cameras
+#ifndef LLJ_camera 
+#define LLJ_camera 0
+#endif
+// with this switch you can include ligaments
+#ifndef LLJ_HipLigaments 
+#define LLJ_HipLigaments 0
+#endif
+

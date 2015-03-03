@@ -1,0 +1,28 @@
+// You can edit the Body Model: 
+#path BODY_MODEL_CONFIG_FILE "BodyModelConfig.any"
+
+// You can add Extra Drivers in case you don't have enough markers
+#path MOCAP_EXTRA_DRIVERS_FILE "ExtraDrivers.any"
+ 
+// Setup your Marker Protocol
+#path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
+ 
+// AutoSetup Switch for standard Force Plates
+ #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
+
+// Define direction of Gravity; Default is -Z
+ Gravity = -9.81*{0,1,0};
+ 
+// This defines what segment lengths are optimized:
+OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
+PelvisWidthOnOff    = "On" , 
+ThighLengthOnOff    = "On", 
+ShankLengthOnOff    = "On", 
+FootLengthOnOff     = "On", 
+HeadHeightOnOff     = "Off", 
+TrunkHeightOnOff    = "On", 
+UpperArmLengthOnOff = "Off",
+LowerArmLengthOnOff = "Off",
+HumanModel = Main.HumanModel,
+ParameterOptStudy = Main.Studies.ParameterIdentification
+) ={};

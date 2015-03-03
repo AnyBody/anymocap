@@ -1,0 +1,4 @@
+  AnyString SaveMacroOperation=  "classoperation Main.Studies.ParameterIdentification " + strformat("\x22")+ "Save design" + strformat("\x22")+ " --file="+ strformat("\x22")+ C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22");
+  AnyString LoadMacroOperation=  "classoperation Main.Studies.LoadParametersOptimizationResults " + strformat("\x22")+ "Load design" + strformat("\x22")+ " --file="+ strformat("\x22")+ C3DFileData.NameOfFile +"-"+"OptimizedParameters.txt" + strformat("\x22");
+  
+  AnyFolder Macros = {};

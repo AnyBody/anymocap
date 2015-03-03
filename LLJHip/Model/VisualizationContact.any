@@ -1,0 +1,69 @@
+// Calculating & Visualization of Hip Reaction Force with fixed length of 0.032
+AnyVec3 HipReactionForce = (Main.MainStudyRef.FSurf.Fmaster);
+AnyFloat NormHRF = iffun(ltfun(vnorm(HipReactionForce ),0.000000001),1.0,vnorm(HipReactionForce));
+AnyVec3 HipReactionForceNorm = HipReactionForce /NormHRF;
+AnyVec3 HRFNormRad = HipReactionForceNorm *0.032 * -1;
+
+AnyDrawVector DrawForceHRF = {
+  Vec = .HRFNormRad;
+  GlobalCoord = On; // STL contact forces are calulated in Global
+  AnyRefNode &SphereI = Main.BodyModelRef.Right.Leg.Seg.Thigh.HipJoint;
+  Line.Thickness=0.0025;
+  Line.RGB={0,1,1};
+  Line.End.Style = {5} ;
+  Line.End.Thickness = 3*Line.Thickness;  
+  Line.End.Length = 4*Line.Thickness;
+  Line.Start.Style = {0};
+  Line.Start.Thickness = 3*Line.Thickness;  
+  Line.Start.Length = 3*Line.Thickness;
+  Line.Start.RGB = {1,0,0};
+}; 
+
+// Calculating of Hip Reaction Force with length femoral ball radius
+AnyVec3 ShortHRFNormRad = HipReactionForceNorm * 0.5 * Main.Parameters.LLJ_BallDia * -1;
+
+// Hip Reaction Force in Pelvis Hip Joint Ref Frame    
+AnyForceMomentMeasure JointReactionMeasure =  {
+  AnyForceBase &ref1 = Main.MainStudyRef.FSurf;
+  AnyRefNode &CupJointCentRightTD3 = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint;
+};
+AnyVec3 Vec1 = JointReactionMeasure.F * Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.Axes;
+AnyVar Vec1Distance = (Vec1[0]^2+Vec1[1]^2+Vec1[2]^2)^0.5;
+
+// Hip Reaction Force in Pelvis Hip Joint Ref Frame with length of femoral ball radius  
+AnyFloat NormV = iffun(ltfun(vnorm(Vec1),0.000000001),1.0,vnorm(Vec1));
+AnyVec3 Vec1Norm =Vec1/NormV ;
+AnyVec3 Vec1NormRad = Vec1Norm * 0.5 * Main.Parameters.LLJ_BallDia;
+
+// Hip Reaction Force in Pelvis Hip Joint Ref Frame with length of femoral ball radius  with Cup Rotation
+AnyVec3 Vec1NormRadRot = Vec1NormRad * Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.ARel * Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos.ARel; 
+
+
+// XZ Component of Hip Reaction Force in Pelvis Hip Joint Ref Frame with length of femoral ball radius  with Cup Rotation
+AnyVec3 Vec1XZComp          = {Main.MainStudyRef.Vec1NormRadRot[0], 0 , Main.MainStudyRef.Vec1NormRadRot[2]};
+AnyFloat NormV2              = iffun(ltfun(vnorm(Vec1XZComp),0.000000001),1.0,vnorm(Vec1XZComp));
+AnyVec3 VecXZCompNorm      = Vec1XZComp/NormV2;
+AnyVec3 VecXZCompNormRad   = 0.5 * Main.Parameters.LLJ_BallDia * VecXZCompNorm ;
+
+
+// XZ Component of Hip Reaction Force in Pelvis Hip Joint Ref Frame with fixed length of 0.032  with Cup Rotation
+AnyVec3 LongVecXZCompNormRad   = 0.032 * VecXZCompNorm ;
+
+AnyDrawVector DrawLongForceVecXZ = {
+  Vec = .LongVecXZCompNormRad;
+  GlobalCoord = Off;  
+  AnyRefNode &SphereI = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos; 
+  Line.Thickness=0.0025;
+  Line.RGB={0,0,1};
+  Line.End.Style = {5} ;
+  Line.End.Thickness = 3*Line.Thickness;  
+  Line.End.Length = 4*Line.Thickness;
+  Line.Start.Style = {0};
+  Line.Start.Thickness = 3*Line.Thickness;  
+  Line.Start.Length = 3*Line.Thickness;
+  Line.Start.RGB = {1,0,0};
+};   
+
+// Calculate Distance between CupRim and Hip Reaction Force   
+AnyFloat MicroSeparation     =   iffun(ltfun(Main.MainStudyRef.Vec1NormRadRot[1] ,0.000000001),1 ,0);     
+AnyFloat   RimDistance       =   asin(Main.MainStudyRef.Vec1NormRadRot[1]/(2 * Main.Parameters.LLJ_BallDia)) * 2 * Main.Parameters.LLJ_BallDia;

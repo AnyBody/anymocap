@@ -1,0 +1,85 @@
+// defines position of Body and Study to Ref
+#include "StudySelection.any"
+
+MainStudyRef = { 
+  // takes out original right hip joint and creates a new
+  #if LLJ_RightSide == 1
+    #include "HipExchange.any"
+  #endif
+  #if LLJ_LeftSide == 1
+    #include "HipExchangeLeft.any"
+  #endif
+  
+  // includes the STL for new femur, cup, ball and stem device
+  #if LLJ_RightSide == 1
+    #include "STL.any"
+  #endif
+  #if LLJ_LeftSide == 1
+    #include "STLLeft.any"
+  #endif
+  
+  // includes muscle damage if selected, needs to run study to apply
+  #if LLJ_RightSide == 1
+    #include "MuscleExcl.any"
+  #endif
+  #if LLJ_LeftSide == 1
+    #include "MuscleExclLeft.any"
+  #endif  
+  
+  // Selection between normal HRF, and for FDK between contact (=STL-STL) and analytical HRF
+  #if LLJ_FDK      
+    #if LLJ_contactHRF        
+      #if LLJ_RightSide == 1
+        #include "Contact.any"
+        #include "VisualizationContact.any"
+      #endif
+     #if LLJ_LeftSide == 1
+      #include "ContactLeft.any"
+      #include "VisualizationContactLeft.any"
+      #endif
+    #endif     
+    #if LLJ_analyticalHRF        
+      #if LLJ_RightSide == 1
+        #include "Analytical.any"
+        #include "VisualizationAnalytical.any"
+      #endif
+      #if LLJ_LeftSide == 1
+        #include "AnalyticalLeft.any"
+        #include "VisualizationAnalyticalLeft.any"
+      #endif
+     #endif 
+   #else
+    #if LLJ_RightSide == 1
+      #include "Visualization.any"
+    #endif
+    #if LLJ_LeftSide == 1
+      #include "VisualizationLeft.any"
+     #endif
+   #endif
+  
+  // adding cameras around the hip
+  #if LLJ_camera        
+    #if LLJ_RightSide == 1
+      #include "Cameras.any"
+    #endif
+    #if LLJ_LeftSide == 1
+      #include "CamerasLeft.any"
+    #endif
+  #endif
+  
+  #if LLJ_FDK       
+    #include "FDKSettings.any"
+  #endif 
+};
+
+// ** Adding Ligaments and Lig Calibration study if selected
+Main.BodyModelRef = {
+  #if LLJ_HipLigaments   
+    #include "HipLigaments/HipLigaments.any"
+  #endif
+};
+
+// ** Run Sequences
+#include "RunSequences.any"
+
+

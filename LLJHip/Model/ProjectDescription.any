@@ -1,0 +1,15 @@
+Main.Project_HACK_WORKAROUND = {
+  Tasks = {
+    AnyProjectTaskOperation ModelParameter ={
+      Description = {
+        AnyFile filename = "ProjectDescription.htm";
+        HTMLURL = "file:///"+FilePathCompleteOf(filename)
+        ;
+      };
+    };
+
+  };
+};
+
+
+

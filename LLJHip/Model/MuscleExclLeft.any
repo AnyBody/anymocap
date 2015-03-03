@@ -1,0 +1,231 @@
+
+AnyOperationSetValue MuscleInjury = {
+  
+  AnyVar	GemellusSupF0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GemellusSup	*	Main.BodyModelRef.Right.Leg.MusPar.GemellusSuperior1Par.PCSA;
+  AnyVar	GemellusInfF0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GemellusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GemellusInferior1Par.PCSA;
+  
+  AnyVar	GluteusMaximusInf6F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior6Par.PCSA;
+  AnyVar	GluteusMaximusInf5F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior5Par.PCSA;
+  AnyVar	GluteusMaximusInf4F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior4Par.PCSA;
+  AnyVar	GluteusMaximusInf3F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior3Par.PCSA;
+  AnyVar	GluteusMaximusInf2F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior2Par.PCSA;
+  AnyVar	GluteusMaximusInf1F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusInf	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusInferior1Par.PCSA;
+  
+  AnyVar	GluteusMaximusSup6F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusSuperior6Par.PCSA;
+  AnyVar	GluteusMaximusSup5F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusSuperior5Par.PCSA;
+  AnyVar	GluteusMaximusSup4F0	=	Main.BodyModelRef.Right.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Right.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Right.Leg.MusPar.GluteusMaximusSuperior4Par.PCSA;
+  AnyVar	GluteusMaximusSup3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior3Par.PCSA;
+  AnyVar	GluteusMaximusSup2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior2Par.PCSA;
+  AnyVar	GluteusMaximusSup1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMaximusSup	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior1Par.PCSA;
+  
+  AnyVar	GluteusMediusPost6F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior6Par.PCSA;
+  AnyVar	GluteusMediusPost5F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior5Par.PCSA;
+  AnyVar	GluteusMediusPost4F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior4Par.PCSA;
+  AnyVar	GluteusMediusPost3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior3Par.PCSA;
+  AnyVar	GluteusMediusPost2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior2Par.PCSA;
+  AnyVar	GluteusMediusPost1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusPost	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior1Par.PCSA;
+  
+  AnyVar	GluteusMediusAnt6F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior6Par.PCSA;
+  AnyVar	GluteusMediusAnt5F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior5Par.PCSA;
+  AnyVar	GluteusMediusAnt4F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior4Par.PCSA;
+  AnyVar	GluteusMediusAnt3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior3Par.PCSA;
+  AnyVar	GluteusMediusAnt2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior2Par.PCSA;
+  AnyVar	GluteusMediusAnt1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMediusAnt	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior1Par.PCSA;
+  
+  AnyVar	GluteusMinPostF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMin	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusPosterior1Par.PCSA;
+  AnyVar	GluteusMinMidF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMin	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusMid1Par.PCSA;
+  AnyVar	GluteusMinAntF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.GluteusMin	*	Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusAnterior1Par.PCSA;
+  
+  AnyVar	ObturatorExternusSup3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.ObturatorExternusSup	*	Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior3Par.PCSA;
+  AnyVar	ObturatorExternusSup2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.ObturatorExternusSup	*	Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior2Par.PCSA;
+  AnyVar	ObturatorExternusSup1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.ObturatorExternusSup	*	Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior1Par.PCSA;
+  
+  AnyVar	ObturatorExternusInf2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.ObturatorExternusInf	*	Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusInferior2Par.PCSA;
+  AnyVar	ObturatorExternusInf1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.ObturatorExternusInf	*	Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusInferior1Par.PCSA;
+  
+  AnyVar	PiriformisF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.Piriformis	*	Main.BodyModelRef.Left.Leg.MusPar.Piriformis1Par.PCSA;
+  
+  AnyVar	QuadratusFemoris4F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.QuadratusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris4Par.PCSA;
+  AnyVar	QuadratusFemoris3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.QuadratusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris3Par.PCSA;
+  AnyVar	QuadratusFemoris2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.QuadratusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris2Par.PCSA;
+  AnyVar	QuadratusFemoris1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.QuadratusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris1Par.PCSA;
+  
+  AnyVar	RectusFemoris2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.RectusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.RectusFemoris2Par.PCSA;
+  AnyVar	RectusFemoris1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.RectusFemoris	*	Main.BodyModelRef.Left.Leg.MusPar.RectusFemoris1Par.PCSA;
+  
+  AnyVar	SartoriusDistalF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.SartoriusDistal	*	Main.BodyModelRef.Left.Leg.MusPar.SartoriusDistal1Par.PCSA;
+  AnyVar	SartoriusProximalF0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.SartoriusProximal	*	Main.BodyModelRef.Left.Leg.MusPar.SartoriusProximal1Par.PCSA;
+  
+  AnyVar	TensorFasciaeLatae2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.TensorFasciaeLatae	*	Main.BodyModelRef.Left.Leg.MusPar.TensorFasciaeLatae2Par.PCSA;
+  AnyVar	TensorFasciaeLatae1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.TensorFasciaeLatae	*	Main.BodyModelRef.Left.Leg.MusPar.TensorFasciaeLatae1Par.PCSA;
+  
+  AnyVar	VastusLateralisSup2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisSup	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisSuperior2Par.PCSA;
+  AnyVar	VastusLateralisSup1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisSup	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisSuperior1Par.PCSA;
+  
+  AnyVar	VastusLateralisInf6F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior6Par.PCSA;
+  AnyVar	VastusLateralisInf5F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior5Par.PCSA;
+  AnyVar	VastusLateralisInf4F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior4Par.PCSA;
+  AnyVar	VastusLateralisInf3F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior3Par.PCSA;
+  AnyVar	VastusLateralisInf2F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior2Par.PCSA;
+  AnyVar	VastusLateralisInf1F0	=	Main.BodyModelRef.Left.Leg.MusPar.StrengthScaleThigh	*	Main.BodyModelRef.Left.Leg.MusPar.PCSAfactor	*	Main.Parameters.MuscleInjury.VastusLateralisInf	*	Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior1Par.PCSA;
+  
+  
+  
+  
+  Target = {
+    
+    
+    
+    // gemeli
+    &Main.BodyModelRef.Left.Leg.MusPar.GemellusSuperior1Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GemellusInferior1Par.F0,
+    
+    // gluteus maximus 
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior6Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior5Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusInferior1Par.F0,
+    
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior6Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior5Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMaximusSuperior1Par.F0,
+    
+    // gluteus medius
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior6Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior5Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusPosterior1Par.F0,
+    
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior6Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior5Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMediusAnterior1Par.F0,
+    
+    // gluteus minimus
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusPosterior1Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusMid1Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.GluteusMinimusAnterior1Par.F0,
+    
+    // obturator externus
+    &Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusSuperior1Par.F0,
+    
+    &Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusInferior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.ObturatorExternusInferior1Par.F0,
+    
+    // piriformis
+    &Main.BodyModelRef.Left.Leg.MusPar.Piriformis1Par.F0   ,
+    
+    // quadratus femoris 
+    &Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.QuadratusFemoris1Par.F0,
+    
+    // rectus femoris
+    &Main.BodyModelRef.Left.Leg.MusPar.RectusFemoris2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.RectusFemoris1Par.F0,
+    
+    // sartorius
+    &Main.BodyModelRef.Left.Leg.MusPar.SartoriusDistal1Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.SartoriusProximal1Par.F0,
+    
+    // tensor fascia latae
+    &Main.BodyModelRef.Left.Leg.MusPar.TensorFasciaeLatae2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.TensorFasciaeLatae1Par.F0,
+    
+    // vastus lateralis
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisSuperior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisSuperior1Par.F0,
+    
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior6Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior5Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior4Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior3Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior2Par.F0,
+    &Main.BodyModelRef.Left.Leg.MusPar.VastusLateralisInferior1Par.F0
+    
+    
+  };
+  Source = {
+    &GemellusSupF0	,
+    &GemellusInfF0	,
+    
+    &GluteusMaximusInf6F0	,
+    &GluteusMaximusInf5F0	,
+    &GluteusMaximusInf4F0	,
+    &GluteusMaximusInf3F0	,
+    &GluteusMaximusInf2F0	,
+    &GluteusMaximusInf1F0	,
+    
+    &GluteusMaximusSup6F0	,
+    &GluteusMaximusSup5F0	,
+    &GluteusMaximusSup4F0	,
+    &GluteusMaximusSup3F0	,
+    &GluteusMaximusSup2F0	,
+    &GluteusMaximusSup1F0	,
+    
+    &GluteusMediusPost6F0	,
+    &GluteusMediusPost5F0	,
+    &GluteusMediusPost4F0	,
+    &GluteusMediusPost3F0	,
+    &GluteusMediusPost2F0	,
+    &GluteusMediusPost1F0	,
+    
+    &GluteusMediusAnt6F0	,
+    &GluteusMediusAnt5F0	,
+    &GluteusMediusAnt4F0	,
+    &GluteusMediusAnt3F0	,
+    &GluteusMediusAnt2F0	,
+    &GluteusMediusAnt1F0	,
+    
+    &GluteusMinPostF0	,
+    &GluteusMinMidF0	,
+    &GluteusMinAntF0	,
+    &ObturatorExternusSup3F0	,
+    &ObturatorExternusSup2F0	,
+    &ObturatorExternusSup1F0	,
+    
+    &ObturatorExternusInf2F0	,
+    &ObturatorExternusInf1F0	,
+    
+    &PiriformisF0	    ,
+    
+    &QuadratusFemoris4F0	,
+    &QuadratusFemoris3F0	,
+    &QuadratusFemoris2F0	,
+    &QuadratusFemoris1F0	,
+    
+    &RectusFemoris2F0	,
+    &RectusFemoris1F0	,
+    
+    &SartoriusDistalF0	,
+    &SartoriusProximalF0	,
+    
+    &TensorFasciaeLatae2F0	,
+    &TensorFasciaeLatae1F0	,
+    
+    &VastusLateralisSup2F0	,
+    &VastusLateralisSup1F0	,
+    
+    &VastusLateralisInf6F0	,
+    &VastusLateralisInf5F0	,
+    &VastusLateralisInf4F0	,
+    &VastusLateralisInf3F0	,
+    &VastusLateralisInf2F0	,
+    &VastusLateralisInf1F0
+    
+  };
+};
+
+

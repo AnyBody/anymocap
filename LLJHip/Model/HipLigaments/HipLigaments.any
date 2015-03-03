@@ -1,0 +1,43 @@
+
+  #define RIGHT_LEG_TD_HIP_LIGAMENTS 1
+  #define LEFT_LEG_TD_HIP_LIGAMENTS 1
+ 
+
+
+Main.HumanModelRef.Calibration = {
+  
+  AnyOperationSequence LigCalibrationSequence = {
+    
+  };
+  
+  
+  #include "CalibrationSequenceLigLeft.any"
+  #define LEFT_LEG_TD_Lig_CALIBRATION 1
+  
+  #include "CalibrationSequenceLigRIGHT.any"
+  #define RIGHT_LEG_TD_Lig_CALIBRATION 1
+  
+};
+
+#if RIGHT_LEG_TD_HIP_LIGAMENTS == 1
+Right.Leg = {
+  AnyFolder Ligaments = {
+    #include "hipjointLigamentsRight.any"
+  };
+};
+#else
+#endif
+
+
+#if LEFT_LEG_TD_HIP_LIGAMENTS == 1
+Left.Leg = {
+  AnyFolder Ligaments = {
+    #include "hipjointLigamentsLeft.any"
+  };
+};
+#else
+#endif
+
+
+
+

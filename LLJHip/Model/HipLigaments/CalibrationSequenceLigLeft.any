@@ -1,0 +1,37 @@
+
+
+
+
+//This will run calibration 8 to 11 on the left leg 
+
+AnyFolder LeftLegCalibration8={
+    AnyVar Sign = 1;
+    AnyFolder &SideHumanFolderRef=..HumanFolderRef.Left; 
+    #include "LegCal8Left.any"
+  };
+   AnyFolder LeftLegCalibration9={
+    AnyVar Sign = 1;
+    AnyFolder &SideHumanFolderRef=..HumanFolderRef.Left; 
+    #include "LegCal9Left.any"
+  };
+  AnyFolder LeftLegCalibration10={
+    AnyVar Sign = 1;
+    AnyFolder &SideHumanFolderRef=..HumanFolderRef.Left; 
+    #include "LegCal10Left.any"
+  };
+  AnyFolder LeftLegCalibration11={
+    AnyVar Sign = 1;
+    AnyFolder &SideHumanFolderRef=..HumanFolderRef.Left; 
+    #include "LegCal11Left.any"
+  };
+
+LigCalibrationSequence ={ 
+ AnyOperation &Cal8LegLeft = ..Calibration.LeftLegCalibration8.PuboFemLigCali.LigamentLengthAdjustment;
+ AnyOperation &Cal9LegLeft = ..Calibration.LeftLegCalibration9.IlioFemLatLigCali.LigamentLengthAdjustment;
+ AnyOperation &Cal10LegLeft = ..Calibration.LeftLegCalibration10.IlioFemAntLigCali.LigamentLengthAdjustment;
+ AnyOperation &Cal11LegLeft = ..Calibration.LeftLegCalibration11.IschioFemLigCali.LigamentLengthAdjustment;
+
+//  
+  
+};
+

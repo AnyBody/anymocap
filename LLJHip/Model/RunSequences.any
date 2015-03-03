@@ -1,0 +1,31 @@
+Main = { 
+  /** Ligament Calibration and Muscle injury application */
+  AnyOperationMacro LLJHipLigMusPrepSequence =
+  {
+    MacroStr =
+    ({
+      "operation Main.StudyRef.HumanModel.Calibration.LigCalibrationSequence",
+      "run",
+      "operation Main.Studies.InverseDynamicStudy.MuscleInjury",
+      "run"
+    });
+  };
+  /** Muscle injury application */
+  AnyOperationMacro LLJHipMusPrepSequence =
+  {
+    MacroStr =
+    ({
+      "operation Main.Studies.InverseDynamicStudy.MuscleInjury",
+      "run"
+    });
+  };
+  /** Ligament Calibration */
+  AnyOperationMacro LLJHipLigPrepSequence =
+  {
+    MacroStr =
+    ({
+      "operation Main.StudyRef.HumanModel.Calibration.LigCalibrationSequence",
+      "run"
+    });
+  };
+};

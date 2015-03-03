@@ -1,0 +1,63 @@
+AnyFolder HipReaction = {
+  // Calculating & Visualization of Hip Reaction Force with fixed length of 0.032
+  AnyFloat Norm1 = iffun(ltfun(vnorm(.DirectionPL),0.000000001),1.0,vnorm(.DirectionPL));
+  AnyVec3 DirectionNormPL =.DirectionPL/Norm1;
+  
+  AnyVec3 DirectionNormPLRad = DirectionNormPL * -1 * 0.032;
+  
+  AnyDrawVector DrawForcePL = {
+    Vec = .DirectionNormPLRad;
+    GlobalCoord = On;
+    AnyRefNode &SphereI = Main.Studies.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+    Line.Thickness=0.0025;
+    Line.RGB={0,1,1};
+    Line.End.Style = {5} ;
+    Line.End.Thickness = 3*Line.Thickness;  
+    Line.End.Length = 4*Line.Thickness;
+    Line.Start.Style = {0};
+    Line.Start.Thickness = 3*Line.Thickness;  
+    Line.Start.Length = 3*Line.Thickness;
+    Line.Start.RGB = {1,0,0};}; 
+  
+  
+  
+  // Calculation of Hip Reaction Force with length femoral ball radius
+  //        AnyVec3 ShortHRFNormRad = HipReactionForceNorm * 0.5 * Main.MainStudyRef.Parameters.BallDia;
+  AnyVec3 ShortHRFNormRad = DirectionNormPL * 0.5 * Main.Parameters.LLJ_BallDia;
+  
+  
+
+  
+  
+ AnyVec3 ForceVectorTrans = DirectionNormPLRad* Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos.Axes; 
+
+
+AnyVec3 ForceVectorTransXZ = { ForceVectorTrans[0], 0 , ForceVectorTrans[2] };
+
+
+AnyDrawVector ForceVectorTransXZVis = {
+    Vec = .ForceVectorTransXZ ;
+  GlobalCoord = Off;
+  AnyRefNode &SphereI = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos; 
+  Line.Thickness=0.0025;
+  Line.RGB={1,0,0};
+  Line.End.Style = {5} ;
+  Line.End.Thickness = 3*Line.Thickness;  
+  Line.End.Length = 4*Line.Thickness;
+  Line.Start.Style = {0};
+  Line.Start.Thickness = 3*Line.Thickness;  
+  Line.Start.Length = 3*Line.Thickness;
+  Line.Start.RGB = {1,0,0};
+};
+
+  
+// Calculate Distance between CupRim and Hip Reaction Force   
+AnyFloat MicroSeparation     =   iffun(ltfun(ForceVectorTrans[1] ,0.000000001),1 ,0);     
+
+// *********************** not sure if this is correct!!!!!!!!!!!!!!!!!!!!!!!
+AnyFloat   RimDistance         =   asin(Main.MainStudyRef.HipReaction.ShortHRFNormRad[1]/(2 * Main.Parameters.LLJ_BallDia)) * 2 * Main.Parameters.LLJ_BallDia;
+//AnyFloat   RimDistance         =   asin(Main.MainStudyRef.HipReaction.Vec1NormRadRot[1]/(2 * Main.Parameters.BallDia)) * 2 * Main.Parameters.BallDia;
+
+
+
+};

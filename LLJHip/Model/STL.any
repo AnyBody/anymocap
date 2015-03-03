@@ -1,0 +1,78 @@
+ AnyFolder STL = {
+  // Adding Implant and left&right Femur
+  AnyRefNode &ImplantStemNode = Main.BodyModelRef.Right.Leg.Seg.Thigh.FemImplantNode;
+  ImplantStemNode ={
+    AnySurfSTL Stem = 
+    {
+      FileName = "../Input/STL/Stem";
+      ScaleXYZ = 0.0005 * {1,1,1};
+      
+      AnyDrawSurf DrwSurfFem = {
+        FileName = .FileName;
+        ScaleXYZ = .ScaleXYZ;
+        Opacity = 0.3;
+      };
+    };
+
+  };
+
+  
+  AnyRefNode &FemHeadNode = Main.BodyModelRef.Right.Leg.Seg.Thigh.HipJoint.Origo2;
+  FemHeadNode ={  
+      AnySurfSTL FemurImplant = 
+      {
+        FileName = "../Input/STL/FemBall";
+        ScaleXYZ = Main.Parameters.LLJ_BallDia * 2* {5, 5, -5};
+        
+        AnyDrawSurf DrwSurfFem = {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = {1, 1, 1};
+          Opacity = 0.2;
+        };
+      };
+    }; 
+    
+  
+  AnyRefNode &CupPosZ = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Right.HipJoint.CupRotFrame.CupPos;
+  CupPosZ= {
+    AnyRefNode CupNode = {
+      AnySurfSTL PelvisImplant = 
+      {
+        FileName = "../Input/STL/HipCup";
+        ScaleXYZ = Main.Parameters.LLJ_CupDia * {5, 5, -5};
+        
+        AnyDrawSurf DrwSurfFem = {
+          FileName = .FileName;
+          ScaleXYZ = .ScaleXYZ;
+          RGB = {0.1, 0.1, 0.5};
+          Opacity = 0.3;
+        };
+      };
+    }; 
+  };
+  
+  AnyRefNode &OrigoR = Main.BodyModelRef.Right.Leg.Seg.Thigh.Origo;
+  OrigoR ={  AnyDrawSurf DrwFem = {
+      FileName = "../Input/STL/Femur"; //cut Femur
+      ScaleXYZ = {1.0, 1.0, 1.0};
+      RGB = Main.DrawSettings.Colors.Segments;
+      Opacity = 0.25;
+      AnyFunTransform3D &Scale =Main.HumanModelRef.Scaling.GeometricalScaling.Right.Thigh.ScaleFunction;  
+      Face=-1;
+    };
+  };
+  
+  AnyRefNode &OrigoL = Main.BodyModelRef.Left.Leg.Seg.Thigh.Origo;
+  OrigoL ={
+    AnyDrawSurf DrwFem = {
+      FileName = "../Input/STL/Fem"; //standard Femur
+      ScaleXYZ = {1.0, 1.0, -1.0};
+      RGB = Main.DrawSettings.Colors.Segments;
+      Opacity = 0.5;
+      AnyFunTransform3D &Scale =Main.HumanModelRef.Scaling.GeometricalScaling.Left.Thigh.ScaleFunction;  
+      Face=-1;
+    };
+  };
+};
+

@@ -1,0 +1,88 @@
+ // exclude Original Hip Joint 
+MechObjectExclude = 
+   arrcat(
+     arrcat(
+      ObjSearch("Main.BodyModelRef.Left.Leg.Seg.Thigh.HipJoint","AnyMechObject"),
+      ObjSearchRecursive("Main.BodyModelRef.Left.Leg.Jnt.Hip","*","AnyMechObject")
+     ),
+     ObjSearchRecursive("Main.StudyRef.Model.ModelEnvironmentConnection.Drivers.HipDriverLeft","Hip*","AnyMechObject")
+   );    
+
+Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Left.HipJoint={
+  AnyRefNode CupRotFrame = {
+    ARel =       
+    RotMat((Main.Parameters.LLJ_CupRefFrameXRot - 00) * 1 * pi/180,x) *
+    RotMat((Main.Parameters.LLJ_CupRefFrameYRot + 04) * 1 * pi/180,y) *
+    RotMat((Main.Parameters.LLJ_CupRefFrameZRot + 26) * 1 * pi/180,z);
+    AnyRefNode CupPos = {
+      sRel = {Main.Parameters.LLJ_CupXPos, Main.Parameters.LLJ_CupYPos, Main.Parameters.LLJ_CupZPos}; // 
+      ARel =  RotMat(Main.Parameters.LLJ_CupXRot * -1 * pi/180,x) * 
+      RotMat(Main.Parameters.LLJ_CupZRot * 1 * pi/180,z); 
+    };
+  };
+}; 
+Main.BodyModelRef.Left.Leg.Seg.Thigh  = {
+  AnyRefNode FemImplantNode = {
+    sRel = ({0.0, 0.0, ...Sign*0.0});
+    ARel = RotMat(125*pi/180,x) * RotMat(-21*pi/180,y)*RotMat(0*pi,x) ;};
+
+  
+  AnyRefNode FemHeadNode = {  //This node is placed according to "ISB2002" (se top of the file)
+    ARel=RotMat(
+    .Origo.sRel,
+    .EpicondylusFemorisMidPoint.sRel,
+    .EpicondylusFemorisMedialis.sRel)*RotMat(pi*0.5,z)*RotMat(...Sign*-pi*0.5,y);
+    sRel= .HipJoint.sRel;
+  };
+  AnyRefNode Origo = {
+    sRel = {0,0,...Sign*0};
+  };
+  HipJoint = {
+    AnyRefNode Origo2 = {
+      sRel = {Main.Parameters.LLJ_BallXPos, Main.Parameters.LLJ_BallYPos, ....Sign*Main.Parameters.LLJ_BallZPos};
+    };
+  };
+};
+Main.BodyModelRef.Right.Leg.Seg.Thigh = {
+  
+  AnyRefNode Origo = {
+    sRel = {0,0,...Sign*0};
+  };
+  HipJoint = {
+    AnyRefNode Origo2 = {
+      sRel = {Main.Parameters.LLJ_BallXPos, Main.Parameters.LLJ_BallYPos, ....Sign*Main.Parameters.LLJ_BallZPos};
+    };
+  };
+};
+
+
+
+
+// New Hip Joint:
+AnyKinRotational HipRot ={
+  AnyRefNode &ThighNode = Main.BodyModelRef.Left.Leg.Seg.Thigh.HipJoint.Origo2;//Left; 
+  AnyRefNode &PelvisNode = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Left.HipJoint.CupRotFrame.CupPos;//
+  Type=RotVector;
+};
+
+AnyKinLinear HipLin={
+  AnyRefNode &ThighNode = Main.BodyModelRef.Left.Leg.Seg.Thigh.HipJoint;//Left; 
+  AnyRefNode &PelvisNode = Main.BodyModelRef.Trunk.SegmentsLumbar.PelvisSeg.Left.HipJoint.CupRotFrame.CupPos;//
+  Ref=0;
+};
+
+AnyKinEqSimpleDriver HipLinConnection ={
+  AnyKinLinear &ref=. HipLin;
+  
+  #if LLJ_FDK       
+  CType= {ForceDep,ForceDep,ForceDep};
+  Reaction.Type={Off,Off,Off};   
+  #else        
+  CType= {Hard,Hard,Hard};
+  Reaction.Type={On,On,On};   
+  #endif      
+  
+  DriverPos={0.0,0.0,0.0};
+  DriverVel={0,0,0};
+};       
+
