@@ -1,18 +1,18 @@
 #if LLJ_MoCapModelSetup == 1
-AnyFolder &HumanModelRef = Main.Studies.HumanModel;
-AnyFolder &BodyModelRef  = HumanModelRef.BodyModel;
-AnyFolder &StudyRef      = Main.Studies;
-AnyFolder &MainStudyRef  = StudyRef.InverseDynamicStudy;
-#else
+#define LLJ_HUMAN_MODEL_REF Main.Studies.HumanModel
+#define LLJ_STUDY_REF Main.Studies.InverseDynamicStudy
+#endif
 #if LLJ_MoCapModelSetup == 2
-AnyFolder &HumanModelRef = Main.HumanModel;
-AnyFolder &BodyModelRef  = HumanModelRef.BodyModel;
-AnyFolder &StudyRef      = Main.Studies;
-AnyFolder &MainStudyRef  = StudyRef.InverseDynamicsStudy;
-#else
-AnyFolder &HumanModelRef = Main.HumanModel;
-AnyFolder &BodyModelRef  = HumanModelRef.BodyModel;
-AnyFolder &StudyRef      = Main.Study;
-AnyFolder &MainStudyRef  = StudyRef;
+#define LLJ_HUMAN_MODEL_REF Main.HumanModel
+#define LLJ_STUDY_REF Main.Studies.InverseDynamicsStudy
 #endif
+#if LLJ_MoCapModelSetup == 0
+#define LLJ_HUMAN_MODEL_REF Main.HumanModel
+#define LLJ_STUDY_REF Main.Study
 #endif
+
+AnyFolder &HumanModelRef = LLJ_HUMAN_MODEL_REF;
+AnyFolder &BodyModelRef  = HumanModelRef.BodyModel;
+AnyFolder &MainStudyRef  = LLJ_STUDY_REF;
+
+
