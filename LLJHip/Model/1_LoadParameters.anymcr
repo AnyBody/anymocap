@@ -1,4 +1,0 @@
-load "1_StandingModel.Main.any"
-operation RunApplication
-run
-exit

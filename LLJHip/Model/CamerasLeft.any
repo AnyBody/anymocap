@@ -1,5 +1,0 @@
-        AnyFolder Camera = {
-              #include "MovingCamera_1Left.any"  //this camera makes pictures from the front
-              #include "MovingCamera_2Left.any"  //this camera makes pictures from the side
-              #include "MovingCamera_3Left.any"  //this camera makes pictures from the back
-        };

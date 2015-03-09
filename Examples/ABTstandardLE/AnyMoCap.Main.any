@@ -21,4 +21,4 @@
 
 
 // Creates the Model - no need to edit
-#include "../../LLJHip/LLJHip.Include.any"
+#include "../../../ADL/LLJ_Hip/LLJHip.Include.any"

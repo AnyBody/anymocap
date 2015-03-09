@@ -1,5 +1,0 @@
-  InverseDynamics.ForceDepKinOnOff=On;
-  InverseDynamics.ForceDepKin.ForceTol=1;// 5e-1;
-  InverseDynamics.ForceDepKin.Perturbation=5e-5;
-  InverseDynamics.ForceDepKin.LocalSearchOnOff = On;
-  InverseDynamics.ForceDepKin.MaxNewtonStep = 0.003;
