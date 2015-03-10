@@ -21,4 +21,5 @@
 
 
 // Creates the Model - no need to edit
+#define LLJ_HIPMODEL_MODELSETUP  2
 #include "../../../ADL/LLJ_Hip/LLJHip.Include.any"
