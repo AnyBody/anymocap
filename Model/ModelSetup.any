@@ -71,19 +71,19 @@ AnyFolder ModelSetup = {
 //                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
 //                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_KinematicStudy.anydata.h5"),
 //                    
-//                    "classoperation Main.Studies.InverseDynamicsStudy.Output" + strquote("Save data") +
+//                    "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Save data") +
 //                    "--type= " + strquote("Deep") + 
 //                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
-//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicsStudy.anydata.h5")};
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicStudy.anydata.h5")};
 //    };
 //    AnyOperationMacro LoadOutputToHDF = {
 //       MacroStr = { "classoperation Main.Studies.KinematicStudy.Output" + strquote("Load data") +
 //                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
 //                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_KinematicStudy.anydata.h5"),
 //                    
-//                    "classoperation Main.Studies.InverseDynamicsStudy.Output" + strquote("Load data") +
+//                    "classoperation Main.Studies.InverseDynamicStudy.Output" + strquote("Load data") +
 //                    "--file= " + strquote(ANYBODY_PATH_OUTPUT + "/" + 
-//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicsStudy.anydata.h5")};
+//                    Main.ModelSetup.TrialSpecificData.TrialFileName + "_InverseDynamicStudy.anydata.h5")};
 //    };
 // 
 };
