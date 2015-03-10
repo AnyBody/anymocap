@@ -35,7 +35,7 @@ Main = {
     };
     
     AnyOperationSequence InverseDynamics = {
-      AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicsStudy.InverseDynamics;
+      AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicStudy.InverseDynamics;
     };
     
     AnyOperationSequence SaveOuput = {

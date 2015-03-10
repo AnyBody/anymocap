@@ -54,7 +54,7 @@ Main = {
     
     
     // Study for running the inverse dynamic simulation
-    AnyBodyStudy InverseDynamicsStudy = { 
+    AnyBodyStudy InverseDynamicStudy = { 
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
       AnyFolder &BodyModel= Main.HumanModel.BodyModel;
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
