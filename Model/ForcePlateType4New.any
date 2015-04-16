@@ -23,7 +23,7 @@
     AnyRefNode c01={
       AnyInt i = 0;
       AnyInt plnr = No;
-      sRel = 0.001*{
+      sRel = Folder.PointsScaleFactor*{
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
@@ -40,7 +40,7 @@
     AnyRefNode c02 = {
       AnyInt i=1;
       AnyInt plnr=No;
-      sRel=0.001*{
+      sRel=Folder.PointsScaleFactor*{
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
@@ -57,7 +57,7 @@
     AnyRefNode c03={
       AnyInt i = 2;
       AnyInt plnr = No;
-      sRel = 0.001*{
+      sRel = Folder.PointsScaleFactor*{
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
@@ -74,7 +74,8 @@
     AnyRefNode c04={
       AnyInt i=3;
       AnyInt plnr=No;
-      sRel=0.001*{Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+      sRel=Folder.PointsScaleFactor*{
+        Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
         Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]};
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
