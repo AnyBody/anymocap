@@ -1,0 +1,480 @@
+#ifdef ABT_LPSI
+// Marker on the Left Posterior Superior Iliac
+ AnyFolder &LPS = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LPSI.PosInterpol;
+CreateMarkerDriver LPSI ( 
+MarkerName= ABT_LPSI,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX="Off", OptY="Off", OptZ="On"
+) = {
+  sRelOpt ={-0.06, -0.00, -0.045};
+};
+#endif
+
+#ifdef ABT_RPSI
+// Marker on the Right Posterior Superior Iliac
+ AnyFolder &RPS = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RPSI.PosInterpol;
+CreateMarkerDriver RPSI (
+MarkerName= ABT_RPSI, 
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+OptX="Off", OptY="Off", OptZ="On"
+) = {
+  sRelOpt = {-0.06, -0.00, 0.045};  
+};
+#endif
+
+#ifdef ABT_RASI
+// Marker on the Right Anterior Superior Iliac
+ AnyFolder &RAS = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RASI.PosInterpol;
+CreateMarkerDriver RASI (
+MarkerName= ABT_RASI, 
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
+) = {
+  sRelOpt =  {0.11, -0.025, 0.13};
+};
+#endif
+
+#ifdef ABT_LASI
+// Marker on the Left Anterior Superior Iliac
+ AnyFolder &LAS = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LASI.PosInterpol;
+CreateMarkerDriver LASI (
+MarkerName= ABT_LASI ,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
+) = {
+  sRelOpt =  {0.11, -0.025, -0.13};
+};
+#endif
+
+//// Head
+
+#ifdef ABT_RFHD
+// Marker on the Right Front Head
+CreateMarkerDriver RFHD (
+MarkerName= ABT_RFHD, 
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+OptX="Off",OptY="Off",OptZ="Off" 
+) = {
+  sRelOpt = {0.11,0.06,0.045}; 
+};
+#endif
+
+#ifdef ABT_LFHD
+// Marker on the Left Front Head
+CreateMarkerDriver LFHD (
+MarkerName= ABT_LFHD,  
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {0.11,0.06,-0.045};
+};
+#endif
+
+#ifdef ABT_RBHD
+// Marker on the Right Back Head
+CreateMarkerDriver RBHD (
+MarkerName= ABT_RBHD,  
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
+OptX="On" ,OptY="Off" ,OptZ="On" 
+) = {
+  sRelOpt = {-0.07,0.05,0.08};
+};
+#endif
+
+#ifdef ABT_LBHD
+// Marker on the Left Back Head
+CreateMarkerDriver LBHD (
+MarkerName= ABT_LBHD,  
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
+OptX="On",OptY="Off",OptZ= "On" ,
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {-0.07,0.05,-0.08};
+};
+#endif
+
+//// Thorax
+
+#ifdef ABT_STRN
+// Marker on the Sternum
+CreateMarkerDriver STRN (
+MarkerName= ABT_STRN,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX="On",OptY="On",OptZ="Off",  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0
+) = {
+  sRelOpt = {0.15,0.24,0.0};
+};
+#endif
+
+#ifdef ABT_CLAV
+// Marker on the Clavicle
+CreateMarkerDriver CLAV (
+MarkerName= ABT_CLAV,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX="On",OptY="On",OptZ="Off",  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0
+) = {
+  sRelOpt = {0.085,0.42,0.0};
+};
+#endif
+
+#ifdef ABT_T10
+// Marker on the Thoracic Vertebra 10
+CreateMarkerDriver T10 (
+MarkerName= ABT_T10,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
+OptX="Off",OptY="On",OptZ="Off"
+) = {
+  sRelOpt = {-0.05,0.187,0};
+};
+#endif
+
+#ifdef ABT_C7
+// Marker on the Cervical Vertebra 10
+CreateMarkerDriver C7 (
+MarkerName= ABT_C7,  
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg
+) = {
+  sRelOpt = {-0.05,0.47,0};
+  sRelOptDelta = {0.01,0.02,0};
+};
+#endif
+
+
+//// Lower Extremity Markers
+#ifdef ABT_RTHI
+// Marker on the Right Thigh
+ AnyFolder &RTH = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RTHI.PosInterpol;
+CreateMarkerDriver RTHI ( 
+MarkerName=  ABT_RTHI,
+MarkerPlacement =Right.Leg.Seg.Thigh)= {
+  sRelOpt = {0.00, -0.15, 0.1};
+};
+#endif
+
+#ifdef ABT_RKNE
+// Marker on the Right Knee
+ AnyFolder &RKN = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RTIB.PosInterpol;
+CreateMarkerDriver RKNE (
+MarkerName= ABT_RKNE,
+MarkerPlacement= Right.Leg.Seg.Thigh,
+OptX="Off",OptY="Off",OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.00, -0.3982615, 0.06503701};
+};
+#endif
+
+#ifdef ABT_RTIB
+// Marker on the Right Tibia
+ AnyFolder &RTI = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RKNE.PosInterpol;
+CreateMarkerDriver RTIB (
+MarkerName= ABT_RTIB, 
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.0, -0.1, 0.05};
+};
+#endif
+
+#ifdef ABT_RANK
+// Marker on the Right Lateral Ankle
+ AnyFolder &RAN = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RANK.PosInterpol;
+CreateMarkerDriver RANK ( 
+MarkerName= ABT_RANK ,
+MarkerPlacement=Right.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.03, -0.395, 0.045};
+};
+#endif
+
+#ifdef ABT_RTOE
+// Marker on the Right Toe
+ AnyFolder &RTO = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RTOE.PosInterpol;
+CreateMarkerDriver RTOE (
+MarkerName= ABT_RTOE,  
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX="Off" , OptY="Off" , OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt = {0.14, -0.05, 0.00};
+};
+#endif
+
+#ifdef ABT_RHEE
+// Marker on the Right Heel
+ AnyFolder &RHE = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RHEE.PosInterpol;
+CreateMarkerDriver RHEE (
+MarkerName= ABT_RHEE ,
+MarkerPlacement=Right.Leg.Seg.Foot,
+OptX="Off", OptY="Off" , OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt =  {-0.085, -0.06, -0.001512914};
+};
+#endif
+
+
+// Marker on the Right Metatarsel 5
+#ifdef ABT_RMT5
+ AnyFolder &RMT = Main.ModelSetup.C3DFileData.Points.Markers.ABT_RMT5.PosInterpol;
+CreateMarkerDriver RMT5 (
+MarkerName= ABT_RMT5,  
+MarkerPlacement=Right.Leg.Seg.Foot, 
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
+  sRelOpt =  {0.1269346, -0.07634046, 0.03170642};
+};
+#endif
+
+#ifdef ABT_LTHI
+// Marker on the Left Thigh
+ AnyFolder &LTH = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LTHI.PosInterpol;
+CreateMarkerDriver LTHI ( 
+MarkerName= ABT_LTHI ,
+MarkerPlacement=Left.Leg.Seg.Thigh,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.0, -0.28, -0.1}; 
+};
+#endif
+
+#ifdef ABT_LKNE
+// Marker on the Left Knee
+ AnyFolder &LTI = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LKNE.PosInterpol;
+CreateMarkerDriver LKNE ( 
+MarkerName= ABT_LKNE ,
+MarkerPlacement=Left.Leg.Seg.Thigh,
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {0.00, -0.3982615, -0.06503701};
+};
+#endif
+
+#ifdef ABT_LTIB
+// Marker on the Left Tibia
+ AnyFolder &LKN = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LTIB.PosInterpol;
+CreateMarkerDriver LTIB (
+MarkerName= ABT_LTIB,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {0.0, -0.1, -0.05};
+};
+#endif
+
+#ifdef ABT_LANK
+// Marker on the Left Ankle
+ AnyFolder &LAN = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LANK.PosInterpol;
+CreateMarkerDriver LANK (
+MarkerName= ABT_LANK,
+MarkerPlacement=Left.Leg.Seg.Shank,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.03, -0.395, -0.045};
+};
+#endif
+
+#ifdef ABT_LTOE
+// Marker on the Left Toe
+ AnyFolder &LTO = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LTOE.PosInterpol;
+CreateMarkerDriver LTOE (
+MarkerName= ABT_LTOE, 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX="Off",OptY="On" ,OptZ="Off"
+) = {
+  sRelOpt = {0.14, -0.05, -0.0};
+};
+#endif
+
+#ifdef ABT_LHEE
+// Marker on the Left Heel
+ AnyFolder &LHE = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LHEE.PosInterpol;
+CreateMarkerDriver LHEE(
+MarkerName= ABT_LHEE, 
+MarkerPlacement=Left.Leg.Seg.Foot,
+OptX="Off", OptY="Off", OptZ="Off",
+WeightX=1.0,WeightY=1.0,WeightZ=1.0
+) = {
+  sRelOpt =  {-0.085, -0.06, 0.001512914};
+};
+#endif
+
+#ifdef ABT_LMT5
+// Marker on the Right Metatarsel 5
+ AnyFolder &LMT = Main.ModelSetup.C3DFileData.Points.Markers.ABT_LMT5.PosInterpol; CreateMarkerDriver LMT5 (
+MarkerName= ABT_LMT5,  
+MarkerPlacement=Left.Leg.Seg.Foot, 
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
+  sRelOpt = {0.1269346, -0.07634046, -0.03170642};
+};
+#endif
+
+
+//// Trunk markers
+
+#ifdef ABT_RSHO
+CreateMarkerDriver RSHO (
+MarkerName= ABT_RSHO,  
+MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
+OptX="On",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {0.00,0.00,-0.00};
+};
+#endif
+
+#ifdef ABT_LSHO
+// Marker on the Left Acromio-clavicular joint
+CreateMarkerDriver LSHO (
+MarkerName= ABT_LSHO,  
+MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
+OptX="On",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {0.00,-0.00,-0.0};
+};
+#endif
+
+
+#ifdef ABT_RUPA
+// Marker on the Right Upper Arm
+CreateMarkerDriver RUPA (
+MarkerName= ABT_RUPA,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={0.03,-0.24,0.01}; 
+};
+#endif
+
+
+#ifdef ABT_LUPA
+// Marker on the Left Upper Arm
+CreateMarkerDriver LUPA (
+MarkerName= ABT_LUPA,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt ={-0.03,-0.19,0.01}; 
+};
+#endif
+
+
+#ifdef ABT_RELB
+// Marker on the Right Elbow
+CreateMarkerDriver RELB (
+MarkerName= ABT_RELB,  
+MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {0.045,-0.35, 0.015};
+};
+#endif
+
+
+#ifdef ABT_LELB
+// Marker on the Left Elbow
+CreateMarkerDriver LELB (
+MarkerName= ABT_LELB,  
+MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {-0.045,-0.35, 0.015};
+};
+#endif
+
+
+#ifdef ABT_LFRA
+// Marker on the Left Radius
+CreateMarkerDriver LFRA (
+MarkerName= ABT_LFRA,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.13, 0.03, 0.01};
+};
+#endif
+
+#ifdef ABT_RFRA
+// Marker on the Right Radius
+CreateMarkerDriver RFRA (
+MarkerName= ABT_RFRA,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
+OptX="On",OptY="On",OptZ="On"
+) = {
+  sRelOpt = {-0.13, -0.03, 0.01};
+};
+#endif
+
+#ifdef ABT_RWRA
+// Marker on the Right Wrist A
+CreateMarkerDriver RWRA (
+MarkerName= ABT_RWRA,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {-0.22, -0.05, 0.00};
+};
+#endif
+
+#ifdef ABT_RWRB
+// Marker on the Right Wrist B
+CreateMarkerDriver RWRB (
+MarkerName= ABT_RWRB,  
+MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
+OptX="On" ,OptY="On",OptZ="Off",  
+WeightX=0.1,WeightY=0.1,WeightZ=0.1
+) = {
+  sRelOpt = {-0.22, 0.05, 0.025};
+};
+#endif
+
+#ifdef ABT_LWRA
+// Marker on the Left Wrist A
+CreateMarkerDriver LWRA (
+MarkerName= ABT_LWRA,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius,
+OptX="Off",OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {-0.22, 0.05, 0.0};
+};
+#endif
+
+#ifdef ABT_LWRB
+// Marker on the Left Wrist B
+CreateMarkerDriver LWRB (
+MarkerName= ABT_LWRB,  
+MarkerPlacement=Left.ShoulderArm.Seg.Radius, 
+OptX="On"  ,OptY="On" ,OptZ="Off",  
+WeightX=0.1,WeightY=0.1,WeightZ=0.1
+) = {
+  sRelOpt = {-0.22, -0.05, 0.025};
+};
+#endif
+
+
+#ifdef ABT_RFIN
+// Marker on the Right Finger
+CreateMarkerDriver RFIN (
+MarkerName= ABT_RFIN,  
+MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
+OptX="Off" ,OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {-0.065,-0.02,0.02};
+};
+#endif
+
+
+#ifdef ABT_LFIN
+// Marker on the Left Finger
+CreateMarkerDriver LFIN (
+MarkerName= ABT_LFIN,  
+MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
+OptX="Off" ,OptY="Off",OptZ="Off"
+) = {
+  sRelOpt = {-0.065,-0.02,-0.02};
+};
+#endif
+
+
+

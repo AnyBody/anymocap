@@ -1,0 +1,6 @@
+// Do you use Type 4 or 2, you can use the standard setup: 
+ #define ForcePlateType      4
+ #define ForcePlateNumber    3
+ 
+// Setup your ForcePlates manually in here
+#include "../../../Model/ForcePlateAutoSetup.any"
