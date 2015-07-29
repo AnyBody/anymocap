@@ -76,7 +76,7 @@ Main = {
       nStep= max({1, Main.ModelSetup.nStep-4}); 
       
       InverseDynamics.PreOperation = {
-        AnyOperation &SetView = Main.ModelViews.All_without_marker_arrows; 
+        AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.All_without_marker_arrows; 
       };
       
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
@@ -85,7 +85,7 @@ Main = {
   };// Study
   
   // Definitions of different model view (i.e. with/without muscles)
-  #include "ModelViews.any"
+  //
   
   // Macros to excute the model
   #include "RunApplication.any"  

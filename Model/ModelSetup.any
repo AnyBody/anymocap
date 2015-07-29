@@ -62,6 +62,8 @@ AnyFolder ModelSetup = {
     #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
   };
 
+  #include "ModelViews.any"  
+  
   
   //markers adds macros automatically into this folder
   AnyFolder Macros =  {
