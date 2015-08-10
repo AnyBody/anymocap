@@ -1,6 +1,6 @@
 
 
-#class_template CreateConstraint (DesVar1, DesVar2,
+#class_template LinkDesignVars (DesVar1, DesVar2,
 Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = ParameterIdentification){
   
  Main.Studies.PARAMETER_OPT_STUDY = {
@@ -9,6 +9,37 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
          Val = (Coef1) *.DesVar1.Val - (Coef2)*.DesVar2.Val;
      }; 
   };
+    
+}; 
+
+
+
+/// Add an AnyDesMeasure contraint class to Main.ModelSetup.###### and link it 
+/// to the paramter optimzation study. 
+///
+/// Arguments: 
+///    - NAME: Unique name used to create objects. 
+///    - Constraint_Type: Type of the contraints (default: EqualToZero )
+/// 
+/// Obligatory variables: 
+///    - Value : The value/measured used for the contraint.                           
+#class_template CreateConstraint (
+   NAME,
+   Contraint_Type = EqualToZero, PARAMETER_OPT_STUDY = ParameterIdentification)
+{
+  
+  #var AnyFloat Value;
+  
+  Main.ModelSetup.ParameterIdentification = {
+      AnyDesMeasure NAME##Contraint_Type= {
+          Type = Contraint_Type;
+          Val = ....Value;
+      };  
+  };
+  
+  Main.Studies.PARAMETER_OPT_STUDY = {
+      AnyDesMeasure &NAME##Contraint_Type = Main.ModelSetup.ParameterIdentification.NAME##Contraint_Type ;  
+   };
     
 }; 
 

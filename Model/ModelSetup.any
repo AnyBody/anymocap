@@ -61,6 +61,8 @@ AnyFolder ModelSetup = {
   AnyFolder MocapExtraDrivers = {
     #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
   };
+  
+  AnyFolder ParameterIdentification = { };
 
   #include "ModelViews.any"  
   

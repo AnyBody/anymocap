@@ -50,6 +50,28 @@
     AnyStringVar Set##MarkerName = ("classoperation "+  CompleteNameOf(.sRelOptEdit) + " " + strquote("Set Value") +  strformat ("\n")+ "classoperation Main " + strquote("Update Values") + strformat ("\n"));
   };
 
+  
+  Main.ModelSetup.ParameterIdentification = {
+      AnyDesVar MarkerName##_x= {
+        Val = ....sRelOptEdit[0];    
+        #var Min=-100;
+        #var Max=100;      
+      };
+      
+      AnyDesVar MarkerName##_y = {
+        Val = ....sRelOptEdit[1];   
+        #var Min=-100;
+        #var Max=100;      
+      };
+      
+      AnyDesVar MarkerName##_z = {
+        Val = ....sRelOptEdit[2];   
+        #var Min=-100;
+        #var Max=100;      
+      };
+  };
+   
+  
   AnyFolder &MarkerInsertionNode = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement;
   MarkerInsertionNode = {
     
@@ -80,28 +102,9 @@
             #include "DrawVector.any"
             #var Text="Z";
           };
-      };
-      AnyDesVar DesVarX = {
-        Val = ...sRelOptEdit[0];    
-        #var Min=-100;
-        #var Max=100;      
-      };
-      
-      AnyDesVar DesVarY = {
-        Val = ...sRelOptEdit[1];   
-        #var Min=-100;
-        #var Max=100;      
-      };
-      
-      AnyDesVar DesVarZ = {
-        Val = ...sRelOptEdit[2];   
-        #var Min=-100;
-        #var Max=100;      
-      };
-      
-      
-    }; //create the marker 
-  };
+      };//Arrows    
+    }; //MarkerName 
+  };// InsertionNode
   
       
       AnyKinDriverMarker Driver = {
@@ -149,15 +152,15 @@
   Main.Studies.PARAMETER_OPT_STUDY ={
 
     #if OptX =="On" 
-    AnyDesVar &MarkerName##X =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarX ;
+    AnyDesVar &MarkerName##_x =  Main.ModelSetup.ParameterIdentification.MarkerName##_x;
     #endif
     
     #if OptY =="On"
-    AnyDesVar &MarkerName##Y =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarY ;
+    AnyDesVar &MarkerName##_y =  Main.ModelSetup.ParameterIdentification.MarkerName##_y;
     #endif
     
     #if OptZ =="On"
-    AnyDesVar &MarkerName##Z =  Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName.DesVarZ ;
+    AnyDesVar &MarkerName##_z =  Main.ModelSetup.ParameterIdentification.MarkerName##_z;
     #endif        
     
     
