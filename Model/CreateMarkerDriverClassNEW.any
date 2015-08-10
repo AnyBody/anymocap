@@ -106,7 +106,7 @@
       
       AnyKinDriverMarker Driver = {
         AnyDrawKinMeasure Draw = {
-          #var Visible = Off;
+          #var Visible = On;
           #var Opacity = 1;
           #var Label = Off;
           #var Size = 0.01;
