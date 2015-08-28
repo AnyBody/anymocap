@@ -37,10 +37,8 @@ AnyFolder ModelSetup = {
    #include "CheckMocapConfiguration.any"
 
   
-//  // Study for saving a loading the parameters from calibration trials 
-//  //(dynamic or standing refereces)
-//  #include "SaveLoad_StandingReferenceValues.any"
-
+  // Study for saving a loading the parameters from calibration trials 
+  //(dynamic or standing refereces)
   #include "SaveLoadParameters.any"
   
     
@@ -48,12 +46,7 @@ AnyFolder ModelSetup = {
   AnyInputC3D C3DFileData =  {
 	#include "<MOCAP_C3DSETTINGS>"
   };
-  
-  AnyFloat tStart = TrialSpecificData.tStart;
-  AnyFloat tEnd = TrialSpecificData.tEnd;
-  AnyInt nStep = TrialSpecificData.nStep;
-
-  
+    
   AnyFolder MocapDrivers = {
     #include "<MOCAP_MARKER_PROTOCOL_FILE>"
   };

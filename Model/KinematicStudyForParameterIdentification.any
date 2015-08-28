@@ -6,7 +6,7 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
       AnyFolder ModelEnvironmentConnection ={
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
         AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
-      }; 
+      };
       
   // Construct body model with muscles excluded
   #include "BodyModel_no_muscle_hack.any" 
@@ -14,12 +14,12 @@ AnyBodyStudy KinematicStudyForParameterIdentification= {
     #include "KinematicSettings.any"
   
   
-    nStep = min({100, Main.ModelSetup.nStep});
+    nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
     Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-    tStart = Main.ModelSetup.tStart; 
+    tStart = Main.ModelSetup.TrialSpecificData.tStart; 
     // HACK WORKAROUND We substract a little to avoid a bug
     // which sometimes occur with AnyInterpolation Function. 
-    tEnd = Main.ModelSetup.tEnd - 0.001;
+    tEnd = Main.ModelSetup.TrialSpecificData.tEnd - 0.001;
     
 //    InitialConditions.PreOperation= {
 //      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
