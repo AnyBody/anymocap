@@ -3,13 +3,18 @@
 #class_template LinkDesignVars (DesVar1, DesVar2,
 Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = ParameterIdentification){
   
- Main.Studies.PARAMETER_OPT_STUDY = {
-     AnyDesMeasure Contraint_Type##_##DesVar1##_##DesVar2 = {
+  Main.ModelSetup.ParameterIdentification = {
+     AnyDesMeasure LinkedDesignVars_##DesVar1##_##DesVar2 = {
          Type = Contraint_Type;
          Val = (Coef1) *.DesVar1.Val - (Coef2)*.DesVar2.Val;
      }; 
   };
-    
+  
+  Main.Studies.PARAMETER_OPT_STUDY = {
+      AnyDesMeasure &LinkedDesignVars_##DesVar1##_##DesVar2 = Main.ModelSetup.ParameterIdentification.LinkedDesignVars_##DesVar1##_##DesVar2 ;  
+   };
+  
+  
 }; 
 
 
