@@ -117,6 +117,7 @@
         };
         Linear.Ref=0;
         AnyRefFrame &MarkerRef = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
+        AnyFolder &MarkerName = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName;
         
         #if FilterCutOffFrequency > 0
    	  /// A lowpass butterworth filter
@@ -130,19 +131,19 @@
    	    };
   	  
           // Filter the data
-          AnyMatrix FilteredPos = LowPassFilter(Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.Pos');
+
+          AnyMatrix FilteredPos = LowPassFilter(MarkerName.Pos');
           
           /// Interpolation function of the lowpass filtered data
           AnyFunInterpol FilteredPosInterpol = 
           {
             #var Type = PiecewiseLinear;
-            T = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol.T;
+            T = .MarkerName.PosInterpol.T;
             Data = .FilteredPos;
           };
           
         #else
-        
-        AnyParamFun &InterpolRef = Main.ModelSetup.C3D_OBJECT.Points.Markers.MarkerName.PosInterpol;
+        AnyParamFun &InterpolRef = MarkerName.PosInterpol;
         #endif
         
         WeightFun={.MarkerWeightsPtr};
