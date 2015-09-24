@@ -1,10 +1,10 @@
 AnyFolder ModelViews = {
     AnyFolder SetViewMacros = {
-       AnyOperationMacro All_without_muscles = {
-         MacroStr = {"classoperation Main.ModelSetup.ModelViews.All_NoMuscles "+strquote("Set View") };
+       AnyOperationMacro KinematicView = {
+         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.ModelViews.KinematicView) + strquote("Set View") };
        };    
-       AnyOperationMacro All_without_marker_arrows = {
-         MacroStr = {"classoperation Main.ModelSetup.ModelViews.All_NoMarkerCoords "+strquote("Set View") };
+       AnyOperationMacro InverseDynamicView = {
+         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.ModelViews.InverseDynamicView) + strquote("Set View") };
        };    
     };
     AnyFolder DrawGroups = {

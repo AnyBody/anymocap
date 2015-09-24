@@ -45,7 +45,8 @@ Main = {
       
       #include "KinematicSettings.any"
       
-//      InitialConditions.PreOperation= {AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles;  };
+      Kinematics.PreOperation = 
+        { AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView; };
       nStep= Main.ModelSetup.TrialSpecificData.nStep; 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.TrialSpecificData.tStart; 
@@ -76,7 +77,7 @@ Main = {
       nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4}); 
       
       InverseDynamics.PreOperation = {
-        AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.All_without_marker_arrows; 
+        AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView ; 
       };
       
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
