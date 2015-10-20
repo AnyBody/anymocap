@@ -13,7 +13,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
 
@@ -54,7 +54,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
@@ -84,7 +84,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
@@ -115,7 +115,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
@@ -145,7 +145,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
@@ -176,7 +176,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
@@ -210,7 +210,7 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = .....tArray-2*.....Kinematics.ApproxVelAccPerturb ;
+          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
