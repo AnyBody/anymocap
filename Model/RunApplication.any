@@ -1,44 +1,43 @@
 Main = {
-//  AnyOperationSequence SaveModel = {
-//    AnyOperation &SaveAnySetParameters = .RunApplication.SaveParameters;
-//
-//};
-//  AnyOperationSequence LoadModel = {};
   
+  AnyOperationMacro RunParameterIdentification  = 
+  {
+  MacroStr = {"operation Main.Studies.ParameterIdentification.ParameterOptimization",
+              "run",
+              "operation Main.ModelSetup.Macros.Save_parameters",
+              "run"};
+  };
   
+// The above is a HACK_WORKAROUND since ParameterOptimization can't be referenced 
+// in a AnyOperationSequence without triggering a bug
+//  AnyOperationSequence RunParameterIdentification = 
+//  {
+//    AnyOperationSequence ParameterIdentification = 
+//    {
+//      AnyOperationDummy placeholder_operation= {};
+//    };    
+//    AnyOperationSequence SaveParameters = 
+//    {
+//      AnyOperationDummy placeholder_operation= {};
+//    };
+//  };
   
-  AnyOperationSequence RunApplication = {
+  AnyOperationSequence RunAnalysis= {
     
-    AnyOperationSequence LoadParameters = {
-        AnyOperationDummy placeholder_operation= {};
-    };
-    
-    
-    AnyOperationSequence ParameterIdentification = {
-//        AnyOperationDummy placeholder_operation= {};
-      AnyOperation &StartParameterOpt = Main.Studies.ParameterIdentification.ParameterOptimization;
-      
-    };
-    
-    
-    AnyOperationSequence SaveParameters = {
-        AnyOperationDummy placeholder_operation= {};
-    };
-    
-    
-    AnyOperationSequence KinematicAnalysis = {
+    AnyOperationSequence LoadParameters = 
+    {
+      AnyOperationDummy placeholder_operation= {};
+    };    
+    AnyOperationSequence KinematicAnalysis = 
+    {
       AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
     };
-    
-    AnyOperationMacro UpdateValues = {
-      MacroStr = {"classoperation Main" + strquote("Update Values")};
-    };
-    
-    AnyOperationSequence InverseDynamics = {
+    AnyOperationSequence InverseDynamics = 
+    {
       AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicStudy.InverseDynamics;
     };
-    
-    AnyOperationSequence SaveOuput = {
+    AnyOperationSequence SaveOuput = 
+    {
       AnyOperationDummy do = {};
     };
     

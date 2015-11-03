@@ -11,3 +11,9 @@ InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
  Kinematics.SolverType = KinSolDeterminate;
  InitialConditions.SolverType = Kinematics.SolverType;
  #endif
+
+
+InverseDynamics.PreOperation = {
+  AnyOperationMacro UpdateValues_HACK_WORKAROUND = { MacroStr = {"classoperation Main"+ strquote("Update Values") };};
+  AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView ; 
+ };

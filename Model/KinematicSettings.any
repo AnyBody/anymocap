@@ -10,3 +10,11 @@
  Kinematics.SolverType = KinSolOverDeterminate;
  InitialConditions.SolverType = Kinematics.SolverType;
  #endif
+
+ 
+ 
+ 
+Kinematics.PreOperation = 
+{ 
+  AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView; 
+};

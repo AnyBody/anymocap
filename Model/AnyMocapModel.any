@@ -16,37 +16,32 @@ Main = {
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
   
   
-  AnyFolder Studies = {
-
-    // Study for parameter identification
-    // optimization of segment length and marker positions. 
-    AnyOptKinStudy ParameterIdentification = {
-      #include "KinematicStudyForParameterIdentification.any"
-      Analysis = { AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;};    
+  AnyFolder Studies = 
+  {
+    // Study for parameter identification of segment 
+    // length and marker positions. 
+    AnyOptKinStudy ParameterIdentification = 
+    {
+      #include "KinematicStudyForParameterIdentification.any"  
       ParameterOptimization.ConvergenceTol=1e-4; 
     };
 
     // Kinematic study to generate joint angles
     // used in the inverse dynamics study
-    AnyBodyStudy KinematicStudy = { 
-      
+    AnyBodyStudy KinematicStudy = 
+    { 
       // HACK_WORKAROUND We need to include a special body model with no muscles.
       #include "BodyModel_no_muscle_hack.any" 
-      
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
-      AnyFolder ModelEnvironmentConnection ={
+      AnyFolder ModelEnvironmentConnection =
+      {
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
         AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
       }; 
-      
       // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
-      
       #include "KinematicSettings.any"
-      
-      Kinematics.PreOperation = 
-        { AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView; };
       nStep= Main.ModelSetup.TrialSpecificData.nStep; 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.TrialSpecificData.tStart; 
@@ -55,38 +50,30 @@ Main = {
     
     
     // Study for running the inverse dynamic simulation
-    AnyBodyStudy InverseDynamicStudy = { 
+    AnyBodyStudy InverseDynamicStudy = 
+    { 
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
       AnyFolder &BodyModel= Main.HumanModel.BodyModel;
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
-      AnyFolder ModelEnvironmentConnection ={
+      AnyFolder ModelEnvironmentConnection =
+      {
         #include "JointsAndDriversOptimized.any"
       }; 
-      
       // Include markers but exclude the driver part (for visualization)
       AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
       MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
       
-      
       #include "InverseDynamicSettings.any"
-      
+
       // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
       // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
       tStart = Main.ModelSetup.TrialSpecificData.tStart+2*Kinematics.ApproxVelAccPerturb ; 
       tEnd = Main.ModelSetup.TrialSpecificData.tEnd-2*Kinematics.ApproxVelAccPerturb ;
-      nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4}); 
-      
-      InverseDynamics.PreOperation = {
-        AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView ; 
-      };
-      
+      nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4});    
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
     };
     
-  };// Study
-  
-  // Definitions of different model view (i.e. with/without muscles)
-  //
+  };  //InverseDynamicStudy 
   
   // Macros to excute the model
   #include "RunApplication.any"  

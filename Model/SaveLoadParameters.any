@@ -28,9 +28,10 @@
         
       };
     };
-    Main.RunApplication.SaveParameters = {
-      AnyOperation &Save_parameters_to_anyset = Main.ModelSetup.Macros.Save_parameters;
-    };
+//    HACK_WORKAROUND Must be commented until the OperationSequence bug is fixed. 
+//    Main.RunParameterIdentification.SaveParameters = {
+//      AnyOperation &Save_parameters_to_anyset = Main.ModelSetup.Macros.Save_parameters;
+//    };
   };
  
  
@@ -56,7 +57,7 @@ Main.ModelSetup.Macros = {
   };
   #undef _LOAD_MACRO
   #undef _GET_VALID_INDEX
-  Main.RunApplication.LoadParameters = {
+  Main.RunAnalysis.LoadParameters = {
     AnyOperation &Load_parameters_from_anyset = Main.ModelSetup.Macros.Load_parameters;
   };
 };

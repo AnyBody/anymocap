@@ -1,34 +1,43 @@
 // HACK WORKAROUND Added a dummy AnyDesVar to handle the case where no DesVars are created.
 
+Analysis = 
+{ 
+  AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;
+};  
 
-AnyBodyStudy KinematicStudyForParameterIdentification= {
+AnyBodyStudy KinematicStudyForParameterIdentification = 
+{
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
-      AnyFolder ModelEnvironmentConnection ={
-        AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
-        AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
-      };
+  AnyFolder ModelEnvironmentConnection ={
+    AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
+    AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
+  };
       
   // Construct body model with muscles excluded
   #include "BodyModel_no_muscle_hack.any" 
 
-    #include "KinematicSettings.any"
-  
-  
-    nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
-    Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-    tStart = Main.ModelSetup.TrialSpecificData.tStart; 
-    // HACK WORKAROUND We substract a little to avoid a bug
-    // which sometimes occur with AnyInterpolation Function. 
-    tEnd = Main.ModelSetup.TrialSpecificData.tEnd - 0.001;
-    
-//    InitialConditions.PreOperation= {
-//      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
-//    };
-//    Kinematics.PreOperation= {
-//      AnyOperation &HideMuscles = Main.ModelViews.All_without_muscles ;
-//    };
-      Main.RunApplication.ParameterIdentification = {
-        AnyOperation &Run = Main.Studies.ParameterIdentification.ParameterOptimization;
-      };
+  #include "KinematicSettings.any"
 
-  };  
+
+  nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
+  Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+  tStart = Main.ModelSetup.TrialSpecificData.tStart; 
+  // HACK WORKAROUND We substract a little to avoid a bug
+  // which sometimes occur with AnyInterpolation Function. 
+  tEnd = Main.ModelSetup.TrialSpecificData.tEnd - 0.001;
+  
+  Kinematics.PreOperation= 
+  {
+    AnyOperation &HideMuscles = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView;
+  };
+//  Main.RunParameterIdentification.ParameterIdentification = 
+//  {
+//    AnyOperationMacro reset = 
+//    {
+//      // HAC
+//      MacroStr = {"reset"};
+//    };
+//    AnyOperation &run = Main.Studies.ParameterIdentification.ParameterOptimization;
+//  };
+
+};  
