@@ -130,7 +130,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasureOrg &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
     AnyKinMeasureOrg &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
     AnyKinMeasureOrg &AnkleEversion = ...BodyModel.Interface.Left.AnkleEversion;
-    Reaction.Type=1000*{Off,Off,Off,Off,Off,Off};
+    Reaction.Type={Off,Off,Off,Off,Off,Off};
   };
   #endif
   
