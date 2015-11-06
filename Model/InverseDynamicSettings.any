@@ -13,7 +13,7 @@ InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
  #endif
 
 
-InverseDynamics.PreOperation = {
-  AnyOperationMacro UpdateValues_HACK_WORKAROUND = { MacroStr = {"classoperation Main"+ strquote("Update Values") };};
+InitialConditions.PreOperation = {
   AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView ; 
+  AnyOperationMacro UpdateValues_HACK_WORKAROUND = { MacroStr = {"classoperation Main"+ strquote("Update Values") };};
  };
