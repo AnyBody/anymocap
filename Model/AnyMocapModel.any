@@ -64,6 +64,8 @@ Main = {
       MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
       
       #include "InverseDynamicSettings.any"
+      #include "CollectedOutputs.any"
+      
 
       // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
       // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
