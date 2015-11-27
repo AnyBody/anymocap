@@ -1,13 +1,12 @@
 #include "PathDefinitions.any"
 #include "ClassTemplates.any"
 
-Main = {
-    
-  
+Main = 
+{
   // Mocap related setup
   #include "ModelSetup.any"
   
-  // Include Environment model
+  // Include environment model
   // e.g. global reference, forceplates etc.
   #include "EnvironmentModel.any"
   
@@ -18,17 +17,15 @@ Main = {
   
   AnyFolder Studies = 
   {
-    // Study for parameter identification of segment 
-    // length and marker positions. 
+    // Study for parameter identification of segment length and marker positions. 
     AnyOptKinStudy ParameterIdentification = 
     {
       #include "KinematicStudyForParameterIdentification.any"  
       ParameterOptimization.ConvergenceTol=1e-4; 
     };
 
-    // Kinematic study to generate joint angles
-    // used in the inverse dynamics study
-    AnyBodyStudy KinematicStudy = 
+    // Overdeterminate kinematics study to generate joint angles for inv. dyn. study. 
+    AnyKinStudy KinematicStudy = 
     { 
       // HACK_WORKAROUND We need to include a special body model with no muscles.
       #include "BodyModel_no_muscle_hack.any" 
@@ -39,9 +36,10 @@ Main = {
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
         AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
       }; 
+      
       // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
-      #include "KinematicSettings.any"
+      #include "KinematicStudySettings.any"
       nStep= Main.ModelSetup.TrialSpecificData.nStep; 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.TrialSpecificData.tStart; 
