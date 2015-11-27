@@ -59,9 +59,10 @@ Main = {
       {
         #include "JointsAndDriversOptimized.any"
       }; 
-      // Include markers but exclude the driver part (for visualization)
+      // Include markers for visualization, but exclude the driver part 
       AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
-      MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
+      AnyMechObjectExcluder Exclude={ Objects = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");};
+      
       
       #include "InverseDynamicSettings.any"
       #include "CollectedOutputs.any"
