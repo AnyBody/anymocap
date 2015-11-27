@@ -17,7 +17,7 @@
 
 #ifndef MOCAP_MARKER_PROTOCOL_FILE 
 #path MOCAP_MARKER_PROTOCOL_FILE "ExampleFiles/MarkerProtocol_PlugInGait.any"
-// HACK workaround add a dummy designvar when the model is loaded with out
+// HACK workaround add a dummy designvar when the model is loaded without
 // markers
 Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
@@ -30,7 +30,7 @@ Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #path MOCAP_FORCE_PLATE_FILE "ExampleFiles/ForcePlates_Type2.any"
 #endif
 
-// This set a example c3d file, if the AnyMocapModel is loaded as main.
+//IF the AnyMocapModel is loaded directly: add a example c3d file 
 #if ANYBODY_FILENAME_MAINFILE == "AnyMocapModel.any"
 Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #endif
