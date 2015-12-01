@@ -5,7 +5,7 @@ Analysis =
   AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;
 };  
 
-AnyBodyStudy KinematicStudyForParameterIdentification = 
+AnyKinStudy KinematicStudyForParameterIdentification = 
 {
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
   AnyFolder ModelEnvironmentConnection ={
@@ -16,7 +16,7 @@ AnyBodyStudy KinematicStudyForParameterIdentification =
   // Construct body model with muscles excluded
   #include "BodyModel_no_muscle_hack.any" 
 
-  #include "KinematicSettings.any"
+  #include "KinematicStudySettings.any"
 
 
   nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
@@ -26,10 +26,6 @@ AnyBodyStudy KinematicStudyForParameterIdentification =
   // which sometimes occur with AnyInterpolation Function. 
   tEnd = Main.ModelSetup.TrialSpecificData.tEnd - 0.001;
   
-  Kinematics.PreOperation= 
-  {
-    AnyOperation &HideMuscles = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView;
-  };
 //  Main.RunParameterIdentification.ParameterIdentification = 
 //  {
 //    AnyOperationMacro reset = 

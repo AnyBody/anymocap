@@ -1,0 +1,26 @@
+InitialConditions = 
+{
+  PosAnalysisOnlyOnOff = On;
+  KinematicTol=1e-6; 
+#if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+  Solver = &SolverOptions.KinSolOverDet1;
+#else
+  SolverType = KinSolOverDeterminate;
+#endif
+  PreOperation = 
+  { 
+    AnyOperation &SetView = Main.ModelSetup.ModelViews.SetViewMacros.KinematicView; 
+  };
+};
+
+
+Kinematics = 
+{
+  PosAnalysisOnlyOnOff = On;
+  KinematicTol=1e-6; 
+#if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+  Solver = &SolverOptions.KinSolOverDet1;
+#else
+  SolverType = KinSolOverDeterminate;
+#endif
+};

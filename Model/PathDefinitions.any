@@ -1,31 +1,48 @@
-// This ensures that all the necessary path statements exist if they are 
-// not specified by the main file. 
-
 #ifndef INCLUDEFILE_ANY
-  #define INCLUDEFILE_ANY
+#define INCLUDEFILE_ANY
 
- #ifndef ANYMOCAP_MODEL_PATH
-   #path ANYMOCAP_MODEL_PATH "."
- #endif
+// This file ensures that all necessary path statements 
+// are exist if they have not been set by the application 
+// that loads the AnyMocap model.
+
+  #ifndef ANYMOCAP_MODEL_PATH
+    #path ANYMOCAP_MODEL_PATH "."
+  #endif
   
- #ifndef TEMP_PATH
-   #path TEMP_PATH "Tmp/"
- #endif
-  
- #ifndef ANYBODY_PATH_OUTPUT
-   #path ANYBODY_PATH_OUTPUT "<ANYBODY_PATH_MAINFILEDIR>"
- #endif
-  
- #ifndef PROJECT_PATH
-   #path PROJECT_PATH "../"
- #endif
+  // Path for saving intermediate files 
+  #ifndef TEMP_PATH
+    #path TEMP_PATH "Tmp/"
+  #endif
+
+  // Path for saving model output files 
+  #ifndef ANYBODY_PATH_OUTPUT
+    #path ANYBODY_PATH_OUTPUT "<ANYBODY_PATH_MAINFILEDIR>"
+  #endif
+   
+  #ifndef PROJECT_PATH
+    #path PROJECT_PATH "../"
+  #endif
  
- // Include the AMMR library
- #ifdef AMMR_PATH
-   #include "<AMMR_PATH>\Application\libdef.any"
- #else
-   #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
- #endif
+  // Include the AMMR library
+  #ifdef AMMR_PATH
+    #include "<AMMR_PATH>\Application\libdef.any"
+  #else
+    #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
+  #endif
  
+  // Load an example LabSpecificData.any file if none have been set
+  #ifndef MOCAP_LAB_SPECIFIC_DATA
+    #path MOCAP_LAB_SPECIFIC_DATA "ExampleFiles/LabSpecificData.any"
+  #endif
+  
+  // Load an example SubjectSpecificData.any file if none have been set
+  #ifndef MOCAP_SUBJECT_SPECIFIC_DATA
+    #path MOCAP_SUBJECT_SPECIFIC_DATA "ExampleFiles/SubjectSpecificData.any"
+  #endif
+  
+  // Load an example TrialSpecificData.any file if none have been set
+  #ifndef MOCAP_TRIAL_SPECIFIC_DATA
+    #path MOCAP_TRIAL_SPECIFIC_DATA "ExampleFiles/TrialSpecificData.any"
+  #endif
  
 #endif
