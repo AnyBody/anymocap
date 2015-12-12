@@ -2,13 +2,14 @@
                                     MarkerPlacement,
                                     WeightX=1, WeightY=1, WeightZ=1,
                                     OptX="Off", OptY = "Off",OptZ="Off",
-                                    sRelOptScalingOnOff = "On",
+                                    ScaleMarkerPosOnOff = "On",
                                     FilterCutOffFrequency = 0,
                                     FilterOrder = 2,
                                     UseC3DWeightResiduals = "Off",
                                     PARAMETER_OPT_STUDY = ParameterIdentification,
                                     C3D_OBJECT = C3DFileData,
-                                    BODY_MODEL_FOLDER = BodyModel
+                                    BODY_MODEL_FOLDER = BodyModel,
+                                    PlaceMarkerAt = AnatomicalFrame
                                     ){
                                       
   #var AnyVar ConstMarkerWeightX = WeightX;
@@ -75,12 +76,22 @@
   AnyFolder &MarkerInsertionNode = Main.HumanModel.BODY_MODEL_FOLDER.MarkerPlacement;
   MarkerInsertionNode = {
     
+    
     AnyRefNode MarkerName={
-      #if sRelOptScalingOnOff == "On"
-        sRel= .AnatomicalFrame.sRel+ (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+      #if ScaleMarkerPosOnOff == "On"
+        AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
       #else
-        sRel= .AnatomicalFrame.sRel+ (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+        AnyVec3 MarkerOffset = (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
       #endif
+      
+//      AnyFunTransform3DLinRef Transform2SegmentFrame = {
+//            AnyVec3 test1 = ..PlaceMarkerAt.sRel;
+//            AnyMat33 test2 = ..PlaceMarkerAt.ARel;
+//            Ref = &..PlaceMarkerAt;
+//      };
+//      sRel = Transform2SegmentFrame({0.0,0,0}) + MarkerOffset;
+      
+      sRel = .PlaceMarkerAt.sRel + MarkerOffset;
       ARel= .AnatomicalFrame.ARel;
       
       AnyRefNode Arrows = {  
