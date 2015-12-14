@@ -21,7 +21,7 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   
   
   AnyVar MaxMuscleActivity              = .MaxMuscleActivity;
-  
+  AnyVar Abscissa = Main.Studies.InverseDynamicStudy.Output.Abscissa.t;
   // Right
   // Leg
   
