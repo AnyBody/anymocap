@@ -19,9 +19,9 @@ AnyFolder JointsAndDrivers = {
             Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
             Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
             InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-            0,0,0,
+            0,0,0
             #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
-            0
+            ,0
             #endif
             #if BM_TRUNK_NECK == ON
             ,0,0,0
