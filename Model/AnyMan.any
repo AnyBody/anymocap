@@ -8,13 +8,6 @@
 //University of Cape Town
   
 
-// Hack to solve a problem with new scaling system and where mocap model
-// file expect to find AnthroSegmentLengths folder. 
-Main.HumanModel.Scaling = {
-    AnyFolder &AnthroSegmentLengths = Scaling.AnthroSegmentLengths ;
-  };
-
-
 AnyVar BMI = AnthroData.Body_Mass/(AnthroData.body_height^2);
   AnyVar FatPercent = (-0.09 + 0.0149*BMI - 0.00009*BMI^2)*100; //Estimation from Frankenfield et al. (2001) valid for men
 

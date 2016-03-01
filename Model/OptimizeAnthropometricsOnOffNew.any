@@ -22,7 +22,7 @@
   
   ref={
     
-    AnyFolder &Lengths=.HumanModelRef.Scaling.AnthroSegmentLengths;
+    AnyFolder &Lengths=.HumanModelRef.AnthroDataSubject.AnthroSegmentLengths;
     
     #if PelvisWidthOnOff=="On"
     AnyDesVar PelvisWidth = {

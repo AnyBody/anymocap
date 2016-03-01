@@ -38,3 +38,28 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #ifndef MOCAP_C3DSETTINGS 
 #path  MOCAP_C3DSETTINGS  "C3DSettings.any"
 #endif
+
+
+
+#define BM_CONFIG_VALUES ON
+
+#ifndef AMMR_VERSION 
+// Pre AMMR1.7 
+// Create a stub for Main.HumanModel.AnthroDataSubject 
+Main.HumanModel= {
+   /// This folder is create by the AnyMocapModel, so the HumanModel 
+   /// has the same structure as AMMR version >=1.7.0
+   /// 
+   /// It just links to the AnyMan file included under 
+   /// HumanModel.Scaling.Scaling where the AnyMan file was previously
+   /// located
+   AnyFolder AnthroDataSubject = {
+    
+     AnyVar BMI = Main.HumanModel.Scaling.Scaling.BMI;
+     AnyVar FatPercent = Main.HumanModel.Scaling.Scaling.FatPercent;
+     AnyFolder &AntroData = Main.HumanModel.Scaling.Scaling.AnthroData;
+     AnyFolder &AnthroSegmentLengths= Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths;
+   };
+};
+#endif
+

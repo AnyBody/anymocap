@@ -3,7 +3,6 @@ AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   // Macro for initializing a empty mxn matrix
   #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
-
   AnyKinDriver JntDriverTrunk = {
     AnyFunInterpol InterpolatedData = {
       AnyInputFile FileReader = {
@@ -12,9 +11,23 @@ AnyFolder JointsAndDrivers = {
           #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
-          ReloadOnOff = On;
+          ReloadOnOff = On;          
+          RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
+          Data0 = 
+          { 
+            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
+            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
+            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
+            InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
+            0,0,0
+            #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
+            ,0
+            #endif
+            #if BM_TRUNK_NECK == ON
+            ,0,0,0
+            #endif
+          }'* (1+_ZEROS(1,NumElemOf(T0)));
           T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
 
       };
