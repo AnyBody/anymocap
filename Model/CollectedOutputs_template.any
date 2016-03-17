@@ -20,266 +20,266 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   };
   
   
-  AnyVar MaxMuscleActivity              = .MaxMuscleActivity;
-  AnyVar Abscissa = Main.Studies.InverseDynamicStudy.Output.Abscissa.t;
+  #var AnyVar MaxMuscleActivity              = .MaxMuscleActivity;
+  #var AnyVar Abscissa = Main.Studies.InverseDynamicStudy.Output.Abscissa.t;
   // Right
   // Leg
   
   // Joint Reaction Force
   #if INCLUDE_LEG_JOINT_REACTION_FORCE == "On"
-  AnyVar RightHip_MediolateralForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_MediolateralForce;
-  AnyVar RightHip_ProximoDistalForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_ProximoDistalForce;
-  AnyVar RightHip_AnteroPosteriorForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_AnteroPosteriorForce;
-  AnyVar RightKnee_MedioLateralForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_MedioLateralForce;
-  AnyVar RightKnee_ProximoDistalForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_ProximoDistalForce;
-  AnyVar RightKnee_AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_AnteroPosteriorForce;
-  AnyVar RightKnee_AxialMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_AxialMoment;
-  AnyVar RightKnee_LateralMoment        = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_LateralMoment;
-  AnyVar RightAnkle_MedioLateralForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_MedioLateralForce;
-  AnyVar RightAnkle_ProximoDistalForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_ProximoDistalForce;
-  AnyVar RightAnkle_AnteroPosteriorForce= Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_AnteroPosteriorForce;
-  AnyVar RightAnkle_AxialMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_AxialMoment;
+  #var AnyVar RightHip_MediolateralForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_MediolateralForce;
+  #var AnyVar RightHip_ProximoDistalForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_ProximoDistalForce;
+  #var AnyVar RightHip_AnteroPosteriorForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Hip_AnteroPosteriorForce;
+  #var AnyVar RightKnee_MedioLateralForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_MedioLateralForce;
+  #var AnyVar RightKnee_ProximoDistalForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_ProximoDistalForce;
+  #var AnyVar RightKnee_AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_AnteroPosteriorForce;
+  #var AnyVar RightKnee_AxialMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_AxialMoment;
+  #var AnyVar RightKnee_LateralMoment        = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Knee_LateralMoment;
+  #var AnyVar RightAnkle_MedioLateralForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_MedioLateralForce;
+  #var AnyVar RightAnkle_ProximoDistalForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_ProximoDistalForce;
+  #var AnyVar RightAnkle_AnteroPosteriorForce= Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_AnteroPosteriorForce;
+  #var AnyVar RightAnkle_AxialMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointReactionForce.Ankle_AxialMoment;
   #endif
   
   // Joint Moment Measure
   #if INCLUDE_LEG_JOINT_MOMENT == "On"
-  AnyVar RightHipAbductionMoment        = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipAbduction;
-  AnyVar RightHipFlexionMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipFlexion;
-  AnyVar RightHipExternalRotationMoment = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipExternalRotation;
-  AnyVar RightKneeFlexionMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.KneeFlexion;
-  AnyVar RightAnklePlantarFlexionMoment = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.AnklePlantarFlexion;
-  AnyVar RightSubTalarEversionMoment    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.SubTalarEversion;
+  #var AnyVar RightHipAbductionMoment        = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipAbduction;
+  #var AnyVar RightHipFlexionMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipFlexion;
+  #var AnyVar RightHipExternalRotationMoment = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.HipExternalRotation;
+  #var AnyVar RightKneeFlexionMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.KneeFlexion;
+  #var AnyVar RightAnklePlantarFlexionMoment = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.AnklePlantarFlexion;
+  #var AnyVar RightSubTalarEversionMoment    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Right.Leg.JointMomentMeasure.SubTalarEversion;
   #endif
   
   // Joint Angles
   #if INCLUDE_LEG_JOINT_ANGLE == "On"
-  AnyVar RightAnklePlantarFlexiontest   = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.AnklePlantarFlexion.Pos[0];
-  AnyVar RightSubTalarEversion          = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.SubTalarEversion.Pos[0];
-  AnyVar RightKneeFlexion               = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.KneeFlexion.Pos[0];
-  AnyVar RightPatellaFlexion            = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.PatellaFlexion.Pos[0];
+  #var AnyVar RightAnklePlantarFlexiontest   = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.AnklePlantarFlexion.Pos[0];
+  #var AnyVar RightSubTalarEversion          = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.SubTalarEversion.Pos[0];
+  #var AnyVar RightKneeFlexion               = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.KneeFlexion.Pos[0];
+  #var AnyVar RightPatellaFlexion            = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.PatellaFlexion.Pos[0];
   
-  AnyVar RightHipFlexionZXY             = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipFlexion.Pos[0];
-  AnyVar RightHipAbductionZXY           = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipAbduction.Pos[0];
-  AnyVar RightHipExternalRotationZXY    = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipExternalRotation.Pos[0];
+  #var AnyVar RightHipFlexionZXY             = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipFlexion.Pos[0];
+  #var AnyVar RightHipAbductionZXY           = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipAbduction.Pos[0];
+  #var AnyVar RightHipExternalRotationZXY    = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZXY.HipExternalRotation.Pos[0];
   
-  AnyVar RightHipFlexionZYX             = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipFlexion.Pos[0];
-  AnyVar RightHipAbductionZYX           = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipAbduction.Pos[0];
-  AnyVar RightHipExternalRotationZYX    = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipExternalRotation.Pos[0];
+  #var AnyVar RightHipFlexionZYX             = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipFlexion.Pos[0];
+  #var AnyVar RightHipAbductionZYX           = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipAbduction.Pos[0];
+  #var AnyVar RightHipExternalRotationZYX    = Main.HUMAN_MODEL.BodyModel.Right.Leg.InterfaceFolder.HipJoint_SeqZYX.HipExternalRotation.Pos[0];
   #endif
   
   // Mean muscle activity
   #if INCLUDE_LEG_MUSCLES == "On"
-  AnyVar RightSoleusMedialis            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusMedialis1.Activity +
+  #var AnyVar RightSoleusMedialis            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusMedialis3.Activity) / 3;
   
-  AnyVar RightSoleusLateralis           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusLateralis1.Activity +
+  #var AnyVar RightSoleusLateralis           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SoleusLateralis3.Activity) / 3;
   
-  AnyVar RightGastrocnemiusLateralis    = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GastrocnemiusLateralis1.Activity;
+  #var AnyVar RightGastrocnemiusLateralis    = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GastrocnemiusLateralis1.Activity;
   
-  AnyVar RightGastrocnemiusMedialis     = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GastrocnemiusMedialis1.Activity;
+  #var AnyVar RightGastrocnemiusMedialis     = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GastrocnemiusMedialis1.Activity;
   
-  AnyVar RightFlexorDigitorumLongus     =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorDigitorumLongus1.Activity +
+  #var AnyVar RightFlexorDigitorumLongus     =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorDigitorumLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorDigitorumLongus3.Activity) / 3;
   
-  AnyVar RightFlexorHallucisLongus      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorHallucisLongus1.Activity +
+  #var AnyVar RightFlexorHallucisLongus      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorHallucisLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorHallucisLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.FlexorHallucisLongus3.Activity) / 3;
   
-  AnyVar RightTibialisPosteriorLateralis=  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorLateralis1.Activity +
+  #var AnyVar RightTibialisPosteriorLateralis=  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorLateralis3.Activity) / 3;
   
-  AnyVar RightTibialisPosteriorMedialis =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorMedialis1.Activity +
+  #var AnyVar RightTibialisPosteriorMedialis =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisPosteriorMedialis3.Activity) / 3;
   
-  AnyVar RightTibialisAnterior          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisAnterior1.Activity +
+  #var AnyVar RightTibialisAnterior          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisAnterior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisAnterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TibialisAnterior3.Activity) / 3;
   
-  AnyVar RightPeroneusBrevis            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusBrevis1.Activity +
+  #var AnyVar RightPeroneusBrevis            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusBrevis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusBrevis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusBrevis3.Activity) / 3;
   
-  AnyVar RightPeroneusLongus            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus1.Activity +
+  #var AnyVar RightPeroneusLongus            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus3.Activity) / 3;
   
-  AnyVar RightPeroneusTertius           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius1.Activity +
+  #var AnyVar RightPeroneusTertius           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius3.Activity) / 3;
   
-  AnyVar RightExtensorDigitorumLongus   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus1.Activity +
+  #var AnyVar RightExtensorDigitorumLongus   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus3.Activity) / 3;
   
-  AnyVar RightExtensorHallucisLongus    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorHallucisLongus1.Activity +
+  #var AnyVar RightExtensorHallucisLongus    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorHallucisLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorHallucisLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorHallucisLongus3.Activity) / 3;
   
-  AnyVar RightVastusLateralisInferior   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior1.Activity + 
+  #var AnyVar RightVastusLateralisInferior   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisInferior6.Activity) / 6;
   
-  AnyVar RightVastusLateralisSuperior   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisSuperior1.Activity +
+  #var AnyVar RightVastusLateralisSuperior   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisSuperior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusLateralisSuperior2.Activity) / 2;
   
-  AnyVar RightVastusMedialisInferior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisInferior1.Activity +
+  #var AnyVar RightVastusMedialisInferior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisInferior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisInferior2.Activity) / 2;
   
-  AnyVar RightVastusMedialisMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisMid1.Activity +
+  #var AnyVar RightVastusMedialisMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisMid2.Activity) / 2;
   
-  AnyVar RightVastusMedialisSuperior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior1.Activity + 
+  #var AnyVar RightVastusMedialisSuperior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior6.Activity) / 6;
   
-  AnyVar RightVastusIntermedius         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius1.Activity + 
+  #var AnyVar RightVastusIntermedius         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius6.Activity) / 6;
   
-  AnyVar RightRectusFemoris             =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemoris1.Activity +
+  #var AnyVar RightRectusFemoris             =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemoris1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemoris2.Activity) / 2;
   
-  AnyVar RightSemitendinosus            = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semitendinosus1.Activity;
+  #var AnyVar RightSemitendinosus            = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semitendinosus1.Activity;
   
-  AnyVar RightSemimembranosus           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semimembranosus1.Activity;
+  #var AnyVar RightSemimembranosus           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semimembranosus1.Activity;
   
-  AnyVar RightBicepsFemorisCaputLongum  = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputLongum1.Activity;
+  #var AnyVar RightBicepsFemorisCaputLongum  = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputLongum1.Activity;
   
-  AnyVar RightBicepsFemorisCaputBreve   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve1.Activity +
+  #var AnyVar RightBicepsFemorisCaputBreve   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve3.Activity) / 3;
   
-  AnyVar RightSartoriusProximal         = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusProximal1.Activity;
+  #var AnyVar RightSartoriusProximal         = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusProximal1.Activity;
   
-  AnyVar RightSartoriusDistal           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusDistal1.Activity;
+  #var AnyVar RightSartoriusDistal           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusDistal1.Activity;
   
-  AnyVar RightIliacusLateralis          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis1.Activity +
+  #var AnyVar RightIliacusLateralis          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis3.Activity) / 3;
   
-  AnyVar RightIliacusMid                =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid1.Activity +
+  #var AnyVar RightIliacusMid                =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid3.Activity) / 3;
   
-  AnyVar RightIliacusMedialis           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis1.Activity +
+  #var AnyVar RightIliacusMedialis           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis3.Activity) / 3;
   
-  AnyVar RightGluteusMinimusAnterior    = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusAnterior1.Activity;
+  #var AnyVar RightGluteusMinimusAnterior    = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusAnterior1.Activity;
   
-  AnyVar RightGluteusMinimusMid         = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusMid1.Activity;
+  #var AnyVar RightGluteusMinimusMid         = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusMid1.Activity;
   
-  AnyVar RightGluteusMinimusPosterior   = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusPosterior1.Activity;
+  #var AnyVar RightGluteusMinimusPosterior   = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusPosterior1.Activity;
   
-  AnyVar RightGluteusMediusAnterior     =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior1.Activity + 
+  #var AnyVar RightGluteusMediusAnterior     =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusAnterior6.Activity) / 6;
   
-  AnyVar RightGluteusMediusPosterior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior1.Activity + 
+  #var AnyVar RightGluteusMediusPosterior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMediusPosterior6.Activity) / 6;
   
-  AnyVar RightGluteusMaximusSuperior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior1.Activity + 
+  #var AnyVar RightGluteusMaximusSuperior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusSuperior6.Activity) / 6;
   
-  AnyVar RightGluteusMaximusInferior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior1.Activity + 
+  #var AnyVar RightGluteusMaximusInferior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMaximusInferior6.Activity) / 6;
   
-  AnyVar RightTensorFasciaeLatae        =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TensorFasciaeLatae1.Activity +
+  #var AnyVar RightTensorFasciaeLatae        =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TensorFasciaeLatae1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.TensorFasciaeLatae2.Activity) / 2;
   
-  AnyVar RightPiriformis                = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Piriformis1.Activity;
+  #var AnyVar RightPiriformis                = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Piriformis1.Activity;
   
-  AnyVar RightGracilis                  =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Gracilis1.Activity +
+  #var AnyVar RightGracilis                  =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Gracilis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Gracilis2.Activity) / 2;
   
-  AnyVar RightAdductorLongus            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus1.Activity + 
+  #var AnyVar RightAdductorLongus            =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorLongus6.Activity) / 6;
   
-  AnyVar RightAdductorMagnusDistal      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusDistal1.Activity +
+  #var AnyVar RightAdductorMagnusDistal      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusDistal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusDistal2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusDistal3.Activity) / 3;
   
-  AnyVar RightAdductorMagnusMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid1.Activity + 
+  #var AnyVar RightAdductorMagnusMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid4.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusMid6.Activity) / 6;
   
-  AnyVar RightAdductorMagnusProximal    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusProximal1.Activity + 
+  #var AnyVar RightAdductorMagnusProximal    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusProximal1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusProximal2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusProximal3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorMagnusProximal4.Activity) / 4;
   
-  AnyVar RightAdductorBrevisProximal    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisProximal1.Activity +
+  #var AnyVar RightAdductorBrevisProximal    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisProximal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisProximal2.Activity) / 2;
   
-  AnyVar RightAdductorBrevisMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisMid1.Activity +
+  #var AnyVar RightAdductorBrevisMid         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisMid2.Activity) / 2;
   
-  AnyVar RightAdductorBrevisDistal      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisDistal1.Activity +
+  #var AnyVar RightAdductorBrevisDistal      =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisDistal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.AdductorBrevisDistal2.Activity) / 2;
   
-  AnyVar RightGemellusInferior          = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GemellusInferior1.Activity;
+  #var AnyVar RightGemellusInferior          = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GemellusInferior1.Activity;
   
-  AnyVar RightGemellusSuperior          = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GemellusSuperior1.Activity;
+  #var AnyVar RightGemellusSuperior          = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GemellusSuperior1.Activity;
   
-  AnyVar RightObturatorExternusSuperior =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusSuperior1.Activity +
+  #var AnyVar RightObturatorExternusSuperior =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusSuperior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusSuperior3.Activity) / 3;
   
-  AnyVar RightObturatorExternusInferior =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusInferior1.Activity +
+  #var AnyVar RightObturatorExternusInferior =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusInferior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorExternusInferior2.Activity) / 2;
   
-  AnyVar RightObturatorInternus         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorInternus1.Activity +
+  #var AnyVar RightObturatorInternus         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorInternus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorInternus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ObturatorInternus3.Activity) / 3;
   
-  AnyVar RightPectineus                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Pectineus1.Activity + 
+  #var AnyVar RightPectineus                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Pectineus1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Pectineus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Pectineus3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Pectineus4.Activity) / 4;
   
-  AnyVar RightPlantaris                 = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Plantaris1.Activity;
+  #var AnyVar RightPlantaris                 = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Plantaris1.Activity;
   
-  AnyVar RightPoplitues                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Poplitues1.Activity +
+  #var AnyVar RightPoplitues                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Poplitues1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Poplitues2.Activity) / 2;
   
-  AnyVar RightQuadratusFemoris          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris1.Activity + 
+  #var AnyVar RightQuadratusFemoris          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris4.Activity) / 4;
@@ -295,262 +295,262 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   
   // Joint Reaction Force
   #if INCLUDE_LEG_JOINT_REACTION_FORCE == "On"
-  AnyVar LeftHip_MediolateralForce      = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_MediolateralForce;
-  AnyVar LeftHip_ProximoDistalForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_ProximoDistalForce;
-  AnyVar LeftHip_AnteroPosteriorForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_AnteroPosteriorForce;
-  AnyVar LeftKnee_MedioLateralForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_MedioLateralForce;
-  AnyVar LeftKnee_ProximoDistalForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_ProximoDistalForce;
-  AnyVar LeftKnee_AnteroPosteriorForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_AnteroPosteriorForce;
-  AnyVar LeftKnee_AxialMoment           = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_AxialMoment;
-  AnyVar LeftKnee_LateralMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_LateralMoment;
-  AnyVar LeftAnkle_MedioLateralForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_MedioLateralForce;
-  AnyVar LeftAnkle_ProximoDistalForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_ProximoDistalForce;
-  AnyVar LeftAnkle_AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_AnteroPosteriorForce;
-  AnyVar LeftAnkle_AxialMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_AxialMoment;
+  #var AnyVar LeftHip_MediolateralForce      = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_MediolateralForce;
+  #var AnyVar LeftHip_ProximoDistalForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_ProximoDistalForce;
+  #var AnyVar LeftHip_AnteroPosteriorForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Hip_AnteroPosteriorForce;
+  #var AnyVar LeftKnee_MedioLateralForce     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_MedioLateralForce;
+  #var AnyVar LeftKnee_ProximoDistalForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_ProximoDistalForce;
+  #var AnyVar LeftKnee_AnteroPosteriorForce  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_AnteroPosteriorForce;
+  #var AnyVar LeftKnee_AxialMoment           = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_AxialMoment;
+  #var AnyVar LeftKnee_LateralMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Knee_LateralMoment;
+  #var AnyVar LeftAnkle_MedioLateralForce    = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_MedioLateralForce;
+  #var AnyVar LeftAnkle_ProximoDistalForce   = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_ProximoDistalForce;
+  #var AnyVar LeftAnkle_AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_AnteroPosteriorForce;
+  #var AnyVar LeftAnkle_AxialMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointReactionForce.Ankle_AxialMoment;
   #endif
   
   // Joint Moment Measure
   #if INCLUDE_LEG_JOINT_MOMENT == "On"
-  AnyVar LeftHipAbductionMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipAbduction;
-  AnyVar LeftHipFlexionMoment           = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipFlexion;
-  AnyVar LeftHipExternalRotationMoment  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipExternalRotation;
-  AnyVar LeftKneeFlexionMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.KneeFlexion;
-  AnyVar LeftAnklePlantarFlexionMoment  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.AnklePlantarFlexion;
-  AnyVar LeftSubTalarEversionMoment     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.SubTalarEversion;
+  #var AnyVar LeftHipAbductionMoment         = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipAbduction;
+  #var AnyVar LeftHipFlexionMoment           = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipFlexion;
+  #var AnyVar LeftHipExternalRotationMoment  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.HipExternalRotation;
+  #var AnyVar LeftKneeFlexionMoment          = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.KneeFlexion;
+  #var AnyVar LeftAnklePlantarFlexionMoment  = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.AnklePlantarFlexion;
+  #var AnyVar LeftSubTalarEversionMoment     = Main.HUMAN_MODEL.BodyModel.SelectedOutput.Left.Leg.JointMomentMeasure.SubTalarEversion;
   #endif
   
   // Joint Angles
   #if INCLUDE_LEG_JOINT_ANGLE == "On"
-  AnyVar LeftAnklePlantarFlexiontest    = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.AnklePlantarFlexion.Pos[0];
-  AnyVar LeftSubTalarEversion           = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.SubTalarEversion.Pos[0];
-  AnyVar LeftKneeFlexion                = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.KneeFlexion.Pos[0];
-  AnyVar LeftPatellaFlexion             = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.PatellaFlexion.Pos[0];
+  #var AnyVar LeftAnklePlantarFlexiontest    = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.AnklePlantarFlexion.Pos[0];
+  #var AnyVar LeftSubTalarEversion           = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.SubTalarEversion.Pos[0];
+  #var AnyVar LeftKneeFlexion                = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.KneeFlexion.Pos[0];
+  #var AnyVar LeftPatellaFlexion             = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.PatellaFlexion.Pos[0];
   
-  AnyVar LeftHipFlexionZXY              = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipFlexion.Pos[0];
-  AnyVar LeftHipAbductionZXY            = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipAbduction.Pos[0];
-  AnyVar LeftHipExternalRotationZXY     = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipExternalRotation.Pos[0];
+  #var AnyVar LeftHipFlexionZXY              = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipFlexion.Pos[0];
+  #var AnyVar LeftHipAbductionZXY            = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipAbduction.Pos[0];
+  #var AnyVar LeftHipExternalRotationZXY     = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZXY.HipExternalRotation.Pos[0];
   
-  AnyVar LeftHipFlexionZYX              = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipFlexion.Pos[0];
-  AnyVar LeftHipAbductionZYX            = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipAbduction.Pos[0];
-  AnyVar LeftHipExternalRotationZYX     = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipExternalRotation.Pos[0];
+  #var AnyVar LeftHipFlexionZYX              = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipFlexion.Pos[0];
+  #var AnyVar LeftHipAbductionZYX            = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipAbduction.Pos[0];
+  #var AnyVar LeftHipExternalRotationZYX     = Main.HUMAN_MODEL.BodyModel.Left.Leg.InterfaceFolder.HipJoint_SeqZYX.HipExternalRotation.Pos[0];
   #endif
   
   // Mean muscle activity
   
   #if INCLUDE_LEG_MUSCLES == "On"
   
-  AnyVar LeftSoleusMedialis             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusMedialis1.Activity +
+  #var AnyVar LeftSoleusMedialis             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusMedialis3.Activity) / 3;
   
-  AnyVar LeftSoleusLateralis            =  (
+  #var AnyVar LeftSoleusLateralis            =  (
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SoleusLateralis3.Activity) / 3;
   
-  AnyVar LeftGastrocnemiusLateralis     = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GastrocnemiusLateralis1.Activity;
+  #var AnyVar LeftGastrocnemiusLateralis     = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GastrocnemiusLateralis1.Activity;
   
-  AnyVar LeftGastrocnemiusMedialis      = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GastrocnemiusMedialis1.Activity;
+  #var AnyVar LeftGastrocnemiusMedialis      = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GastrocnemiusMedialis1.Activity;
   
-  AnyVar LeftFlexorDigitorumLongus      =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorDigitorumLongus1.Activity +
+  #var AnyVar LeftFlexorDigitorumLongus      =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorDigitorumLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorDigitorumLongus3.Activity) / 3;
   
-  AnyVar LeftFlexorHallucisLongus       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorHallucisLongus1.Activity +
+  #var AnyVar LeftFlexorHallucisLongus       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorHallucisLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorHallucisLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.FlexorHallucisLongus3.Activity) / 3;
   
-  AnyVar LeftTibialisPosteriorLateralis =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorLateralis1.Activity +
+  #var AnyVar LeftTibialisPosteriorLateralis =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorLateralis3.Activity) / 3;
   
-  AnyVar LeftTibialisPosteriorMedialis  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorMedialis1.Activity +
+  #var AnyVar LeftTibialisPosteriorMedialis  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisPosteriorMedialis3.Activity) / 3;
   
-  AnyVar LeftTibialisAnterior           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisAnterior1.Activity +
+  #var AnyVar LeftTibialisAnterior           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisAnterior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisAnterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TibialisAnterior3.Activity) / 3;
   
-  AnyVar LeftPeroneusBrevis             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusBrevis1.Activity +
+  #var AnyVar LeftPeroneusBrevis             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusBrevis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusBrevis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusBrevis3.Activity) / 3;
   
-  AnyVar LeftPeroneusLongus             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus1.Activity +
+  #var AnyVar LeftPeroneusLongus             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus3.Activity) / 3;
   
-  AnyVar LeftPeroneusTertius            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius1.Activity +
+  #var AnyVar LeftPeroneusTertius            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius3.Activity) / 3;
   
-  AnyVar LeftExtensorDigitorumLongus    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus1.Activity +
+  #var AnyVar LeftExtensorDigitorumLongus    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus3.Activity) / 3;
   
-  AnyVar LeftExtensorHallucisLongus     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorHallucisLongus1.Activity +
+  #var AnyVar LeftExtensorHallucisLongus     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorHallucisLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorHallucisLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorHallucisLongus3.Activity) / 3;
   
-  AnyVar LeftVastusLateralisInferior    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior1.Activity + 
+  #var AnyVar LeftVastusLateralisInferior    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisInferior6.Activity) / 6;
   
-  AnyVar LeftVastusLateralisSuperior    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisSuperior1.Activity +
+  #var AnyVar LeftVastusLateralisSuperior    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisSuperior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusLateralisSuperior2.Activity) / 2;
   
-  AnyVar LeftVastusMedialisInferior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisInferior1.Activity +
+  #var AnyVar LeftVastusMedialisInferior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisInferior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisInferior2.Activity) / 2;
   
-  AnyVar LeftVastusMedialisMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisMid1.Activity +
+  #var AnyVar LeftVastusMedialisMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisMid2.Activity) / 2;
   
-  AnyVar LeftVastusMedialisSuperior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior1.Activity + 
+  #var AnyVar LeftVastusMedialisSuperior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior6.Activity) / 6;
   
-  AnyVar LeftVastusIntermedius          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius1.Activity + 
+  #var AnyVar LeftVastusIntermedius          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius6.Activity) / 6;
   
-  AnyVar LeftRectusFemoris              =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemoris1.Activity +
+  #var AnyVar LeftRectusFemoris              =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemoris1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemoris2.Activity) / 2;
   
-  AnyVar LeftSemitendinosus             = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Semitendinosus1.Activity;
+  #var AnyVar LeftSemitendinosus             = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Semitendinosus1.Activity;
   
-  AnyVar LeftSemimembranosus            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Semimembranosus1.Activity;
+  #var AnyVar LeftSemimembranosus            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Semimembranosus1.Activity;
   
-  AnyVar LeftBicepsFemorisCaputLongum   = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputLongum1.Activity;
+  #var AnyVar LeftBicepsFemorisCaputLongum   = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputLongum1.Activity;
   
-  AnyVar LeftBicepsFemorisCaputBreve    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve1.Activity +
+  #var AnyVar LeftBicepsFemorisCaputBreve    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve3.Activity) / 3;
   
-  AnyVar LeftSartoriusProximal          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusProximal1.Activity;
+  #var AnyVar LeftSartoriusProximal          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusProximal1.Activity;
   
-  AnyVar LeftSartoriusDistal            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusDistal1.Activity;
+  #var AnyVar LeftSartoriusDistal            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusDistal1.Activity;
   
-  AnyVar LeftIliacusLateralis           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis1.Activity +
+  #var AnyVar LeftIliacusLateralis           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis3.Activity) / 3;
   
-  AnyVar LeftIliacusMid                 =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid1.Activity +
+  #var AnyVar LeftIliacusMid                 =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid3.Activity) / 3;
   
-  AnyVar LeftIliacusMedialis            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis1.Activity +
+  #var AnyVar LeftIliacusMedialis            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis3.Activity) / 3;
   
-  AnyVar LeftGluteusMinimusAnterior     = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusAnterior1.Activity;
+  #var AnyVar LeftGluteusMinimusAnterior     = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusAnterior1.Activity;
   
-  AnyVar LeftGluteusMinimusMid          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusMid1.Activity;
+  #var AnyVar LeftGluteusMinimusMid          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusMid1.Activity;
   
-  AnyVar LeftGluteusMinimusPosterior    = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusPosterior1.Activity;
+  #var AnyVar LeftGluteusMinimusPosterior    = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusPosterior1.Activity;
   
-  AnyVar LeftGluteusMediusAnterior      =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior1.Activity + 
+  #var AnyVar LeftGluteusMediusAnterior      =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusAnterior6.Activity) / 6;
   
-  AnyVar LeftGluteusMediusPosterior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior1.Activity + 
+  #var AnyVar LeftGluteusMediusPosterior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMediusPosterior6.Activity) / 6;
   
-  AnyVar LeftGluteusMaximusSuperior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior1.Activity + 
+  #var AnyVar LeftGluteusMaximusSuperior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusSuperior6.Activity) / 6;
   
-  AnyVar LeftGluteusMaximusInferior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior1.Activity + 
+  #var AnyVar LeftGluteusMaximusInferior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMaximusInferior6.Activity) / 6;
   
-  AnyVar LeftTensorFasciaeLatae         =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TensorFasciaeLatae1.Activity +
+  #var AnyVar LeftTensorFasciaeLatae         =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TensorFasciaeLatae1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.TensorFasciaeLatae2.Activity) / 2;
   
-  AnyVar LeftPiriformis                 = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Piriformis1.Activity;
+  #var AnyVar LeftPiriformis                 = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Piriformis1.Activity;
   
-  AnyVar LeftGracilis                   =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Gracilis1.Activity +
+  #var AnyVar LeftGracilis                   =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Gracilis1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Gracilis2.Activity) / 2;
   
-  AnyVar LeftAdductorLongus             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus1.Activity + 
+  #var AnyVar LeftAdductorLongus             =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorLongus6.Activity) / 6;
   
-  AnyVar LeftAdductorMagnusDistal       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusDistal1.Activity +
+  #var AnyVar LeftAdductorMagnusDistal       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusDistal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusDistal2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusDistal3.Activity) / 3;
   
-  AnyVar LeftAdductorMagnusMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid1.Activity + 
+  #var AnyVar LeftAdductorMagnusMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid4.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusMid6.Activity) / 6;
   
-  AnyVar LeftAdductorMagnusProximal     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusProximal1.Activity + 
+  #var AnyVar LeftAdductorMagnusProximal     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusProximal1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusProximal2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusProximal3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorMagnusProximal4.Activity) / 4;
   
-  AnyVar LeftAdductorBrevisProximal     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisProximal1.Activity +
+  #var AnyVar LeftAdductorBrevisProximal     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisProximal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisProximal2.Activity) / 2;
   
-  AnyVar LeftAdductorBrevisMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisMid1.Activity +
+  #var AnyVar LeftAdductorBrevisMid          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisMid1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisMid2.Activity) / 2;
   
-  AnyVar LeftAdductorBrevisDistal       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisDistal1.Activity +
+  #var AnyVar LeftAdductorBrevisDistal       =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisDistal1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.AdductorBrevisDistal2.Activity) / 2;
   
-  AnyVar LeftGemellusInferior           = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GemellusInferior1.Activity;
+  #var AnyVar LeftGemellusInferior           = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GemellusInferior1.Activity;
   
-  AnyVar LeftGemellusSuperior           = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GemellusSuperior1.Activity;
+  #var AnyVar LeftGemellusSuperior           = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GemellusSuperior1.Activity;
   
-  AnyVar LeftObturatorExternusSuperior  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusSuperior1.Activity +
+  #var AnyVar LeftObturatorExternusSuperior  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusSuperior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusSuperior3.Activity) / 3;
   
-  AnyVar LeftObturatorExternusInferior  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusInferior1.Activity +
+  #var AnyVar LeftObturatorExternusInferior  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusInferior1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorExternusInferior2.Activity) / 2;
   
-  AnyVar LeftObturatorInternus          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorInternus1.Activity +
+  #var AnyVar LeftObturatorInternus          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorInternus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorInternus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ObturatorInternus3.Activity) / 3;
   
-  AnyVar LeftPectineus                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Pectineus1.Activity + 
+  #var AnyVar LeftPectineus                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Pectineus1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Pectineus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Pectineus3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Pectineus4.Activity) / 4;
   
-  AnyVar LeftPlantaris                  = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Plantaris1.Activity;
+  #var AnyVar LeftPlantaris                  = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Plantaris1.Activity;
   
-  AnyVar LeftPoplitues                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Poplitues1.Activity +
+  #var AnyVar LeftPoplitues                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Poplitues1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Poplitues2.Activity) / 2;
   
-  AnyVar LeftQuadratusFemoris           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris1.Activity + 
+  #var AnyVar LeftQuadratusFemoris           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris3.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris4.Activity) / 4;
@@ -563,153 +563,153 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   // Joint Reaction Force
   #if INCLUDE_TRUNK_JOINT_REACTION_FORCE == "On"
   /// Lateral positive
-  AnyVar SacrumPelvisMedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[2];
+  #var AnyVar SacrumPelvisMedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar SacrumPelvisProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[1];
+  #var AnyVar SacrumPelvisProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar SacrumPelvisAnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[0];
+  #var AnyVar SacrumPelvisAnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.SacrumPelvisJnt.Constraints.Reaction.Fout[0];
   //Pelvis ref
   
   /// Lateral positive
-  AnyVar L5SacrumMedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[2];
+  #var AnyVar L5SacrumMedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar L5SacrumProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[1];
+  #var AnyVar L5SacrumProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar L5SacrumAnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[0];
+  #var AnyVar L5SacrumAnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L5SacrumJnt.Constraints.Reaction.Fout[0];
   //Sacrum ref
   
   /// Lateral positive
-  AnyVar L4L5MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar L4L5MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar L4L5ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar L4L5ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar L4L5AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar L4L5AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L4L5Jnt.Constraints.Reaction.Fout[0];
   //L5 ref
   
   /// Lateral positive
-  AnyVar L3L4MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar L3L4MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar L3L4ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar L3L4ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar L3L4AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar L3L4AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L3L4Jnt.Constraints.Reaction.Fout[0];
   //L4 ref
   
   
   /// Lateral positive
-  AnyVar L2L3MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar L2L3MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar L2L3ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar L2L3ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar L2L3AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar L2L3AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L2L3Jnt.Constraints.Reaction.Fout[0];
   //L3 ref
   
   /// Lateral positive
-  AnyVar L1L2MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar L1L2MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar L1L2ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar L1L2ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar L1L2AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar L1L2AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.L1L2Jnt.Constraints.Reaction.Fout[0];
   //L2 ref
   
   /// Lateral positive
-  AnyVar T12L1MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar T12L1MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar T12L1ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar T12L1ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar T12L1AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar T12L1AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.T12L1Jnt.Constraints.Reaction.Fout[0];
   //L1 ref
   
   /// Lateral positive
-  AnyVar C0C1MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[2];
+  #var AnyVar C0C1MedioLateralForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[2];
   /// Distal (superior) positive
-  AnyVar C0C1ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[1];
+  #var AnyVar C0C1ProximoDistalForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[1];
   /// Anterior positive
-  AnyVar C0C1AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[0];
+  #var AnyVar C0C1AnteroPosteriorForce = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[0];
   /// Left positive
-  AnyVar C0C1AxialMoment = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[3];
+  #var AnyVar C0C1AxialMoment = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[3];
   /// Right positive
-  AnyVar C0C1LateralMoment = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[4];
+  #var AnyVar C0C1LateralMoment = Main.HUMAN_MODEL.BodyModel.Trunk.JointsLumbar.C0C1Jnt.Constraints.Reaction.Fout[4];
   //C1 thorax ref
   #endif
   
   // Joint Moment
   #if INCLUDE_TRUNK_JOINT_MOMENT == "On"
-  AnyVar SacrumPelvisExtensionMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[0];
-  AnyVar SacrumPelvisAxialMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[1];
-  AnyVar SacrumPelvisLateralMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[2];
+  #var AnyVar SacrumPelvisExtensionMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[0];
+  #var AnyVar SacrumPelvisAxialMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[1];
+  #var AnyVar SacrumPelvisLateralMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.SacrumPelvisReaction.Fout[2];
   //Pelvis ref
   
   
-  AnyVar L5SacrumExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L5SacrumExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar L5SacrumAxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar L5SacrumAxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar L5SacrumLateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L5SacrumLateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L5SacrumJnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // SacrumSeg.SacrumL5JntNode ref
   
   
-  AnyVar L4L5ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L4L5ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar L4L5AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar L4L5AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar L4L5LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L4L5LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L4L5Jnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // L5Seg.L4L5JntNode ref
   
   
-  AnyVar L3L4ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L3L4ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar L3L4AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar L3L4AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar L3L4LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L3L4LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L3L4Jnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // L4Seg.L3L4JntNode ref
   
   
-  AnyVar L2L3ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L2L3ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar L2L3AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar L2L3AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar L2L3LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L2L3LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L2L3Jnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // L3Seg.L2L3JntNode ref
   
   
   
-  AnyVar L1L2ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L1L2ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar L1L2AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar L1L2AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar L1L2LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar L1L2LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.L1L2Jnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // L2Seg.L1L2JntNode ref
   
   
-  AnyVar T12L1ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.Extension.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar T12L1ExtensionMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.Extension.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.Extension.dof0.Muscle.NegMuscle.Fm;
   
-  AnyVar T12L1AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
+  #var AnyVar T12L1AxialMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.AxialRotation.dof1.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.AxialRotation.dof1.Muscle.NegMuscle.Fm;
   
-  AnyVar T12L1LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
+  #var AnyVar T12L1LateralMoment = Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.LateralBend.dof0.Muscle.PosMuscle.Fm
   - Main.HUMAN_MODEL.Trunk.JointMuscles.T12L1Jnt.LateralBend.dof0.Muscle.NegMuscle.Fm;
   // L1Seg.T12L1JntNode ref
   
   
   
   
-  AnyVar C0C1FlexionExtensionMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.NeckJntReaction.Fout[0];
+  #var AnyVar C0C1FlexionExtensionMoment = Main.HUMAN_MODEL.Trunk.JointsLumbar.NeckJntReaction.Fout[0];
   //C1 thorax ref
   
   #endif
