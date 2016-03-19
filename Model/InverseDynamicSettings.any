@@ -11,6 +11,14 @@ InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
  Kinematics.SolverType = KinSolDeterminate;
  InitialConditions.SolverType = Kinematics.SolverType;
  #endif
+ 
+ #ifdef INCLUDE_MUSCLE_WEIGHT_FACTOR 
+ Main = {AnyVar Power = .InverseDynamics.Criterion.Power;};
+ #if INCLUDE_MUSCLE_WEIGHT_FACTOR > 0
+ InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";
+ #endif
+ #endif  
+ 
 
 
 InverseDynamics.PreOperation = {
