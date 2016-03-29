@@ -10,6 +10,7 @@
                                               VelThreshold,
                                               Fx,Fy,Fz,
                                               Mx,My,Mz,
+                                              CREATE_KIN_GRF = 0 ,
                                               FootPresent
                                               ){
   
@@ -409,6 +410,110 @@
       #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ArtificialMuscleConnection.any"
     };
   };
+  
+#if CREATE_KIN_GRF == 1
+  
+  ForcePlate =
+  {
+    AnyRefNode KinGRF_rotnode = { ARel = RotMat(pi,y); };
+  };
+  AnyFolder Kinematic_GRF = 
+  {
+    
+    AnySeg Frame = 
+    {
+      Mass = 0.0;
+      Jii = {0.0, 0.0, 0.0};
+      AnyDrawVector arrow = {Vec ={0,0,..Calculations.GRF_normalized(.t)[0]};GlobalCoord = Off;Line.Thickness = 0.01;};
+      AnyDrawRefFrame drw = { ScaleXYZ = 0.2*{1,1,1};};
+      AnyRefNode vector= {sRel = {0,0,1};};
+    };
+    
+    AnyKinEq lock_z_rot= {
+      AnyKinMeasureOrg zrot = {
+        AnyKinRotational rot = {
+          Type= RotVector;
+          AnyRefFrame &ref0 = ....ForcePlate.KinGRF_rotnode;
+          AnyRefFrame &ref1 = ...Frame;
+        };
+        MeasureOrganizer = {2};
+      };
+    };
+    
+    AnyFolder Calculations = {
+      
+      AnyVector T =  ..load.T;
+      AnyVector fx = ..load.Data[0]; 
+      AnyVector fy = ..load.Data[1]; 
+      AnyVector fz = ..load.Data[2];
+      AnyVector mx =  (1/1000)*..load.Data[3]; 
+      AnyVector my =  (1/1000)*..load.Data[4]; 
+      AnyVector mz =  (1/1000)*..load.Data[5]; 
+      
+      
+      AnyVector norm = vnorm({fx,fy,fz}');
+      //AnyVector fzz =iffun(gtfun(  (fz^2)^0.5,0),fz,fz+1000000);
+      
+      AnyVar originz = -1*..ForcePlate.TransducerLocation.zdist;
+      
+      
+      AnyVector Vx= (originz*fx-my)/(fz+10e-10);
+      AnyVector Vy= (mx+originz*fy)/(fz+10e-10);
+      AnyVector Vz= 0*Vy;
+      
+      AnyFunInterpol GRF_normalized = 
+      {
+        Type = PiecewiseLinear;
+        T = .T;
+        Data = {.norm/( max(.norm)+10e-10)};
+      };
+      
+      AnyFunInterpol GRF_start = 
+      { 
+        Type = PiecewiseLinear;
+        T = .T;
+        Data = {.Vx, .Vy, .Vz};
+      };    
+      AnyFunInterpol GRF_end = { 
+        Type = PiecewiseLinear;
+        T = .T;
+        Data = {.Vx + .fx/ (.norm + 10e-10),
+          .Vy + .fy/ (.norm + 10e-10)
+          //.COP_cal.Vz + .COP_cal.fz/ (.COP_cal.norm)
+        };      
+      };
+      
+      
+    };//KinGRF_Calculations 
+    
+    
+    AnyKinDriver COPDriver = {
+      AnyKinLinear start_lin = {
+        AnyRefFrame &ref0 = ...ForcePlate.PlateSurface;
+        AnyRefFrame &ref1 = ..Frame;
+        Ref = 0;
+      };
+      AnyParamFun &fun = .Calculations.GRF_start;
+      CType = {Hard,Hard,Hard};
+    };
+    
+    AnyKinDriver DirectionDriver = {
+      AnyKinMeasureOrg end_lin_xy = {
+        AnyKinLinear lin = 
+        {
+          AnyRefFrame &ref0 = ....ForcePlate.PlateSurface;
+          AnyRefFrame &ref1 = ...Frame.vector;
+          Ref = 0;
+        };
+        MeasureOrganizer = {0,1};
+      };
+      AnyParamFun &fun = .Calculations.GRF_end ;
+      CType = {Hard, Hard};
+    };  
+  } ;
+  #endif
+  
+  
 };
 
 
