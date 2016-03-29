@@ -72,6 +72,8 @@ Main =
       tEnd = Main.ModelSetup.TrialSpecificData.tEnd-2*Kinematics.ApproxVelAccPerturb ;
       nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4});    
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      
+      #include "StudyMuscleContributions.any"
     };
     
   };  //InverseDynamicStudy 

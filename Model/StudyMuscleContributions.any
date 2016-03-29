@@ -1,0 +1,560 @@
+ 
+AnyFolder MuscleContributions =
+{
+  
+  AnyFolder &RightLegMuscles = Main.HumanModel.BodyModel.Right.Leg.Mus;
+  
+  
+  AnyFolder &RightHip = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.OrtholoadFrame;
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleGlutMax = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.GluteusMaximusSuperior1;
+    AnyForceBase &ref2 = .RightLegMuscles.GluteusMaximusSuperior2;
+    AnyForceBase &ref3 = .RightLegMuscles.GluteusMaximusSuperior3;
+    AnyForceBase &ref4 = .RightLegMuscles.GluteusMaximusSuperior4;
+    AnyForceBase &ref5 = .RightLegMuscles.GluteusMaximusSuperior5;
+    AnyForceBase &ref6 = .RightLegMuscles.GluteusMaximusSuperior6;
+    
+    
+    
+    AnyForceBase &ref7 = .RightLegMuscles.GluteusMaximusInferior1;
+    AnyForceBase &ref8 = .RightLegMuscles.GluteusMaximusInferior2;
+    AnyForceBase &ref9 = .RightLegMuscles.GluteusMaximusInferior3;
+    AnyForceBase &ref10 = .RightLegMuscles.GluteusMaximusInferior4;
+    AnyForceBase &ref11 = .RightLegMuscles.GluteusMaximusInferior5;
+    AnyForceBase &ref12 = .RightLegMuscles.GluteusMaximusInferior6;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleGlutMed = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.GluteusMediusAnterior1;
+    AnyForceBase &ref2 = .RightLegMuscles.GluteusMediusAnterior2;
+    AnyForceBase &ref3 = .RightLegMuscles.GluteusMediusAnterior3;
+    AnyForceBase &ref4 = .RightLegMuscles.GluteusMediusAnterior4;
+    AnyForceBase &ref5 = .RightLegMuscles.GluteusMediusAnterior5;
+    AnyForceBase &ref6 = .RightLegMuscles.GluteusMediusAnterior6;
+    
+    
+    
+    AnyForceBase &ref7 = .RightLegMuscles.GluteusMediusPosterior1;
+    AnyForceBase &ref8 = .RightLegMuscles.GluteusMediusPosterior2;
+    AnyForceBase &ref9 = .RightLegMuscles.GluteusMediusPosterior3;
+    AnyForceBase &ref10 = .RightLegMuscles.GluteusMediusPosterior4;
+    AnyForceBase &ref11 = .RightLegMuscles.GluteusMediusPosterior5;
+    AnyForceBase &ref12 = .RightLegMuscles.GluteusMediusPosterior6;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleGlutMin = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.GluteusMinimusAnterior1;
+    AnyForceBase &ref2 = .RightLegMuscles.GluteusMinimusAnterior2;
+    AnyForceBase &ref3 = .RightLegMuscles.GluteusMinimusMid1;
+    AnyForceBase &ref4 = .RightLegMuscles.GluteusMinimusMid2;
+    AnyForceBase &ref5 = .RightLegMuscles.GluteusMinimusPosterior1;
+    AnyForceBase &ref6 = .RightLegMuscles.GluteusMinimusPosterior2;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleRectFem = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.RectusFemorisLateralis1;
+    AnyForceBase &ref2 = .RightLegMuscles.RectusFemorisMedialis1;
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleSemiTenMem = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Semitendinosus1;
+    AnyForceBase &ref2 = .RightLegMuscles.Semimembranosus1;
+    AnyForceBase &ref3 = .RightLegMuscles.Semimembranosus2;
+    AnyForceBase &ref4 = .RightLegMuscles.Semimembranosus3;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleBicFemLong = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.BicepsFemorisCaputLongum1;
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleBicFemBrev = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.BicepsFemorisCaputBreve1;
+    AnyForceBase &ref2 = .RightLegMuscles.BicepsFemorisCaputBreve2;
+    AnyForceBase &ref3 = .RightLegMuscles.BicepsFemorisCaputBreve3;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleSartorius = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Sartorius1;
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleIliacus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.IliacusLateralis1;
+    AnyForceBase &ref2 = .RightLegMuscles.IliacusLateralis2;
+    AnyForceBase &ref3 = .RightLegMuscles.IliacusMid1;
+    AnyForceBase &ref4 = .RightLegMuscles.IliacusMid2;
+    AnyForceBase &ref5 = .RightLegMuscles.IliacusMedialis1;
+    AnyForceBase &ref6 = .RightLegMuscles.IliacusMedialis2;
+    
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  AnyForceMomentMeasure2 MusclePsoas = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.PsoasMajor1;
+    AnyForceBase &ref2 = .RightLegMuscles.PsoasMajor2;
+    AnyForceBase &ref3 = .RightLegMuscles.PsoasMajor3;
+    AnyForceBase &ref4 = .RightLegMuscles.PsoasMajor4;
+    AnyForceBase &ref5 = .RightLegMuscles.PsoasMajor5;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleTFL = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.TensorFasciaeLatae1;
+    AnyForceBase &ref2 = .RightLegMuscles.TensorFasciaeLatae2;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MusclePiriformis = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Piriformis1;
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleGracilis = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Gracilis1;
+    AnyForceBase &ref2 = .RightLegMuscles.Gracilis2;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleAddLongus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.AdductorLongus1;
+    AnyForceBase &ref2 = .RightLegMuscles.AdductorLongus2;
+    AnyForceBase &ref3 = .RightLegMuscles.AdductorLongus3;
+    AnyForceBase &ref4 = .RightLegMuscles.AdductorLongus4;
+    AnyForceBase &ref5 = .RightLegMuscles.AdductorLongus5;
+    AnyForceBase &ref6 = .RightLegMuscles.AdductorLongus6;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleAddMagnus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.AdductorMagnusDistal1;
+    AnyForceBase &ref2 = .RightLegMuscles.AdductorMagnusDistal2;
+    AnyForceBase &ref3 = .RightLegMuscles.AdductorMagnusDistal3;
+    
+    AnyForceBase &ref4 = .RightLegMuscles.AdductorMagnusMid1;
+    AnyForceBase &ref5 = .RightLegMuscles.AdductorMagnusMid2;
+    AnyForceBase &ref6 = .RightLegMuscles.AdductorMagnusMid3;
+    AnyForceBase &ref7 = .RightLegMuscles.AdductorMagnusMid4;
+    AnyForceBase &ref8 = .RightLegMuscles.AdductorMagnusMid5;
+    AnyForceBase &ref9 = .RightLegMuscles.AdductorMagnusMid6;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleAddBrevis = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.AdductorBrevisProximal1;
+    AnyForceBase &ref2 = .RightLegMuscles.AdductorBrevisProximal2;
+    
+    AnyForceBase &ref4 = .RightLegMuscles.AdductorBrevisMid1;
+    AnyForceBase &ref5 = .RightLegMuscles.AdductorBrevisMid2;
+    
+    AnyForceBase &ref6 = .RightLegMuscles.AdductorBrevisDistal1;
+    AnyForceBase &ref7 = .RightLegMuscles.AdductorBrevisDistal2;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleGemellus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.GemellusInferior1;
+    AnyForceBase &ref2 = .RightLegMuscles.GemellusSuperior1;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleObturators = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.ObturatorExternusSuperior1;
+    AnyForceBase &ref2 = .RightLegMuscles.ObturatorExternusSuperior2;
+    AnyForceBase &ref3 = .RightLegMuscles.ObturatorExternusSuperior3;
+    
+    AnyForceBase &ref4 = .RightLegMuscles.ObturatorExternusInferior1;
+    AnyForceBase &ref5 = .RightLegMuscles.ObturatorExternusInferior2;
+    
+    
+    AnyForceBase &ref6 = .RightLegMuscles.ObturatorInternus1;
+    AnyForceBase &ref7 = .RightLegMuscles.ObturatorInternus2;
+    AnyForceBase &ref8 = .RightLegMuscles.ObturatorInternus3;
+    AnyForceBase &ref9 = .RightLegMuscles.ObturatorInternus4;
+    AnyForceBase &ref10 = .RightLegMuscles.ObturatorInternus5;
+    AnyForceBase &ref11 = .RightLegMuscles.ObturatorInternus6;
+    
+    
+    
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+  };
+  
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MusclePectineus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Pectineus1;
+    AnyForceBase &ref2 = .RightLegMuscles.Pectineus2;
+    AnyForceBase &ref3 = .RightLegMuscles.Pectineus3;
+    AnyForceBase &ref4 = .RightLegMuscles.Pectineus4;
+    
+    
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MusclePlantandPoplietus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.Plantaris1;
+    
+    AnyForceBase &ref2 = .RightLegMuscles.Popliteus1;
+    AnyForceBase &ref3 = .RightLegMuscles.Popliteus2;
+    AnyForceBase &ref4 = .RightLegMuscles.Popliteus3;
+    
+    
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 MuscleQuadratus = 
+  {
+    AnyForceBase &ref1 = .RightLegMuscles.QuadratusFemoris1;
+    
+    AnyForceBase &ref2 = .RightLegMuscles.QuadratusFemoris2;
+    AnyForceBase &ref3 = .RightLegMuscles.QuadratusFemoris3;
+    AnyForceBase &ref4 = .RightLegMuscles.QuadratusFemoris4;
+    
+    
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    AnyRefFrame &frame = .RightHip;
+    
+    AnyFloat PercentHCF = F/.val;
+    
+    
+  };
+  
+  
+  
+  AnyObjectPtrArray Objects = ObjSearchRecursive("Main.Studies.InverseDynamicStudy.MuscleContributions","Muscle*.F");
+  
+  
+  AnyFloat val = sum(Obj2Num(Objects)') + 0*Main.Studies.InverseDynamicStudy.t + 1;
+  
+  
+  
+  
+  
+  AnyForceMomentMeasure2 HCF = 
+  {
+    
+    AnyForceBase &ref = Main.HumanModel.BodyModel.Right.Leg.Jnt.Hip.Constraints.Reaction;
+    
+    AnyRefFrame &frame = .RightHip;
+    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    
+    
+    
+  };
+  
+  
+  AnyVar W = Main.HumanModel.BodyModel.TotalBodyMass*9.81;
+  
+  
+  AnyFloat HipForces = HCF.F/W;
+  
+  
+  AnyFloat TestMuscleContributions = -val/W;
+  
+  
+  AnyMat33 M = RightHip.Axes;
+  
+  AnyFloat TestGRFComponent = -{Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fx,
+                                Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fy,
+                                Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fz}*M/W;
+
+                              
+                              
+  AnyFloat TestGRFComponent1 = -{Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fx,
+                                Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fy,
+                                Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fz}*M/W;
+
+  
+  
+  AnyFloat TestSum = TestMuscleContributions + TestGRFComponent;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+};
+  
+  
+

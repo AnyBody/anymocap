@@ -28,6 +28,12 @@ Main = {
     {
       AnyOperationDummy placeholder_operation= {};
     };    
+    
+    #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
+      AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
+    #endif
+    
+    
     AnyOperationSequence KinematicAnalysis = 
     {
       AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
