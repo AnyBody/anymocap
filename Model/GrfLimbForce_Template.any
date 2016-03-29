@@ -1,0 +1,26 @@
+AnyForceMomentMeasure2 FandM =
+{
+  
+  AnyForceBase &ref0 = .GRFMuscles.FxPos;
+  AnyForceBase &ref1 = .GRFMuscles.FyPos;
+  AnyForceBase &ref2 = .GRFMuscles.FzPos;
+  AnyForceBase &ref3 = .GRFMuscles.FxNeg;
+  AnyForceBase &ref4 = .GRFMuscles.FyNeg;
+  AnyForceBase &ref5 = .GRFMuscles.FzNeg;
+  
+  AnyForceBase &ref6 = .GRFMuscles.MxPos;
+  AnyForceBase &ref7 = .GRFMuscles.MyPos;
+  AnyForceBase &ref8 = .GRFMuscles.MzPos;
+  AnyForceBase &ref9 = .GRFMuscles.MxNeg;
+  AnyForceBase &ref10 = .GRFMuscles.MyNeg;
+  AnyForceBase &ref11 = .GRFMuscles.MzNeg;
+  
+  
+  
+  AnySeg &seg = ..FootSeg;
+  
+  
+  AnyRefFrame &frame = ..GlobalRef;
+  
+  
+};

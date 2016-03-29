@@ -20,6 +20,26 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   };
   
   
+  
+  
+  
+  
+  
+  
+  #include "GrfNetForce_Template.any"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   #var AnyVar MaxMuscleActivity              = .MaxMuscleActivity;
   #var AnyVar Abscissa = Main.Studies.InverseDynamicStudy.Output.Abscissa.t;
   // Right
