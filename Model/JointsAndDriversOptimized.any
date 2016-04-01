@@ -27,7 +27,8 @@ AnyFolder JointsAndDrivers = {
             ,0,0,0
             #endif
           }'* (1+_ZEROS(1,NumElemOf(T0)));
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
           #endif
 
       };
@@ -67,8 +68,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -97,8 +99,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -128,8 +131,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -158,8 +162,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -189,8 +194,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
@@ -223,8 +229,9 @@ AnyFolder JointsAndDrivers = {
           //HACK WORKAROUND. We need to garantie that that T0 is valid for interpolation, due
           // to a bug 6.1 beta
           ReloadOnOff = On;
-          T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-          Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
+          T0 = Main.Studies.KinematicStudy.tArray;
+          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+           Data0 =  _ZEROS(..nDim, NumElemOf(T0) );
           #endif
       };
       Type  = Bspline;
