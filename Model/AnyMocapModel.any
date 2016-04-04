@@ -40,10 +40,18 @@ Main =
       // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
       #include "KinematicStudySettings.any"
+      #ifndef N_STEP
       nStep= Main.ModelSetup.TrialSpecificData.nStep; 
+      #else
+      nStep = N_STEP;
+      #endif
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       tStart = Main.ModelSetup.TrialSpecificData.tStart; 
+      #ifndef T_END
       tEnd = Main.ModelSetup.TrialSpecificData.tEnd;
+      #else
+      tEnd = T_END;
+      #endif
     };
     
     
@@ -69,8 +77,17 @@ Main =
       // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
       // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
       tStart = Main.ModelSetup.TrialSpecificData.tStart+2*Kinematics.ApproxVelAccPerturb ; 
+      #ifndef T_END
       tEnd = Main.ModelSetup.TrialSpecificData.tEnd-2*Kinematics.ApproxVelAccPerturb ;
-      nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4});    
+      #else
+      tEnd = T_END;
+      #endif
+      
+      #ifndef N_STEP
+      nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4});
+      #else
+      nStep=N_STEP;
+      #endif
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       
       #include "StudyMuscleContributions.any"
