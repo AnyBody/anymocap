@@ -1,0 +1,32 @@
+AnyRefNode &ref = .RightHip;
+
+AnySeg &seg = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh;
+AnySeg &seg1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+AnySeg &seg2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella;
+AnySeg &seg3 = Main.HumanModel.BodyModel.Right.Leg.Seg.Talus;
+AnySeg &seg4 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot;
+
+
+AnyVec3 Mlocal=M*ref.Axes;
+AnyVec3 Flocal=F*ref.Axes;
+
+
+
+
+
+
+
+AnyFloat PercentHCF = F/.val;
+
+AnyVar Fx = Flocal[0];
+AnyVar Fy = Flocal[1];
+AnyVar Fz = Flocal[2];
+
+AnyVar Fmag = vnorm(F) + 0.00001;
+
+AnyVar Rx = Mlocal[0]/Fmag;
+AnyVar Ry = Mlocal[1]/Fmag;
+AnyVar Rz = Mlocal[2]/Fmag;
+
+
+AnyVar Mx = Mlocal[0];

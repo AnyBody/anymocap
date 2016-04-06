@@ -1,0 +1,23 @@
+AnyFloat JointMoments = MuscleGlutMaxSup.M +
+                        MuscleGlutMaxInf.M +
+                        MuscleGlutMed.M + 
+                        MuscleGlutMin.M +
+                        MuscleRectFem.M +
+                        MuscleSemiTenMem.M +
+                        MuscleBicFemLong.M + 
+                        MuscleBicFemBrev.M + 
+                        MuscleSartorius.M +
+                        MuscleIliacus.M +
+                        MusclePsoas.M +
+                        MuscleTFL.M +
+                        MusclePiriformis.M +
+                        MuscleGracilis.M +
+                        MuscleAddLongus.M +
+                        MuscleAddMagnus.M + 
+                        MuscleAddBrevis.M +
+                        MuscleGemellus.M +
+                        MuscleObturators.M +
+                        MusclePectineus.M + 
+                        MusclePlantandPoplietus.M +
+                        MuscleQuadratus.M;
+                        

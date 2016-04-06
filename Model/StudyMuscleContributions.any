@@ -4,13 +4,26 @@ AnyFolder MuscleContributions =
   
   AnyFolder &RightLegMuscles = Main.HumanModel.BodyModel.Right.Leg.Mus;
   
+  AnyFolder &Pel = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
   
-  AnyFolder &RightHip = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.OrtholoadFrame;
+  Pel = 
+  {
+    AnyRefNode OrtholoadHip = 
+    {
+      sRel = .Right.HipJoint.sRel;
+      ARel = .OrtholoadFrame.ARel;
+    };
+  };
+
+  
+  AnyFolder &RightHip = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.OrtholoadHip;
   
   
   
+  #if TLEM_VERSION == "2.0"
   
-  AnyForceMomentMeasure2 MuscleGlutMax = 
+  
+  AnyForceMomentMeasure2 MuscleGlutMaxSup = 
   {
     AnyForceBase &ref1 = .RightLegMuscles.GluteusMaximusSuperior1;
     AnyForceBase &ref2 = .RightLegMuscles.GluteusMaximusSuperior2;
@@ -20,7 +33,13 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref6 = .RightLegMuscles.GluteusMaximusSuperior6;
     
     
+    #include "SingleMuscleContribution.any"
     
+  };
+  
+  
+  AnyForceMomentMeasure2 MuscleGlutMaxInf = 
+  {
     AnyForceBase &ref7 = .RightLegMuscles.GluteusMaximusInferior1;
     AnyForceBase &ref8 = .RightLegMuscles.GluteusMaximusInferior2;
     AnyForceBase &ref9 = .RightLegMuscles.GluteusMaximusInferior3;
@@ -29,16 +48,15 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref12 = .RightLegMuscles.GluteusMaximusInferior6;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
   };
+
   
   
+  
+  
+    
   
   
   AnyForceMomentMeasure2 MuscleGlutMed = 
@@ -61,12 +79,8 @@ AnyFolder MuscleContributions =
     
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
+ 
     
   };
   
@@ -84,12 +98,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref6 = .RightLegMuscles.GluteusMinimusPosterior2;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
     
   };
@@ -106,11 +115,8 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref2 = .RightLegMuscles.RectusFemorisMedialis1;
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
+
     
   };
   
@@ -126,11 +132,7 @@ AnyFolder MuscleContributions =
     
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -142,11 +144,8 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref1 = .RightLegMuscles.BicepsFemorisCaputLongum1;
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    #include "SingleMuscleContribution.any"
     
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
     
   };
   
@@ -162,10 +161,8 @@ AnyFolder MuscleContributions =
     
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    #include "SingleMuscleContribution.any"
     
-    AnyRefFrame &frame = .RightHip;
-    AnyFloat PercentHCF = F/.val;
     
     
   };
@@ -177,12 +174,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref1 = .RightLegMuscles.Sartorius1;
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -200,14 +192,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref6 = .RightLegMuscles.IliacusMedialis2;
     
     
-    
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+   #include "SingleMuscleContribution.any"
     
   };
   
@@ -219,15 +204,22 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref3 = .RightLegMuscles.PsoasMajor3;
     AnyForceBase &ref4 = .RightLegMuscles.PsoasMajor4;
     AnyForceBase &ref5 = .RightLegMuscles.PsoasMajor5;
+//    
+//    AnyFolder &mus159= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PMT12I_TM;
+//    AnyFolder &mus160= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1I_TM;
+//    AnyFolder &mus161= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1T_TM;
+//    AnyFolder &mus162= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2I_TM;
+//    AnyFolder &mus163= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2T_TM;
+//    AnyFolder &mus164= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3I_TM;
+//    AnyFolder &mus165= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3T_TM;
+//    AnyFolder &mus166= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4I_TM;
+//    AnyFolder &mus167= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4T_TM;
+//    AnyFolder &mus168= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5_TM;
+//    AnyFolder &mus169= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5T_TM;
+//
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -241,13 +233,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref2 = .RightLegMuscles.TensorFasciaeLatae2;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -259,13 +245,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref1 = .RightLegMuscles.Piriformis1;
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
-    
+    #include "SingleMuscleContribution.any"
   };
   
   
@@ -277,13 +257,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref2 = .RightLegMuscles.Gracilis2;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -303,12 +277,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref6 = .RightLegMuscles.AdductorLongus6;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
     
   };
@@ -330,14 +299,14 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref8 = .RightLegMuscles.AdductorMagnusMid5;
     AnyForceBase &ref9 = .RightLegMuscles.AdductorMagnusMid6;
     
+    AnyFolder &mus128  = .RightLegMuscles.AdductorMagnusProximal1;
+    AnyFolder &mus129  = .RightLegMuscles.AdductorMagnusProximal2;
+    AnyFolder &mus130  = .RightLegMuscles.AdductorMagnusProximal3;
+    AnyFolder &mus131  = .RightLegMuscles.AdductorMagnusProximal4;
+
     
     
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -358,13 +327,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref7 = .RightLegMuscles.AdductorBrevisDistal2;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -378,13 +341,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref2 = .RightLegMuscles.GemellusSuperior1;
     
     
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -411,14 +368,7 @@ AnyFolder MuscleContributions =
     
     
     
-    
-    
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -436,14 +386,7 @@ AnyFolder MuscleContributions =
     
     
     
-    
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
@@ -459,14 +402,7 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref4 = .RightLegMuscles.Popliteus3;
     
     
-    
-    
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
+    #include "SingleMuscleContribution.any"
     
     
   };
@@ -485,19 +421,56 @@ AnyFolder MuscleContributions =
     AnyForceBase &ref4 = .RightLegMuscles.QuadratusFemoris4;
     
     
-    
-    
-    
-    AnySeg &seg = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
-    
-    AnyRefFrame &frame = .RightHip;
-    
-    AnyFloat PercentHCF = F/.val;
-    
+    #include "SingleMuscleContribution.any"
     
   };
   
   
+  AnyForceMomentMeasure2 MuscleSoleus = 
+  {
+    AnyFolder &mus1  = .RightLegMuscles.SoleusMedialis1;
+    AnyFolder &mus2  = .RightLegMuscles.SoleusMedialis2;
+    AnyFolder &mus3  = .RightLegMuscles.SoleusMedialis3;
+    AnyFolder &mus4  = .RightLegMuscles.SoleusLateralis1;
+    AnyFolder &mus5  = .RightLegMuscles.SoleusLateralis2;
+    AnyFolder &mus6  = .RightLegMuscles.SoleusLateralis3;
+    
+    #include "SingleMuscleContribution.any"
+
+  };
+  
+  
+  AnyForceMomentMeasure2 MuscleVast =
+  {
+    
+    
+    AnyFolder &mus39  = .RightLegMuscles.VastusLateralisInferior1;
+    AnyFolder &mus40  = .RightLegMuscles.VastusLateralisInferior2;
+    AnyFolder &mus41  = .RightLegMuscles.VastusLateralisInferior3;
+    AnyFolder &mus42  = .RightLegMuscles.VastusLateralisInferior4;
+    AnyFolder &mus43  = .RightLegMuscles.VastusLateralisInferior5;
+    AnyFolder &mus44  = .RightLegMuscles.VastusLateralisInferior6;
+    AnyFolder &mus45  = .RightLegMuscles.VastusLateralisSuperior1;
+    AnyFolder &mus46  = .RightLegMuscles.VastusLateralisSuperior2;
+    AnyFolder &mus47  = .RightLegMuscles.VastusMedialisInferior1;
+    AnyFolder &mus48  = .RightLegMuscles.VastusMedialisInferior2;
+        
+    AnyFolder &mus51  = .RightLegMuscles.VastusMedialisSuperior1;
+    AnyFolder &mus52  = .RightLegMuscles.VastusMedialisSuperior2;
+    AnyFolder &mus53  = .RightLegMuscles.VastusMedialisSuperior3;
+    AnyFolder &mus54  = .RightLegMuscles.VastusMedialisSuperior4;
+    
+       
+    AnyFolder &mus57  = .RightLegMuscles.VastusIntermedius1;
+    AnyFolder &mus58  = .RightLegMuscles.VastusIntermedius2;
+    AnyFolder &mus59  = .RightLegMuscles.VastusIntermedius3;
+    AnyFolder &mus60  = .RightLegMuscles.VastusIntermedius4;
+    AnyFolder &mus61  = .RightLegMuscles.VastusIntermedius5;
+    AnyFolder &mus62  = .RightLegMuscles.VastusIntermedius6;
+    
+    #include "SingleMuscleContribution.any"
+
+  };
   
   AnyObjectPtrArray Objects = ObjSearchRecursive("Main.Studies.InverseDynamicStudy.MuscleContributions","Muscle*.F");
   
@@ -506,6 +479,28 @@ AnyFolder MuscleContributions =
   
   
   
+  
+  
+  AnyFloat TestMuscleContributions = -val/W;
+  
+  
+  AnyMat33 M = RightHip.Axes;
+  
+  AnyFloat TestGRFComponent = -{Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fx,
+    Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fy,
+    Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fz}*M/W;
+  
+  
+  
+  AnyFloat TestGRFComponent1 = -{Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fx,
+    Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fy,
+    Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fz}*M/W;
+  
+  
+  
+  AnyFloat TestSum = TestMuscleContributions + TestGRFComponent;
+  
+  #endif
   
   
   AnyForceMomentMeasure2 HCF = 
@@ -527,34 +522,178 @@ AnyFolder MuscleContributions =
   AnyFloat HipForces = HCF.F/W;
   
   
-  AnyFloat TestMuscleContributions = -val/W;
+  
+  AnyObjectPtrArray Objects1 = ObjSearchRecursive("Main.Studies.InverseDynamicStudy.MuscleContributions","Muscle*.Mlocal");
   
   
-  AnyMat33 M = RightHip.Axes;
+  #include "SumJointMoments.any"
   
-  AnyFloat TestGRFComponent = -{Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fx,
-                                Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fy,
-                                Main.EnvironmentModel.ForcePlates.Plate1.CenterOfPressure.fz}*M/W;
+  AnyForceMomentMeasure2 HipNetMomentMuscle = {
+    
+//    #include "SingleMuscleContribution.any"
 
-                              
-                              
-  AnyFloat TestGRFComponent1 = -{Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fx,
-                                Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fy,
-                                Main.EnvironmentModel.ForcePlates.Plate2.CenterOfPressure.fz}*M/W;
+    AnyRefNode &ref = .RightHip  ;
+    
+    
+    
+    AnySeg &seg = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh;
+    AnySeg &seg1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Shank;
+    AnySeg &seg2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Patella;
+    AnySeg &seg3 = Main.HumanModel.BodyModel.Right.Leg.Seg.Talus;
+    AnySeg &seg4 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot;
+    
+    
+    AnyFolder &mus63  = .RightLegMuscles.RectusFemorisLateralis1;
+    AnyFolder &mus64  = .RightLegMuscles.RectusFemorisMedialis1;
+    
+    AnyFolder &mus65  = .RightLegMuscles.Semitendinosus1;
+    AnyFolder &mus66  = .RightLegMuscles.Semimembranosus1;
+    AnyFolder &mus67  = .RightLegMuscles.BicepsFemorisCaputLongum1;
+    AnyFolder &mus68  = .RightLegMuscles.BicepsFemorisCaputBreve1;
+    AnyFolder &mus69  = .RightLegMuscles.BicepsFemorisCaputBreve2;
+    AnyFolder &mus170 = .RightLegMuscles.BicepsFemorisCaputBreve3;
+    
+    
+    
+    AnyFolder &mus70  = .RightLegMuscles.Sartorius1;
+    
+    AnyFolder &mus72  = .RightLegMuscles.IliacusLateralis1;
+    AnyFolder &mus73  = .RightLegMuscles.IliacusLateralis2;
+    
+    AnyFolder &mus75  = .RightLegMuscles.IliacusMid1;
+    AnyFolder &mus76  = .RightLegMuscles.IliacusMid2;
+    
+    AnyFolder &mus78  = .RightLegMuscles.IliacusMedialis1;
+    AnyFolder &mus79  = .RightLegMuscles.IliacusMedialis2;
+    
+        
+    AnyFolder &mus81a  = .RightLegMuscles.GluteusMinimusAnterior1;
+    AnyForceBase &mus8b1  = .RightLegMuscles.GluteusMinimusAnterior2;
+    AnyForceBase &mus81c  = .RightLegMuscles.GluteusMinimusMid1;
+    AnyForceBase &mus81d  = .RightLegMuscles.GluteusMinimusMid2;
+    AnyForceBase &mus81e  = .RightLegMuscles.GluteusMinimusPosterior1;
+    AnyForceBase &mus81f  = .RightLegMuscles.GluteusMinimusPosterior2;
 
-  
-  
-  AnyFloat TestSum = TestMuscleContributions + TestGRFComponent;
-  
-  
-  
-  
-  
-  
-  
-  
+    
+    AnyFolder &mus84  = .RightLegMuscles.GluteusMediusAnterior1;
+    AnyFolder &mus85  = .RightLegMuscles.GluteusMediusAnterior2;
+    AnyFolder &mus86  = .RightLegMuscles.GluteusMediusAnterior3;
+    AnyFolder &mus87  = .RightLegMuscles.GluteusMediusAnterior4;
+    AnyFolder &mus88  = .RightLegMuscles.GluteusMediusAnterior5;
+    AnyFolder &mus89  = .RightLegMuscles.GluteusMediusAnterior6;
+    AnyFolder &mus90  = .RightLegMuscles.GluteusMediusPosterior1;
+    AnyFolder &mus91  = .RightLegMuscles.GluteusMediusPosterior2;
+    AnyFolder &mus92  = .RightLegMuscles.GluteusMediusPosterior3;
+    AnyFolder &mus93  = .RightLegMuscles.GluteusMediusPosterior4;
+    AnyFolder &mus94  = .RightLegMuscles.GluteusMediusPosterior5;
+    AnyFolder &mus95  = .RightLegMuscles.GluteusMediusPosterior6;
+    
+    AnyFolder &mus96  = .RightLegMuscles.GluteusMaximusSuperior1;
+    AnyFolder &mus97  = .RightLegMuscles.GluteusMaximusSuperior2;
+    AnyFolder &mus98  = .RightLegMuscles.GluteusMaximusSuperior3;
+    AnyFolder &mus99  = .RightLegMuscles.GluteusMaximusSuperior4;
+    AnyFolder &mus100  = .RightLegMuscles.GluteusMaximusSuperior5;
+    AnyFolder &mus101  = .RightLegMuscles.GluteusMaximusSuperior6;
+    AnyFolder &mus102  = .RightLegMuscles.GluteusMaximusInferior1;
+    AnyFolder &mus103  = .RightLegMuscles.GluteusMaximusInferior2;
+    AnyFolder &mus104  = .RightLegMuscles.GluteusMaximusInferior3;
+    AnyFolder &mus105  = .RightLegMuscles.GluteusMaximusInferior4;
+    AnyFolder &mus106  = .RightLegMuscles.GluteusMaximusInferior5;  
+    AnyFolder &mus107  = .RightLegMuscles.GluteusMaximusInferior6;
+
+    
+    
+    AnyFolder &mus108  = .RightLegMuscles.TensorFasciaeLatae1;
+    AnyFolder &mus109  = .RightLegMuscles.TensorFasciaeLatae2;
+    
+    AnyFolder &mus110  = .RightLegMuscles.Piriformis1;
+    
+    AnyFolder &mus111  = .RightLegMuscles.Gracilis1;
+    AnyFolder &mus112  = .RightLegMuscles.Gracilis2;
+    
+    AnyFolder &mus113  = .RightLegMuscles.AdductorLongus1;
+    AnyFolder &mus114  = .RightLegMuscles.AdductorLongus2;
+    AnyFolder &mus115  = .RightLegMuscles.AdductorLongus3;
+    AnyFolder &mus116  = .RightLegMuscles.AdductorLongus4;
+    AnyFolder &mus117  = .RightLegMuscles.AdductorLongus5;
+    AnyFolder &mus118  = .RightLegMuscles.AdductorLongus6;
+    
+    AnyFolder &mus119  = .RightLegMuscles.AdductorMagnusDistal1;
+    AnyFolder &mus120  = .RightLegMuscles.AdductorMagnusDistal2;
+    AnyFolder &mus121  = .RightLegMuscles.AdductorMagnusDistal3;
+    AnyFolder &mus122  = .RightLegMuscles.AdductorMagnusMid1;
+    AnyFolder &mus123  = .RightLegMuscles.AdductorMagnusMid2;
+    AnyFolder &mus124  = .RightLegMuscles.AdductorMagnusMid3;
+    AnyFolder &mus125  = .RightLegMuscles.AdductorMagnusMid4;
+    AnyFolder &mus126  = .RightLegMuscles.AdductorMagnusMid5;
+    AnyFolder &mus127  = .RightLegMuscles.AdductorMagnusMid6;
+    AnyFolder &mus128  = .RightLegMuscles.AdductorMagnusProximal1;
+    AnyFolder &mus129  = .RightLegMuscles.AdductorMagnusProximal2;
+    AnyFolder &mus130  = .RightLegMuscles.AdductorMagnusProximal3;
+    AnyFolder &mus131  = .RightLegMuscles.AdductorMagnusProximal4;
+    
+    AnyFolder &mus132  = .RightLegMuscles.AdductorBrevisProximal1;
+    AnyFolder &mus133  = .RightLegMuscles.AdductorBrevisProximal2;
+    AnyFolder &mus134  = .RightLegMuscles.AdductorBrevisMid1;
+    AnyFolder &mus135  = .RightLegMuscles.AdductorBrevisMid2;
+    AnyFolder &mus136  = .RightLegMuscles.AdductorBrevisDistal1;
+    AnyFolder &mus137  = .RightLegMuscles.AdductorBrevisDistal2;
+    
+    AnyFolder &mus138  = .RightLegMuscles.GemellusInferior1;
+    AnyFolder &mus139  = .RightLegMuscles.GemellusSuperior1;
+    
+    AnyFolder &mus140  = .RightLegMuscles.ObturatorExternusSuperior1;
+    AnyFolder &mus141  = .RightLegMuscles.ObturatorExternusSuperior2;
+    AnyFolder &mus142  = .RightLegMuscles.ObturatorExternusSuperior3;
+    AnyFolder &mus143  = .RightLegMuscles.ObturatorExternusInferior1;
+    AnyFolder &mus144  = .RightLegMuscles.ObturatorExternusInferior2;
+    
+    AnyFolder &mus145a  = .RightLegMuscles.ObturatorInternus1;
+    AnyFolder &mus145b  = .RightLegMuscles.ObturatorInternus2;
+    AnyFolder &mus145c  = .RightLegMuscles.ObturatorInternus3;
+    AnyFolder &mus145d  = .RightLegMuscles.ObturatorInternus4;
+    AnyFolder &mus145e  = .RightLegMuscles.ObturatorInternus5;
+    AnyFolder &mus145f  = .RightLegMuscles.ObturatorInternus6;
+    
+    AnyFolder &mus148  = .RightLegMuscles.Pectineus1;
+    AnyFolder &mus149  = .RightLegMuscles.Pectineus2;
+    AnyFolder &mus150  = .RightLegMuscles.Pectineus3;
+    AnyFolder &mus151  = .RightLegMuscles.Pectineus4;
+    
+    AnyFolder &mus152  = .RightLegMuscles.Plantaris1;
+    
+    AnyFolder &mus153  = .RightLegMuscles.Popliteus1;
+    AnyFolder &mus154  = .RightLegMuscles.Popliteus2;
+    AnyFolder &mus154a  = .RightLegMuscles.Popliteus3;
+    
+    AnyFolder &mus155  = .RightLegMuscles.QuadratusFemoris1;
+    AnyFolder &mus156  = .RightLegMuscles.QuadratusFemoris2;
+    AnyFolder &mus157  = .RightLegMuscles.QuadratusFemoris3;
+    AnyFolder &mus158  = .RightLegMuscles.QuadratusFemoris4;
+    
+//    AnyFolder &mus159= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PMT12I_TM;
+//    AnyFolder &mus160= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1I_TM;
+//    AnyFolder &mus161= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1T_TM;
+//    AnyFolder &mus162= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2I_TM;
+//    AnyFolder &mus163= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2T_TM;
+//    AnyFolder &mus164= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3I_TM;
+//    AnyFolder &mus165= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3T_TM;
+//    AnyFolder &mus166= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4I_TM;
+//    AnyFolder &mus167= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4T_TM;
+//    AnyFolder &mus168= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5_TM;
+//    AnyFolder &mus169= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5T_TM;
+    
+    
+    AnyVec3 Mlocal=M*ref.Axes;
+    AnyVar MHipAbduction=Mlocal[0];
+    AnyVar MHipFlexion=Mlocal[2];
+    AnyVar MHipExternalRotation=Mlocal[1];
+    
+   
+  };
   
 };
-  
-  
+
+
+
 
