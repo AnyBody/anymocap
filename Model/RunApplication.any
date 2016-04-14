@@ -39,7 +39,8 @@ Main = {
       AnyOperation &SetInverseDynamicView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView;
       
       AnyOperationMacro UpdateValues= { MacroStr = {"classoperation Main"+ strquote("Update Values") };  };
-      
+      AnyOperation &reset = Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation; 
+
       #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
         AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
       #endif      
