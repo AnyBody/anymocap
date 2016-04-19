@@ -40,18 +40,21 @@ Main =
       // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
       #include "KinematicStudySettings.any"
+      
       #ifndef N_STEP
-      nStep= Main.ModelSetup.TrialSpecificData.nStep; 
-      #else
-      nStep = N_STEP;
+      #define N_STEP Main.ModelSetup.TrialSpecificData.nStep
       #endif
-      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-      tStart = Main.ModelSetup.TrialSpecificData.tStart; 
       #ifndef T_END
-      tEnd = Main.ModelSetup.TrialSpecificData.tEnd;
-      #else
-      tEnd = T_END;
+      #define T_END Main.ModelSetup.TrialSpecificData.tEnd
       #endif
+      #ifndef T_START
+      #define T_START Main.ModelSetup.TrialSpecificData.tStart
+      #endif
+
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      tStart = T_START; 
+      tEnd = T_END;
+      nStep= N_STEP; 
     };
     
     
@@ -76,18 +79,9 @@ Main =
 
       // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
       // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
-      tStart = Main.ModelSetup.TrialSpecificData.tStart+2*Kinematics.ApproxVelAccPerturb ; 
-      #ifndef T_END
-      tEnd = Main.ModelSetup.TrialSpecificData.tEnd-2*Kinematics.ApproxVelAccPerturb ;
-      #else
-      tEnd = T_END;
-      #endif
-      
-      #ifndef N_STEP
-      nStep= max({1, Main.ModelSetup.TrialSpecificData.nStep-4});
-      #else
-      nStep=N_STEP;
-      #endif
+      tStart = Main.Studies.KinematicStudy.tStart+2*Kinematics.ApproxVelAccPerturb ; 
+      tEnd = max({Main.Studies.KinematicStudy.tEnd-2*Kinematics.ApproxVelAccPerturb,tStart});
+      nStep= max({Main.Studies.KinematicStudy.nStep-4, 1});
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
       
       #include "StudyMuscleContributions.any"
