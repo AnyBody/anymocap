@@ -1,0 +1,8 @@
+tmp*
+_*.anymcr
+_*.log
+*.anyset
+*-euler-*.txt
+*_OptimizedParameters.txt
+*.ipynb_checkpoints*
+*.pyc
