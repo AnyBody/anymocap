@@ -11,7 +11,7 @@ AnyFolder MuscleContributions =
     AnyRefNode OrtholoadHip = 
     {
       sRel = .Right.HipJoint.sRel;
-      ARel = .OrtholoadFrame.ARel;
+      ARel = RotMat(sRel, .Right.HipJoint.sRel,.L5PelvisJntNode.sRel)*RotMat(-pi/2,x);
     };
   };
 
