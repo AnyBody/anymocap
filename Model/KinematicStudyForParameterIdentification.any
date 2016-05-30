@@ -22,9 +22,7 @@ AnyKinStudy KinematicStudyForParameterIdentification =
   nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
   Gravity = Main.ModelSetup.LabSpecificData.Gravity;
   tStart = Main.ModelSetup.TrialSpecificData.tStart; 
-  // HACK WORKAROUND We substract a little to avoid a bug
-  // which sometimes occur with AnyInterpolation Function. 
-  tEnd = Main.ModelSetup.TrialSpecificData.tEnd - 0.001;
+  tEnd = Main.ModelSetup.TrialSpecificData.tEnd;
   
 //  Main.RunParameterIdentification.ParameterIdentification = 
 //  {
