@@ -1,3 +1,21 @@
+
+// Class template arguments:
+
+// MarkerName: 
+// MarkerPlacement,
+// Weight<X|Y|Z>: 
+// Opt<X|Y|Z>: 
+// ScaleMarkerPosOnOff: = "On",
+// FilterCutOffFrequency: = 0,
+// FilterOrder: = 2,
+// UseC3DWeightResiduals = "Off",
+// PARAMETER_OPT_STUDY = ParameterIdentification,
+// C3D_OBJECT = C3DFileData,
+// BODY_MODEL_FOLDER = BodyModel,
+// PlaceMarkerAt = AnatomicalFrame
+
+
+
 #class_template CreateMarkerDriver (MarkerName,
                                     MarkerPlacement,
                                     WeightX=1, WeightY=1, WeightZ=1,
@@ -84,6 +102,8 @@
         AnyVec3 MarkerOffset = (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
       #endif
       
+//      This was an attempt to allow PlaceMarkerAt to be anywhere and not only
+//      a RefNode on the segments.
 //      AnyFunTransform3DLinRef Transform2SegmentFrame = {
 //            AnyVec3 test1 = ..PlaceMarkerAt.sRel;
 //            AnyMat33 test2 = ..PlaceMarkerAt.ARel;
