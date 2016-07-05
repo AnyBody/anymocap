@@ -1,16 +1,14 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
 
-#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
+//#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
 
 #include "LoadAnyMocap.any"
 
 
-
-
 Main = {
    
-ModelSetup.MocapDrivers = {
+  ModelSetup.MocapDrivers = {
     
     CreateMarkerDriver LTHI ( 
       MarkerName= LTHI ,
@@ -19,5 +17,5 @@ ModelSetup.MocapDrivers = {
       FilterOrder = 2
      ) = { sRelOpt = {0.0, -0.28, -0.1}; };
    
- }; // MocapDrivers
+  };
 }; //Main

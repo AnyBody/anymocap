@@ -26,3 +26,24 @@ InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
 //  AnyOperationMacro UpdateValues_HACK_WORKAROUND = { MacroStr = {"classoperation Main"+ strquote("Update Values") };  };
 //  AnyOperation &Init = Main.Studies.InverseDynamicStudy.InitialConditions;
 // };
+
+
+
+ #ifndef N_STEP
+ #define N_STEP Main.ModelSetup.TrialSpecificData.nStep
+ #endif
+ 
+ #ifndef T_END
+ #define T_END Main.ModelSetup.TrialSpecificData.tEnd
+ #endif
+ 
+ #ifndef T_START
+ #define T_START Main.ModelSetup.TrialSpecificData.tStart
+ #endif
+ 
+ tStart = T_START+2*Kinematics.ApproxVelAccPerturb ; 
+ tEnd = max({T_END-2*Kinematics.ApproxVelAccPerturb,tStart});
+ nStep= max({N_STEP-4, 1});
+ 
+ 
+ 

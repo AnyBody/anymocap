@@ -2,6 +2,8 @@
 //               AnyMoCap
 // *************************************
 
+//#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
+
 
 // Enter and edit Lab-Specific Data in this file:
 #path MOCAP_LAB_SPECIFIC_DATA "Setup/LabSpecificData.any"
@@ -19,7 +21,3 @@
 // Creates the Model - no need to edit
 #include "../../Model/AnyMocapModel.any"
 
-
-// Creates the Model - no need to edit
-#define LLJ_HIPMODEL_MODELSETUP  2
-#include "../../../ADL/LLJ_Hip/LLJHip.Include.any"

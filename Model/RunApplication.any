@@ -2,7 +2,9 @@ Main = {
   
   AnyOperationMacro RunParameterIdentification  = 
   {
-  MacroStr = {"operation Main.Studies.ParameterIdentification.ParameterOptimization",
+  MacroStr = {"operation Main.ModelSetup.Views.SetViewMacros.KinematicView",
+              "run",
+              "operation Main.Studies.ParameterIdentification.ParameterOptimization",
               "run",
               "operation Main.ModelSetup.Macros.Save_parameters",
               "run"};
@@ -31,12 +33,13 @@ Main = {
         
     AnyOperationSequence KinematicAnalysis = 
     {
+      AnyOperation &SetKinematicView = Main.ModelSetup.Views.SetViewMacros.KinematicView;
       AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
     };
     
     AnyOperationSequence InverseDynamics = 
     {
-      AnyOperation &SetInverseDynamicView = Main.ModelSetup.ModelViews.SetViewMacros.InverseDynamicView;
+      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
       
       AnyOperationMacro UpdateValues= { MacroStr = {"classoperation Main"+ strquote("Update Values") };  };
       AnyOperation &reset = Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation; 

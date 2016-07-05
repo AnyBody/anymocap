@@ -6,7 +6,7 @@
 
 
 // This is the name of the trial c3d file without extension
-TrialFileName = "gait_ifb";
+TrialFileName = "gait_cycle_abscissa";
 
 /// This the C3D frame where the analysis starts 
 FirstFrame = .C3DFileData.Header.FirstFrameNo;
@@ -16,7 +16,7 @@ LastFrame = .C3DFileData.Header.LastFrameNo;
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
   AutomaticInitialBodyPosition AutoPos = {
-      #define C3D_POINT(LABEL) Main.ModelSetup.C3DFileData.Points.Markers.LABEL.PosInterpol(Main.ModelSetup.tStart)
+      #define C3D_POINT(LABEL) Main.ModelSetup.C3DFileData.Points.Markers.LABEL.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart)
       RASIS= C3D_POINT(RTAS);
       LASIS= C3D_POINT(LTAS);
       SACRUM= C3D_POINT(SACR);

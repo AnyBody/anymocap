@@ -26,7 +26,7 @@ Main =
 
     // Overdeterminate kinematics study to generate joint angles for inv. dyn. study. 
     AnyKinStudy KinematicStudy = 
-    { 
+    {       
       // HACK_WORKAROUND We need to include a special body model with no muscles.
       #include "BodyModel_no_muscle_hack.any" 
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
@@ -39,28 +39,16 @@ Main =
       
       // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
-      #include "KinematicStudySettings.any"
       
-      #ifndef N_STEP
-      #define N_STEP Main.ModelSetup.TrialSpecificData.nStep
-      #endif
-      #ifndef T_END
-      #define T_END Main.ModelSetup.TrialSpecificData.tEnd
-      #endif
-      #ifndef T_START
-      #define T_START Main.ModelSetup.TrialSpecificData.tStart
-      #endif
-
-      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-      tStart = T_START; 
-      tEnd = T_END;
-      nStep= N_STEP; 
+      #include "KinematicStudySettings.any"      
     };
     
     
     // Study for running the inverse dynamic simulation
     AnyBodyStudy InverseDynamicStudy = 
     { 
+      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
+      
       AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
       AnyFolder &BodyModel= Main.HumanModel.BodyModel;
       AnyFolder &EnvironmentModel = Main.EnvironmentModel;
@@ -68,23 +56,14 @@ Main =
       {
         #include "JointsAndDriversOptimized.any"
       }; 
+      
       // Include markers for visualization, but exclude the driver part 
       AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
-      AnyMechObjectExcluder Exclude={ Objects = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");};
-      
-      
-      #include "InverseDynamicSettings.any"
-      #include "CollectedOutputs.any"
-      
+      MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
 
-      // HACK WORKAROUND. Since it is necessary to add/subs ApproxVelAccPerturb from tStart/tEnd,
-      // we make nStep four frames shorter, so steps are still evaluated on the actual frames. 
-      tStart = Main.Studies.KinematicStudy.tStart+2*Kinematics.ApproxVelAccPerturb ; 
-      tEnd = max({Main.Studies.KinematicStudy.tEnd-2*Kinematics.ApproxVelAccPerturb,tStart});
-      nStep= max({Main.Studies.KinematicStudy.nStep-4, 1});
-      Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-      
-      #include "StudyMuscleContributions.any"
+      #include "InverseDynamicSettings.any"
+//      #include "CollectedOutputs.any"
+//      #include "StudyMuscleContributions.any"
     };
     
   };  //InverseDynamicStudy 

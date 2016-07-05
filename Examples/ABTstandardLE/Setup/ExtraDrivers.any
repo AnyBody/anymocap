@@ -10,7 +10,7 @@
 AnyFolder ExtraDrivers = {
 
   
-  AnyFolder &JntPos= Main.HumanModel.Mannequin.Posture;  
+AnyFolder &JntPos= Main.HumanModel.Mannequin.Posture;  
 AnyFolder &JntVel= Main.HumanModel.Mannequin.PostureVel;
 AnyFolder &InterfaceRef = Main.HumanModel.BodyModel.Interface;
 

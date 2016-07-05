@@ -1,4 +1,4 @@
-AnyFolder ModelSetup = {
+ModelSetup = {
   // The folder Lab/Subject/TrialSpecificData folders are
   // created using class templates. This ensures that any required 
   // variables get a default value if they are not specified
@@ -71,5 +71,20 @@ AnyFolder ModelSetup = {
 };
   
 };
+
+
+// Hack to ensure that AnyMocap can also work in AMS6.0
+#if (ANYBODY_V1 >=6) & (ANYBODY_V2 >=1)
+  AnyFolder ModelSetup = 
+  {
+    AnyFolder Views = {};
+  };
+#else
+  AnyProject ModelSetup = 
+  {
+    Files.MainFile = ANYBODY_PATH_MAINFILE;
+    Autos.StartView = &Main.ModelSetup.Views.KinematicView;
+  };
+#endif
 
 

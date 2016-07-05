@@ -1,7 +1,7 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
 
-#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
+//#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
 
 #include "LoadAnyMocap.any"
 
@@ -11,16 +11,16 @@ Main = {
 ModelSetup.TrialSpecificData = {
 
   AutomaticInitialBodyPosition AutoPos = {
-      RASIS= Main.ModelSetup.C3DFileData.Points.Markers.RASI.PosInterpol(Main.ModelSetup.tStart);
-      LASIS= Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.tStart);
-      SACRUM= 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.tStart)
-                                    +Main.ModelSetup.C3DFileData.Points.Markers.LPSI.PosInterpol(Main.ModelSetup.tStart));
-      RKNEE = Main.ModelSetup.C3DFileData.Points.Markers.RKNE.PosInterpol(Main.ModelSetup.tStart);
-      LKNEE = Main.ModelSetup.C3DFileData.Points.Markers.LKNE.PosInterpol(Main.ModelSetup.tStart);
-      RANKLE = Main.ModelSetup.C3DFileData.Points.Markers.RANK.PosInterpol(Main.ModelSetup.tStart);
-      LANKLE = Main.ModelSetup.C3DFileData.Points.Markers.LANK.PosInterpol(Main.ModelSetup.tStart);
-      RTOE = Main.ModelSetup.C3DFileData.Points.Markers.RTOE.PosInterpol(Main.ModelSetup.tStart);
-      LTOE = Main.ModelSetup.C3DFileData.Points.Markers.LTOE.PosInterpol(Main.ModelSetup.tStart);
+      RASIS= Main.ModelSetup.C3DFileData.Points.Markers.RASI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      LASIS= Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      SACRUM= 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart)
+                  +Main.ModelSetup.C3DFileData.Points.Markers.LPSI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart));
+      RKNEE = Main.ModelSetup.C3DFileData.Points.Markers.RKNE.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      LKNEE = Main.ModelSetup.C3DFileData.Points.Markers.LKNE.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      RANKLE = Main.ModelSetup.C3DFileData.Points.Markers.RANK.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      LANKLE = Main.ModelSetup.C3DFileData.Points.Markers.LANK.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      RTOE = Main.ModelSetup.C3DFileData.Points.Markers.RTOE.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
+      LTOE = Main.ModelSetup.C3DFileData.Points.Markers.LTOE.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
    };
   
 };

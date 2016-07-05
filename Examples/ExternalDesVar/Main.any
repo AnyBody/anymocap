@@ -31,7 +31,7 @@ Studies.ParameterIdentification= {
 
                                     
                                     
-                                    //  // This shows how to add the same DesVar if a model contains multiple
+//  // This shows how to add the same DesVar if a model contains multiple
 //  // KinOptStudy classes. The arrow color is overridden by the second DesVar.
 //  // If multiple DesVars are created which link to the same arrow the highest number 
 //  // in take presendence. 

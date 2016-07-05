@@ -16,22 +16,13 @@ AnyKinStudy KinematicStudyForParameterIdentification =
   // Construct body model with muscles excluded
   #include "BodyModel_no_muscle_hack.any" 
 
-  #include "KinematicStudySettings.any"
-
-
-  nStep = min({30, Main.ModelSetup.TrialSpecificData.nStep});
-  Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-  tStart = Main.ModelSetup.TrialSpecificData.tStart; 
-  tEnd = Main.ModelSetup.TrialSpecificData.tEnd;
   
-//  Main.RunParameterIdentification.ParameterIdentification = 
-//  {
-//    AnyOperationMacro reset = 
-//    {
-//      // HAC
-//      MacroStr = {"reset"};
-//    };
-//    AnyOperation &run = Main.Studies.ParameterIdentification.ParameterOptimization;
-//  };
-
+  #ifndef N_STEP
+  #define N_STEP  min({30, Main.ModelSetup.TrialSpecificData.nStep})
+  #endif
+  
+  #include "KinematicStudySettings.any"
+  
+  #undef N_STEP
+  
 };  

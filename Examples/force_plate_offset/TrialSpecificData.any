@@ -13,12 +13,14 @@ FirstFrame = .C3DFileData.Header.FirstFrameNo;
 /// This the C3D frame where the analysis ends 
 LastFrame = .C3DFileData.Header.LastFrameNo;
 
-/// The following settings define the initial posture of the
-/// model (e.g. at load time)
-  AutomaticInitialBodyPosition AutoPos = {
-      #define C3D_POINT(LABEL) Main.ModelSetup.C3DFileData.Points.Markers.LABEL.PosInterpol(Main.ModelSetup.tStart)
-      RASIS= C3D_POINT(RASIS);
-      LASIS= C3D_POINT(LASIS);
-      SACRUM= 0.5*( C3D_POINT(LPSIS) + C3D_POINT(RPSIS) );
+// The following settings define the initial posture of the
+// model (e.g. at load time)
+AutomaticInitialBodyPosition AutoPos = {
+    AnyFloat tStart = Main.ModelSetup.TrialSpecificData.tStart;
+    AnyFolder &Markers = Main.ModelSetup.C3DFileData.Points.Markers;
+    RASIS= Markers.RASIS.PosInterpol(tStart);
+    LASIS= Markers.LASIS.PosInterpol(tStart);
+    SACRUM= 0.5*(Markers.RPSIS.PosInterpol(tStart)+Markers.LPSIS.PosInterpol(tStart));
 };
+
 

@@ -6,8 +6,13 @@
 TrialFileName = "GaitNormal_1";
 
 
-
-
-
-
+/// The following settings define the initial posture of the
+/// model (e.g. at load time)
+AutomaticInitialBodyPosition AutoPos = {
+    AnyFloat tStart = Main.ModelSetup.TrialSpecificData.tStart;
+    AnyFolder &Markers = Main.ModelSetup.C3DFileData.Points.Markers;
+    RASIS= Markers.RASI.PosInterpol(tStart);
+    LASIS= Markers.LASI.PosInterpol(tStart);
+    SACRUM= 0.5*(Markers.RPSI.PosInterpol(tStart)+Markers.LPSI.PosInterpol(tStart));
+};
 

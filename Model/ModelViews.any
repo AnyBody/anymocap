@@ -1,10 +1,10 @@
-AnyFolder ModelViews = {
+Views = {
     AnyFolder SetViewMacros = {
        AnyOperationMacro KinematicView = {
-         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.ModelViews.KinematicView) + strquote("Set View") };
+         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.Views.KinematicView) + strquote("Set View") };
        };    
        AnyOperationMacro InverseDynamicView = {
-         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.ModelViews.InverseDynamicView) + strquote("Set View") };
+         MacroStr = {"classoperation "+ CompleteNameOf(&Main.ModelSetup.Views.InverseDynamicView) + strquote("Set View") };
        };    
     };
     AnyFolder DrawGroups = {
