@@ -71,19 +71,19 @@
 
   
   Main.ModelSetup.ParameterIdentification = {
-      AnyDesVar MarkerName##_x= {
+      AnyDesVar MarkerName##_X = {
         Val = ....sRelOptEdit[0];    
         #var Min=-100;
         #var Max=100;      
       };
       
-      AnyDesVar MarkerName##_y = {
+      AnyDesVar MarkerName##_Y = {
         Val = ....sRelOptEdit[1];   
         #var Min=-100;
         #var Max=100;      
       };
       
-      AnyDesVar MarkerName##_z = {
+      AnyDesVar MarkerName##_Z = {
         Val = ....sRelOptEdit[2];   
         #var Min=-100;
         #var Max=100;      
@@ -184,15 +184,15 @@
   Main.Studies.PARAMETER_OPT_STUDY ={
 
     #if OptX =="On" 
-    AnyDesVar &MarkerName##_x =  Main.ModelSetup.ParameterIdentification.MarkerName##_x;
+    AnyDesVar &MarkerName##_X =  Main.ModelSetup.ParameterIdentification.MarkerName##_X;
     #endif
     
     #if OptY =="On"
-    AnyDesVar &MarkerName##_y =  Main.ModelSetup.ParameterIdentification.MarkerName##_y;
+    AnyDesVar &MarkerName##_Y =  Main.ModelSetup.ParameterIdentification.MarkerName##_Y;
     #endif
     
     #if OptZ =="On"
-    AnyDesVar &MarkerName##_z =  Main.ModelSetup.ParameterIdentification.MarkerName##_z;
+    AnyDesVar &MarkerName##_Z =  Main.ModelSetup.ParameterIdentification.MarkerName##_Z;
     #endif        
     
     
