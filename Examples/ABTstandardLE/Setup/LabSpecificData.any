@@ -8,10 +8,10 @@
 #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"
  
 // AutoSetup Switch for standard Force Plates
- #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
+#path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
 
 // Define direction of Gravity; Default is -Z
- Gravity = -9.81*{0,1,0};
+Gravity = -9.81*{0,1,0};
  
 // This defines what segment lengths are optimized:
 OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
