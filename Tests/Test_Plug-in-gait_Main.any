@@ -1,0 +1,46 @@
+//define = [
+//  {'TLEM_VERSION':'"2.0"'}, 
+//  {'TLEM_VERSION':'"1.1"'}, 
+//]
+//ignore_errors = ['FileReader.FileName']
+
+#include "libdef.any"
+
+// Test related setup.
+#ifndef TLEM_VERSION
+#define TLEM_VERSION "2.0"
+#endif
+
+#path TEMP_PATH "Output"
+#ifdef TEST_NAME
+#define MOCAP_OUTPUT_FILENAME_PREFIX TEST_NAME + "_"
+#else
+#define MOCAP_OUTPUT_FILENAME_PREFIX "GUI_"
+#endif
+#path MOCAP_C3D_DATA_PATH "../Examples/Plug-in-gait"
+
+#define N_STEP_PARAM_OPT 40
+#define N_STEP 30
+
+#include "../Examples/Plug-in-gait/Main.any"
+
+Main = 
+{
+  AnyOperationMacro  RunApplication = 
+  {
+    MacroStr = {
+      "operation Main.ModelSetup.Views.SetViewMacros.KinematicView", "run",
+      "operation Main.Studies.ParameterIdentification.ParameterOptimization","run",
+      "operation Main.ModelSetup.Macros.Save_parameters","run",
+      "operation Main.ModelSetup.Macros.Load_parameters","run",
+      "operation Main.Studies.KinematicStudy.Kinematics","run",
+      "operation Main.ModelSetup.Views.SetViewMacros.InverseDynamicView","run",
+      "classoperation Main"+ strquote("Update Values") ,
+      "operation Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation","run",
+      "operation Main.Studies.InverseDynamicStudy.InverseDynamics","run"
+    };
+  };
+
+  
+  
+};

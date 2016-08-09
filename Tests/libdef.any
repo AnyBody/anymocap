@@ -1,0 +1,3 @@
+#ifndef AMMR_PATH
+  #include "../../libdef.any"
+#endif
