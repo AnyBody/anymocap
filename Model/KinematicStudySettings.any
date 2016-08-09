@@ -28,9 +28,14 @@ Kinematics =
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  
 
- #ifndef N_STEP
- #define N_STEP Main.ModelSetup.TrialSpecificData.nStep
+ #ifndef N_STEP_KINEMATICS
+ #ifndef N_STEP 
+   #define N_STEP_KINEMATICS Main.ModelSetup.TrialSpecificData.nStep
+ #else
+   #define N_STEP_KINEMATICS N_STEP 
  #endif
+ #endif
+ 
  
  #ifndef T_END
  #define T_END Main.ModelSetup.TrialSpecificData.tEnd
@@ -42,5 +47,5 @@ Kinematics =
  
  tStart = T_START;
  tEnd = T_END;
- nStep = N_STEP;
+ nStep = N_STEP_KINEMATICS;
  

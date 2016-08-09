@@ -1,5 +1,6 @@
 InitialConditions = 
 {
+  SmallStepAssumptionOnOff = Off;
   PosAnalysisOnlyOnOff = On;
   KinematicTol=1e-6; 
 #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -16,6 +17,7 @@ InitialConditions =
 
 Kinematics = 
 {
+  SmallStepAssumptionOnOff = Off;
   PosAnalysisOnlyOnOff = On;
   KinematicTol=1e-6; 
 #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -29,7 +31,7 @@ Kinematics =
  // when calling AnyBody from external programs.  
  #ifndef N_STEP_PARAM_OPT
  #ifndef N_STEP 
-   #define N_STEP_PARAM_OPT Main.ModelSetup.TrialSpecificData.nStep
+   #define N_STEP_PARAM_OPT floor(max({20, Main.ModelSetup.TrialSpecificData.nStep/4}))
  #else
    #define N_STEP_PARAM_OPT N_STEP
  #endif
@@ -45,4 +47,4 @@ Kinematics =
  
  tStart = T_START;
  tEnd = T_END;
- nStep = floor(max({4, N_STEP_PARAM_OPT/4}));
+ nStep = N_STEP_PARAM_OPT;
