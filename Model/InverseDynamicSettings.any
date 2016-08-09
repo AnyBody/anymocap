@@ -5,7 +5,7 @@ InitialConditions.ApproxVelAccPerturb = 1.0/C3DData.Header.VideoFrameRate;
  Kinematics.KinematicTol=1e-5; 
 
  #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
- Kinematics.Solver = &Kinematics.SolverOptions.KinSolDet1;
+ Kinematics.Solver = &Kinematics.SolverOptions.KinSolDet2;
  InitialConditions.Solver = Kinematics.Solver;
  #else
  Kinematics.SolverType = KinSolDeterminate;
