@@ -9,7 +9,7 @@ InitialConditions =
 #endif
   PreOperation = 
   { 
-    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
+//    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
   };
 };
 
@@ -27,6 +27,7 @@ Kinematics =
 
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  
+
  #ifndef N_STEP
  #define N_STEP Main.ModelSetup.TrialSpecificData.nStep
  #endif
@@ -38,8 +39,8 @@ Kinematics =
  #ifndef T_START
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
-  
- tStart = T_START; 
+ 
+ tStart = T_START;
  tEnd = T_END;
- nStep= N_STEP; 
-
+ nStep = N_STEP;
+ 
