@@ -29,11 +29,7 @@ Kinematics =
  // when calling AnyBody from external programs.  
 
  #ifndef N_STEP_KINEMATICS
- #ifndef N_STEP 
    #define N_STEP_KINEMATICS Main.ModelSetup.TrialSpecificData.nStep
- #else
-   #define N_STEP_KINEMATICS N_STEP 
- #endif
  #endif
  
  
@@ -44,6 +40,7 @@ Kinematics =
  #ifndef T_START
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
+ 
  
  tStart = T_START;
  tEnd = T_END;

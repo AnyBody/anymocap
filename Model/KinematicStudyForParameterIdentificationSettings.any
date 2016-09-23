@@ -31,7 +31,7 @@ Kinematics =
  // when calling AnyBody from external programs.  
  #ifndef N_STEP_PARAM_OPT
  #ifndef N_STEP 
-   #define N_STEP_PARAM_OPT floor(max({20, Main.ModelSetup.TrialSpecificData.nStep/4}))
+   #define N_STEP_PARAM_OPT iffun(eqfun(Main.ModelSetup.TrialSpecificData.nStep,1),1, floor(max({20, Main.ModelSetup.TrialSpecificData.nStep/4})))
  #else
    #define N_STEP_PARAM_OPT N_STEP
  #endif

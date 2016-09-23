@@ -1,5 +1,7 @@
-Kinematics.ApproxVelAccPerturb = max({1.0/C3DData.Header.VideoFrameRate, (T_END-T_START)/(N_STEP-1)});
-InitialConditions.ApproxVelAccPerturb = Kinematics.ApproxVelAccPerturb ;
+ 
+ 
+ Kinematics.ApproxVelAccPerturb = max({1.0/C3DData.Header.VideoFrameRate, (T_END-T_START)/(max({nStep-1,1}))});
+ InitialConditions.ApproxVelAccPerturb = Kinematics.ApproxVelAccPerturb ;
 
  InitialConditions.KinematicTol=1e-5; 
  Kinematics.KinematicTol=1e-5; 
@@ -41,9 +43,11 @@ InitialConditions.ApproxVelAccPerturb = Kinematics.ApproxVelAccPerturb ;
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
  
- tStart = T_START+Kinematics.ApproxVelAccPerturb; 
- tEnd = max({T_END-Kinematics.ApproxVelAccPerturb , tStart});
- nStep= max({N_STEP-2, 1});
+ 
+ 
+ tStart = T_START+2*Kinematics.ApproxVelAccPerturb; 
+ tEnd = max({T_END-2*Kinematics.ApproxVelAccPerturb , tStart});
+ nStep= max({N_STEP-4, 1});
  
  
  
