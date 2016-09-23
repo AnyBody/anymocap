@@ -2,13 +2,6 @@
 
 #var AnyVec3 Gravity = -9.81*{0,0,1};
 
-#var AnyInt MarkerDataFilterOrder = 2;
-#var AnyFloatVar MarkerDataCutOffFrequency = 5;
-
-#var AnyInt AnalogDataFilterOrder = 2;
-#var AnyFloatVar AnalogDataFilterCutOffFrequency = 12;
-   
-
 };
 
 #class_template CreateTrialFolder {
