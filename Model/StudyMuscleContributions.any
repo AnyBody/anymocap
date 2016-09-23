@@ -199,23 +199,23 @@ AnyFolder MuscleContributions =
   
   AnyForceMomentMeasure2 MusclePsoas = 
   {
-    AnyForceBase &ref1 = .RightLegMuscles.PsoasMajor1;
-    AnyForceBase &ref2 = .RightLegMuscles.PsoasMajor2;
-    AnyForceBase &ref3 = .RightLegMuscles.PsoasMajor3;
-    AnyForceBase &ref4 = .RightLegMuscles.PsoasMajor4;
-    AnyForceBase &ref5 = .RightLegMuscles.PsoasMajor5;
+//    AnyForceBase &ref1 = .RightLegMuscles.PsoasMajor1;
+//    AnyForceBase &ref2 = .RightLegMuscles.PsoasMajor2;
+//    AnyForceBase &ref3 = .RightLegMuscles.PsoasMajor3;
+//    AnyForceBase &ref4 = .RightLegMuscles.PsoasMajor4;
+//    AnyForceBase &ref5 = .RightLegMuscles.PsoasMajor5;
 //    
-//    AnyFolder &mus159= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PMT12I_TM;
-//    AnyFolder &mus160= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1I_TM;
-//    AnyFolder &mus161= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1T_TM;
-//    AnyFolder &mus162= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2I_TM;
-//    AnyFolder &mus163= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2T_TM;
-//    AnyFolder &mus164= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3I_TM;
-//    AnyFolder &mus165= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3T_TM;
-//    AnyFolder &mus166= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4I_TM;
-//    AnyFolder &mus167= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4T_TM;
-//    AnyFolder &mus168= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5_TM;
-//    AnyFolder &mus169= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5T_TM;
+    AnyFolder &mus159= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PMT12I_TM;
+    AnyFolder &mus160= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1I_TM;
+    AnyFolder &mus161= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML1T_TM;
+    AnyFolder &mus162= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2I_TM;
+    AnyFolder &mus163= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML2T_TM;
+    AnyFolder &mus164= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3I_TM;
+    AnyFolder &mus165= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML3T_TM;
+    AnyFolder &mus166= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4I_TM;
+    AnyFolder &mus167= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML4T_TM;
+    AnyFolder &mus168= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5_TM;
+    AnyFolder &mus169= Main.HumanModel.BodyModel.Trunk.MusclesSpineRight.PsoasMajor.PML5T_TM;
 //
     
     
@@ -500,7 +500,6 @@ AnyFolder MuscleContributions =
   
   AnyFloat TestSum = TestMuscleContributions + TestGRFComponent;
   
-  #endif
   
   
   AnyForceMomentMeasure2 HCF = 
@@ -691,7 +690,8 @@ AnyFolder MuscleContributions =
     
    
   };
-  
+    #endif
+
 };
 
 
