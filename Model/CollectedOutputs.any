@@ -14,7 +14,7 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
 
 
 CollectedOuputs_template  CollectedOuputs(
-INCLUDE_LEG_MUSCLES = "Off"
+INCLUDE_LEG_MUSCLES = "On"
 )
 = {
   
@@ -86,8 +86,6 @@ AnyStringVar value_TLEM_VERSION=TLEM_VERSION;
 // Parameter for the morphology method for the TLEM model.
 AnyIntVar value_TLEM_MORPHOLOGY=TLEM_MORPHOLOGY;
 
-// Reserved parameter for the trunk manipulation, is always switched ON.
-AnyIntVar value_BM_TRUNK=BM_TRUNK;
 
 // Index parameter to specify strength for trunk muscles.
 AnyFloatVar value_BM_TRUNK_STRENGTH_INDEX=BM_TRUNK_STRENGTH_INDEX;
@@ -97,21 +95,6 @@ AnyIntVar value_BM_TRUNK_NECK=BM_TRUNK_NECK;
 
 // Definition of the trunk muscles type.
 AnyIntVar value_BM_TRUNK_MUSCLES=BM_TRUNK_MUSCLES;
-
-// Switch for the trunk model disk stiffness being present or not.
-AnyIntVar value_BM_TRUNK_DISC_STIFFNESS_NORMAL=BM_TRUNK_DISC_STIFFNESS_NORMAL;
-
-// Keyword for the trunk neck model muscle type.
-AnyIntVar value_BM_TRUNK_NECK_MUSCLES=BM_TRUNK_NECK_MUSCLES;
-
-// Switch for the use of simple muscle on the neck in the trunk neck model.
-AnyIntVar value_BM_TRUNK_NECK_SIMPLE_MUSCLES_ONLY_ON_NECK=BM_TRUNK_NECK_SIMPLE_MUSCLES_ONLY_ON_NECK;
-
-// Switch for the trunk neck model disk stiffness being present or not.
-AnyIntVar value_BM_TRUNK_NECK_DISC_STIFFNESS_NORMAL=BM_TRUNK_NECK_DISC_STIFFNESS_NORMAL;
-
-// A switch to use a kinematic rhythm for lumbar spine.
-AnyIntVar value_BM_SPINE_RHYTHM=BM_SPINE_RHYTHM;
 
 // A switch to control presence of lumbar spine ligaments.
 AnyIntVar value_BM_TRUNK_LUMBAR_LIGAMENTS=BM_TRUNK_LUMBAR_LIGAMENTS;

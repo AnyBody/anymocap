@@ -62,7 +62,7 @@ Main =
       MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
 
       #include "InverseDynamicSettings.any"
-//      #include "CollectedOutputs.any"
+      #include "CollectedOutputs.any"
 //      #include "StudyMuscleContributions.any"
     };
     

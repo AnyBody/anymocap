@@ -129,9 +129,9 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusLongus3.Activity) / 3;
   
-  #var AnyVar RightPeroneusTertius           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius3.Activity) / 3;
+//  #var AnyVar RightPeroneusTertius           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius1.Activity +
+//  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius2.Activity +
+//  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.PeroneusTertius3.Activity) / 3;
   
   #var AnyVar RightExtensorDigitorumLongus   =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.ExtensorDigitorumLongus2.Activity +
@@ -160,9 +160,7 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   #var AnyVar RightVastusMedialisSuperior    =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior3.Activity + 
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior4.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior5.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior6.Activity) / 6;
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusMedialisSuperior4.Activity) / 4;
   
   #var AnyVar RightVastusIntermedius         =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius2.Activity +
@@ -171,9 +169,11 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius5.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.VastusIntermedius6.Activity) / 6;
   
-  #var AnyVar RightRectusFemoris             =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemoris1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemoris2.Activity) / 2;
+  #var AnyVar RightRectusFemoris             =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemorisLateralis1.Activity +
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.RectusFemorisMedialis1.Activity) / 2;
   
+  
+
   #var AnyVar RightSemitendinosus            = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semitendinosus1.Activity;
   
   #var AnyVar RightSemimembranosus           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Semimembranosus1.Activity;
@@ -184,21 +184,16 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve2.Activity +
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.BicepsFemorisCaputBreve3.Activity) / 3;
   
-  #var AnyVar RightSartoriusProximal         = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusProximal1.Activity;
-  
-  #var AnyVar RightSartoriusDistal           = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.SartoriusDistal1.Activity;
-  
+  #var AnyVar RightSartorius        = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Sartorius1.Activity;
+    
   #var AnyVar RightIliacusLateralis          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusLateralis2.Activity ) / 2;
   
   #var AnyVar RightIliacusMid                =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMid2.Activity ) / 2;
   
   #var AnyVar RightIliacusMedialis           =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.IliacusMedialis2.Activity ) / 2;
   
   #var AnyVar RightGluteusMinimusAnterior    = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.GluteusMinimusAnterior1.Activity;
   
@@ -296,8 +291,9 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   
   #var AnyVar RightPlantaris                 = Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Plantaris1.Activity;
   
-  #var AnyVar RightPoplitues                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Poplitues1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Poplitues2.Activity) / 2;
+  #var AnyVar RightPoplitues                 =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Popliteus1.Activity +
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Popliteus2.Activity+
+  Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.Popliteus3.Activity) / 3;
   
   #var AnyVar RightQuadratusFemoris          =  (Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Right.Leg.Mus.QuadratusFemoris2.Activity +
@@ -400,9 +396,9 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusLongus3.Activity) / 3;
   
-  #var AnyVar LeftPeroneusTertius            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius3.Activity) / 3;
+//  #var AnyVar LeftPeroneusTertius            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius1.Activity +
+//  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius2.Activity +
+//  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.PeroneusTertius3.Activity) / 3;
   
   #var AnyVar LeftExtensorDigitorumLongus    =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus1.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.ExtensorDigitorumLongus2.Activity +
@@ -431,9 +427,7 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   #var AnyVar LeftVastusMedialisSuperior     =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior3.Activity + 
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior4.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior5.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior6.Activity) / 6;
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusMedialisSuperior4.Activity ) / 4;
   
   #var AnyVar LeftVastusIntermedius          =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius2.Activity +
@@ -442,8 +436,8 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius5.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.VastusIntermedius6.Activity) / 6;
   
-  #var AnyVar LeftRectusFemoris              =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemoris1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemoris2.Activity) / 2;
+  #var AnyVar LeftRectusFemoris              =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemorisLateralis1.Activity +
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.RectusFemorisMedialis1.Activity) / 2;
   
   #var AnyVar LeftSemitendinosus             = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Semitendinosus1.Activity;
   
@@ -455,21 +449,18 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve2.Activity +
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.BicepsFemorisCaputBreve3.Activity) / 3;
   
-  #var AnyVar LeftSartoriusProximal          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusProximal1.Activity;
+  #var AnyVar LeftSartorius          = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Sartorius1.Activity;
   
-  #var AnyVar LeftSartoriusDistal            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusDistal1.Activity;
+//  #var AnyVar LeftSartoriusDistal            = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.SartoriusDistal1.Activity;
   
   #var AnyVar LeftIliacusLateralis           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusLateralis2.Activity ) / 2;
   
   #var AnyVar LeftIliacusMid                 =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMid2.Activity ) / 2;
   
   #var AnyVar LeftIliacusMedialis            =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis2.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis3.Activity) / 3;
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.IliacusMedialis2.Activity ) / 2;
   
   #var AnyVar LeftGluteusMinimusAnterior     = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.GluteusMinimusAnterior1.Activity;
   
@@ -567,8 +558,9 @@ INCLUDE_TRUNK_JOINT_MOMENT = "Off"
   
   #var AnyVar LeftPlantaris                  = Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Plantaris1.Activity;
   
-  #var AnyVar LeftPoplitues                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Poplitues1.Activity +
-  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Poplitues2.Activity) / 2;
+  #var AnyVar LeftPoplitues                  =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Popliteus1.Activity +
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Popliteus2.Activity+
+  Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.Popliteus3.Activity) / 3;
   
   #var AnyVar LeftQuadratusFemoris           =  (Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris1.Activity + 
   Main.HUMAN_MODEL.BodyModel.Left.Leg.Mus.QuadratusFemoris2.Activity +
