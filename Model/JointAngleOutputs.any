@@ -12,14 +12,9 @@ AnyFolder JointAngleOutputs = {
     .BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos,
     .BodyModel.Interface.Trunk.PelvisThoraxLateralBending.Pos,
     .BodyModel.Interface.Trunk.PelvisThoraxRotation.Pos,
-    #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
-    .BodyModel.Interface.Trunk.NeckJoint.Pos
-    #endif
-    #if BM_TRUNK_NECK == ON
     .BodyModel.Interface.Trunk.SkullThoraxFlexion.Pos,
     .BodyModel.Interface.Trunk.SkullThoraxLateralBending.Pos,
     .BodyModel.Interface.Trunk.SkullThoraxRotation.Pos
-    #endif
   }';
  
   AnyOutputFile OutputFile1 = {
@@ -35,14 +30,9 @@ AnyFolder JointAngleOutputs = {
     AnyVector PelvisThoraxExtension = ..BodyModel.Interface.Trunk.PelvisThoraxExtension.Pos;
     AnyVector PelvisThoraxLateralBending = ..BodyModel.Interface.Trunk.PelvisThoraxLateralBending.Pos;
     AnyVector PelvisThoraxRotation = ..BodyModel.Interface.Trunk.PelvisThoraxRotation.Pos;
-    #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
-    AnyVector NeckExtension = ..BodyModel.Interface.Trunk.NeckJoint.Pos;
-    #endif
-    #if BM_TRUNK_NECK == ON
     AnyVector SkullThoraxFlexion = ..BodyModel.Interface.Trunk.SkullThoraxFlexion.Pos;
     AnyVector SkullThoraxLateralBending = ..BodyModel.Interface.Trunk.SkullThoraxLateralBending.Pos;
     AnyVector SkullThoraxRotation = ..BodyModel.Interface.Trunk.SkullThoraxRotation.Pos;
-    #endif
   };
   
  

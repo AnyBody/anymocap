@@ -19,13 +19,7 @@ AnyFolder JointsAndDrivers = {
             Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
             Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
             InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-            0,0,0
-            #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
-            ,0
-            #endif
-            #if BM_TRUNK_NECK == ON
-            ,0,0,0
-            #endif
+            0,0,0,0,0,0
           }'* (1+_ZEROS(1,NumElemOf(T0)));
           T0 = Main.Studies.KinematicStudy.tArray;
           //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
@@ -46,16 +40,10 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasureOrg &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
     AnyKinMeasureOrg &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
     AnyKinMeasureOrg &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
-    #if BM_TRUNK == ON & BM_TRUNK_NECK == OFF
-    AnyKinMeasureOrg &NeckExtension = ...BodyModel.Interface.Trunk.NeckJoint;
-    Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off};
-    #endif 
-    #if BM_TRUNK_NECK == ON
     AnyKinMeasureOrg& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasureOrg& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
     AnyKinMeasureOrg& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation; 
     Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off,Off,Off};
-    #endif
   };
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
