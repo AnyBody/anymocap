@@ -6,9 +6,7 @@
       AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
       AnyFolder &SegmentsCervicalSpine = Main.HumanModel.BodyModel.Trunk.SegmentsCervicalSpine ;
       AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar ;
-      #if BM_TRUNK_NECK == ON
       AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine ;
-      #endif
     };
     
     AnyFolder Right = {
