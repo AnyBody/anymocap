@@ -6,3 +6,4 @@ _*.log
 *_OptimizedParameters.txt
 *.ipynb_checkpoints*
 *.pyc
+.cache
