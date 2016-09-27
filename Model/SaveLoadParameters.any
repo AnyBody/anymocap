@@ -19,7 +19,14 @@
           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.HandLength
         };
         Target = Source;
-      };     
+      };   
+      AnyOperationSetValue TouchOtherValues =  {
+        Source = arrcat(ObjSearch("Main.HumanModel.BodyModel.*.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation"), 
+                        ObjSearch("Main.HumanModel.BodyModel.*.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset"));
+        Target = Source;
+      };   
+      
+      
       AnyOperationMacro SaveToFile = {
         AnyFileVar SavePath = TEMP_PATH;
         MacroStr  = {"classoperation Main" + strquote("Save Values") +"--file=" + 

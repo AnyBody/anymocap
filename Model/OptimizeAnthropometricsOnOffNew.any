@@ -11,6 +11,8 @@
                                               UpperArmLengthOnOff="Off",
                                               LowerArmLengthOnOff="Off",
                                               HandLengthOnOff = "Off",
+                                              VarusValgusOnOff = "Off",
+                                              TibialTorsionOnOff = "Off",
                                               HumanModel =HumanModel,
                                               ParameterOptStudy = ParameterIdentification ){
   
@@ -58,27 +60,51 @@
     };
     #endif
     
-//    #if VarusValgusOnOff =="On"
-//    
-//    
-//    AnyDesVar VarusValgusRight = {
-//      Val =   Main.Studies.KinematicStudyForParameterIdentification.HumanModel.BodyModel.Right.Leg.Seg.Thigh.KneeJoint.AxisRot;
-//    };
-//    
-//    AnyDesVar VarusValgusLeft = {
-//      Val =   Main.Studies.KinematicStudyForParameterIdentification.HumanModel.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.AxisRot;
-//    };
-//    
-//    //This ensures the legs varus valgus is the same for left and right side
-//    AnyDesMeasure VarusValgusEquality = {
-//      Val = .VarusValgusRight.Val-.VarusValgusLeft.Val ;
-//      Type=      EqualToZero;
-//    };
-//    
-//    
-//    #endif
+    #if VarusValgusOnOff =="On"
+    
+    
+    AnyDesVar VarusValgusOffsetRight = {
+      Val =   Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
+    };
+    
+    AnyDesVar VarusValgusOffsetLeft = {
+      Val =   Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
+    };
+    
+    //This ensures the legs varus valgus is the same for left and right side
+    AnyDesMeasure VarusValgusSymmertry = {
+      Val = .VarusValgusOffsetRight.Val+.VarusValgusOffsetLeft.Val ;
+      Type=      EqualToZero;
+    };
+    
+    
+    #endif
     
  
+    #if TibialTorsionOnOff =="On"
+    
+    
+    AnyDesVar TibialTorsionOffsetRight = {
+      Val =   Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset ;
+    };
+    
+    AnyDesVar TibialTorsionOffsetLeft = {
+      Val =   Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
+    };
+    
+    //This ensures the legs varus valgus is the same for left and right side
+    AnyDesMeasure TibialTorsionSymmertry = {
+      Val = .TibialTorsionOffsetRight.Val+.TibialTorsionOffsetLeft.Val ;
+      Type=      EqualToZero;
+    };
+    
+    
+    #endif
+    
+    
+    
+    
+    
     #if NeckLengthOnOff=="On"
     AnyDesVar NeckLength= {
       Val = .Lengths.NeckLength;
