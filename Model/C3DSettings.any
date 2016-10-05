@@ -15,15 +15,18 @@
     MarkerUseCamMaskOnOff = Off;
     PointsScaleFactor = 1/1000;
     MarkerDrawOnOff =On;
+    
+    AnyInt MarkerFilterOrder = 2; 
+    AnyInt AnalogFilterOrder = 2;
    
     // HACK_WORKAROUND. We need to disable filters (i.e. set FilterIndex to -1) when 
     // using recordings which has less data than 3 times filter order
-    MarkerFilterIndex = iffun(gtfun(Header.LastFrameNo-Header.FirstFrameNo+1,Main.ModelSetup.LabSpecificData.MarkerDataFilterOrder*3 ), 0 ,-1) ;
+    MarkerFilterIndex = iffun(gtfun(Header.LastFrameNo-Header.FirstFrameNo+1,MarkerFilterOrder *3 ), 0 ,-1) ;
     AnalogFilterIndex = iffun(gtfun((Header.LastFrameNo-Header.FirstFrameNo+1)*Header.NoAnalogSamplesPer3DFrame,
-                                     Main.ModelSetup.LabSpecificData.AnalogDataFilterOrder*3 ), 1 ,-1);    
+                                     AnalogFilterOrder *3 ), 1 ,-1);    
     
     Filter =  {
-      N = 2;
+      N = .MarkerFilterOrder;
       Fc = {5};
       Type = LowPass;
     };
@@ -32,7 +35,7 @@
     AnyFunButterworthFilter LowPassFilter = {
       FilterForwardBackwardOnOff = On;
       AutomaticInitialConditionOnOff = On;
-      N = 2 ;
+      N = .AnalogFilterOrder  ;
       AnyVar CutOffFrequency=12;
       AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
       W = {1/(iffun(eqfun(SampleFreq,0),100.0,SampleFreq)*0.5)*CutOffFrequency};

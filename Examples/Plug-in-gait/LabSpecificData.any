@@ -7,11 +7,7 @@
  
  Gravity = -9.81*{0,1,0};
  
- MarkerDataFilterOrder = 2;
- MarkerDataCutOffFrequency = 5;
- 
- AnalogDataFilterOrder = 2;
- AnalogDataFilterCutOffFrequency = 12;
+
     
  // This defines how the model segments are optimized
 // In this static calibration trial all segment length are
