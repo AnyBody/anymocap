@@ -283,7 +283,7 @@
      AnyVar my = NetEffectMeasure.Mlocal[1]; 
      AnyVar mz = NetEffectMeasure.Mlocal[2]; 
 
-     AnyVar fzz =iffun(gtfun(  (fz^2)^0.5,0),fz,fz+1000000);
+     AnyVar fzz =iffun(gtfun(abs(fz),0),fz,fz+1000000);
      
      AnyVar Vx= -my/fzz;
      AnyVar Vy= mx/fzz;
@@ -417,8 +417,53 @@
   {
     AnyRefNode KinGRF_rotnode = { ARel = RotMat(pi,y); };
   };
+  
   AnyFolder Kinematic_GRF = 
   {
+    
+    
+// Make a squarewave treshold function. 
+//     AnyFunSquareWaveThreshold Threshold = 
+//     {
+//       //InitialValues = ;
+//       dT = {0.1,0.1};
+//       T = ..load.T;
+//       Data = vnorm(..load.Data');
+//       OutputValues = {{0,1}};
+//       Threshold = 0.1*max(vnorm(..load.Data'));
+//       TType = {TransitionStart, TransitionEnd};
+//     };
+
+   
+    AnyVar max_val = max({ max(Calculations.norm),0.000001});
+    AnyVar Th = 0.4*max_val;
+    AnyVector Thress = iffun(gtfun(Calculations.norm, Th ),
+                             (Calculations.norm-Th )/(max_val-Th),
+                             0*farr(0.0,1.0,NumElemOf(Calculations.norm)));
+                             
+
+    AnyVector Weight =  mult(Thress,
+                             Calculations.norm/max_val);
+//
+    AnyInt downsample = .Folder.Header.NoAnalogSamplesPer3DFrame;
+    AnyMatrix GlobalCOP_pos = (1+0*farr(0.0,1.0,.NoAnalogData))'*{.ForcePlate.r0}+ (.ForcePlate.Axes0*Calculations.GRF_start.Data)';
+    
+    AnyMatrix GlobalCOP_posT = GlobalCOP_pos';
+
+    AnyInt dim = {3, round(.NoAnalogData/downsample), downsample};
+    AnyInt dim2 = SizesOf(GlobalCOP_posT );
+    //AnyMatrix GlobalCOP_pos_decimated = reshape(&GlobalCOP_posT, dim );
+    //AnyVar limb1_COP_dist = Main.ModelSetup.C3DFileData.Points.Markers.R_CALC
+    
+    
+    AnyFunInterpol WeightFun = 
+    {
+      Type = Bspline;
+      T = ..load.T;
+      Data = {.Weight};
+    };
+
+    
     
     AnySeg Frame = 
     {
@@ -450,22 +495,27 @@
       AnyVector my =  (1/1000)*..load.Data[4]; 
       AnyVector mz =  (1/1000)*..load.Data[5]; 
       
-      
       AnyVector norm = vnorm({fx,fy,fz}');
+      
+      // Values used when dividing. To avoid deviding by zero. 
+      AnyVar force_thresshold = 1;
+      AnyVector _fz = iffun(gtfun(norm,force_thresshold ),fz, 10^10+0*farr(0.0,1.0, NumElemOf(fz))) ;
+      AnyVector _norm = iffun(gtfun(norm,force_thresshold ),norm, 10^10+0*farr(0.0,1.0, NumElemOf(norm))) ;
+      
       //AnyVector fzz =iffun(gtfun(  (fz^2)^0.5,0),fz,fz+1000000);
       
       AnyVar originz = -1*..ForcePlate.TransducerLocation.zdist;
       
       
-      AnyVector Vx= (originz*fx-my)/(fz+10e-10);
-      AnyVector Vy= (mx+originz*fy)/(fz+10e-10);
+      AnyVector Vx= (originz*fx-my)/( _fz ) ;
+      AnyVector Vy= (mx+originz*fy)/( _fz );
       AnyVector Vz= 0*Vy;
       
       AnyFunInterpol GRF_normalized = 
       {
         Type = PiecewiseLinear;
         T = .T;
-        Data = {.norm/( max(.norm)+10e-10)};
+        Data = {.norm/( iffun(gtfun(max(.norm),0),max(.norm), 10^10) )};
       };
       
       AnyFunInterpol GRF_start = 
@@ -474,11 +524,13 @@
         T = .T;
         Data = {.Vx, .Vy, .Vz};
       };    
-      AnyFunInterpol GRF_end = { 
+      AnyFunInterpol GRF_end = 
+      { 
         Type = PiecewiseLinear;
         T = .T;
-        Data = {.Vx + .fx/ (.norm + 10e-10),
-          .Vy + .fy/ (.norm + 10e-10)
+        
+        Data = {.Vx + .fx/(._norm),
+          .Vy + .fy/(._norm)
           //.COP_cal.Vz + .COP_cal.fz/ (.COP_cal.norm)
         };      
       };
