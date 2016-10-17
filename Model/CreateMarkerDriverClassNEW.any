@@ -98,8 +98,12 @@
     AnyRefNode MarkerName={
       #if ScaleMarkerPosOnOff == "On"
         AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+        sRel = .PlaceMarkerAt.sRel + MarkerOffset;
+        ARel= .AnatomicalFrame.ARel;
       #else
-        AnyVec3 MarkerOffset = (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+        sRel = .PlaceMarkerAt.sRel + (..sRelOpt + ..sRelOptEdit )*.PlaceMarkerAt.ARel';
+        ARel= .PlaceMarkerAt.ARel;
+        
       #endif
       
 //      This was an attempt to allow PlaceMarkerAt to be anywhere and not only
@@ -111,8 +115,6 @@
 //      };
 //      sRel = Transform2SegmentFrame({0.0,0,0}) + MarkerOffset;
       
-      sRel = .PlaceMarkerAt.sRel + MarkerOffset;
-      ARel= .AnatomicalFrame.ARel;
       
       AnyRefNode Arrows = {  
           AnyDrawVector X =   {
