@@ -1,0 +1,139 @@
+AnyFolder Hip_Plate2_GRF_Driver = 
+{
+  AnyKinMeasureFunComb1 LCappedLinMeasure= 
+  {
+    Functions = {&.ExpFun };
+    AnyKinMeasureOrg lin_y= 
+    {
+      AnyKinLinear lin = 
+      {
+        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
+        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
+        Ref = 0;
+      };
+     MeasureOrganizer = {1};
+    };
+  };
+  AnyKinMeasureFunComb1 RCappedLinMeasure= 
+  {
+    Functions = {&.ExpFun };
+    AnyKinMeasureOrg lin_y= 
+    {
+      AnyKinLinear lin = 
+      {
+        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
+        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+        Ref = 0;
+      };
+     MeasureOrganizer = {1};
+    };
+  };
+
+  AnyFunInterpol ExpFun = 
+  {
+    AnyVar MaxOuput = 0.05;
+    AnyVar InputAt60PercetOfMax = 0.05;
+    Type = Bspline ;
+    
+    T = arrcat(farr(-1010*MaxOuput,MaxOuput/1, 1000*1),
+               farr(-10*MaxOuput,MaxOuput/10, 2*10*10),
+               farr(MaxOuput*10,MaxOuput/1, 1000*1));
+    
+    Data = {iffun(gtfun(T,0),
+            MaxOuput*(1-exp((-1*T)/InputAt60PercetOfMax )),
+            (-1)*MaxOuput*(1-exp((T)/InputAt60PercetOfMax )))};
+               
+  };  
+  AnyKinEq LDriver =
+  {
+    AnyVar effect = Pos[0]*WeightPos[0];
+    AnyKinMeasure& ref = .LCappedLinMeasure;
+    CType = {Soft};
+    WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Weight_limb2 };
+    Reaction.Type = {Off};
+  };
+  AnyKinEq RDriver =
+  {
+    AnyVar effect = Pos[0]*WeightPos[0];
+    AnyKinMeasure& ref = .RCappedLinMeasure;
+    CType = {Soft};
+    WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Weight_limb1 };
+    Reaction.Type = {Off};
+  };
+};
+
+AnyFolder Hip_Plate1_GRF_Driver = 
+{
+  AnyKinMeasureFunComb1 LCappedLinMeasure= 
+  {
+    Functions = {&.ExpFun};
+    AnyKinMeasureOrg lin_y= 
+    {
+      AnyKinLinear lin = 
+      {
+        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
+        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
+        Ref = 0;
+      };
+     MeasureOrganizer = {1};
+    };
+  };  
+  
+  AnyKinMeasureFunComb1 RCappedLinMeasure= 
+  {
+    Functions = {&.ExpFun};
+    AnyKinMeasureOrg lin_y= 
+    {
+      AnyKinLinear lin = 
+      {
+        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
+        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+        Ref = 0;
+      };
+     MeasureOrganizer = {1};
+    };
+  };  
+  
+  AnyFunInterpol ExpFun = 
+  {
+    AnyVar MaxOuput = 0.05;
+    AnyVar InputAt60PercetOfMax = 0.05;
+    Type = Bspline ;
+    
+    T = arrcat(farr(-1010*MaxOuput,MaxOuput/1, 1000*1),
+              farr(-10*MaxOuput,MaxOuput/10, 2*10*10),
+              farr(MaxOuput*10,MaxOuput/1, 1000*1));
+
+    
+    Data = {iffun(gteqfun(T,0),
+            MaxOuput*(1-exp((-1*T)/InputAt60PercetOfMax )),
+            (-1)*MaxOuput*(1-exp((T)/InputAt60PercetOfMax )))};
+               
+  }; 
+  
+  AnyKinEq LDriver =
+  {
+    AnyVar effect = Pos[0]*WeightPos[0];
+    AnyKinMeasure& ref = .LCappedLinMeasure;
+    CType = {Soft};
+    WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Weight_limb2};
+    Reaction.Type = {Off};
+  };
+  AnyKinEq RDriver =
+  {
+    AnyVar effect = Pos[0]*WeightPos[0];
+    AnyKinMeasure& ref = .RCappedLinMeasure;
+    CType = {Soft};
+    WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Weight_limb1};
+    Reaction.Type = {Off};
+  };
+  
+
+};
+
+//Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection = {
+//   AnyMechObjectExcluder GRF_driver_excluder = {
+//     Objects = arrcat(ObjSearchRecursive("Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF","*", "AnyMechObject"),
+//                      ObjSearchRecursive("Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF","*", "AnyMechObject"));
+//   }; 
+//};

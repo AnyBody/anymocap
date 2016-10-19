@@ -11,7 +11,7 @@
                                               Fx,Fy,Fz,
                                               Mx,My,Mz,
                                               CREATE_KIN_GRF = 0 ,
-                                              FootPresent
+                                              FootPresent = 1
                                               ){
   
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
@@ -421,47 +421,52 @@
   AnyFolder Kinematic_GRF = 
   {
     
+    AnyFloat weightdata = sqrt(Calculations.norm);
+    AnyVar max_val = max({ max(weightdata),0.000001});
+    AnyVar Th = 0.05*max_val;
     
-// Make a squarewave treshold function. 
-//     AnyFunSquareWaveThreshold Threshold = 
-//     {
-//       //InitialValues = ;
-//       dT = {0.1,0.1};
-//       T = ..load.T;
-//       Data = vnorm(..load.Data');
-//       OutputValues = {{0,1}};
-//       Threshold = 0.1*max(vnorm(..load.Data'));
-//       TType = {TransitionStart, TransitionEnd};
-//     };
+    // Thresshold the weight data
+    AnyVector ThresHolded = iffun(gtfun(weightdata, Th ),
+                             (weightdata-Th )/(max_val-Th),
+                             0*farr(0.0,1.0,NumElemOf(weightdata)));
 
-   
-    AnyVar max_val = max({ max(Calculations.norm),0.000001});
-    AnyVar Th = 0.4*max_val;
-    AnyVector Thress = iffun(gtfun(Calculations.norm, Th ),
-                             (Calculations.norm-Th )/(max_val-Th),
-                             0*farr(0.0,1.0,NumElemOf(Calculations.norm)));
-                             
-
-    AnyVector Weight =  mult(Thress,
-                             Calculations.norm/max_val);
-//
-    AnyInt downsample = .Folder.Header.NoAnalogSamplesPer3DFrame;
-    AnyMatrix GlobalCOP_pos = (1+0*farr(0.0,1.0,.NoAnalogData))'*{.ForcePlate.r0}+ (.ForcePlate.Axes0*Calculations.GRF_start.Data)';
-    
-    AnyMatrix GlobalCOP_posT = GlobalCOP_pos';
-
-    AnyInt dim = {3, round(.NoAnalogData/downsample), downsample};
-    AnyInt dim2 = SizesOf(GlobalCOP_posT );
-    //AnyMatrix GlobalCOP_pos_decimated = reshape(&GlobalCOP_posT, dim );
-    //AnyVar limb1_COP_dist = Main.ModelSetup.C3DFileData.Points.Markers.R_CALC
-    
-    
-    AnyFunInterpol WeightFun = 
+    AnyFunInterpol GlobalCOP_pos = 
     {
       Type = Bspline;
-      T = ..load.T;
-      Data = {.Weight};
+      T = ..Time;
+      Data = ((1+0*farr(0.0,1.0,..NoAnalogData))'*{..ForcePlate.r0}+ (..ForcePlate.Axes0*.Calculations.GRF_start.Data)')';
+    };    
+
+    
+    
+    // Alternative Time array which starts from tStart and ends at tEnd  
+    AnyInt NoAnalogData2= (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo)*Folder.Header.NoAnalogSamplesPer3DFrame;
+    AnyFloat tStart2 = .tStart;
+    AnyFloat tEnd2 = .tEnd-1/Folder.Header.VideoFrameRate;
+    AnyFloat Time2 = farr( tStart2, (tEnd2-tStart2)/( NoAnalogData2 - 1) ,  NoAnalogData2);
+
+    AnyFloat limb1_COP_dist = vnorm(Main.ModelSetup.C3DFileData.Points.Markers.R_CALC.PosInterpol(Time2) - 
+                                    GlobalCOP_pos(Time2));
+    AnyFloat limb2_COP_dist = vnorm(Main.ModelSetup.C3DFileData.Points.Markers.L_CALC.PosInterpol(Time2)- 
+                                    GlobalCOP_pos(Time2));
+
+                                   
+    AnyFunInterpol Weight_limb1 = 
+    {
+       AnyVar Factor = DesignVar(1);
+       Type = Bspline;
+       T = .Time2;
+       Data = {Factor * iffun(ltfun(.limb1_COP_dist,.limb2_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
     };
+
+    AnyFunInterpol Weight_limb2 = 
+    {
+       AnyVar Factor = DesignVar(1);
+       Type = Bspline;
+       T = .Time2;
+       Data = {Factor * iffun(ltfun(.limb2_COP_dist,.limb1_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
+    };
+
 
     
     
@@ -498,11 +503,10 @@
       AnyVector norm = vnorm({fx,fy,fz}');
       
       // Values used when dividing. To avoid deviding by zero. 
-      AnyVar force_thresshold = 1;
-      AnyVector _fz = iffun(gtfun(norm,force_thresshold ),fz, 10^10+0*farr(0.0,1.0, NumElemOf(fz))) ;
-      AnyVector _norm = iffun(gtfun(norm,force_thresshold ),norm, 10^10+0*farr(0.0,1.0, NumElemOf(norm))) ;
-      
-      //AnyVector fzz =iffun(gtfun(  (fz^2)^0.5,0),fz,fz+1000000);
+      AnyVar force_thresshold = 0.05*max(abs(fz));
+      AnyVector _fz = iffun(gtfun(abs(fz),force_thresshold ),fz, fz+10^10);
+      AnyVector _norm = iffun(gtfun(abs(norm),force_thresshold ),norm, norm+10^10) ;
+
       
       AnyVar originz = -1*..ForcePlate.TransducerLocation.zdist;
       
