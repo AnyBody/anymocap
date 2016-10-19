@@ -10,7 +10,9 @@
                                               VelThreshold,
                                               Fx,Fy,Fz,
                                               Mx,My,Mz,
-                                              CREATE_KIN_GRF = 0 ,
+                                              CREATE_KIN_GRF = 0,
+                                              KIN_GRF_LIMB1_POSINTERPOL = _,
+                                              KIN_GRF_LIMB2_POSINTERPOL = _,
                                               FootPresent = 1
                                               ){
   
@@ -445,9 +447,9 @@
     AnyFloat tEnd2 = .tEnd-1/Folder.Header.VideoFrameRate;
     AnyFloat Time2 = farr( tStart2, (tEnd2-tStart2)/( NoAnalogData2 - 1) ,  NoAnalogData2);
 
-    AnyFloat limb1_COP_dist = vnorm(Main.ModelSetup.C3DFileData.Points.Markers.R_CALC.PosInterpol(Time2) - 
+    AnyFloat limb1_COP_dist = vnorm(KIN_GRF_LIMB1_POSINTERPOL(Time2) - 
                                     GlobalCOP_pos(Time2));
-    AnyFloat limb2_COP_dist = vnorm(Main.ModelSetup.C3DFileData.Points.Markers.L_CALC.PosInterpol(Time2)- 
+    AnyFloat limb2_COP_dist = vnorm(KIN_GRF_LIMB2_POSINTERPOL(Time2)- 
                                     GlobalCOP_pos(Time2));
 
                                    
