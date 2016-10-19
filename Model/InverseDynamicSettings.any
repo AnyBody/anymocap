@@ -6,13 +6,8 @@
  InitialConditions.KinematicTol=1e-5; 
  Kinematics.KinematicTol=1e-5; 
 
- #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
- Kinematics.Solver = &Kinematics.SolverOptions.KinSolDet2;
- InitialConditions.Solver = Kinematics.Solver;
- #else
  Kinematics.SolverType = KinSolDeterminate;
  InitialConditions.SolverType = Kinematics.SolverType;
- #endif
  
  #ifdef INCLUDE_MUSCLE_WEIGHT_FACTOR 
  Main = {AnyVar Power = .InverseDynamics.Criterion.Power;};

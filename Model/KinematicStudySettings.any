@@ -2,11 +2,7 @@ InitialConditions =
 {
   PosAnalysisOnlyOnOff = On;
   KinematicTol=1e-6; 
-#if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-  Solver = &SolverOptions.KinSolOverDet1;
-#else
   SolverType = KinSolOverDeterminate;
-#endif
   PreOperation = 
   { 
 //    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
@@ -16,22 +12,14 @@ InitialConditions =
 
 Kinematics = 
 {
+  SmallStepAssumptionOnOff = On;
   PosAnalysisOnlyOnOff = On;
   KinematicTol=1e-6; 
-#if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-  Solver = &SolverOptions.KinSolOverDet1;
-#else
   SolverType = KinSolOverDeterminate;
-#endif
 };
 
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  
-
- #ifndef N_STEP_KINEMATICS
-   #define N_STEP_KINEMATICS Main.ModelSetup.TrialSpecificData.nStep
- #endif
- 
  
  #ifndef T_END
  #define T_END Main.ModelSetup.TrialSpecificData.tEnd
@@ -39,6 +27,12 @@ Kinematics =
  
  #ifndef T_START
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
+ #endif
+ 
+ // The number of steps in the kinematic analysis should match framerate of the 
+ // motion caputure data. Thus, we don't use the `Main.ModelSetup.TrialSpecificData.nStep` here
+ #ifndef N_STEP_KINEMATICS
+ #define N_STEP_KINEMATICS floor((T_END-T_START)*Main.ModelSetup.C3DFileData.Header.VideoFrameRate)
  #endif
  
  
