@@ -44,7 +44,7 @@ AnyFolder Hip_Plate2_GRF_Driver =
             (-1)*MaxOuput*(1-exp((T)/InputAt60PercetOfMax )))};
                
   };  
-  AnyKinEq LDriver =
+  AnyKinEq DriverLeft =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
     AnyKinMeasure& ref = .LCappedLinMeasure;
@@ -52,7 +52,7 @@ AnyFolder Hip_Plate2_GRF_Driver =
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Weight_limb2 };
     Reaction.Type = {Off};
   };
-  AnyKinEq RDriver =
+  AnyKinEq DriverRight =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
     AnyKinMeasure& ref = .RCappedLinMeasure;
@@ -111,7 +111,7 @@ AnyFolder Hip_Plate1_GRF_Driver =
                
   }; 
   
-  AnyKinEq LDriver =
+  AnyKinEq DriverLeft =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
     AnyKinMeasure& ref = .LCappedLinMeasure;
@@ -119,7 +119,7 @@ AnyFolder Hip_Plate1_GRF_Driver =
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Weight_limb2};
     Reaction.Type = {Off};
   };
-  AnyKinEq RDriver =
+  AnyKinEq DriverRight =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
     AnyKinMeasure& ref = .RCappedLinMeasure;
