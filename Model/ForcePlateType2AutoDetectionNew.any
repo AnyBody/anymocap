@@ -452,19 +452,18 @@
     AnyFloat limb2_COP_dist = vnorm(KIN_GRF_LIMB2_FUN(Time2)- 
                                     GlobalCopFun(Time2));
 
-    AnyVar WeightFactor = DesignVar(0.55);                           
     AnyFunInterpol Weight_limb1 = 
     {
        Type = Bspline;
        T = .Time2;
-       Data = {.WeightFactor * iffun(lteqfun(.limb1_COP_dist,.limb2_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
+       Data = {iffun(lteqfun(.limb1_COP_dist,.limb2_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
     };
 
     AnyFunInterpol Weight_limb2 = 
     {
        Type = Bspline;
        T = .Time2;
-       Data = {.WeightFactor  * iffun(lteqfun(.limb2_COP_dist,.limb1_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
+       Data = {iffun(lteqfun(.limb2_COP_dist,.limb1_COP_dist ), .ThresHolded, 0.0*.ThresHolded)};
     };
 
 
