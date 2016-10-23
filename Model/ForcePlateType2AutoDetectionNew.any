@@ -443,8 +443,8 @@
     // Alternative Time array which starts from tStart and ends at tEnd  
     AnyInt NoAnalogData2= max({Folder.Header.NoAnalogSamplesPer3DFrame,
                                (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo)*Folder.Header.NoAnalogSamplesPer3DFrame});
-    AnyFloat tStart2 = .tStart;
-    AnyFloat tEnd2 = max({tStart2+1/Folder.Header.VideoFrameRate,.tEnd-1/Folder.Header.VideoFrameRate});
+    AnyFloat tStart2 = .tStart+1e-12;
+    AnyFloat tEnd2 = max({tStart2+1/Folder.Header.VideoFrameRate,.tEnd-1/Folder.Header.VideoFrameRate})-1e-12;
     AnyFloat Time2 = farr( tStart2, (tEnd2-tStart2)/( max({1,NoAnalogData2 - 1})) ,  NoAnalogData2);
 
     AnyFloat limb1_COP_dist = vnorm(KIN_GRF_LIMB1_FUN(Time2) - 
