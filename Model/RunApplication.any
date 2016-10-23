@@ -1,28 +1,27 @@
 Main = {
   
-  AnyOperationMacro RunParameterIdentification  = 
-  {
-  MacroStr = {"operation Main.ModelSetup.Views.SetViewMacros.KinematicView",
-              "run",
-              "operation Main.Studies.ParameterIdentification.ParameterOptimization",
-              "run",
-              "operation Main.ModelSetup.Macros.Save_parameters",
-              "run"};
-  };
-  
-// The above is a HACK_WORKAROUND since ParameterOptimization can't be referenced 
-// in a AnyOperationSequence without triggering a bug
-//  AnyOperationSequence RunParameterIdentification = 
+//  AnyOperationMacro RunParameterIdentification  = 
 //  {
-//    AnyOperationSequence ParameterIdentification = 
-//    {
-//      AnyOperationDummy placeholder_operation= {};
-//    };    
-//    AnyOperationSequence SaveParameters = 
-//    {
-//      AnyOperationDummy placeholder_operation= {};
-//    };
+//  MacroStr = {"operation Main.ModelSetup.Views.SetViewMacros.KinematicView",
+//              "run",
+//              "operation Main.Studies.ParameterIdentification.ParameterOptimization",
+//              "run",
+//              "operation Main.ModelSetup.Macros.Save_parameters",
+//              "run"};
 //  };
+//  
+
+AnyOperationSequence RunParameterIdentification = 
+  {
+    AnyOperationSequence ParameterIdentification = 
+    {
+      AnyOperationDummy placeholder_operation= {};
+    };    
+    AnyOperationSequence SaveParameters = 
+    {
+      AnyOperationDummy placeholder_operation= {};
+    };
+  };
   
   AnyOperationSequence RunAnalysis= {
     
@@ -33,26 +32,26 @@ Main = {
         
     AnyOperationSequence KinematicAnalysis = 
     {
-      AnyOperation &SetKinematicView = Main.ModelSetup.Views.SetViewMacros.KinematicView;
       AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
+      AnyOperationDummy placeholder_operation= {};
     };
     
     AnyOperationSequence InverseDynamics = 
     {
-      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
+//      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
       
-      AnyOperationMacro UpdateValues= { MacroStr = {"classoperation Main"+ strquote("Update Values") };  };
-      AnyOperation &reset = Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation; 
+//      AnyOperation &reset = Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation; 
 
-      #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
-        AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
-      #endif      
-      
-      AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicStudy.InverseDynamics;
+//      #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
+//        AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
+//      #endif      
+//      
+//      AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicStudy.InverseDynamics;
+      AnyOperationDummy placeholder_operation= {};
     };
     AnyOperationSequence SaveOuput = 
     {
-      AnyOperationDummy do = {};
+      AnyOperationDummy placeholder_operation= {};
     };
     
   };

@@ -59,7 +59,7 @@ Main =
       
       // Include markers for visualization, but exclude the driver part 
       AnyFolder &Markers= Main.ModelSetup.MocapDrivers;
-      MechObjectExclude = ObjSearch("Main.ModelSetup.MocapDrivers.*.Driver");
+      MechObjectExclude = ObjSearchRecursive("Main.ModelSetup.MocapDrivers","*","AnyKinEq");
 
       #include "InverseDynamicSettings.any"
     };

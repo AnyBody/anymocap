@@ -5,19 +5,9 @@
         Target = Source;
       };     
       AnyOperationSetValue TouchSegLength =  {
-        Source = {
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.PelvisWidth,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ThighLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ShankLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.FootLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.NeckLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.HeadHeight,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.TrunkHeight,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.TrunkWidth ,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.UpperArmLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.LowerArmLength,
-          &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.HandLength
-        };
+        Source = ObjSearchRecursive(CompleteNameOf(
+                   &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths),
+                   "*","AnyValue");
         Target = Source;
       };   
       AnyOperationSetValue TouchOtherValues =  {
@@ -35,10 +25,9 @@
         
       };
     };
-//    HACK_WORKAROUND Must be commented until the OperationSequence bug is fixed. 
-//    Main.RunParameterIdentification.SaveParameters = {
-//      AnyOperation &Save_parameters_to_anyset = Main.ModelSetup.Macros.Save_parameters;
-//    };
+    Main.RunParameterIdentification.SaveParameters = {
+      AnyOperation &Save_parameters_to_anyset = Main.ModelSetup.Macros.Save_parameters;
+    };
   };
  
  

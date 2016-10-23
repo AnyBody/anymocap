@@ -6,7 +6,7 @@ InitialConditions =
   SolverType = KinSolOverDeterminate;
   PreOperation = 
   { 
-//    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
+    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
   };
 };
 
@@ -18,6 +18,20 @@ Kinematics =
   KinematicTol=1e-6; 
   SolverType = KinSolOverDeterminate;
 };
+
+
+Main.RunParameterIdentification.ParameterIdentification = 
+{
+  AnyOperation& ParameterOptimization = ....ParameterOptimization;
+
+};
+
+
+
+
+
+
+
 
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  
