@@ -31,7 +31,7 @@ AnyFolder JointsAndDrivers = {
       
       AnyMessage AnyMocap = 
       {
-        AnyVar maxtime =  .FileReader.T[.FileReader.nDataInFile-1];
+        AnyVar maxtime =  .FileReader.T[max({0,.FileReader.nDataInFile-1})];
         TriggerPreProcess = Off;
         TriggerConst = Off;
         TriggerRuntime = gtfun(.....t,  maxtime ); 
