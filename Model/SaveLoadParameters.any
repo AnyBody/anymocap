@@ -1,13 +1,18 @@
   Main.ModelSetup.Macros = {        
    AnyOperationSequence Save_parameters= {
+     // This operation uses `AnyOperationSetValue` to mark all values that must be saved 
       AnyOperationSetValue TouchMarkers = {
         Source = ObjSearch("Main.ModelSetup.MocapDrivers.*.sRelOptEdit"     );
         Target = Source;
       };     
       AnyOperationSetValue TouchSegLength =  {
-        Source = ObjSearchRecursive(CompleteNameOf(
-                   &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths),
-                   "*","AnyValue");
+        Source = arrcat(
+          ObjSearch(CompleteNameOf(&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths)+".*","AnyValue"),
+          // It is not necessary to add the Left folder as it links to the right side values
+          {&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ThighLength, 
+           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ShankLength,
+           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.FootLength}
+          );
         Target = Source;
       };   
       AnyOperationSetValue TouchOtherValues =  {
