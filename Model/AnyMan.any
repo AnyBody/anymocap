@@ -66,9 +66,6 @@ AnyFolder AnthroData = {
 //Only the lenghts for the leg are used for this model, but the a full dataset
 //needs to be present in order to load the model
 AnyFolder AnthroSegmentLengths = {
-  AnyVar ThighLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.ThighLengthIni);
-  AnyVar ShankLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.ShankLengthIni);
-  AnyVar FootLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.FootLengthIni);
   AnyVar PelvisWidth = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.PelvisWidthIni); //distance between hip joints
   AnyVar HeadHeight = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.HeadHeightIni );//height in neutral position from  C1HatNode to top of head
   AnyVar NeckLength = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.NeckLengthIni);
@@ -80,7 +77,7 @@ AnyFolder AnthroSegmentLengths = {
   AnyVar HandBreadth = DesignVar( Main.ModelSetup.SubjectSpecificData.Anthropometrics.HandBreadthIni );
   
   
-  // Those two folders are used by the TD leg
+//  // Those two folders are used by the TD leg
   AnyFolder Right ={
     AnyVar ThighLength = DesignVar(Main.ModelSetup.SubjectSpecificData.Anthropometrics.ThighLengthIni) ;
     AnyVar ShankLength =DesignVar(Main.ModelSetup.SubjectSpecificData.Anthropometrics.ShankLengthIni) ;
