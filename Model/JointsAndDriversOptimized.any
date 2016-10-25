@@ -3,50 +3,48 @@ AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   // Macro for initializing a empty mxn matrix
   #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
+  
   AnyKinDriver JntDriverTrunk = {
-    AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          TOnOff = DesignVar(On);
-          // Get the rotation angles fromt the initial pelvis rotation matrix. 
-          // This allows us to specify a default driver which is close to the 
-          // load time position. 
-          RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-          Data0 = 
-          { 
-            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
-            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
-            Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
-            InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-            0,0,0,0,0,0
-          }'* (1+_ZEROS(1,Length0));
-          #endif
-
-      };
-      
-      AnyMessage AnyMocap = 
-      {
-        AnyVar maxtime =  .FileReader.T[max({0,.FileReader.nDataInFile-1})];
-        TriggerPreProcess = Off;
-        TriggerConst = Off;
-        TriggerRuntime = gtfun(.....t,  maxtime ); 
-        Type = MSG_Error;
-        Message = DesignVar("No kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s. " + 
-        "Please re-run the complete kinematic analysis to recompute all joint angles and data.");
-      };
-//
-      
-      
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+    AnyInputFile FileReader = {
+        FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+        FileErrorContinueOnOff = On;
+        #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+        ReloadOnOff = On;
+        TOnOff = DesignVar(On);
+        // Get the rotation angles fromt the initial pelvis rotation matrix. 
+        // This allows us to specify a default driver which is close to the 
+        // load time position. 
+        RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
+        AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+        T0 = Main.Studies.KinematicStudy.tArray;
+        Data0 = 
+        { 
+          Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
+          Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
+          Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
+          InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
+          0,0,0,0,0,0
+        }'* (1+_ZEROS(1,Length0));
+        #endif
     };
+    AnyFunInterpol InterpolatedData = {
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      BsplineOrder = 4;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyMessage AnyMocap = 
+    {
+      AnyVar maxtime =  .FileReader.T[max({0,.FileReader.nDataInFile-1})];
+      TriggerPreProcess = Off;
+      TriggerConst = Off;
+      TriggerRuntime = andfun(not(....iStep), gtfun(....t,  maxtime )); 
+      Type = MSG_Error;
+      Message = DesignVar("No kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s. " + 
+      "Please re-run the complete kinematic analysis to recompute all joint angles and data.");
+    };
+    
+    
     AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasureOrg &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
     AnyKinMeasureOrg &PelvisPosZ = ...BodyModel.Interface.Trunk.PelvisPosZ;
@@ -65,20 +63,20 @@ AnyFolder JointsAndDrivers = {
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
   AnyKinDriver JntDriverLeftLegTD = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-           Data0 =  _ZEROS(..nDim, Length0 );
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+        FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+        FileErrorContinueOnOff = On;
+        #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+        ReloadOnOff = On;
+        AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+        T0 = Main.Studies.KinematicStudy.tArray;
+         Data0 =  _ZEROS(.nDim, Length0 );
+        #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -94,20 +92,20 @@ AnyFolder JointsAndDrivers = {
   #if BM_LEG_RIGHT == CONST_LEG_MODEL_TLEM  
   AnyKinDriver JntDriverRightLegTD = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-           Data0 =  _ZEROS(..nDim, Length0 );
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+      FileErrorContinueOnOff = On;
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      ReloadOnOff = On;
+      AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+      T0 = Main.Studies.KinematicStudy.tArray;
+       Data0 =  _ZEROS(.nDim, Length0 );
+      #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -124,20 +122,20 @@ AnyFolder JointsAndDrivers = {
   #if BM_LEG_LEFT == CONST_LEG_MODEL_Leg 
   AnyKinDriver JntDriverLeftLeg = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-           Data0 =  _ZEROS(..nDim, Length0);
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+      FileErrorContinueOnOff = On;
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      ReloadOnOff = On;
+      AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+      T0 = Main.Studies.KinematicStudy.tArray;
+       Data0 =  _ZEROS(.nDim, Length0);
+      #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -153,20 +151,20 @@ AnyFolder JointsAndDrivers = {
   #if BM_LEG_RIGHT== CONST_LEG_MODEL_Leg 
   AnyKinDriver JntDriverRightLeg = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-           Data0 =  _ZEROS(..nDim, Length0);
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+      FileErrorContinueOnOff = On;
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      ReloadOnOff = On;
+      AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+      T0 = Main.Studies.KinematicStudy.tArray;
+       Data0 =  _ZEROS(.nDim, Length0);
+      #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasureOrg &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -183,21 +181,20 @@ AnyFolder JointsAndDrivers = {
   #if BM_ARM_LEFT == ON
   AnyKinDriver JntDriverLeftArm = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-           Data0 =  _ZEROS(..nDim, Length0);
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
+      FileErrorContinueOnOff = On;
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      ReloadOnOff = On;
+      AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+      T0 = Main.Studies.KinematicStudy.tArray;
+       Data0 =  _ZEROS(.nDim, Length0);
+      #endif
     };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Left.SternoClavicularProtraction;
     AnyKinMeasureOrg &SternoClavicularElevation=...BodyModel.Interface.Left.SternoClavicularElevation;
@@ -217,21 +214,21 @@ AnyFolder JointsAndDrivers = {
   #if BM_ARM_RIGHT == ON
   AnyKinDriver JntDriverRightArm = {
     AnyFunInterpol InterpolatedData = {
-      AnyInputFile FileReader = {
-          FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
-          FileErrorContinueOnOff = On;
-          #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-          ReloadOnOff = On;
-          AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
-          T0 = Main.Studies.KinematicStudy.tArray;
-          //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
-           Data0 =  _ZEROS(..nDim, Length0 );
-          #endif
-      };
-      Type  = iffun(gtfun(FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+      Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = FileReader.Data+0*FileReader.nUpdData;
-      T = FileReader.T+0*FileReader.nUpdData;
+      Data = .FileReader.Data+0*.FileReader.nUpdData;
+      T = .FileReader.T+0*.FileReader.nUpdData;
+    };
+    AnyInputFile FileReader = {
+      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
+      FileErrorContinueOnOff = On;
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      ReloadOnOff = On;
+      AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+      T0 = Main.Studies.KinematicStudy.tArray;
+      //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
+       Data0 =  _ZEROS(.nDim, Length0 );
+      #endif
     };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Right.SternoClavicularProtraction;
     AnyKinMeasureOrg &SternoClavicularElevation=...BodyModel.Interface.Right.SternoClavicularElevation;
