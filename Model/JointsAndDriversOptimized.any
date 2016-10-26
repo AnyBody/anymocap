@@ -31,15 +31,15 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
-      Data = .FileReader.Data+0*.FileReader.UpdData;
-      T = .FileReader.T0+0*.FileReader.UpdData;
+      Data = .FileReader.Data;
+      T = .FileReader.T0;
     };
     AnyMessage AnyMocap = 
     {
       AnyVar maxtime =  .FileReader.T[max({0,.FileReader.nDataInFile-1})];
       TriggerPreProcess = Off;
       TriggerConst = Off;
-      TriggerRuntime = andfun(not(....iStep), gtfun(....t,  maxtime )); 
+      TriggerRuntime = andfun(....iStep, gtfun(....t,  maxtime )); 
       Type = MSG_Error;
       Message = DesignVar("No kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s. " + 
       "Please re-run the complete kinematic analysis to recompute all joint angles and data.");
