@@ -5,9 +5,10 @@ InitialConditions =
   SolverType = KinSolOverDeterminate;
   PreOperation = 
   { 
-    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
+//    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
   };
 };
+
 
 
 Kinematics = 
@@ -17,6 +18,15 @@ Kinematics =
   KinematicTol=1e-6; 
   SolverType = KinSolOverDeterminate;
 };
+
+// Add the Analysis to the Main.RunAnalysis sequence
+Main.RunAnalysis.KinematicAnalysis = 
+{
+  AnyOperation &RunKinematics = ...Kinematics;
+};
+
+
+
 
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  

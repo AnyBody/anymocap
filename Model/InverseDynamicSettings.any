@@ -20,11 +20,11 @@
 
 InitialConditions.PreOperation = 
 {
-  AnyOperationMacro UpdateValues = 
-  {
-    MacroStr  = {"classoperation Main " + strquote("Update Values")};   
-  };
-  AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView; 
+//  AnyOperationMacro UpdateValues = 
+//  {
+//    MacroStr  = {"classoperation Main " + strquote("Update Values")};   
+//  };
+//  AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView; 
 };
  
 

@@ -32,13 +32,13 @@ AnyOperationSequence RunParameterIdentification =
         
     AnyOperationSequence KinematicAnalysis = 
     {
-      AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
+      AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
       AnyOperationDummy placeholder_operation= {};
     };
     
     AnyOperationSequence InverseDynamics = 
     {
-//      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
+      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
       
 //      AnyOperation &reset = Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation; 
 
