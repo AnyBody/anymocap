@@ -5,7 +5,7 @@ InitialConditions =
   SolverType = KinSolOverDeterminate;
   PreOperation = 
   { 
-//    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
+    AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
   };
 };
 

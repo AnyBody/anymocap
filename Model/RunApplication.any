@@ -33,14 +33,14 @@ AnyOperationSequence RunParameterIdentification =
     AnyOperationSequence KinematicAnalysis = 
     {
       //Hackworkaround. Should be moved the preoperation when pre-op bug is fixed
-      AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
+//      AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
       AnyOperationDummy placeholder_operation= {};
     };
     
     AnyOperationSequence InverseDynamics = 
     {
       //Hackworkaround. Should be moved the preoperation when pre-op bug is fixed
-      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
+//      AnyOperation &SetInverseDynamicView = Main.ModelSetup.Views.SetViewMacros.InverseDynamicView;
       AnyOperationDummy placeholder_operation= {};
     };
     AnyOperationSequence SaveOuput = 
