@@ -30,21 +30,36 @@ AnyFolder JointsAndDrivers = {
     };
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      // Check if the start time is with the range of data in the file. 
+      // We need to add/substract a tiny quantity from the read data,
+      // since file data saved with 15 digit and thus could have lost some precession. . 
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
-      T = .FileReader.T0;
+      T = .FileReader.T;
+      #endif
     };
-    AnyMessage AnyMocap = 
+    AnyMessage AnyMocap_msg1= 
     {
-      AnyVar maxtime =  .FileReader.T[max({0,.FileReader.nDataInFile-1})];
-      TriggerPreProcess = Off;
-      TriggerConst = Off;
-      TriggerRuntime = andfun(....iStep, gtfun(....t,  maxtime )); 
+      AnyInt nDataFileIdx = max({0,.FileReader.nDataInFile-1});
+      AnyVar maxtime =  .FileReader.T[min({nDataFileIdx, NumElemOf(.FileReader.T)})];
+      TriggerRuntime = andfun(.InterpolatedData.ValidData,
+                              andfun(....iStep, gtfun(....t,  maxtime ))); 
       Type = MSG_Error;
       Message = DesignVar("No kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s. " + 
       "Please re-run the complete kinematic analysis to recompute all joint angles and data.");
     };
-    
+    AnyMessage AnyMocap_msg2= 
+    {                                          
+      TriggerRuntime = andfun(....iStep, not(.InterpolatedData.ValidData)); 
+      Type = MSG_Error;
+      Message = DesignVar("No valid kinematic joint angle data available. Please run the Kinematic analysis first");
+    };
     
     AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasureOrg &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
@@ -66,8 +81,15 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 4;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
         FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
@@ -95,9 +117,16 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLegTD = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
@@ -126,9 +155,16 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLeg = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
@@ -156,9 +192,16 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLeg = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
@@ -187,9 +230,16 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftArm = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
@@ -221,9 +271,16 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightArm = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #else
       Data = .FileReader.Data;
       T = .FileReader.T;
+      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
