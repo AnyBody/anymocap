@@ -36,9 +36,9 @@ AnyFolder JointsAndDrivers = {
       // since file data saved with 15 digit and thus could have lost some precession. . 
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData,.FileReader.T, .FileReader.T0);
+      #if 0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      Data = .FileReader.Data;//iffun(ValidData, .FileReader.Data, .FileReader.Data0);
+      T = iffun(ValidData, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -83,7 +83,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 4;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
@@ -120,7 +120,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 8;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
@@ -131,7 +131,7 @@ AnyFolder JointsAndDrivers = {
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
@@ -158,7 +158,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 8;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
@@ -169,7 +169,7 @@ AnyFolder JointsAndDrivers = {
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
@@ -195,7 +195,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 8;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
@@ -233,7 +233,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 8;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
@@ -274,7 +274,7 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = 8;
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
+      #if  0 & ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
       T = iffun(ValidData,.FileReader.T, .FileReader.T0);
       #else
