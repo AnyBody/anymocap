@@ -17,10 +17,12 @@
         AnyFolder &rake = .Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.ArtificialRake;
       };
       #endif
+      #if BM_LEG_RIGHT != CONST_LEG_MODEL_OFF
       AnyFolder Leg = {
         AnyFolder &Seg = .Main.HumanModel.BodyModel.Right.Leg.Seg;
         AnyFolder &Jnt = .Main.HumanModel.BodyModel.Right.Leg.Jnt;
       };
+      #endif
     };
     AnyFolder Left = {
       #if BM_ARM_LEFT != OFF 
@@ -30,11 +32,12 @@
         AnyFolder &rake = .Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.ArtificialRake;
       };
       #endif
-      
+      #if BM_LEG_LEFT != CONST_LEG_MODEL_OFF
       AnyFolder Leg = {
         AnyFolder &Seg = .Main.HumanModel.BodyModel.Left.Leg.Seg;
         AnyFolder &Jnt = .Main.HumanModel.BodyModel.Left.Leg.Jnt;
       };
+      #endif
     };
   };
 Gravity = {0.0,0.0,0.0};
