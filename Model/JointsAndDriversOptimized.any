@@ -34,11 +34,15 @@ AnyFolder JointsAndDrivers = {
       // Check if the start time is with the range of data in the file. 
       // We need to add/substract a tiny quantity from the read data,
       // since file data saved with 15 digit and thus could have lost some precession. . 
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData, .FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      // `iffun` will select the shortest of its inputs as output size.
+      // If the largest array is returned it will get cropped, but data gets mangled since
+      // it crops the data outer dimesion. To avoid that we transpose the input and transform 
+      // it back again. 
+      Data = iffun({ValidData}, .FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -80,12 +84,12 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLegTD = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 4;
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      BsplineOrder = 8;
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -118,11 +122,11 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 8;
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -159,8 +163,8 @@ AnyFolder JointsAndDrivers = {
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -193,11 +197,11 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 8;
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -231,11 +235,11 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 8;
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -272,11 +276,11 @@ AnyFolder JointsAndDrivers = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = 8;
-      AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
-                                 lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+      AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+                                 lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
-      Data = iffun(ValidData,.FileReader.Data, .FileReader.Data0);
-      T = iffun(ValidData+round(0*.FileReader.T), .FileReader.T, .FileReader.T0);
+      Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
+      T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
       #else
       Data = .FileReader.Data;
       T = .FileReader.T;
@@ -290,7 +294,6 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-      //T0 = arrcat( arrcat( {min(.....tArray)-1} , .....tArray), {max(.....tArray)+1} );
        Data0 =  _ZEROS(.nDim, Length0 );
       #endif
     };
