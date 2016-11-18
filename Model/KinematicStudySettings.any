@@ -1,3 +1,4 @@
+
 InitialConditions = 
 {
   PosAnalysisOnlyOnOff = On;
@@ -27,7 +28,6 @@ Main.RunAnalysis.KinematicAnalysis =
 
 
 
-
  // Define statements allow us to overide tEnd/tStart/nStep to 
  // when calling AnyBody from external programs.  
  
@@ -42,9 +42,8 @@ Main.RunAnalysis.KinematicAnalysis =
  // The number of steps in the kinematic analysis should match framerate of the 
  // motion caputure data. Thus, we don't use the `Main.ModelSetup.TrialSpecificData.nStep` here
  #ifndef N_STEP_KINEMATICS
- #define N_STEP_KINEMATICS floor(1+(T_END-T_START)*Main.ModelSetup.C3DFileData.Header.VideoFrameRate)
+ #define N_STEP_KINEMATICS round(1+(T_END-T_START)*Main.ModelSetup.C3DFileData.Header.VideoFrameRate)
  #endif
- 
  
  tStart = T_START;
  tEnd = T_END;
