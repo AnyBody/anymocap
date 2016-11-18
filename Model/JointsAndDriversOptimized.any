@@ -3,6 +3,7 @@ AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   // Macro for initializing a empty mxn matrix
   #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
+  #define _ONES(m,n) 1+0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
   
   AnyKinDriver JntDriverTrunk = {
     AnyInputFile FileReader = {
@@ -30,7 +31,7 @@ AnyFolder JointsAndDrivers = {
     };
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       // Check if the start time is with the range of data in the file. 
       // We need to add/substract a tiny quantity from the read data,
       // since file data saved with 15 digit and thus could have lost some precession. . 
@@ -84,7 +85,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLegTD = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -121,7 +122,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLegTD = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -159,7 +160,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLeg = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -196,7 +197,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLeg = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -234,7 +235,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftArm = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
@@ -275,7 +276,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightArm = {
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
-      BsplineOrder = 8;
+      BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
       #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
