@@ -46,15 +46,30 @@
 // #define _LFIN
  
 
+// The pelvis anatomical frame is redefined 
+// in AMMR > 1.6, thus we handle that here.
+#ifdef AMMR_VERSION
+  #define RASIS_POS {,,}
+  #define RPSIS_POS {,,}
+  #define LASIS_POS {,,}
+  #define LPSIS_POS {,,}
+#else
+  #define RASIS_POS {0.12,-0.02, 0.13}
+  #define LASIS_POS {0.12,-0.02, -0.13}
+  #define RPSIS_POS {-0.03,0, 0.04}
+  #define LPSIS_POS {-0.03,0, -0.04}
+#endif
+
+
+
 #ifdef _LPSI
 // Marker on the Left Posterior Superior Iliac
 CreateMarkerDriver LPSI ( 
 MarkerName= LPSI,
-PlaceMarkerAt = Left.Muscles.PSIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX="Off", OptY="Off", OptZ="On"
 ) = {
-  sRelOpt ={-0.03, -0.01, -0.0};
+  sRelOpt =LPSIS_POS;
 };
 #endif
 
@@ -62,11 +77,10 @@ OptX="Off", OptY="Off", OptZ="On"
 // Marker on the Right Posterior Superior Iliac
 CreateMarkerDriver RPSI (
 MarkerName= RPSI, 
-PlaceMarkerAt = Right.Muscles.PSIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX="Off", OptY="Off", OptZ="On"
 ) = {
-  sRelOpt = {-0.03, -0.01, 0.0};  
+  sRelOpt = RPSIS_POS;
 };
 #endif
 
@@ -74,10 +88,9 @@ OptX="Off", OptY="Off", OptZ="On"
 // Marker on the Right Anterior Superior Iliac
 CreateMarkerDriver RASI (
 MarkerName= RASI, 
-PlaceMarkerAt = Right.Muscles.ASIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 ) = {
-  sRelOpt =  {0.03 , 0.01, 0.0};
+  sRelOpt = RASIS_POS;
 };
 #endif
 
@@ -85,10 +98,9 @@ MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 // Marker on the Left Anterior Superior Iliac
 CreateMarkerDriver LASI (
 MarkerName= LASI ,
-PlaceMarkerAt = Left.Muscles.ASIS,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 ) = {
-  sRelOpt =  {0.03, 0.01, 0};
+  sRelOpt = LASIS_POS;
 };
 #endif
 
@@ -365,7 +377,7 @@ MarkerName= RSHO,
 MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
 OptX="On",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {0.00,0.00,-0.00};
+  sRelOpt = {0.00,0.00,0.015};
 };
 #endif
 
@@ -376,7 +388,7 @@ MarkerName= LSHO,
 MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
 OptX="On",OptY="Off",OptZ="Off"
 ) = {
-  sRelOpt = {0.00,-0.00,-0.0};
+  sRelOpt = {0.00,-0.00,0.015};
 };
 #endif
 
