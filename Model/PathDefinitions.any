@@ -1,7 +1,7 @@
 #ifndef INCLUDEFILE_ANY
 #define INCLUDEFILE_ANY
 
-#define ANYMOCAP_VERSION "2"
+#define ANYMOCAP_VERSION 2
 
 // This file ensures that all necessary path statements 
 // are exist if they have not been set by the application 
