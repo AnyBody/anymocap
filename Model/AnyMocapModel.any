@@ -1,3 +1,7 @@
+// This is the main AnyMOCAP file. There should be no reason to change this file
+// directly. All user defined options can be configured in the application, by 
+// changing the files TrialSpcificData.any, SubjectSpecificData.any, LabSpecificData.any
+
 #include "PathDefinitions.any"
 #include "ClassTemplates.any"
 
@@ -13,45 +17,43 @@ Main =
   // Configure and include the human model
   #include "<BODY_MODEL_CONFIG_FILE>"
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+  #include "BodyModelWithoutMuscles.any" 
   
   
   AnyFolder Studies = 
   {
-    // Study for parameter identification of segment length and marker positions. 
+    
+    /// Study for parameter identification of segment length and marker positions. 
     AnyOptKinStudy ParameterIdentification = 
-    {
+    {    
       #include "KinematicStudyForParameterIdentification.any"  
-      ParameterOptimization.ConvergenceTol=1e-4; 
     };
 
-    // Overdeterminate kinematics study to generate joint angles for inv. dyn. study. 
+    /// Overdeterminate kinematic study to generate joint angles for inv. dyn. study. 
     AnyKinStudy KinematicStudy = 
     {       
-      // HACK_WORKAROUND We need to include a special body model with no muscles.
-      #include "BodyModel_no_muscle_hack.any" 
-      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
-      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder& C3DData= Main.ModelSetup.C3DFileData;
+      AnyFolder& BodyModel = Main.HumanModel.BodyModelWithoutMuscles; 
+      AnyFolder& EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection =
       {
         AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
         AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
       }; 
       
-      // HACK WORKAROUND. It is necessary write joint angles to a file. 
       #include "JointAngleOutputs.any"
       
       #include "KinematicStudySettings.any"      
     };
     
     
-    // Study for running the inverse dynamic simulation
+    /// Study for running the inverse dynamic simulation
     AnyBodyStudy InverseDynamicStudy = 
     { 
       Gravity = Main.ModelSetup.LabSpecificData.Gravity;
-      
-      AnyFolder &C3DData= Main.ModelSetup.C3DFileData ;
-      AnyFolder &BodyModel= Main.HumanModel.BodyModel;
-      AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+      AnyFolder& C3DData= Main.ModelSetup.C3DFileData ;
+      AnyFolder& BodyModel= Main.HumanModel.BodyModel;
+      AnyFolder& EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection =
       {
         #include "JointsAndDriversOptimized.any"
@@ -64,10 +66,11 @@ Main =
       #include "InverseDynamicSettings.any"
     };
     
-  };  //InverseDynamicStudy 
+  };  
   
   // Macros to excute the model
   #include "RunApplication.any"  
-}; //Main
+
+};//End Main
 
 

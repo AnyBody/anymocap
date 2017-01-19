@@ -1,5 +1,3 @@
-// HACK WORKAROUND Added a dummy AnyDesVar to handle the case where no DesVars are created.
-
 Analysis = 
 { 
   AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;
@@ -7,16 +5,24 @@ Analysis =
 
 AnyKinStudy KinematicStudyForParameterIdentification = 
 {
+  Gravity = {0,0,0};/// Not relevant for AnyKinStudy
+  AnyFolder& BodyModel = Main.HumanModel.BodyModelWithoutMuscles ; 
   AnyFolder &EnvironmentModel = Main.EnvironmentModel;
+  
   AnyFolder ModelEnvironmentConnection = 
   {
     AnyFolder &MarkerDrivers = Main.ModelSetup.MocapDrivers;
     AnyFolder &ExtraDrivers = Main.ModelSetup.MocapExtraDrivers;
   };
 
-  // Construct body model with muscles excluded
-  #include "BodyModel_no_muscle_hack.any" 
 
   #include "KinematicStudyForParameterIdentificationSettings.any"      
 
 };  
+
+
+Main.RunParameterIdentification.ParameterIdentification = 
+{
+  AnyOperation& ParameterOptimization = Main.Studies.ParameterIdentification.ParameterOptimization;
+};
+

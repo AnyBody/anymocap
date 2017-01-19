@@ -1,8 +1,4 @@
 // EXAMPLE of MarkerProcol file for the plug-in-gait protocol. 
-// Copy the file to use in specific application
-
-
-
 
  #define _LPSI
  #define _RPSI
@@ -66,6 +62,7 @@
 // Marker on the Left Posterior Superior Iliac
 CreateMarkerDriver LPSI ( 
 MarkerName= LPSI,
+UseC3DWeightResiduals = "On",
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 OptX="Off", OptY="Off", OptZ="On"
 ) = {
@@ -192,10 +189,10 @@ OptX="Off",OptY="On",OptZ="Off"
 // Marker on the Cervical Vertebra 10
 CreateMarkerDriver C7 (
 MarkerName= C7,  
-MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg
+MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
+PlaceMarkerAt = T1C7JntNode
 ) = {
-  sRelOpt = {-0.05,0.47,0};
-  sRelOptDelta = {0.01,0.02,0};
+  sRelOpt = {-0.06,0,0};
 };
 #endif
 
@@ -205,6 +202,7 @@ MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg
 // Marker on the Right Thigh
 CreateMarkerDriver RTHI ( 
 MarkerName=  RTHI,
+OptX="On",OptY="On",OptZ="On",
 MarkerPlacement =Right.Leg.Seg.Thigh)= {
   sRelOpt = {0.00, -0.15, 0.1};
 };
@@ -268,7 +266,7 @@ PlaceMarkerAt = HeelNode,
 OptX="Off", OptY="Off" , OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt =  {-0.015, -0.0, -0.0};
+  sRelOpt =  {-0.025, -0.0, -0.0};
 };
 #endif
 
@@ -352,7 +350,7 @@ PlaceMarkerAt = HeelNode,
 OptX="Off", OptY="Off", OptZ="Off",
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
-  sRelOpt =  {-0.015, -0.0, 0.0};
+  sRelOpt =  {-0.025, -0.0, 0.0};
 };
 #endif
 

@@ -1,9 +1,8 @@
+#include "helper_macros.any"
 
 AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   // Macro for initializing a empty mxn matrix
-  #define _ZEROS(m,n) 0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
-  #define _ONES(m,n) 1+0.0*farr( 0.0, 1.0, m)'*{farr( 0.0, 1.0, n)}
   
   AnyKinDriver JntDriverTrunk = {
     AnyInputFile FileReader = {
@@ -26,7 +25,7 @@ AnyFolder JointsAndDrivers = {
           Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
           InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
           0,0,0,0,0,0
-        }'* (1+_ZEROS(1,Length0));
+        }'* (ONES(1,Length0));
         #endif
     };
     AnyFunInterpol InterpolatedData = {
@@ -56,14 +55,14 @@ AnyFolder JointsAndDrivers = {
       TriggerRuntime = andfun(.InterpolatedData.ValidData,
                               andfun(....iStep, gtfun(....t,  maxtime ))); 
       Type = MSG_Error;
-      Message = DesignVar("No kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s. " + 
-      "Please re-run the complete kinematic analysis to recompute all joint angles and data.");
+      Message = DesignVar(strformat("\nNo kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s.\n " + 
+      "Please re-run the complete kinematic analysis to recompute all joint angles and data."));
     };
     AnyMessage AnyMocap_msg2= 
     {                                          
       TriggerRuntime = andfun(....iStep, not(.InterpolatedData.ValidData)); 
       Type = MSG_Error;
-      Message = DesignVar("No valid kinematic joint angle data available. Please run the Kinematic analysis first");
+      Message = DesignVar(strformat("\nNo valid kinematic joint angle data available.\nPlease run the Kinematic analysis first"));
     };
     
     AnyKinMeasureOrg &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
@@ -104,7 +103,7 @@ AnyFolder JointsAndDrivers = {
         SuppressWarningsOnOff = On;
         AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
         T0 = Main.Studies.KinematicStudy.tArray;
-         Data0 =  _ZEROS(.nDim, Length0 );
+         Data0 =  ZEROS(.nDim, Length0 );
         #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
@@ -141,7 +140,7 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-       Data0 =  _ZEROS(.nDim, Length0 );
+       Data0 =  ZEROS(.nDim, Length0 );
       #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
@@ -179,7 +178,7 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-       Data0 =  _ZEROS(.nDim, Length0);
+       Data0 =  ZEROS(.nDim, Length0);
       #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
@@ -216,7 +215,7 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-       Data0 =  _ZEROS(.nDim, Length0);
+       Data0 =  ZEROS(.nDim, Length0);
       #endif
     };
     AnyKinMeasureOrg &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
@@ -254,7 +253,7 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-       Data0 =  _ZEROS(.nDim, Length0);
+       Data0 =  ZEROS(.nDim, Length0);
       #endif
     };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Left.SternoClavicularProtraction;
@@ -295,7 +294,7 @@ AnyFolder JointsAndDrivers = {
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
-       Data0 =  _ZEROS(.nDim, Length0 );
+       Data0 =  ZEROS(.nDim, Length0 );
       #endif
     };
     AnyKinMeasureOrg &SternoClavicularProtraction=...BodyModel.Interface.Right.SternoClavicularProtraction;

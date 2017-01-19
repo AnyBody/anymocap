@@ -1,7 +1,7 @@
 
 
 #class_template LinkDesignVars (DesVar1, DesVar2,
-Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = ParameterIdentification){
+Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification){
   
   Main.ModelSetup.ParameterIdentification = {
      AnyDesMeasure LinkedDesignVars_##DesVar1##_##DesVar2 = {
@@ -10,7 +10,7 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
      }; 
   };
   
-  Main.Studies.PARAMETER_OPT_STUDY = {
+  PARAMETER_OPT_STUDY = {
       AnyDesMeasure &LinkedDesignVars_##DesVar1##_##DesVar2 = Main.ModelSetup.ParameterIdentification.LinkedDesignVars_##DesVar1##_##DesVar2 ;  
    };
   
@@ -30,7 +30,7 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
 ///    - Value : The value/measured used for the contraint.                           
 #class_template CreateConstraint (
    NAME,
-   Contraint_Type = EqualToZero, PARAMETER_OPT_STUDY = ParameterIdentification)
+   Contraint_Type = EqualToZero, PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification)
 {
   
   #var AnyFloat Value;
@@ -42,7 +42,7 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
       };  
   };
   
-  Main.Studies.PARAMETER_OPT_STUDY = {
+  PARAMETER_OPT_STUDY = {
       AnyDesMeasure &NAME##Contraint_Type = Main.ModelSetup.ParameterIdentification.NAME##Contraint_Type ;  
    };
     
@@ -51,8 +51,8 @@ Contraint_Type = EqualToZero, Coef1 = 1, Coef2= 1, PARAMETER_OPT_STUDY = Paramet
 
 
 #class_template Create4clusterRectangleConstraint (name, marker1, marker2, marker3, marker4,
-PARAMETER_OPT_STUDY = ParameterIdentification){
-  Main.Studies.PARAMETER_OPT_STUDY = {
+PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification){
+  PARAMETER_OPT_STUDY = {
      // equal opposing sides in the rectangular cluster
     AnyDesMeasure name##_SideConstraint1 = {
          Type = EqualToZero;
@@ -74,8 +74,8 @@ PARAMETER_OPT_STUDY = ParameterIdentification){
 };
 
 #class_template Create4clusterParallelogramConstraint (name, marker1, marker2, marker3, marker4,
-PARAMETER_OPT_STUDY = ParameterIdentification){
-  Main.Studies.PARAMETER_OPT_STUDY = {
+PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification){
+  PARAMETER_OPT_STUDY = {
      // equal opposing sides in the rectangular cluster
     AnyDesMeasure name##_ParallelogramConstraint = {
          Type = EqualToZero;

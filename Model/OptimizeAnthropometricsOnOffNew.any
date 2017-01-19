@@ -13,18 +13,14 @@
                                               HandLengthOnOff = "Off",
                                               VarusValgusOnOff = "Off",
                                               TibialTorsionOnOff = "Off",
-                                              HumanModel =HumanModel,
-                                              ParameterOptStudy = ParameterIdentification ){
+                                              HUMAN_MODEL_FOLDER = Main.HumanModel,
+                                              PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification){
   
   // These should be set as default values in the argument to the tempalte                                              
-  AnyFolder &HumanModelRef = Main.HumanModel;
-  AnyFolder &ParameterOptStudyRef = Main.Studies.ParameterOptStudy ;
-  
-  AnyFolder &ref= ParameterOptStudyRef;
-  
-  ref={
+  PARAMETER_OPT_STUDY =
+  {
     
-    AnyFolder &Lengths=.HumanModelRef.AnthroDataSubject.AnthroSegmentLengths;
+    AnyFolder &Lengths= HUMAN_MODEL_FOLDER.AnthroDataSubject.AnthroSegmentLengths;
     
     #if PelvisWidthOnOff=="On"
     AnyDesVar PelvisWidth = {
@@ -64,11 +60,11 @@
     
     
     AnyDesVar VarusValgusOffsetRight = {
-      Val =   Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
+      Val =   HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
     };
     
     AnyDesVar VarusValgusOffsetLeft = {
-      Val =   Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
+      Val =   HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation ;
     };
     
     //This ensures the legs varus valgus is the same for left and right side
@@ -85,11 +81,11 @@
     
     
     AnyDesVar TibialTorsionOffsetRight = {
-      Val =   Main.HumanModel.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset ;
+      Val =   HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset ;
     };
     
     AnyDesVar TibialTorsionOffsetLeft = {
-      Val =   Main.HumanModel.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
+      Val =   HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
     };
     
     //This ensures the legs varus valgus is the same for left and right side
@@ -181,5 +177,21 @@
 
 
 
+#class_template OptimizeAnthropometrics (
+    VAR, 
+    ENABLE=1, 
+    FOLDER = Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths,
+    PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification )
+{
+    AnyDesVar DesVar = {
+       Val = Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths;
+       Min = 0.01;
+       Max = 1;
+     };
+   AnyFolder &Ref = FOLDER;
+   Ref = {
+      AnyDesVar &VAR = .DesVar;
+   };
+};
 
 

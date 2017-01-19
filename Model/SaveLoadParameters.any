@@ -32,8 +32,6 @@
     };
     Main.RunParameterIdentification.SaveParameters = {
       AnyOperation &Save_parameters_to_anyset = Main.ModelSetup.Macros.Save_parameters;
-      AnyOperation &test_save_parameters = Main.ModelSetup.Macros.Load_parameters;
-      AnyOperation &back_to_initial_pos = Main.Studies.ParameterIdentification.KinematicStudyForParameterIdentification.Kinematics;
     };
   };
  

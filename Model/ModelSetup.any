@@ -28,9 +28,8 @@ ModelSetup = {
  
    
   // This is the C3D file used for the analysis
- AnyInputC3D C3DFileData =  {
-    #include "<MOCAP_C3DSETTINGS>"
- };
+ AnyInputC3D C3DFileData =  {};
+ #include "<MOCAP_C3DSETTINGS>"
    
  AnyFolder MocapDrivers = {
    #include "<MOCAP_MARKER_PROTOCOL_FILE>"

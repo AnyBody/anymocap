@@ -1,6 +1,11 @@
-  AnyFolder &Scaling = Main.HumanModel.Scaling;
-  AnyFolder BodyModel = {
-    AnyFolder &Interface = Main.HumanModel.BodyModel.Interface;
+// This file creates a BodyModel folder in Main.HumanModel which doesn't have 
+// muscles. This allows 
+
+Main.HumanModel = {
+  AnyFolder BodyModelWithoutMuscles = {
+    
+    AnyFolder& SelectedOutput= Main.HumanModel.BodyModel.SelectedOutput;
+    
     AnyFolder Trunk = {
       AnyFolder &SegmentsLumbar = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar;
       AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
@@ -39,5 +44,14 @@
       };
       #endif
     };
+    
+    AnyFolder& MannequinValuesFromModel = Main.HumanModel.BodyModel.MannequinValuesFromModel;
+    AnyFolder &Interface = Main.HumanModel.BodyModel.Interface;
+    AnyFolder& IndividualMasses= Main.HumanModel.BodyModel.IndividualMasses;
+    AnyFolder& ScalingRef = .Scaling;
+    AnyVar TotalBodyMass = Main.HumanModel.BodyModel.TotalBodyMass;
+    
   };
-Gravity = {0.0,0.0,0.0};
+  
+};
+

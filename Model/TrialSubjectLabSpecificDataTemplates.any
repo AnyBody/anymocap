@@ -10,26 +10,34 @@
 /// This is the name of the trial c3d file without extension
 #var AnyStringVar  TrialFileName = ANYBODY_NAME_MAINFILEDIR;
 
-// The calibraiton filename (static/dynamic) from which to load the
-// the optimized parameters.
+/// The calibraiton filename (static/dynamic) from which to load the
+/// the optimized parameters.
 #var AnyString LoadParametersFrom = {TrialFileName};
 
 
-/// This the C3D frame where the analysis starts 
+/// This the C3D frame where the analysis starts
+/// Defaults to the first frame of the C3D file
 #var AnyInt FirstFrame = .C3DFileData.Header.FirstFrameNo ;
 /// This the C3D frame where the analysis ends 
+/// Defaults to the last frame of the C3D file
 #var AnyInt LastFrame = .C3DFileData.Header.LastFrameNo ;
 
-/// This is the tStart time of the analysis. Setting this overrides 
+/// tStart specifies the time of the analysis. Setting this overrides 
 /// the 'FirstFrame' value
 #var AnyFloatVar tStart = FirstFrame/.C3DFileData.Header.VideoFrameRate;
-/// This is the tStart time of the analysis. Setting this overrides 
+/// tEnd specifies the tEnd time of the analysis. Setting this overrides 
 /// the 'LastFrame' value
 #var AnyFloatVar tEnd = LastFrame/.C3DFileData.Header.VideoFrameRate;
 
-/// This is number of steps to use in the analysis. 
-#var AnyIntVar nStep =(LastFrame-FirstFrame+1);
+/// nStep specifies the number of steps to use in the analysis. 
+#var AnyIntVar nStep = round(.C3DFileData.Header.VideoFrameRate*(tEnd-tStart)+1);
+
+//AnyFloat Sam = Main.ModelSetup.C3DFileData.Points.Abscissa.Sample;
+//AnyFloat idx = DesignVar(1.0*Main.Main.ModelSetup.TrialSpecificData.tStart*.C3DFileData.Header.VideoFrameRate);
+//AnyIntArray myval = iffun(lteqfun(idx, Sam), 0, 1);
+//AnyIntVar idx_tStart = eqfun( round(Main.ModelSetup.C3DFileData.Points.Abscissa.Sample), {round(Main.Main.ModelSetup.TrialSpecificData.tStart*.C3DFileData.Header.VideoFrameRate)});
    
+//ModelSetup.C3DFileData.Points.Abscissa.Sample(
 /// The following settings define the initial posture of the
 /// model (e.g. at load time)
 AnyFolder InitialPositionOfBody= {
@@ -123,11 +131,11 @@ AnyFolder InitialPositionOfBody= {
     #var AnyVar WristAbduction = 0;
     
     AnyFolder Finger1 ={
-        #var AnyVar CMCDeviation= 0;
-        #var AnyVar CMCFlexion= 0;
-        #var AnyVar MCPFlexion= 0;
-        #var AnyVar MCPDeviation=0;
-        #var AnyVar DIPFlexion=0;
+      #var AnyVar CMCDeviation= 0;
+      #var AnyVar CMCFlexion= 0;
+      #var AnyVar MCPFlexion= 0;
+      #var AnyVar MCPDeviation=0;
+      #var AnyVar DIPFlexion=0;
     };
 
     AnyFolder Finger2 ={
