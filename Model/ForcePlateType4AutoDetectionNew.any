@@ -1,22 +1,49 @@
 #import "AnyTest_Templates.any"
 
-#class_template ForcePlateType4AutoDetection (PlateName,
-                                              Folder,
-                                              AnyRefFrame &Limb1,
-                                              AnyRefFrame &Limb2, 
-                                              No,VerticalDirection,
-                                              HeightTolerance,
-                                              VelThreshold, 
-                                              Fx, Fy, Fz, 
-                                              Mx,My,Mz,
-                                              FootPresent){
+#class_template ForcePlateType4AutoDetection (
+    No,
+    C3D_OBJECT = Main.ModelSetup.C3DFileData,
+    LIMB1 = Main.HumanModel.BodyModel.Right.Leg.Seg.Foot,
+    LIMB2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Foot,
+    VerticalDirection = "Automatic",
+    HeightTolerance = 0.07,
+    VelThreshold = 2.2, 
+    FootPresent=1){
+      
+  AnyRefFrame &Limb1 = LIMB1;
+  AnyRefFrame &Limb2 = LIMB2;
   
-  #var AnyFloat Cal = Folder.Groups.FORCE_PLATFORM.CAL_MATRIX.Data[No];  
+  
+  // These can be overridden to specify a special channel to read the data from
+  // Must be given as a pointer to the data 
+  // Fx = &Main.ModelSetup.C3DFileData.Analog.Data.Fx;
+  
+  #var AnyObjectPtrVar Fx = AutoLocateChannels.Fx;
+  #var AnyObjectPtrVar Fy = AutoLocateChannels.Fy;
+  #var AnyObjectPtrVar Fz = AutoLocateChannels.Fz;
+  #var AnyObjectPtrVar Mx = AutoLocateChannels.Mx;
+  #var AnyObjectPtrVar My = AutoLocateChannels.My;
+  #var AnyObjectPtrVar Mz = AutoLocateChannels.Mz;
+  
+  /// Contains the logic to find the correct analog channels from the C3D file   
+  AnyFolder AutoLocateChannels = {
+    AnyInt ChIdxs = C3D_OBJECT.Groups.FORCE_PLATFORM.CHANNEL.Data[No]-1;
+    /// Hack to ensure that the pointers get a later evalution moment.
+    AnyString dot = DesignVar(".");
+    AnyObjectPtrVar Fx = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[0]])[0];
+    AnyObjectPtrVar Fy = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[1]])[0];
+    AnyObjectPtrVar Fz = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[2]])[0];
+    AnyObjectPtrVar Mx = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[3]])[0];
+    AnyObjectPtrVar My = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[4]])[0];
+    AnyObjectPtrVar Mz = ObjSearch(CompleteNameOf(&C3D_OBJECT.Analog.DataFiltered)+ dot + C3D_OBJECT.AnalogLabels[ChIdxs[5]])[0];    
+  };
+  
+  #var AnyFloat Cal = C3D_OBJECT.Groups.FORCE_PLATFORM.CAL_MATRIX.Data[No];  
   #var AnySwitch Switch_DrawForceVectorFromCOP = On;
-  #var AnyVar MaxLoad = max( vnorm({Fx,Fy,Fz}') );
+  #var AnyVar MaxLoad = max( vnorm({Obj2Num(Fx),Obj2Num(Fy),Obj2Num(Fz)}') );
 
   
-  AnyIntVar Force_Plate_Type = Folder.Groups.FORCE_PLATFORM.TYPE.Data[No];
+  AnyIntVar Force_Plate_Type = C3D_OBJECT.Groups.FORCE_PLATFORM.TYPE.Data[No];
   ASSERT_EQ CorrectForcePlateType (
    val1 = .Force_Plate_Type, 
    val2 = 4,
@@ -30,10 +57,10 @@
     AnyRefNode c01={
       AnyInt i=0;
       AnyInt plnr=No;
-      sRel=Folder.PointsScaleFactor*{
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      sRel=C3D_OBJECT.PointsScaleFactor*{
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -47,10 +74,10 @@
     AnyRefNode c02={
       AnyInt i=1;
       AnyInt plnr=No;
-      sRel=Folder.PointsScaleFactor*{
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      sRel=C3D_OBJECT.PointsScaleFactor*{
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -64,10 +91,10 @@
     AnyRefNode c03={
       AnyInt i=2;
       AnyInt plnr=No;
-      sRel=Folder.PointsScaleFactor*{
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      sRel=C3D_OBJECT.PointsScaleFactor*{
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       
@@ -82,10 +109,10 @@
     AnyRefNode c04={
       AnyInt i=3;
       AnyInt plnr=No;
-      sRel=Folder.PointsScaleFactor*{
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
-          Folder.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
+      sRel=C3D_OBJECT.PointsScaleFactor*{
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][0],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][1],
+          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plnr][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -119,7 +146,7 @@
     Axes0 =RotMat(p1,p2,p3);
     
     AnyInt plnr=No;
-    AnyFloat Origins= Folder.Groups.FORCE_PLATFORM.ORIGIN.Data;
+    AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
     AnyVar z_check = iffun(gtfun(Origins[plnr][2], 0), 1, -1);
     AnyMessage Origin_Z_value_message= 
     {
@@ -129,10 +156,10 @@
     };    
     //Transducer location      
     AnyRefNode TransducerLocation ={
-      AnyFloat Origins= Folder.Groups.FORCE_PLATFORM.ORIGIN.Data;
-      AnyVar xdist=.z_check*Origins[.plnr][0]*Folder.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
-      AnyVar ydist=.z_check*Origins[.plnr][1]*Folder.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
-      AnyVar zdist=.z_check*Origins[.plnr][2]*Folder.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
+      AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
+      AnyVar xdist=.z_check*Origins[.plnr][0]*C3D_OBJECT.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
+      AnyVar ydist=.z_check*Origins[.plnr][1]*C3D_OBJECT.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
+      AnyVar zdist=.z_check*Origins[.plnr][2]*C3D_OBJECT.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
       sRel={xdist,ydist,zdist};
       AnyDrawRefFrame drw={ScaleXYZ=0.4*{1,1,1};RGB={1,0,0};};
     };
@@ -174,16 +201,16 @@
     Reaction.Type = {Off,Off,Off,Off,Off,Off};
   };
   
-  AnyFloatVar tStart = Folder.Header.FirstFrameNo/Folder.Header.VideoFrameRate;
-  AnyFloatVar tEnd =  (Folder.Header.LastFrameNo+1)/Folder.Header.VideoFrameRate;
-  AnyInt NoAnalogData= (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo +1)*Folder.Header.NoAnalogSamplesPer3DFrame;
+  AnyFloatVar tStart = C3D_OBJECT.Header.FirstFrameNo/C3D_OBJECT.Header.VideoFrameRate;
+  AnyFloatVar tEnd =  (C3D_OBJECT.Header.LastFrameNo+1)/C3D_OBJECT.Header.VideoFrameRate;
+  AnyInt NoAnalogData= (C3D_OBJECT.Header.LastFrameNo - C3D_OBJECT.Header.FirstFrameNo +1)*C3D_OBJECT.Header.NoAnalogSamplesPer3DFrame;
   AnyFloat Time= farr( tStart, (tEnd-tStart)/( NoAnalogData - 1) ,  NoAnalogData);
   
   
   AnyFunInterpol load ={
     Type=PiecewiseLinear;
     T=.Time;
-    Data=.Cal'*{Fx,Fy,Fz,Mx,My,Mz};
+    Data=.Cal'*{Obj2Num(.Fx),Obj2Num(.Fy),Obj2Num(.Fz),Obj2Num(.Mx),Obj2Num(.My),Obj2Num(.Mz)};
   }; 
   
   AnyVar FzTotal=load(ForcePlateDriver.t)[2];
@@ -211,7 +238,7 @@
   AnyMoment3D Moment = 
   {
     AnyRefFrame  &ref=.ForcePlate.TransducerLocation ;
-    Mlocal=.OnOff*{.load(.ForcePlateDriver.t)[3],.load(.ForcePlateDriver.t)[4],.load(.ForcePlateDriver.t)[5]}*Folder.PointsScaleFactor;
+    Mlocal=.OnOff*{.load(.ForcePlateDriver.t)[3],.load(.ForcePlateDriver.t)[4],.load(.ForcePlateDriver.t)[5]}*C3D_OBJECT.PointsScaleFactor;
     AnyDrawVector DrawMoment = 
     {
       AnyRefFrame &ref=.ref;
@@ -293,6 +320,11 @@
   #if VerticalDirection=="Z" 
   AnyIntArray Index={0,1,2};
   #endif
+  
+  #if (VerticalDirection!="X") & (VerticalDirection!="Y") & (VerticalDirection!="Z") 
+  AnyIntArray Index = {{1,2,0},{0,2,1},{0,1,2}}[argmax(round(abs(ForcePlate.Axes0'[2])))];
+  #endif
+  
   
   AnyFolder ContactDetectionLimb1 ={
     AnyVec3 P1= .Limb1.HeelContactNodeLow.r;
