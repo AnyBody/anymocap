@@ -1,5 +1,6 @@
 // This file creates a BodyModel folder in Main.HumanModel which doesn't have 
-// muscles. This allows 
+// muscles. 
+
 
 Main.HumanModel = {
   AnyFolder BodyModelWithoutMuscles = {
@@ -10,8 +11,10 @@ Main.HumanModel = {
       AnyFolder &SegmentsLumbar = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar;
       AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
       AnyFolder &SegmentsCervicalSpine = Main.HumanModel.BodyModel.Trunk.SegmentsCervicalSpine ;
-      AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar ;
-      AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine ;
+      AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar;
+      #ifdef AMMR_VERSION
+      AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine;
+      #endif
     };
     
     AnyFolder Right = {

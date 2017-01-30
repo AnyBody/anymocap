@@ -304,6 +304,7 @@
          //Opacity = iffun(gtfun(..fz, -10.0), 0.0, 1.0);
          Opacity = ..OnOff;
          Position = {..Vx, ..Vy, ..Vz};
+         Visible = 
        };       
      };
      

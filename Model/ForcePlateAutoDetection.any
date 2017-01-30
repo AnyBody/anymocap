@@ -9,18 +9,21 @@
     VerticalDirection = "Automatic",
     HeightTolerance = 0.07,
     VelThreshold = 2.2, 
-    FORCEPLATE_TYPE = 4,
+    FORCEPLATE_TYPE,
     CREATE_KIN_GRF = 0
     )
 {
+  
+  AnyInt ForcePlateType = C3D_OBJECT.Groups.FORCE_PLATFORM.TYPE.Data[PLATE_NO-1];
+  
   
   #var AnyVar ColorScale = max({min({InContactOnOff *ForcePlate.OnOff*(1* ForcePlate.LoadRatio),1}),0});
   
       
   /// Checks that the FORCEPLATE_TYPE match the specification in the C3D file.   
   AnyMessage PlateTypeCheck  = {
-      AnyInt test = neqfun(C3D_OBJECT.Groups.FORCE_PLATFORM.TYPE.Data[PLATE_NO-1], FORCEPLATE_TYPE);
-      TriggerConst = test;
+      AnyInt test = neqfun(.ForcePlateType, FORCEPLATE_TYPE);
+      TriggerPreProcess = test;
       Type = MSG_ErrorFatal ;
       Message = strformat("AnyMOCAP: Wrong force plate type:\n"+
 	            "C3D file reports force plate as beeing type " +
@@ -271,9 +274,9 @@
      AnyVar Vy= mx/fzz;
      AnyVar Vz= 0;     
 
-     AnyVar OnOff=.ForcePlate.OnOff;
+     AnyVar OnOff=.ForcePlate.OnOff*.InContactOnOff ;
 
-     AnyRefFrame& ref_ForcePlate = .ForcePlate.ForcePlateSeg;
+     AnyRefFrame& ref_ForcePlate = .ForcePlate.ForcePlateSeg.PlateSurface;
      ref_ForcePlate  = 
      {
         AnyDrawSphere COP_ball = 
@@ -291,7 +294,7 @@
        p0 = {.Vx, .Vy, .Vz};
        p1 = p0+0.004*.OnOff*{.fx, .fy, .fz};
        Visible = ..Switch_DrawForceVectorFromCOP ;
-       AnyRefFrame &ref = ..ForcePlate.ForcePlateSeg;
+       AnyRefFrame &ref = ..ForcePlate.ForcePlateSeg.PlateSurface;
 
        Line.RGB ={0,0,1};
        Line.Thickness = 0.01;

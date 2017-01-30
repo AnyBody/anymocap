@@ -24,7 +24,10 @@ AnyFolder JointsAndDrivers = {
           Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
           Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
           InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-          0,0,0,0,0,0
+          0,0,0,0
+          #ifndef _OLD_NECK_INTERFACE_
+          ,0,0
+          #endif
         }'* (ONES(1,Length0));
         #endif
     };
@@ -74,10 +77,15 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasureOrg &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
     AnyKinMeasureOrg &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
     AnyKinMeasureOrg &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
+    #ifdef _OLD_NECK_INTERFACE_
+    AnyKinMeasureOrg& NeckJoint = ...BodyModel.Interface.Trunk.NeckJoint;
+    Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off};
+    #else
     AnyKinMeasureOrg& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasureOrg& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
     AnyKinMeasureOrg& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation; 
     Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off,Off,Off};
+    #endif
   };
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
