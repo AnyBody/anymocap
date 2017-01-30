@@ -1,6 +1,58 @@
-// Do you use Type 4 or 2, you can use the standard setup: 
+Main.EnvironmentModel.ForcePlates = 
+{
+  
  #define ForcePlateType      4
- #define ForcePlateNumber    3
+ #define NumberOfForcePlates 3
  
-// Setup your ForcePlates manually in here
-#include "../../../Model/ForcePlateAutoSetup.any"
+
+ #if NumberOfForcePlates >= 1
+ ForcePlateAutoDetection Plate1 (
+     PLATE_NO = 1,
+     FORCEPLATE_TYPE = ForcePlateType,
+     VerticalDirection = "Automatic",
+     HeightTolerance = 0.07,
+     VelThreshold = 2.2
+ ) = {};
+ #endif
+ 
+ #if NumberOfForcePlates >= 2
+ ForcePlateAutoDetection Plate2 (
+     PLATE_NO = 2,
+     FORCEPLATE_TYPE = ForcePlateType,
+     VerticalDirection = "Automatic",
+     HeightTolerance = 0.07,
+     VelThreshold = 2.2
+ ) = {};
+ #endif
+
+ #if NumberOfForcePlates >= 3
+ ForcePlateAutoDetection Plate3 (
+     PLATE_NO = 3,
+     FORCEPLATE_TYPE = ForcePlateType,
+     VerticalDirection = "Automatic",
+     HeightTolerance = 0.07,
+     VelThreshold = 2.2
+ ) = {};
+ #endif
+ 
+ #if NumberOfForcePlates >= 4
+ ForcePlateAutoDetection Plate4 (
+     PLATE_NO = 4,
+     FORCEPLATE_TYPE = ForcePlateType,
+     VerticalDirection = "Automatic",
+     HeightTolerance = 0.07,
+     VelThreshold = 2.2
+ ) = {};
+ #endif
+ 
+ #if NumberOfForcePlates >= 5
+ ForcePlateAutoDetection Plate5 (
+     PLATE_NO = 5,
+     FORCEPLATE_TYPE = ForcePlateType,
+     VerticalDirection = "Automatic",
+     HeightTolerance = 0.07,
+     VelThreshold = 2.2
+ ) = {};
+ #endif
+
+};

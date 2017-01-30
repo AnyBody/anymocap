@@ -10,7 +10,7 @@ Main = {
   
 ModelSetup.TrialSpecificData = {
 
-  AutomaticInitialBodyPosition AutoPos = {
+  AutomaticFullBodyInitialPosition AutoPos = {
       RASIS= Main.ModelSetup.C3DFileData.Points.Markers.RASI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
       LASIS= Main.ModelSetup.C3DFileData.Points.Markers.LASI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart);
       SACRUM= 0.5*(Main.ModelSetup.C3DFileData.Points.Markers.RPSI.PosInterpol(Main.ModelSetup.TrialSpecificData.tStart)

@@ -2,11 +2,7 @@
 #path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
 #path MOCAP_LAB_SPECIFIC_DATA "LabSpecificData.any"
 
-//#define FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
-
+#path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
 
 #include "../../Model/AnyMocapModel.any"
 
-Main = {
-ModelSetup.C3DFileData.ConstructWeightFunUsingResidualOnOff  = On;
-};

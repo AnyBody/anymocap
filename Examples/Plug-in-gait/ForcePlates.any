@@ -1,22 +1,28 @@
 Main.EnvironmentModel.ForcePlates = 
 {
 
-  ForcePlateType4AutoDetection Plate1(
-    No=0,
+  ForcePlateAutoDetection Plate1(
+    PLATE_NO=1,
     HeightTolerance = 0.07,
-    VelThreshold = 2.2)
+    VelThreshold = 2.2,
+    FORCEPLATE_TYPE = 4
+    )
   ={ };
   
-  ForcePlateType4AutoDetection Plate2(
-    No=1, 
+  ForcePlateAutoDetection Plate2(
+    PLATE_NO=1,
     HeightTolerance = 0.07,
-    VelThreshold = 2.2)
+    VelThreshold = 2.2,
+    FORCEPLATE_TYPE = 4
+)
   ={ };
   
-  ForcePlateType4AutoDetection Plate3 (
-    No=2, 
+  ForcePlateAutoDetection Plate3 (
+    PLATE_NO=1,
     HeightTolerance = 0.07,
-    VelThreshold = 2.2)
+    VelThreshold = 2.2,
+    FORCEPLATE_TYPE = 4
+)
   ={ };
 
 };
