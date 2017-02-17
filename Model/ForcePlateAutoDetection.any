@@ -10,7 +10,9 @@
     HeightTolerance = 0.07,
     VelThreshold = 2.2, 
     FORCEPLATE_TYPE,
-    CREATE_KIN_GRF = 0
+    CREATE_KIN_GRF = 0,
+    KIN_GRF_LIMB1_FUN = GlobalCopFun,
+    KIN_GRF_LIMB2_FUN = GlobalCopFun
     )
 {
   
@@ -397,7 +399,7 @@
   
 #if (CREATE_KIN_GRF == 1) & ((FORCEPLATE_TYPE == 4) | (FORCEPLATE_TYPE == 2))
   
-  ForcePlateSeg =
+  ForcePlate.ForcePlateSeg =
   {
     AnyRefNode KinGRF_rotnode = { ARel = RotMat(pi,y); };
   };
@@ -424,10 +426,10 @@
     
     
     // Alternative Time array which starts from tStart and ends at tEnd  
-    AnyInt NoAnalogData2= max({Folder.Header.NoAnalogSamplesPer3DFrame,
-                               (Folder.Header.LastFrameNo - Folder.Header.FirstFrameNo)*Folder.Header.NoAnalogSamplesPer3DFrame});
+    AnyInt NoAnalogData2= max({C3D_OBJECT.Header.NoAnalogSamplesPer3DFrame,
+                               (C3D_OBJECT.Header.LastFrameNo - C3D_OBJECT.Header.FirstFrameNo)*C3D_OBJECT.Header.NoAnalogSamplesPer3DFrame});
     AnyFloat tStart2 = .tStart+1e-7;
-    AnyFloat tEnd2 = max({tStart2+1/Folder.Header.VideoFrameRate,.tEnd-1/Folder.Header.VideoFrameRate})-1e-7;
+    AnyFloat tEnd2 = max({tStart2+1/C3D_OBJECT.Header.VideoFrameRate,.tEnd-1/C3D_OBJECT.Header.VideoFrameRate})-1e-7;
     AnyFloat Time2 = farr( tStart2, (tEnd2-tStart2)/( max({1,NoAnalogData2 - 1})) ,  NoAnalogData2);
 
     AnyFloat limb1_COP_dist = vnorm(KIN_GRF_LIMB1_FUN(Time2) - 
