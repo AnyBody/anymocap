@@ -1,54 +1,29 @@
 AnyFolder Hip_Plate2_GRF_Driver = 
 {
-  AnyKinMeasureFunComb1 LCappedLinMeasure= 
+  AnyKinMeasureOrg Lin_y_LHipGRF= 
   {
-    Functions = {&.ExpFun };
-    AnyKinMeasureOrg lin_y= 
+    AnyKinLinear lin = 
     {
-      AnyKinLinear lin = 
-      {
-        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
-        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
-        Ref = 0;
-      };
-     MeasureOrganizer = {1};
-    };
+      AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
+      AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
+      Ref = 0;
+   };
+   MeasureOrganizer = {1};
   };
-  AnyKinMeasureFunComb1 RCappedLinMeasure= 
+  AnyKinMeasureOrg Lin_y_RHipGRF= 
   {
-    Functions = {&.ExpFun };
-    AnyKinMeasureOrg lin_y= 
+    AnyKinLinear lin = 
     {
-      AnyKinLinear lin = 
-      {
-        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
-        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
-        Ref = 0;
-      };
-     MeasureOrganizer = {1};
-    };
+      AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Frame;
+      AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+      Ref = 0;
+   };
+   MeasureOrganizer = {1};
   };
-  AnyVar WeightFactor = DesignVar(0.55); 
-  AnyFunInterpol ExpFun = 
-  {
-    AnyVar MaxOuput = 0.05;
-    AnyVar InputAt60PercetOfMax = 0.05;
-    Type = Bspline ;
-    
-    T = arrcat(farr(-1010*MaxOuput,MaxOuput/1, 1000*1),
-               farr(-10*MaxOuput,MaxOuput/10, 2*10*10),
-               farr(MaxOuput*10,MaxOuput/1, 1000*1));
-    
-    Data = .WeightFactor* 
-            {iffun(gtfun(T,0),
-            MaxOuput*(1-exp((-1*T)/InputAt60PercetOfMax )),
-            (-1)*MaxOuput*(1-exp((T)/InputAt60PercetOfMax )))};
-               
-  };  
   AnyKinEq DriverLeft =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
-    AnyKinMeasure& ref = .LCappedLinMeasure;
+    AnyKinMeasure& ref = .Lin_y_LHipGRF;
     CType = {Soft};
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Weight_limb2 };
     Reaction.Type = {Off};
@@ -56,7 +31,7 @@ AnyFolder Hip_Plate2_GRF_Driver =
   AnyKinEq DriverRight =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
-    AnyKinMeasure& ref = .RCappedLinMeasure;
+    AnyKinMeasure& ref = .Lin_y_RHipGRF;
     CType = {Soft};
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF.Weight_limb1 };
     Reaction.Type = {Off};
@@ -65,58 +40,31 @@ AnyFolder Hip_Plate2_GRF_Driver =
 
 AnyFolder Hip_Plate1_GRF_Driver = 
 {
-  AnyKinMeasureFunComb1 LCappedLinMeasure= 
+  AnyKinMeasureOrg Lin_y_LHipGRF = 
   {
-    Functions = {&.ExpFun};
-    AnyKinMeasureOrg lin_y= 
+    AnyKinLinear lin = 
     {
-      AnyKinLinear lin = 
-      {
-        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
-        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
-        Ref = 0;
-      };
-     MeasureOrganizer = {1};
-    };
-  };  
-  
-  AnyKinMeasureFunComb1 RCappedLinMeasure= 
+      AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
+      AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Left.Leg.Seg.Thigh.HipJoint;
+      Ref = 0;
+   };
+   MeasureOrganizer = {1};
+  };
+  AnyKinMeasureOrg Lin_y_RHipGRF = 
   {
-    Functions = {&.ExpFun};
-    AnyKinMeasureOrg lin_y= 
+    AnyKinLinear lin = 
     {
-      AnyKinLinear lin = 
-      {
-        AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
-        AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
-        Ref = 0;
-      };
-     MeasureOrganizer = {1};
-    };
-  };  
-  AnyVar WeightFactor = DesignVar(0.55); 
-  AnyFunInterpol ExpFun = 
-  {
-    AnyVar MaxOuput = 0.05;
-    AnyVar InputAt60PercetOfMax = 0.05;
-    Type = Bspline ;
-    
-    T = arrcat(farr(-1010*MaxOuput,MaxOuput/1, 1000*1),
-              farr(-10*MaxOuput,MaxOuput/10, 2*10*10),
-              farr(MaxOuput*10,MaxOuput/1, 1000*1));
-
-    
-    Data = .WeightFactor* 
-            {iffun(gteqfun(T,0),
-            MaxOuput*(1-exp((-1*T)/InputAt60PercetOfMax )),
-            (-1)*MaxOuput*(1-exp((T)/InputAt60PercetOfMax )))};
-               
-  }; 
+      AnyRefFrame& ref1 = Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Frame;
+      AnyRefFrame& ref2 = Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint;
+      Ref = 0;
+   };
+   MeasureOrganizer = {1};
+  };
   
   AnyKinEq DriverLeft =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
-    AnyKinMeasure& ref = .LCappedLinMeasure;
+    AnyKinMeasure& ref = .Lin_y_LHipGRF;
     CType = {Soft};
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Weight_limb2};
     Reaction.Type = {Off};
@@ -124,18 +72,10 @@ AnyFolder Hip_Plate1_GRF_Driver =
   AnyKinEq DriverRight =
   {
     AnyVar effect = Pos[0]*WeightPos[0];
-    AnyKinMeasure& ref = .RCappedLinMeasure;
+    AnyKinMeasure& ref = .Lin_y_RHipGRF;
     CType = {Soft};
     WeightFun = {&Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF.Weight_limb1};
     Reaction.Type = {Off};
   };
-  
 
 };
-
-//Main.Studies.InverseDynamicStudy.ModelEnvironmentConnection = {
-//   AnyMechObjectExcluder GRF_driver_excluder = {
-//     Objects = arrcat(ObjSearchRecursive("Main.EnvironmentModel.ForcePlates.Plate1.Kinematic_GRF","*", "AnyMechObject"),
-//                      ObjSearchRecursive("Main.EnvironmentModel.ForcePlates.Plate2.Kinematic_GRF","*", "AnyMechObject"));
-//   }; 
-//};
