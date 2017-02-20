@@ -1,4 +1,4 @@
-Main.ModelSetup.SubjectSpecificData = 
+Main.ModelSetup.SubjectSpecificData = {
 
   Anthropometrics={
     BodyMass   = 66;
