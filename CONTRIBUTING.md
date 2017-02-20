@@ -1,1 +1,3 @@
-To get started, <a href="https://www.clahub.com/agreements/AnyBody/anymocap">sign the Contributor License Agreement</a>.
+Contribution are welcome. Only requirement is that contributers sign the Contributor License agrement. 
+
+Sign the <a href="https://anyscript.org/cla/">Contributor License Agreement</a>.
