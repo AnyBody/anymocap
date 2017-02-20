@@ -1,0 +1,15 @@
+
+variables:
+  GIT_STRATEGY: fetch
+
+cache:
+    paths:
+    - .cache/
+
+Tests:
+  stage: test
+  script:
+    - pytest --ff Tests 
+  tags:
+    - ams
+    - python    
