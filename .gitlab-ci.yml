@@ -5,9 +5,6 @@ variables:
 cache:
     paths:
     - .cache/
-
-before_script:
-  - git clone --depth 1 git@gitlab.com:AMMR-beta/ammr-beta.git ammr_beta
     
 AMMR1.6_Tests:
   stage: test
@@ -21,7 +18,8 @@ AMMR2.0_Tests:
   stage: test
 
   script:
-    - pytest --ff Tests 
+    - git clone -q --depth 1 git@gitlab.com:AMMR-beta/ammr-beta.git
+    - pytest --ff --ammr=ammr-beta Tests
   tags:
     - ams
     - python    
