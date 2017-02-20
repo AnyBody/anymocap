@@ -9,6 +9,10 @@
     #undef TLEM_VERSION
     #define TLEM_VERSION "1.1"
   #endif
+#else
+  #ifndef TLEM_VERSION 
+    #define TLEM_VERSION "2.0"
+  #endif
 #endif
 
 

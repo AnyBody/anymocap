@@ -4,12 +4,13 @@
 //]
 //ignore_errors = ['FileReader.FileName']
 
-#include "libdef.any"
-
 // Test related setup.
 #ifndef TLEM_VERSION
 #define TLEM_VERSION "2.0"
 #endif
+
+#include "libdef.any"
+
 
 #path TEMP_PATH "Output"
 
