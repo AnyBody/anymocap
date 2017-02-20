@@ -29,7 +29,7 @@
 
 Main = 
 {
-  AnyOperationMacro  RunApplication = 
+  AnyOperationMacro  RunTest = 
   {
     MacroStr = {
       "operation Main.ModelSetup.Views.SetViewMacros.KinematicView", "run",
