@@ -45,13 +45,13 @@
 // The pelvis anatomical frame is redefined 
 // in AMMR > 1.6, thus we handle that here.
 #ifdef AMMR_VERSION
-  #define RASIS_POS {,,}
-  #define RPSIS_POS {,,}
-  #define LASIS_POS {,,}
-  #define LPSIS_POS {,,}
+  #define RASIS_POS {0.015,-0.00, 0.125}
+  #define LASIS_POS {0.015,-0.00, -0.125}
+  #define RPSIS_POS {-0.14,0.02, 0.04}
+  #define LPSIS_POS {-0.14,0.02, -0.04}
 #else
-  #define RASIS_POS {0.12,-0.02, 0.13}
-  #define LASIS_POS {0.12,-0.02, -0.13}
+  #define RASIS_POS {0.12,-0.02, 0.125}
+  #define LASIS_POS {0.12,-0.02, -0.125}
   #define RPSIS_POS {-0.03,0, 0.04}
   #define LPSIS_POS {-0.03,0, -0.04}
 #endif
