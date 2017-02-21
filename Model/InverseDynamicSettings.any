@@ -1,18 +1,11 @@
-
+Main.Studies.InverseDynamicStudy = {
+  
  InitialConditions.KinematicTol=1e-5; 
  Kinematics.KinematicTol=1e-5; 
 
  Kinematics.SolverType = KinSolDeterminate;
  InitialConditions.SolverType = Kinematics.SolverType;
  
- #ifdef INCLUDE_MUSCLE_WEIGHT_FACTOR 
- Main = {AnyVar Power = .InverseDynamics.Criterion.Power;};
- #if INCLUDE_MUSCLE_WEIGHT_FACTOR > 0
- InverseDynamics.Criterion.PrimaryTerm.Weight_SearchName = "WeightFactor";
- #endif
- #endif  
- 
-
 
 InitialConditions.PreOperation = 
 {
@@ -51,4 +44,4 @@ Main.RunAnalysis.InverseDynamics =
  tEnd = max({T_END-2*Kinematics.ApproxVelAccPerturb , tStart});
  nStep= max({N_STEP-4, 1});  
  
- 
+};
