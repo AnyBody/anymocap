@@ -36,12 +36,18 @@ Main.RunAnalysis.InverseDynamics =
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
  
+ AnyVar vfreq = 1.0/C3DData.Header.VideoFrameRate;
+ AnyVar tdiff = T_END-T_START;
+ AnyVar nss = max({N_STEP-1,1});
  
- Kinematics.ApproxVelAccPerturb = max({1.0/C3DData.Header.VideoFrameRate, (T_END-T_START)/(max({N_STEP-1,1}))});
+ AnyVar tFrame = (T_END-T_START)/(max({N_STEP-1,1}));
+ 
+ 
+ Kinematics.ApproxVelAccPerturb = min({1.0/C3DData.Header.VideoFrameRate, tFrame});
  InitialConditions.ApproxVelAccPerturb = Kinematics.ApproxVelAccPerturb ;
  
- tStart = min({T_START+2*Kinematics.ApproxVelAccPerturb, T_END}); 
- tEnd = max({T_END-2*Kinematics.ApproxVelAccPerturb , tStart});
+ tStart = min({T_START+2*tFrame, T_END}); 
+ tEnd = max({T_END-2*tFrame, tStart});
  nStep= max({N_STEP-4, 1});  
  
 };
