@@ -4,6 +4,9 @@
 //]
 //ignore_errors = ['FileReader.FileName']
 
+//#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr-beta"
+
+
 // Test related setup.
 #ifndef TLEM_VERSION
 #define TLEM_VERSION "2.0"
@@ -24,25 +27,16 @@
 // to make test go faster. 
 #define N_STEP_PARAM_OPT 10
 #define N_STEP_KINEMATICS 197
-#define N_STEP 4
+#define N_STEP 100
 
 #include "../Examples/Plug-in-gait/Main.any"
 
 Main = 
 {
-  AnyOperationMacro  RunTest = 
+  AnyOperationSequence  RunTest = 
   {
-    MacroStr = {
-      "operation Main.ModelSetup.Views.SetViewMacros.KinematicView", "run",
-      "operation Main.Studies.ParameterIdentification.ParameterOptimization","run",
-      "operation Main.ModelSetup.Macros.Save_parameters","run",
-      "operation Main.ModelSetup.Macros.Load_parameters","run",
-      "operation Main.Studies.KinematicStudy.Kinematics","run",
-      "operation Main.ModelSetup.Views.SetViewMacros.InverseDynamicView","run",
-      "classoperation Main"+ strquote("Update Values") ,
-      "operation Main.Studies.InverseDynamicStudy.InitialConditions.PreOperation","run",
-      "operation Main.Studies.InverseDynamicStudy.InverseDynamics","run"
-    };
+    AnyOperation& ParameterId =  Main.RunParameterIdentification;
+    AnyOperation& RunAnalysis = Main.RunAnalysis; 
   };
 
   
