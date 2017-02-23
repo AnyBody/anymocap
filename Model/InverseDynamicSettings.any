@@ -3,7 +3,7 @@ Main.Studies.InverseDynamicStudy = {
  InitialConditions.KinematicTol=1e-5; 
  Kinematics.KinematicTol=1e-5; 
 
- Kinematics.SolverType = KinSolDeterminate;
+ Kinematics.SolverType = KinSolOff;
  InitialConditions.SolverType = Kinematics.SolverType;
  
 
