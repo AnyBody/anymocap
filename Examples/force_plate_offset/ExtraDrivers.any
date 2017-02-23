@@ -114,6 +114,7 @@ AnyKinEqSimpleDriver SkullGroundDriver={
 
 #ifdef _HARD_NECK_DRIVER
 
+#ifndef AMMR_VERSION
 AnyKinEqSimpleDriver HardNeckDriver ={
   AnyKinMeasureOrg &ref =Main.HumanModel.BodyModel.Interface.Trunk.NeckJoint;
   DriverPos = pi/180*{
@@ -124,7 +125,20 @@ AnyKinEqSimpleDriver HardNeckDriver ={
   };
   Reaction.Type={Off};
 };
-
+#else
+AnyKinEqSimpleDriver HardNeckDriver ={
+  AnyKinMeasureOrg &ref0 =Main.HumanModel.BodyModel.Interface.Trunk.SkullThoraxFlexion;
+  AnyKinMeasureOrg &ref1 =Main.HumanModel.BodyModel.Interface.Trunk.SkullThoraxLateralBending;
+  AnyKinMeasureOrg &ref2 =Main.HumanModel.BodyModel.Interface.Trunk.SkullThoraxRotation;
+  DriverPos = pi/180*{
+    .JntPos.NeckExtension, .JntPos.NeckLateralBending, .JntPos.NeckRotation
+  };
+  DriverVel = pi/180*{
+    .JntVel.NeckExtension, .JntVel.NeckLateralBending, .JntVel.NeckRotation
+  };
+  Reaction.Type={Off,Off,Off};
+};
+#endif
 
 #endif
 
