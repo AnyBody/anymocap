@@ -1,5 +1,5 @@
 /// Create the code specific for forceplate type 1
-#class_template type_1_class (PLATEIDX, C3D_OBJECT)
+#class_template type_1_class (PLATEIDX, C3D_OBJECT, DRAW_RAW_FORCES=On)
 {
 
   // Interface inputs
@@ -112,6 +112,7 @@
     Flocal=.OnOff*{.input_force(.NetEffectMeasure.t)[0],.input_force(.NetEffectMeasure.t)[1],.input_force(.NetEffectMeasure.t)[2]};
     AnyDrawVector DrawForce = 
     {
+      Visible = DRAW_RAW_FORCES;
       AnyRefFrame &ref=.ref;
       Vec=.Flocal*1/1000;
       PointAway = Off;
@@ -211,7 +212,7 @@
 };
 
 /// Create the code specific for forceplate type 2 or 4
-#class_template type_2_4_class (PLATEIDX, C3D_OBJECT, FORCEPLATE_TYPE)
+#class_template type_2_4_class (PLATEIDX, C3D_OBJECT, FORCEPLATE_TYPE, DRAW_RAW_FORCES=On)
 {
 
   // Interface inputs
@@ -314,6 +315,7 @@
     Flocal=.OnOff*{.load(.NetEffectMeasure.t)[0],.load(.NetEffectMeasure.t)[1],.load(.NetEffectMeasure.t)[2]};
     AnyDrawVector DrawForce = 
     {
+      Visible = DRAW_RAW_FORCES;
       AnyRefFrame &ref=.ref;
       Vec=.Flocal*1/1000;
       PointAway = Off;
@@ -362,7 +364,8 @@
 
 
 /// Create the code specific for forceplate type 3
-#class_template type_3_class (PLATEIDX, C3D_OBJECT)
+#class_template type_3_class (PLATEIDX, C3D_OBJECT, DRAW_RAW_FORCES = On
+)
 {
   
   // Interface inputs
@@ -496,6 +499,7 @@
     
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -521,6 +525,7 @@
     Flocal=.OnOff*{f(.NetEffectMeasure.t )[0],0,0};      
    
     AnyDrawVector DrawForce =     {
+     Visible = DRAW_RAW_FORCES;
      AnyRefFrame &ref=.ref1;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
@@ -547,6 +552,7 @@
     
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -575,6 +581,7 @@
   
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -603,6 +610,7 @@
    
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -629,6 +637,7 @@
    
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -654,6 +663,7 @@
   
     AnyDrawVector DrawForce =     {
      AnyRefFrame &ref=.ref1;
+     Visible = DRAW_RAW_FORCES;
      Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
      PointAway = Off;
      DrawCoord = Off;
@@ -680,6 +690,7 @@
   
     AnyDrawVector DrawForce =     {
       AnyRefFrame &ref=.ref1;
+      Visible = DRAW_RAW_FORCES;
       Vec=.Flocal*C3D_OBJECT.PointsScaleFactor;
       PointAway = Off;
       DrawCoord = Off;
