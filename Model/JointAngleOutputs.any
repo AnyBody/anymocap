@@ -1,4 +1,4 @@
-#ifndef AMMR_VERSION
+#if AMMR_VERSION_MAJOR < 2
 #if BM_TRUNK_NECK == OFF
 #define _OLD_NECK_INTERFACE_
 #endif

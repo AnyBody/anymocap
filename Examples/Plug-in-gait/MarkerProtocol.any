@@ -46,7 +46,7 @@
 
 // The pelvis anatomical frame is redefined 
 // in AMMR > 1.6, thus we handle that here.
-#ifdef AMMR_VERSION
+#if AMMR_VERSION_MAJOR >= 2
   #define RASIS_POS {0.015,-0.00, 0.125}
   #define LASIS_POS {0.015,-0.00, -0.125}
   #define RPSIS_POS {-0.14,0.02, 0.04}
@@ -56,7 +56,15 @@
   #define LASIS_POS {0.12,-0.02, -0.125}
   #define RPSIS_POS {-0.03,0, 0.04}
   #define LPSIS_POS {-0.03,0, -0.04}
+  
+  #if BM_TRUNK_NECK == OFF
+    Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg = 
+    {
+       AnyRefNode T1C7JntNode = {sRel = {0.01, 0.465, 0};};
+    };
+  #endif
 #endif
+
 
 
 

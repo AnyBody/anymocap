@@ -49,4 +49,14 @@
     #path MOCAP_TRIAL_SPECIFIC_DATA "ExampleFiles/TrialSpecificData.any"
   #endif
  
+  
+  #ifndef AMMR_VERSION
+  // Pre AMMR 2.0 repository.
+  // Set versions as undefined.
+  #define AMMR_VERSION ""
+  #define AMMR_VERSION_MAJOR 0
+  #define AMMR_VERSION_MINOR 0
+  #define AMMR_VERSION_PATCH 0
+  #endif
+  
 #endif

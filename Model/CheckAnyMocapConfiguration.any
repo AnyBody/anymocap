@@ -46,8 +46,8 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 
 #define BM_CONFIG_VALUES ON
 
-#ifndef AMMR_VERSION 
-// Pre AMMR1.7 
+#if AMMR_VERSION_MAJOR < 2
+// Pre AMMR2
 // Create a stub for Main.HumanModel.AnthroDataSubject 
 Main.HumanModel= {
    /// This folder is create by the AnyMocapModel, so the HumanModel 

@@ -114,7 +114,8 @@ AnyKinEqSimpleDriver SkullGroundDriver={
 
 #ifdef _HARD_NECK_DRIVER
 
-#ifndef AMMR_VERSION
+#if AMMR_VERSION_MAJOR < 2
+// Pre AMMR 2.0 model
 AnyKinEqSimpleDriver HardNeckDriver ={
   AnyKinMeasureOrg &ref =Main.HumanModel.BodyModel.Interface.Trunk.NeckJoint;
   DriverPos = pi/180*{

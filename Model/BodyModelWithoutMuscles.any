@@ -12,8 +12,12 @@ Main.HumanModel = {
       AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
       AnyFolder &SegmentsCervicalSpine = Main.HumanModel.BodyModel.Trunk.SegmentsCervicalSpine ;
       AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar;
-      #ifdef AMMR_VERSION
-      AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine;
+      #if AMMR_VERSION_MAJOR >= 2
+        AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine;
+      #else
+        #if BM_TRUNK_NECK == ON
+          AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine;
+        #endif
       #endif
     };
     
