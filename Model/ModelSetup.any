@@ -4,29 +4,29 @@ ModelSetup = {
   // variables get a default value if they are not specified
   // by the user.
 
-  CreateTrialFolder TrialSpecificData = {
-      #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
-  };
+ CreateTrialFolder TrialSpecificData = {
+     #include "<MOCAP_TRIAL_SPECIFIC_DATA>"
+ };
 
-  CreateSubjectFolder SubjectSpecificData = {
-    #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
-  };
+ CreateSubjectFolder SubjectSpecificData = {
+   #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
+ };
+ 
+ CreateLabFolder LabSpecificData = {
+   #include "<MOCAP_LAB_SPECIFIC_DATA>"
+ };
   
-  CreateLabFolder LabSpecificData = {
-    #include "<MOCAP_LAB_SPECIFIC_DATA>"
-  };
-  
-  
+ Main = {
+   #include "<BODY_MODEL_CONFIG_FILE>"
+ };
  // This file checks if all the defines statements 
  // are made correctly.
  #include "CheckAnyMocapConfiguration.any"
-
-  
+ 
  // Study for saving a loading the parameters from calibration trials 
  //(dynamic or standing refereces)
  #include "SaveLoadParameters.any"
  
-   
   // This is the C3D file used for the analysis
  AnyInputC3D C3DFileData =  {};
  #include "<MOCAP_C3DSETTINGS>"

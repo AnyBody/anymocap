@@ -16,7 +16,8 @@ Main =
   #include "EnvironmentModel.any"
   
   // Configure and include the human model
-  #include "<BODY_MODEL_CONFIG_FILE>"
+  // The body model config file is include in ModelSetup.any
+  //   #include "<BODY_MODEL_CONFIG_FILE>"
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"
   #include "BodyModelWithoutMuscles.any" 
   
