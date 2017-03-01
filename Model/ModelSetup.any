@@ -15,30 +15,34 @@ ModelSetup = {
  CreateLabFolder LabSpecificData = {
    #include "<MOCAP_LAB_SPECIFIC_DATA>"
  };
-  
- Main = {
-   #include "<BODY_MODEL_CONFIG_FILE>"
- };
+ 
  // This file checks if all the defines statements 
  // are made correctly.
  #include "CheckAnyMocapConfiguration.any"
+ 
+ 
+ Main = {
+    #include "<BODY_MODEL_CONFIG_FILE>"
+ };
+ 
+ // This is the C3D file used for the analysis
+ AnyInputC3D C3DFileData =  {};
+ #include "<MOCAP_C3DSETTINGS>"
+
+ AnyFolder MocapExtraDrivers = {
+   #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
+ };
+ 
+ AnyFolder MocapDrivers = {
+   #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+ };
+ 
  
  // Study for saving a loading the parameters from calibration trials 
  //(dynamic or standing refereces)
  #include "SaveLoadParameters.any"
  
-  // This is the C3D file used for the analysis
- AnyInputC3D C3DFileData =  {};
- #include "<MOCAP_C3DSETTINGS>"
-   
- AnyFolder MocapDrivers = {
-   #include "<MOCAP_MARKER_PROTOCOL_FILE>"
- };
- 
- AnyFolder MocapExtraDrivers = {
-   #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
- };
- 
+
  AnyFolder ParameterIdentification = { };
 
  #include "ModelViews.any"  

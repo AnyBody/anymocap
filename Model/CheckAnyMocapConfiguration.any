@@ -43,8 +43,9 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #define MOCAP_JOINT_ANGLE_FILE_PREFIX ""
 #endif
 
-
+#ifndef BM_CONFIG_VALUES 
 #define BM_CONFIG_VALUES ON
+#endif
 
 #if AMMR_VERSION_MAJOR < 2
 // Pre AMMR2
