@@ -6,7 +6,7 @@ AnyBody Technology A/S "Software License Agreement" (SLA)
 under same terms as the "AnyBody Managed Model Repository"
 (AMMR) stated in the SLA. 
 
-See: https://www.anybodytech.com/Legal/SLA
+See: https://www.anybodytech.com/legal/sla
 
 
 One exception applies. It is allowed to create and modify
