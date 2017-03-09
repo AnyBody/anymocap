@@ -2,9 +2,9 @@ License Certificate
 ---------------------------------------------------------
 
 Use of this source code and material is coverned by the
-AnyBody Technology A/S "Software License Agreement" (SLA) 
-under same terms as the "AnyBody Managed Model Repository"
-(AMMR) stated in the SLA. 
+AnyBody Technology A/S Software License Agreement under
+the same terms as the "AnyBody Managed Model Repository"
+(AMMR) stated in the Agreement.
 
 See: https://www.anybodytech.com/legal/sla
 
