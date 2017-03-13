@@ -1,7 +1,12 @@
+
+
+
+
+
 #import "KinLimitsDriver_template.any"
 
 #class_template CreateJointLimitDrivers  (
-      HUMAN_MODEL = HumanModel,
+      HUMAN_MODEL = Main.HumanModel,
       ENABLE_ALL_JOINT_LIMITS = "Off",
       PELVIS_THORAX_EXTENSION = "Off",
       PELVIS_THORAX_LATERAL_BENDING = "Off",
@@ -27,7 +32,7 @@
           #var AnyVar LowerLimit= -80;
           #if PELVIS_THORAX_EXTENSION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxExtension
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxExtension
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -38,7 +43,7 @@
           #var AnyVar LowerLimit= -40;
           #if PELVIS_THORAX_LATERAL_BENDING == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxLateralBending
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxLateralBending
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -48,7 +53,7 @@
           #var AnyVar LowerLimit= -90;
           #if PELVIS_THORAX_ROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.PelvisThoraxRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -58,7 +63,7 @@
           #var AnyVar LowerLimit= -80;
           #if SKULL_THORAX_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -68,7 +73,7 @@
           #var AnyVar LowerLimit= -80;
           #if SKULL_THORAX_LATERALBENDING == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxLateralBending
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxLateralBending
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -78,7 +83,7 @@
           #var AnyVar LowerLimit= -90;
           #if SKULL_THORAX_ROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Trunk.SkullThoraxRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -91,7 +96,7 @@
           #var AnyVar LowerLimit= -23 - 30;
           #if STERNO_CLAVICULAR_PROTRACTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularProtraction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularProtraction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -101,7 +106,7 @@
           #var AnyVar LowerLimit= 11.5 - 20;
           #if STERNO_CLAVICULAR_ELEVATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularElevation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularElevation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -111,7 +116,7 @@
           #var AnyVar LowerLimit= -20 - 15;
           #if STERNO_CLAVICULAR_AXIALROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularAxialRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.SternoClavicularAxialRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -121,7 +126,7 @@
 //          #var AnyVar LowerLimit= 0;
 //          #if SCAPULA_THORAX_PROTRACTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
 //          KinLimitsDriver Driver(
-//             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.ScapulaThoraxProtraction
+//             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.ScapulaThoraxProtraction
 //          ) = { LowerLimit = .LowerLimit;HighLimit = .HighLimit; };
 //          #endif
 //       };
@@ -131,7 +136,7 @@
 //          #var AnyVar LowerLimit= 0;
 //          #if SCAPULA_THORAX_ELEVATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
 //          KinLimitsDriver Driver(
-//             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.ScapulaThoraxElevation
+//             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.ScapulaThoraxElevation
 //          ) = { LowerLimit = .LowerLimit;HighLimit = .HighLimit; };
 //          #endif
 //       };
@@ -141,7 +146,7 @@
           #var AnyVar LowerLimit= -90;
           #if GLENOHUMERAL_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -151,7 +156,7 @@
           #var AnyVar LowerLimit= -60;
           #if GLENOHUMERAL_EXTERNAL_ROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralExternalRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralExternalRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -161,7 +166,7 @@
           #var AnyVar LowerLimit= -20;
           #if GLENOHUMERAL_ABDUCTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralAbduction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.GlenohumeralAbduction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -171,7 +176,7 @@
           #var AnyVar LowerLimit= 0;
           #if ELBOW_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.ElbowFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.ElbowFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -181,7 +186,7 @@
           #var AnyVar LowerLimit= -90;
           #if ELBOW_PRONATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.ElbowPronation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.ElbowPronation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -191,7 +196,7 @@
           #var AnyVar LowerLimit= -90;
           #if WRIST_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.WristFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.WristFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -201,7 +206,7 @@
           #var AnyVar LowerLimit= -30;
           #if WRIST_ABDUCTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Right.WristAbduction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Right.WristAbduction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };      
@@ -212,7 +217,7 @@
           #var AnyVar LowerLimit= -23 - 30;
           #if STERNO_CLAVICULAR_PROTRACTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularProtraction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularProtraction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -222,7 +227,7 @@
           #var AnyVar LowerLimit= 11.5 - 20;
           #if STERNO_CLAVICULAR_ELEVATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularElevation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularElevation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -232,7 +237,7 @@
           #var AnyVar LowerLimit= -20 - 15;
           #if STERNO_CLAVICULAR_AXIALROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularAxialRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.SternoClavicularAxialRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -242,7 +247,7 @@
 //          #var AnyVar LowerLimit= 0;
 //          #if SCAPULA_THORAX_PROTRACTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
 //          KinLimitsDriver Driver(
-//             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.ScapulaThoraxProtraction
+//             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.ScapulaThoraxProtraction
 //          ) = { LowerLimit = .LowerLimit;HighLimit = .HighLimit; };
 //          #endif
 //       };
@@ -252,7 +257,7 @@
 //          #var AnyVar LowerLimit= 0;
 //          #if SCAPULA_THORAX_ELEVATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
 //          KinLimitsDriver Driver(
-//             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.ScapulaThoraxElevation
+//             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.ScapulaThoraxElevation
 //          ) = { LowerLimit = .LowerLimit;HighLimit = .HighLimit; };
 //          #endif
 //       };
@@ -262,7 +267,7 @@
           #var AnyVar LowerLimit= -90;
           #if GLENOHUMERAL_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -272,7 +277,7 @@
           #var AnyVar LowerLimit= -60;
           #if GLENOHUMERAL_EXTERNAL_ROTATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralExternalRotation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralExternalRotation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -282,7 +287,7 @@
           #var AnyVar LowerLimit= -20;
           #if GLENOHUMERAL_ABDUCTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralAbduction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.GlenohumeralAbduction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -292,7 +297,7 @@
           #var AnyVar LowerLimit= 0;
           #if ELBOW_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.ElbowFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.ElbowFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -302,7 +307,7 @@
           #var AnyVar LowerLimit= -90;
           #if ELBOW_PRONATION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.ElbowPronation
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.ElbowPronation
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -312,7 +317,7 @@
           #var AnyVar LowerLimit= -90;
           #if WRIST_FLEXION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.WristFlexion
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.WristFlexion
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };
@@ -322,7 +327,7 @@
           #var AnyVar LowerLimit= -30;
           #if WRIST_ABDUCTION == "On" | ENABLE_ALL_JOINT_LIMITS == "On"
           KinLimitsDriver Driver(
-             KinMeasure= Main.HUMAN_MODEL.BodyModel.Interface.Left.WristAbduction
+             KinMeasure= HUMAN_MODEL.BodyModel.Interface.Left.WristAbduction
           ) = { LowerLimit =.LowerLimit;HighLimit = .HighLimit; MeasureConversion=180/pi;};
           #endif
        };      
