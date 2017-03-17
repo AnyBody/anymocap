@@ -1,7 +1,7 @@
  
                              License Certificate
 
-Use of this source code and material is coverned by the AnyBody Technology A/S
+Use of this source code and material is covered by the AnyBody Technology A/S
 Software License Agreement under the same terms as the "AnyBody Managed Model 
 Repository" (AMMR) stated in the Agreement.
 
