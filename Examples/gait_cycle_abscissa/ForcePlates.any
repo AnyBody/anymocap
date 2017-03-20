@@ -1,9 +1,0 @@
-Main.EnvironmentModel.ForcePlates = 
-{
-  ForcePlateAutoDetection Plate1 (PLATE_NO=1, FORCEPLATE_TYPE=2) = { };
-
-  ForcePlateAutoDetection Plate2 (PLATE_NO=2, FORCEPLATE_TYPE=2) = { };
-  
-  ForcePlateAutoDetection Plate3 (PLATE_NO=3, FORCEPLATE_TYPE=2) = { };
-
-};

@@ -17,21 +17,21 @@
 
  
  // This the C3D frame where the analysis starts 
- #var AnyInt FirstFrame = .C3DFileData.Header.FirstFrameNo ;
+ FirstFrame = .C3DFileData.Header.FirstFrameNo ;
 
  // This the C3D frame where the analysis ends 
- #var AnyInt LastFrame = .C3DFileData.Header.LastFrameNo ;
+LastFrame = .C3DFileData.Header.LastFrameNo ;
 
  // This is the tStart time of the analysis. Setting this overrides 
  // the 'FirstFrame' value
- #var AnyFloatVar tStart = FirstFrame/.C3DFileData.Header.VideoFrameRate;
+tStart = FirstFrame/.C3DFileData.Header.VideoFrameRate;
  
  // This is the tStart time of the analysis. Setting this overrides 
  // the 'LastFrame' value
- #var AnyFloatVar tEnd = LastFrame/.C3DFileData.Header.VideoFrameRate;
+ tEnd = LastFrame/.C3DFileData.Header.VideoFrameRate;
 
  // This is number of steps to use in the analysis. 
- #var AnyIntVar nStep =(LastFrame-FirstFrame+1); 
+ nStep =(LastFrame-FirstFrame+1); 
   
 
  /// The following settings define the initial posture of the

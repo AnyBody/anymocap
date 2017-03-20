@@ -1,9 +1,0 @@
-Main.ModelSetup.TrialSpecificData = 
-{
-
- TrialFileName = "Dynamic";
-
- AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) = {};
-   
-  
-};

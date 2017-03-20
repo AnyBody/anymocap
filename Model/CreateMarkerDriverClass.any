@@ -91,13 +91,14 @@
         #var Max=100;      
       };
   };
-   
   
-  AnyFolder &MarkerInsertionNode = BODY_MODEL_FOLDER.MarkerPlacement;
-  MarkerInsertionNode = {
-    
+ 
+
+  AnyFolder &MarkerPlacementSegment = BODY_MODEL_FOLDER.MarkerPlacement;
+  MarkerPlacementSegment = {
     
     AnyRefNode MarkerName={
+            
       #if ScaleMarkerPosOnOff == "On"
         AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
         sRel = .PlaceMarkerAt.sRel + MarkerOffset;
