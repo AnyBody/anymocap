@@ -14,4 +14,4 @@
 
 #path TEMP_PATH "Output"
 
-#include "../Examples/MarkerWeightExample/Main.any"
+#include "../Examples/SpecialFeatures/MarkerWeightsExample.main.any"

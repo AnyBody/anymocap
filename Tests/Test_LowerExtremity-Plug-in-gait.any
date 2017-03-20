@@ -1,14 +1,11 @@
+//# Defintions for the python test framwork 
 //define = [
 //  {'TLEM_VERSION':'"2.0"'}, 
 //  {'TLEM_VERSION':'"1.1"'}, 
 //]
-//ignore_errors = ['FileReader.FileName']
-// Test related setup.
-
 #include "libdef.any"
-
 
 
 #path TEMP_PATH "Output"
 
-#include "../Examples/ABTstandardLE/AnyMoCap.Main.any"
+#include "../Examples/Plug-in-gait-LowerExtremity/Main.any"

@@ -28,7 +28,7 @@
 #define N_STEP_KINEMATICS 197
 #define N_STEP 100
 
-#include "../Examples/Plug-in-gait/Main.any"
+#include "../Examples/Plug-in-gait-FullBody/Main.any"
 
 Main = 
 {

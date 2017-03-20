@@ -1,0 +1,28 @@
+// Example of using the AutomaticFullBodyInitialPosition  class 
+// for setting the initial posture of human from the marker postions. .
+
+#include "../../Model/AnyMocapModel.any"
+
+Main = {
+  
+ModelSetup.TrialSpecificData = {
+
+  AnyFolder& MarkerRef = Main.ModelSetup.C3DFileData.Points.Markers; 
+  
+  AutomaticFullBodyInitialPosition AutoPos = {
+      RASIS= .MarkerRef.RASI.PosInterpol(.tStart);
+      LASIS= .MarkerRef.LASI.PosInterpol(.tStart);
+      SACRUM= 0.5*(.MarkerRef.RPSI.PosInterpol(.tStart)
+                  +.MarkerRef.LPSI.PosInterpol(.tStart));
+      RKNEE = .MarkerRef.RKNE.PosInterpol(.tStart);
+      LKNEE = .MarkerRef.LKNE.PosInterpol(.tStart);
+      RANKLE = .MarkerRef.RANK.PosInterpol(.tStart);
+      LANKLE = .MarkerRef.LANK.PosInterpol(.tStart);
+      RTOE = .MarkerRef.RTOE.PosInterpol(.tStart);
+      LTOE = .MarkerRef.LTOE.PosInterpol(.tStart);
+   };
+  
+};
+
+
+};

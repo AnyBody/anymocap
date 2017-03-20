@@ -13,4 +13,4 @@
 
 #path TEMP_PATH "Output"
 
-#include "../Examples/InitialPosExample/Main.any"
+#include "../Examples/SpecialFeatures/InitialPosExample.any"
