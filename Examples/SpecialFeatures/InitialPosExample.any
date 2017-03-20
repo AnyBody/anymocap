@@ -10,16 +10,16 @@ ModelSetup.TrialSpecificData = {
   AnyFolder& MarkerRef = Main.ModelSetup.C3DFileData.Points.Markers; 
   
   AutomaticFullBodyInitialPosition AutoPos = {
-      RASIS= .MarkerRef.RASI.PosInterpol(.tStart);
-      LASIS= .MarkerRef.LASI.PosInterpol(.tStart);
-      SACRUM= 0.5*(.MarkerRef.RPSI.PosInterpol(.tStart)
-                  +.MarkerRef.LPSI.PosInterpol(.tStart));
-      RKNEE = .MarkerRef.RKNE.PosInterpol(.tStart);
-      LKNEE = .MarkerRef.LKNE.PosInterpol(.tStart);
-      RANKLE = .MarkerRef.RANK.PosInterpol(.tStart);
-      LANKLE = .MarkerRef.LANK.PosInterpol(.tStart);
-      RTOE = .MarkerRef.RTOE.PosInterpol(.tStart);
-      LTOE = .MarkerRef.LTOE.PosInterpol(.tStart);
+      RASIS= .MarkerRef.RASIS.PosInterpol(.tStart);
+      LASIS= .MarkerRef.LASIS.PosInterpol(.tStart);
+      SACRUM= 0.5*(.MarkerRef.RPSIS.PosInterpol(.tStart)
+                  +.MarkerRef.LPSIS.PosInterpol(.tStart));
+      RKNEE = .MarkerRef.RLKNE.PosInterpol(.tStart);
+      LKNEE = .MarkerRef.LLKNE.PosInterpol(.tStart);
+      RANKLE = .MarkerRef.RLMA.PosInterpol(.tStart);
+      LANKLE = .MarkerRef.LLMA.PosInterpol(.tStart);
+      RTOE = .MarkerRef.RMT2.PosInterpol(.tStart);
+      LTOE = .MarkerRef.LMT2.PosInterpol(.tStart);
    };
   
 };
