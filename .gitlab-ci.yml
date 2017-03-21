@@ -19,7 +19,7 @@ AMMR2.0_Tests:
 
   script:
     - git clone -q --depth 1 git@gitlab.com:anybody/ammr.git
-    - pytest --ff --ammr=ammr-beta Tests
+    - pytest --ff --ammr=ammr Tests
   tags:
     - ams
     - python    
