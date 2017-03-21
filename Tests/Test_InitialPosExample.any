@@ -6,11 +6,6 @@
 
 #include "libdef.any"
 
-// Test related setup.
-#ifndef TLEM_VERSION
-#define TLEM_VERSION "2.0"
-#endif
-
 #path TEMP_PATH "Output"
 
 #include "../Examples/SpecialFeatures/InitialPosExample.any"
