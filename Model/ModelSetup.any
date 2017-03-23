@@ -76,17 +76,10 @@ ModelSetup = {
 };
 
 
-// Hack to ensure that AnyMocap can also work in AMS6.0
-#if (ANYBODY_V1 >=6) & (ANYBODY_V2 >=1)
-  AnyFolder ModelSetup = {};
-  ModelSetup = 
-  {
-    AnyFolder Views = {};
-  };
-#else
-  AnyProject ModelSetup = 
-  {
-    Files.MainFile = ANYBODY_PATH_MAINFILE;
-    Autos.StartView = &Main.ModelSetup.Views.KinematicView;
-  };
-#endif
+
+AnyFolder ModelSetup = {};
+ModelSetup = 
+{
+  AnyFolder Views = {};
+};
+
