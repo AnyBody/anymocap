@@ -8,7 +8,6 @@ AnyFolder JointsAndDrivers = {
     AnyInputFile FileReader = {
         FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
         FileErrorContinueOnOff = On;
-        #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
         ReloadOnOff = On;
         SuppressWarningsOnOff = On;
         TOnOff = DesignVar(On);
@@ -29,8 +28,9 @@ AnyFolder JointsAndDrivers = {
           ,0,0
           #endif
         }'* (ONES(1,Length0));
-        #endif
+
     };
+    AnyInt Length1 = 100;
     AnyFunInterpol InterpolatedData = {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = min({4,.FileReader.Length0});
@@ -39,17 +39,13 @@ AnyFolder JointsAndDrivers = {
       // since file data saved with 15 digit and thus could have lost some precession. . 
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       // `iffun` will select the shortest of its inputs as output size.
       // If the largest array is returned it will get cropped, but data gets mangled since
       // it crops the data outer dimesion. To avoid that we transpose the input and transform 
       // it back again. 
       Data = iffun({ValidData}, .FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
+
     };
     AnyMessage AnyMocap_msg1= 
     {
@@ -90,29 +86,23 @@ AnyFolder JointsAndDrivers = {
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
   AnyKinDriver JntDriverLeftLegTD = {
-    AnyFunInterpol InterpolatedData = {
+    AnyFunInterpol InterpolatedData = 
+    {
       Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
         FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
         FileErrorContinueOnOff = On;
-        #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
         ReloadOnOff = On;
         SuppressWarningsOnOff = On;
         AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
         T0 = Main.Studies.KinematicStudy.tArray;
          Data0 =  ZEROS(.nDim, Length0 );
-        #endif
     };
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -132,24 +122,17 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
       FileErrorContinueOnOff = On;
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
        Data0 =  ZEROS(.nDim, Length0 );
-      #endif
     };
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -170,24 +153,17 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.KinematicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
        Data0 =  ZEROS(.nDim, Length0);
-      #endif
     };
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -207,24 +183,17 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
        Data0 =  ZEROS(.nDim, Length0);
-      #endif
     };
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -245,24 +214,17 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
        Data0 =  ZEROS(.nDim, Length0);
-      #endif
     };
     AnyKinMeasure &SternoClavicularProtraction=...BodyModel.Interface.Left.SternoClavicularProtraction;
     AnyKinMeasure &SternoClavicularElevation=...BodyModel.Interface.Left.SternoClavicularElevation;
@@ -286,24 +248,17 @@ AnyFolder JointsAndDrivers = {
       BsplineOrder = min({4,.FileReader.Length0});
       AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
                                  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-      #if  ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       Data = iffun({ValidData},.FileReader.Data', .FileReader.Data0')';
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
-      #else
-      Data = .FileReader.Data;
-      T = .FileReader.T;
-      #endif
     };
     AnyInputFile FileReader = {
       FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
       FileErrorContinueOnOff = On;
-      #if ANYBODY_V1 >= 6 & ANYBODY_V2 >= 1
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
       AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
       T0 = Main.Studies.KinematicStudy.tArray;
        Data0 =  ZEROS(.nDim, Length0 );
-      #endif
     };
     AnyKinMeasure &SternoClavicularProtraction=...BodyModel.Interface.Right.SternoClavicularProtraction;
     AnyKinMeasure &SternoClavicularElevation=...BodyModel.Interface.Right.SternoClavicularElevation;
