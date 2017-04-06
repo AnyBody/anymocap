@@ -6,7 +6,7 @@ AnyFolder JointsAndDrivers = {
   
   AnyKinDriver JntDriverTrunk = {
     AnyInputFile FileReader = {
-        FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+        FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
         FileErrorContinueOnOff = On;
         ReloadOnOff = On;
         SuppressWarningsOnOff = On;
@@ -96,7 +96,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-        FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+        FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
         FileErrorContinueOnOff = On;
         ReloadOnOff = On;
         SuppressWarningsOnOff = On;
@@ -126,7 +126,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+      FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
       FileErrorContinueOnOff = On;
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
@@ -157,7 +157,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+      FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
       FileErrorContinueOnOff = On;
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
@@ -187,7 +187,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+      FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
       FileErrorContinueOnOff = On;
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
@@ -218,7 +218,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
+      FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
       FileErrorContinueOnOff = On;
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
@@ -252,7 +252,7 @@ AnyFolder JointsAndDrivers = {
       T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
     };
     AnyInputFile FileReader = {
-      FileName = TEMP_PATH + "/" + MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
+      FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
       FileErrorContinueOnOff = On;
       ReloadOnOff = On;
       SuppressWarningsOnOff = On;
