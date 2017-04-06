@@ -1,0 +1,10 @@
+
+#ifndef TEMP_PATH
+#path TEMP_PATH "Output"
+#endif
+
+#ifndef ANYMOCAP_MODEL_PATH
+#path ANYMOCAP_MODEL_PATH "../../Model"
+#endif
+
+#include "<ANYMOCAP_MODEL_PATH>/AnyMocapModel.any"
