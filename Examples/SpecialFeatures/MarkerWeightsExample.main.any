@@ -11,7 +11,8 @@ Main =
 
 // The simplest way to change marker weights is to 
 // alter the WeightX/Y/Z argument for the CreateMarkerDriver
-// class. E.g.
+// class. See: #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+//E.g.
   
  ModelSetup.MocapDrivers = {
     
