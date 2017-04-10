@@ -5,6 +5,9 @@
 //ignore_errors = ['FileReader.FileName']
 
 
+#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr"
+
+
 // Test related setup.
 #ifndef TLEM_VERSION
 #define TLEM_VERSION "2.0"

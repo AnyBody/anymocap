@@ -3,7 +3,13 @@
 //  {'TLEM_VERSION':'"2.0"'}, 
 //  {'TLEM_VERSION':'"1.1"'}, 
 //]
+
+#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\new_ammr\ammr"
+
 #include "libdef.any"
+
+#include "C:\Users\mel\Documents\anyscript videomaker\CameraClassTemplate.any"
+
 
 
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait_Squat_StandingRefScaling/Trials/StandingRef_1/"
@@ -14,11 +20,51 @@
 
 #path TEMP_PATH "Output"
 
+//#define BM_LEG_MUSCLES_BOTH OFF
 
 #include "<MOCAP_PATH_MAINFILE>"
 
 Main = 
 {
+  
+Main.Studies.ParameterIdentification.KinematicStudyForParameterIdentification = {
+  AnyFolder& camera_ref = Main.VideoMaker;
+};  
+  
+  VideoLookAtCamera VideoMaker(UP_DIRECTION=z) =
+  {       
+    GifResolution = {300, 300};
+    
+    // Save images at double resolution and downscale when creating 
+    // the video. This will improve the video quality.
+    VideoInputScale = 2;
+    
+    VideoCodec = "libx264";
+    
+    VideoResolution = {768,1080};
+    
+    // The camera direction is time dependent to make a rotating camera. 
+    CameraDirection  = {-0.1,-0.8,0.3};//{cos(2*pi*Main.Study.t),0,sin(2*pi*Main.Study.t) };
+    
+    // The point in global reference which the camera looks at. 
+    CameraLookAtPoint = 0.5*(Main.EnvironmentModel.ForcePlates.Plate1.ForcePlate.ForcePlateSeg.r0+
+                             Main.EnvironmentModel.ForcePlates.Plate2.ForcePlate.ForcePlateSeg.r0)
+                             +{0, 0, 0.8};
+    
+     CameraFieldOfView = 2.4;
+     
+    // Override the default camera counter with the time step from the study.
+    // This ensures that we only save the images from the analysis. 
+    // Note: The study must include (have a reference to) this camera template.
+    //       Otherwise the counter will not update. 
+    //Counter = Main.Studies.InverseDynamicStudy.iStep;
+    
+    // The sequence of analysis to make the recording from.
+    Analysis = {
+      AnyOperation &ref = Main.RunParameterIdentification;
+    };
+  };  
+  
   AnyOperation& RunTest = Main.RunParameterIdentification;
   
 };
