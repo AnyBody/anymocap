@@ -7,5 +7,36 @@
 
 
 #path TEMP_PATH "Output"
+#path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-LowerExtremity"
+#path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
+#define MOCAP_NAME_MAINFILEDIR "Plug-in-gait-LowerExtremity"
 
-#include "../Examples/Plug-in-gait-LowerExtremity/Main.any"
+
+#ifdef TEST_NAME
+#define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
+#else
+#define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
+#endif
+
+
+// Run Analysis with a reduced number of time steps
+// to make test go faster. 
+#define N_STEP_PARAM_OPT 10
+#define N_STEP_KINEMATICS 197
+#define N_STEP 30
+
+#path TEMP_PATH "Output"
+
+#include "<MOCAP_PATH_MAINFILE>"
+
+Main = 
+{
+  AnyOperationSequence  RunTest = 
+  {
+    AnyOperation& ParameterId =  Main.RunParameterIdentification;
+    AnyOperation& RunAnalysis = Main.RunAnalysis; 
+  };
+
+  
+  
+};

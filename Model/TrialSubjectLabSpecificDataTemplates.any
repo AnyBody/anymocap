@@ -8,7 +8,7 @@
 
 
 /// This is the name of the trial c3d file without extension
-#var AnyStringVar  TrialFileName = ANYBODY_NAME_MAINFILEDIR;
+#var AnyStringVar  TrialFileName = MOCAP_NAME_MAINFILEDIR;
 
 /// The calibraiton filename (static/dynamic) from which to load the
 /// the optimized parameters.
