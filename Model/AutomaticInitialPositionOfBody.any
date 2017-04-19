@@ -1,3 +1,4 @@
+
 #class_template AutoPelvisPos(
 RASIS=RASI,
 LASIS=LASI, 
@@ -5,10 +6,11 @@ BACK=RPSI,
 C3D_OBJECT=Main.ModelSetup.C3DFileData,
 T_START = Main.ModelSetup.TrialSpecificData.tStart
 ) {
+    #var AnyVar tStart = T_START;
     // construct the position vector and rotation matrix from the values in the C3D file.
-    AnyVec3 Pelvis_RASIS = C3D_OBJECT.Points.Markers.RASIS.PosInterpol(T_START);
-    AnyVec3 Pelvis_LASIS = C3D_OBJECT.Points.Markers.LASIS.PosInterpol(T_START);
-    AnyVec3 Pelvis_Back = Main.ModelSetup.C3DFileData.Points.Markers.BACK.PosInterpol(T_START);
+    AnyVec3 Pelvis_RASIS = C3D_OBJECT.Points.Markers.RASIS.PosInterpol(tStart);
+    AnyVec3 Pelvis_LASIS = C3D_OBJECT.Points.Markers.LASIS.PosInterpol(tStart);
+    AnyVec3 Pelvis_Back = Main.ModelSetup.C3DFileData.Points.Markers.BACK.PosInterpol(tStart);
     
     AnyFolder &InitPosRef= Main.ModelSetup.TrialSpecificData.InitialPositionOfBody;
 
@@ -18,7 +20,11 @@ T_START = Main.ModelSetup.TrialSpecificData.tStart
                                     .Pelvis_Back)
                              *RotMat(-pi/2,x)
                              *RotMat(pi/2,y);
-      PelvisPos = 0.5*(.Pelvis_RASIS + .Pelvis_LASIS);
+      // In AMMR2.0 PelvisPos is the position of the Anatomical reference frame.
+      // in previous AMMRs that is not the case. 
+      PelvisPos = iffun(gteqfun(AMMR_VERSION_MAJOR, 2),
+                        0.5*(.Pelvis_RASIS + .Pelvis_LASIS), 
+                        0.5*.Pelvis_Back+0.25*.Pelvis_RASIS + 0.25*.Pelvis_LASIS);
     };
 };
 
