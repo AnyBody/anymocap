@@ -27,4 +27,10 @@ Main.ModelSetup.LabSpecificData = {
     LowerArmLengthOnOff= "On"
  ) ={};
 
+ 
+ #include "DrawBoxingGloves.any"
+ 
+ 
+ 
+ 
 };
