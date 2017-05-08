@@ -1,0 +1,47 @@
+
+AnyFunInterpol InterpolatedData = 
+{
+  Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+  BsplineOrder = min({4,.FileReader.Length0});
+  // Check if the start time is with the range of data in the file. 
+  // We need to add/substract a tiny quantity from the read data,
+  // since file data saved with 15 digit and thus could have lost some precession. . 
+  AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
+  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
+  // `iffun` will select the shortest of its inputs as output size.
+  // If the largest array is returned it will get cropped, but data gets mangled since
+  // it crops the data outer dimesion. To avoid that we transpose the input and transform 
+  // it back again. 
+  Data = iffun({ValidData}, .FileReader.Data', .FileReader.Data0')';
+  T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
+};
+
+AnyInputFile FileReader = {
+  //FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+  FileErrorContinueOnOff = On;
+  ReloadOnOff = On;
+  SuppressWarningsOnOff = On;
+  AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+  T0 = Main.Studies.KinematicStudy.tArray;
+  //Data0 = ZEROS(.nDim, Length0 )
+};
+
+#ifndef _ANYMOCAP_JOINT_ANGLE_WARNING_MSG_
+#define _ANYMOCAP_JOINT_ANGLE_WARNING_MSG_
+AnyMessage AnyMocap_msg1= 
+{
+  AnyInt nDataFileIdx = max({0,.FileReader.nDataInFile-1});
+  AnyVar maxtime =  .FileReader.T[min({nDataFileIdx, NumElemOf(.FileReader.T)})];
+  TriggerRuntime = andfun(.InterpolatedData.ValidData,
+                          andfun(....iStep, gtfun(....t,  maxtime ))); 
+  Type = MSG_Error;
+  Message = DesignVar(strformat("\nNo kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s.\n " + 
+  "Please re-run the complete kinematic analysis to recompute all joint angles and data."));
+};
+AnyMessage AnyMocap_msg2= 
+{                                          
+  TriggerRuntime = andfun(....iStep, not(.InterpolatedData.ValidData)); 
+  Type = MSG_Error;
+  Message = DesignVar(strformat("\nNo valid kinematic joint angle data available.\nPlease run the Kinematic analysis first"));
+};
+#endif
