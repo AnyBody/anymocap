@@ -13,7 +13,7 @@ Main.ModelSetup.LabSpecificData = {
  // instead of pelvis which is normally default. 
  #define MOCAP_HUMAN_GROUND_RESIDUALS "Trunk"
  
- Gravity = -9.81*{0,1,0};
+ Gravity = -9.81*{0,0,1};
  
   // This adds different segment length as design variables to 
   // to the parameter identification study (Main.Studies.ParameterIdentification)
