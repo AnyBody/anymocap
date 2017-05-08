@@ -27,8 +27,8 @@
  #define _LHEE
  #define _LMT5
  
-// #define _RSHO
-// #define _LSHO
+ #define _RSHO
+ #define _LSHO
 // #define _RUPA
 // #define _LUPA
 // #define _RELB
@@ -46,13 +46,13 @@
 // The pelvis anatomical frame is redefined 
 // in AMMR > 1.6, thus we handle that here.
 #if AMMR_VERSION_MAJOR >= 2
-  #define RASIS_POS {0.015,-0.00, 0.125}
-  #define LASIS_POS {0.015,-0.00, -0.125}
+  #define RASIS_POS {0.025,-0.00, 0.125}
+  #define LASIS_POS {0.025,-0.00, -0.125}
   #define RPSIS_POS {-0.14,0.02, 0.04}
   #define LPSIS_POS {-0.14,0.02, -0.04}
 #else
-  #define RASIS_POS {0.13,-0.03, 0.125}
-  #define LASIS_POS {0.13,-0.03, -0.125}
+  #define RASIS_POS {0.14,-0.03, 0.125}
+  #define LASIS_POS {0.14,-0.03, -0.125}
   #define RPSIS_POS {-0.035,0, 0.04}
   #define LPSIS_POS {-0.035,0, -0.04}
   
@@ -201,7 +201,7 @@ MarkerName= C7,
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
 PlaceMarkerAt = T1C7JntNode
 ) = {
-  sRelOpt = {-0.06,0,0};
+  sRelOpt = {-0.05,0,0};
 };
 #endif
 
@@ -382,9 +382,10 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
 CreateMarkerDriver RSHO (
 MarkerName= RSHO,  
 MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off"
+OptX="On",OptY="Off",OptZ="Off",
+UseC3DWeightResiduals  = "On"
 ) = {
-  sRelOpt = {0.00,0.00,0.015};
+  sRelOpt = {0.00,0.00,-0.015};
 };
 #endif
 
@@ -393,9 +394,10 @@ OptX="On",OptY="Off",OptZ="Off"
 CreateMarkerDriver LSHO (
 MarkerName= LSHO,  
 MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off"
+OptX="On",OptY="Off",OptZ="Off",
+UseC3DWeightResiduals  = "On"
 ) = {
-  sRelOpt = {0.00,-0.00,0.015};
+  sRelOpt = {0.00,-0.00,-0.015};
 };
 #endif
 
