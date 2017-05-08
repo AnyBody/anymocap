@@ -9,6 +9,8 @@ Main.ModelSetup.LabSpecificData = {
  
  #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
  
+ // This changes the Human-Ground residuals (hand of god) to be from trunk 
+ // instead of pelvis which is normally default. 
  #define MOCAP_HUMAN_GROUND_RESIDUALS "Trunk"
  
  Gravity = -9.81*{0,1,0};
