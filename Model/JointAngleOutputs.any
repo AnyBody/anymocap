@@ -28,7 +28,7 @@ AnyFolder JointAngleOutputs = {
   }';
  
   AnyOutputFile OutputFile1 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
     SepSign = " ";
     
     AnyVector PelvisPosX = ..BodyModel.Interface.Trunk.PelvisPosX.Pos;
@@ -63,7 +63,7 @@ AnyFolder JointAngleOutputs = {
   }';
 
   AnyOutputFile OutputFile2 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Left.HipFlexion.Pos;
@@ -90,7 +90,7 @@ AnyFolder JointAngleOutputs = {
   }';
   
   AnyOutputFile OutputFile3 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Right.HipFlexion.Pos;
@@ -119,7 +119,7 @@ AnyFolder JointAngleOutputs = {
   }';
   
   AnyOutputFile OutputFile4 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Left.HipFlexion.Pos;
@@ -145,7 +145,7 @@ AnyFolder JointAngleOutputs = {
   }';
 
   AnyOutputFile OutputFile5 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
     SepSign = " ";
     
     AnyVector HipFlexion = ..BodyModel.Interface.Right.HipFlexion.Pos;
@@ -176,7 +176,7 @@ AnyFolder JointAngleOutputs = {
   }';
 
   AnyOutputFile OutputFile6 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
     SepSign = " ";
    
     AnyVector SternoClavicularProtraction=..BodyModel.Interface.Left.SternoClavicularProtraction.Pos;
@@ -209,7 +209,7 @@ AnyFolder JointAngleOutputs = {
   }';
   
   AnyOutputFile OutputFile7 = {
-    FileName = TEMP_PATH+"/"+ MOCAP_JOINT_ANGLE_FILE_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
+    FileName = TEMP_PATH+"/"+ MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
     SepSign = " ";
     
     AnyVector SternoClavicularProtraction=..BodyModel.Interface.Right.SternoClavicularProtraction.Pos;
