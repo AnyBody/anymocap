@@ -24,3 +24,35 @@ Main.ModelSetup.SubjectSpecificData =
    };
 
 };
+
+
+// This sets the arm positions for all trials
+Main.ModelSetup.TrialSpecificData.InitialPositionOfBody = 
+{
+    Left = 
+    {
+      GlenohumeralFlexion = 30;
+      GlenohumeralAbduction = 0;
+      GlenohumeralExternalRotation = -65;
+      ElbowFlexion = 120;
+      ElbowPronation = 0;
+      WristFlexion = 0;
+      WristAbduction = 0;
+      
+    };
+    
+    Right = 
+    {
+      GlenohumeralFlexion = 30;
+      GlenohumeralAbduction = 0;
+      GlenohumeralExternalRotation = -70;
+      ElbowFlexion = 120;
+      ElbowPronation = 0;
+      WristFlexion = 0;
+      WristAbduction = 0;
+      
+      
+    };
+
+
+};
