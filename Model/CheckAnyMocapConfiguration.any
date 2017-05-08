@@ -28,8 +28,8 @@
 Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
-#ifndef MOCAP_EXTRA_DRIVERS_FILE 
-#path MOCAP_EXTRA_DRIVERS_FILE "ExampleFiles/ExtraDrivers_PlugInGait.any"
+#ifndef MOCAP_HUMAN_GROUND_RESIDUALS
+#define MOCAP_HUMAN_GROUND_RESIDUALS "Pelvis"
 #endif
 
 #ifndef MOCAP_FORCE_PLATE_FILE 

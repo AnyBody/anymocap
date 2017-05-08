@@ -1,8 +1,29 @@
 #include "helper_macros.any"
 
+
+  // Dynamic balance residuals between the human and ground segments. 
+  // This is also sometimes refered to as the 'Hand of God' in some biomechanical 
+  // text books.
+  AnyReacForce HumanGroundResiduals = 
+  {
+    #if MOCAP_HUMAN_GROUND_RESIDUALS == "Pelvis"
+    AnyKinMeasure &PelvisPosX = ..BodyModel.Interface.Trunk.PelvisPosX;
+    AnyKinMeasure &PelvisPosY = ..BodyModel.Interface.Trunk.PelvisPosY;
+    AnyKinMeasure &PelvisPosZ = ..BodyModel.Interface.Trunk.PelvisPosZ;
+    AnyKinMeasure &PelvisRotX = ..BodyModel.Interface.Trunk.PelvisRotX;
+    AnyKinMeasure &PelvisRotY = ..BodyModel.Interface.Trunk.PelvisRotY;
+    AnyKinMeasure &PelvisRotZ = ..BodyModel.Interface.Trunk.PelvisRotZ;
+    #endif
+    
+    #if MOCAP_HUMAN_GROUND_RESIDUALS == "Trunk"
+    AnyKinLinear Lin = { Ref = 0; AnyRefFrame& ref = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg; };
+    AnyKinRotational Rot = { Type = RotAxesAngles; AnyRefFrame& ref = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg; };
+    #endif
+    
+  };
+
 AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
-  // Macro for initializing a empty mxn matrix
   
   AnyKinDriver JntDriverTrunk = {
     
@@ -34,12 +55,12 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
     #ifdef _OLD_NECK_INTERFACE_
     AnyKinMeasure& NeckJoint = ...BodyModel.Interface.Trunk.NeckJoint;
-    Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off};
+    Reaction.Type={Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};
     #else
     AnyKinMeasure& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasure& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
     AnyKinMeasure& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation; 
-    Reaction.Type={On,On,On,On,On,On,Off,Off,Off,Off,Off,Off};
+    Reaction.Type= {Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};    
     #endif
   };
   
