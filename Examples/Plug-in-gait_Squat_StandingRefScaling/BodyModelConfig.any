@@ -5,16 +5,17 @@
 // ----------------------------------------------------------
 Main = {
 
-  #define BM_TRUNK_NECK ON
+  #define BM_TRUNK_NECK OFF
   #define BM_TRUNK_NECK_MUSCLES OFF
   #define BM_SCALING CONST_SCALING_LENGTHMASSFAT 
   #path BM_MANNEQUIN_FILE "<ANYMOCAP_MODEL_PATH>/Mannequin.any" 
   #path BM_SCALING_ANTHRO_FILE "<ANYMOCAP_MODEL_PATH>/AnyMan.any"
   #define BM_MANNEQUIN_DRIVER_DEFAULT OFF
   
-  #define BM_TRUNK_MUSCLES OFF
-  #define BM_ARM_RIGHT OFF
-  #define BM_ARM_LEFT OFF
+  #define BM_TRUNK_MUSCLES ON
+  #define BM_ARM_RIGHT ON
+  #define BM_ARM_LEFT ON
+  #define BM_ARM_MUSCLES_BOTH OFF
 
 
 };
