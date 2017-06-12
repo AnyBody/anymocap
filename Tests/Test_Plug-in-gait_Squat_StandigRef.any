@@ -1,0 +1,24 @@
+//# Defintions for the python test framwork 
+//define = [
+//  {'TLEM_VERSION':'"2.0"'}, 
+//  {'TLEM_VERSION':'"1.1"'}, 
+//]
+#include "libdef.any"
+
+
+#path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait_Squat_StandingRefScaling/Trials/StandingRef_1/"
+#path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
+#define MOCAP_NAME_MAINFILEDIR "StandingRef_1"
+
+#define MOCAP_TEST_FILENAME_PREFIX "StandigRef_TEST_"
+
+#path TEMP_PATH "Output"
+
+
+#include "<MOCAP_PATH_MAINFILE>"
+
+Main = 
+{
+  AnyOperation& RunTest = Main.RunParameterIdentification;
+  
+};
