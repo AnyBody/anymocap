@@ -1,0 +1,272 @@
+// EXAMPLE of MarkerProcol file for the plug-in-gait protocol. 
+
+ #define _HEAD
+ #define _HEAD_R
+ #define _HEAD_L
+ #define _SACR
+ #define _RHJC
+ #define _LHJC
+ #define _T1C7Jnt
+ #define _SPINE
+ #define _L4
+ #define _CHEST
+ #define _RSJC
+ #define _REJC
+ #define _RALE
+ #define _RWRB
+ #define _RWJC
+ #define _RHT1
+ #define _RHT2
+ #define _LSJC
+ #define _LEJC
+ #define _LALE
+ #define _LWRB
+ #define _LWJC
+ #define _LHT1
+ #define _LHT2
+ #define _RKJC
+ #define _RKNE
+ #define _RAJC
+ #define _RTOE
+ #define _RTOE2
+ #define _LKJC
+ #define _LKNE
+ #define _LAJC
+ #define _LTOE
+ #define _LTOE2
+
+// The pelvis anatomical frame is redefined 
+// in AMMR > 1.6, thus we handle that here.
+#if AMMR_VERSION_MAJOR >= 2
+  #define RASIS_POS {0.025,-0.00, 0.125}
+  #define LASIS_POS {0.025,-0.00, -0.125}
+  #define RPSIS_POS {-0.14,0.02, 0.04}
+  #define LPSIS_POS {-0.14,0.02, -0.04}
+#else
+  #define RASIS_POS {0.14,-0.03, 0.125}
+  #define LASIS_POS {0.14,-0.03, -0.125}
+  #define RPSIS_POS {-0.035,0, 0.04}
+  #define LPSIS_POS {-0.035,0, -0.04}
+  
+  #if BM_TRUNK_NECK == OFF
+    Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg = 
+    {
+       AnyRefNode T1C7JntNode = {sRel = {0.01, 0.465, 0};};
+    };
+  #endif
+#endif
+
+#ifdef _HEAD
+CreateMarkerDriverBVH  HEAD(
+MarkerName = HEAD,
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=0.1,WeightZ=1.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off") = 
+{
+  sRelOpt =  {0.05, 0.14, 0};
+  sRelOnBVH = {0.0,0,0};
+};
+#endif
+
+#ifdef _HEAD_R
+CreateMarkerDriverBVH  HEAD_R(
+MarkerName = HEAD_R,
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=0.1,WeightZ=1.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off",
+FrameTime=Main.ModelSetup.C3DFileData.BVHFileData.Header.FrameTime
+) = 
+{
+  sRelOpt =  {0.05, 0.14, 0.1};
+  sRelOnBVH = {-0.1,0,0};
+};
+#endif
+
+#ifdef _HEAD_L
+CreateMarkerDriverBVH  HEAD_L(
+MarkerName = HEAD_L,
+MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=0.1,WeightZ=1.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0.05, 0.14, -0.1};
+  sRelOnBVH = {0.1,0,0};
+};
+#endif
+
+#ifdef _SACR
+CreateMarkerDriverBVH SACR( 
+MarkerName= SACR,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+MarkerPlacementBVH=Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Seg,
+OptX="Off", OptY="Off", OptZ="On",
+WeightX=10,WeightY=10,WeightZ=10,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = {
+  sRelOpt ={0.0, 0.0, 0.0};
+  sRelOnBVH = Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Seg.Chest.sRel;
+};
+#endif
+
+#ifdef _RHJC
+CreateMarkerDriverBVH RHJC(
+MarkerName = RHJC,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+PlaceMarkerAt=Right.HipJoint,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.RightHip.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0, 
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt = {0, 0, 0};
+  sRelOnBVH = {0, 0, 0};
+};
+#endif
+
+#ifdef _LHJC
+CreateMarkerDriverBVH LHJC(
+MarkerName = LHJC,
+MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
+PlaceMarkerAt=Left.HipJoint,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.LeftHip.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=10.0,WeightY=10.0,WeightZ=10.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt = {0, 0, 0};
+  sRelOnBVH = {0, 0, 0};
+};
+#endif
+
+#ifdef _T1C7Jnt
+CreateMarkerDriverBVH T1C7Jnt(
+MarkerName = T1C7Jnt,
+MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
+PlaceMarkerAt=T1C7JntNode,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=2.0,WeightY=0.1,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0, 0, 0};
+  sRelOnBVH = {0, 0, 0 };
+};
+#endif
+
+#ifdef _SPINE
+CreateMarkerDriverBVH SPINE(
+MarkerName = SPINE,
+MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
+PlaceMarkerAt=T1C7JntNode,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=2.0,WeightY=2,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="On"
+) = 
+{
+  sRelOpt =  {-0.03,-0.13,0};
+  sRelOnBVH = {0, 0, 0 };
+};
+#endif
+
+#ifdef _L4
+CreateMarkerDriverBVH L4( 
+MarkerName= L4,
+MarkerPlacement=Trunk.SegmentsLumbar.L4Seg,
+PlaceMarkerAt = L3L4JntNode,
+MarkerPlacementBVH=Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Seg.Chest2,
+OptX="Off", OptY="Off", OptZ="On",
+WeightX=2.0,WeightY=0,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = {
+  sRelOpt ={0.0, 0.0, 0.0};
+  sRelOnBVH = {0,0,0};
+};
+#endif
+
+#ifdef _CHEST
+CreateMarkerDriverBVH CHEST(
+MarkerName = CHEST,
+MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
+PlaceMarkerAt=ij,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=2,WeightY=0.01,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0.1, 0.0 ,0.0};
+  sRelOnBVH = {0,0,0.2}+{0,Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Seg.RightCollar.sRel[1],0};
+};
+#endif
+
+#ifdef _RSJC
+CreateMarkerDriverBVH RSJC(
+MarkerName = RSJC,
+MarkerPlacement= Right.ShoulderArm.Seg.Scapula,
+PlaceMarkerAt =gh,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=1.0,WeightY=2.0,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0, 0, 0};
+  sRelOnBVH = {0, 0, 0 };
+}; 
+#endif
+
+#ifdef _REJC
+CreateMarkerDriverBVH REJC(
+MarkerName = REJC,
+MarkerPlacement= Right.ShoulderArm.Seg.Humerus,
+PlaceMarkerAt=fe,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.RightElbow.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=2.0,WeightY=2,WeightZ=2.0,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0, 0, 0};
+  sRelOnBVH = {0, 0, 0};
+}; 
+#endif
+
+#ifdef _RALE
+CreateMarkerDriverBVH RALE(
+MarkerName = RALE,
+MarkerPlacement= Right.ShoulderArm.Seg.Humerus,
+PlaceMarkerAt=REJC,
+MarkerPlacementBVH= Main.ModelSetup.C3DFileData.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.Seg,
+OptX="Off",OptY="Off",OptZ="Off",  
+WeightX=0,WeightY=0,WeightZ=2,
+FilterCutOffFrequency = 3.0,
+ScaleMarkerPosOnOff ="Off"
+) = 
+{
+  sRelOpt =  {0.1, 0, 0};
+  sRelOnBVH = {Main.ModelSetup.C3DFileData.BVHFileData.Data.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.RightElbow.OFFSET[0]*Main.ModelSetup.C3DFileData.BVHFileData.TranslationScale, 0.1, 0};
+}; 
+#endif

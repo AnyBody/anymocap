@@ -7,7 +7,9 @@ AnyFolder Mannequin = {
     AnyVar PelvisPosY = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1];
     AnyVar PelvisPosZ = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2];
     
-    #define PelvisRotMat
+    #ifndef PelvisRotMat
+      #define PelvisRotMat
+    #endif
     AnyMat33 PelvisRotMatrix = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix;
     
     // Pelvis rotation are needed for default mannequin drivers to work. They are there 

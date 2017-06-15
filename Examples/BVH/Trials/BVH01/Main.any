@@ -1,0 +1,74 @@
+// ***************************** AnyMoCap ***********************************
+
+// Enter and edit Lab-Specific Data in this file:
+#path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData.any"
+
+
+// Enter and edit Subject-Spcific Data in this file:
+#path MOCAP_SUBJECT_SPECIFIC_DATA "../SubjectSpecificData.any"
+
+
+// Enter and edit Trial Specific Data in this file:
+#path MOCAP_TRIAL_SPECIFIC_DATA "TrialSpecificData.any"
+
+// Include the AnyMoCap Framwork
+#include "../../AnyMoCap.libdef.any"
+
+Main =
+{
+  Studies =
+  {
+    AnyBodyStudy BVH_CreateMarkerTrajectoriesStudy = 
+    {  
+      #include "<BM_MANNEQUIN_FILE>"  
+      
+      AnyFolder MarkerOutput ={};
+      
+      AnyFolder &BVHData=..ModelSetup.C3DFileData.BVHFileData ;
+      
+      //Environment around the human
+      AnyFolder& EnvironmentModel =  ..EnvironmentModel;
+      
+      
+      Gravity = ..ModelSetup.LabSpecificData.Gravity;      
+      nStep   = ..ModelSetup.TrialSpecificData.nStep;
+      
+      tStart = ..ModelSetup.TrialSpecificData.tStart + 2*Kinematics.ApproxVelAccPerturb;
+      tEnd   = ..ModelSetup.TrialSpecificData.tEnd   - 2*Kinematics.ApproxVelAccPerturb;
+      
+      AnyIntVar FirstFrame = ..ModelSetup.TrialSpecificData.FirstFrame ;
+      AnyIntVar LastFrame  = ..ModelSetup.TrialSpecificData.LastFrame  ;
+    };    
+    
+    //Dummy study used for transfer of values
+    AnyKinStudy BVH_CallOutputFunStudy = 
+    {
+      nStep = 1;
+      Gravity = {0.0, -9.81, 0.0};  
+    };      
+    
+    //Setvalue operations
+    AnyOperationSequence BVH_SetValueOperations = 
+    {
+      AnyOperation& update_outputfuns = .BVH_CallOutputFunStudy.InitialConditions;
+      AnyOperationSetValue copy = {
+        Source = ObjSearch("..BVH_CallOutputFunStudy.*Val_*");
+        //Target = ObjSearch("Main.ModelSetup.*.InterpolFun.val_*");
+        Target = ObjSearch("Main.ModelSetup.C3DFileData.Points.Markers.*.FromBVH.val_*");
+      };
+    };     
+    
+    AnyOperationMacro BVH_CopyAndUpdateValuesSequence =   
+    {  
+      MacroStr =
+      ({
+        "operation Main.Studies.BVH_SetValueOperations",
+        "run",
+        "classoperation Main" + strformat("\x22")+ "Update Values" + strformat("\x22")
+      });  
+    };
+
+  };
+};
+
+

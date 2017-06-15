@@ -5,6 +5,7 @@
  #include "JointsLimits_template.any"
 
  #include "CreateMarkerDriverClass.any"
+ #include "CreateMarkerClass_BVH_AMMR_VirtualMarkers.any"
  #include "CreateConstraintClass.any"
  #include "RotationAxisAngles.any"
  #include "OptimizeAnthropometricsOnOff.any"

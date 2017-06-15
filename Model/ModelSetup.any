@@ -25,6 +25,7 @@ ModelSetup = {
     #include "<BODY_MODEL_CONFIG_FILE>"
  };
  
+ #if MOCAP_INPUT_DATA_TYPE == "C3D"
  // This is the C3D file used for the analysis
  AnyInputC3D C3DFileData =  {};
  #include "<MOCAP_C3DSETTINGS>"
@@ -36,7 +37,25 @@ ModelSetup = {
  AnyFolder MocapDrivers = {
    #include "<MOCAP_MARKER_PROTOCOL_FILE>"
  };
+ #endif
  
+ #if MOCAP_INPUT_DATA_TYPE == "BVH"
+ AnyFolder C3DFileData = {};
+ C3DFileData = 
+ {
+   #include "<MOCAP_BVHSETTINGS>"
+ };
+ AnyFolder MocapExtraDrivers = 
+ {
+   
+ };
+ 
+ AnyFolder MocapDrivers = 
+ {
+   #include "<MOCAP_MARKER_PROTOCOL_FILE>"
+ };
+ 
+ #endif
  
  // Study for saving a loading the parameters from calibration trials 
  //(dynamic or standing refereces)
