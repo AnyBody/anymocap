@@ -22,12 +22,12 @@ Main.ModelSetup.LabSpecificData = {
   // to the parameter identification study (Main.Studies.ParameterIdentification)
   // This allows the segment length to be optimized in based on the markers/motion
   OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
-    PelvisWidthOnOff = "On" , 
-    ThighLengthOnOff= "On", 
-    ShankLengthOnOff= "On", 
-    FootLengthOnOff= "On", 
+    PelvisWidthOnOff = "Off" , 
+    ThighLengthOnOff= "Off", 
+    ShankLengthOnOff= "Off", 
+    FootLengthOnOff= "Off", 
     HeadHeightOnOff= "Off", 
-    TrunkHeightOnOff= "On", 
+    TrunkHeightOnOff= "Off", 
     UpperArmLengthOnOff= "Off",
     LowerArmLengthOnOff= "Off"
  ) ={};

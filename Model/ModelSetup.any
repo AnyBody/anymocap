@@ -41,13 +41,11 @@ ModelSetup = {
  
  #if MOCAP_INPUT_DATA_TYPE == "BVH"
  AnyFolder C3DFileData = {};
- C3DFileData = 
- {
-   #include "<MOCAP_BVHSETTINGS>"
- };
+ #include "<MOCAP_BVHSETTINGS>"
+ 
  AnyFolder MocapExtraDrivers = 
  {
-   
+   #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
  };
  
  AnyFolder MocapDrivers = 

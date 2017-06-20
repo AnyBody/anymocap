@@ -28,10 +28,10 @@ FilterCutOffFrequency = 0,
 FilterOrder = 2,
 PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification,
 C3D_OBJECT = Main.ModelSetup.C3DFileData,
-BVH_OBJECT = Main.ModelSetup.C3DFileData.BVHFileData,
+BVH_OBJECT = Main.ModelSetup.BVHFileData,
 BODY_MODEL_FOLDER = Main.HumanModel.BodyModel,
 PlaceMarkerAt = AnatomicalFrame,
-FrameTime = Main.ModelSetup.C3DFileData.BVHFileData.Header.FrameTime)
+FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
 {
   
   #var AnyVar ConstMarkerWeightX = WeightX;
@@ -190,17 +190,23 @@ FrameTime = Main.ModelSetup.C3DFileData.BVHFileData.Header.FrameTime)
     WeightFun={.MarkerWeightsPtr};
   }; 
   
-//  AnyFunInterpol InterpolFun =
-//  {
-//    Type=Bspline;  
-//    AnyVector val_X =DesignVar(iarr(0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep-1)*0);
-//    AnyVector val_Y =DesignVar(iarr(0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep-1)*0);
-//    AnyVector val_Z =DesignVar(iarr(0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep-1)*0);
-//    AnyVector val_T=DesignVar(iarr(0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep-1));
-//    Data= DesignVar({val_X,val_Y,val_Z});
-//    T= DesignVar(val_T)  ;
-//  };
-  
+  //-->Test
+  AnyFolder Test_Visual = 
+  {
+    AnyFunInterpol UnfilteredPosInterpol = 
+    {
+      Type = PiecewiseLinear ;
+      T = C3D_OBJECT.Points.Markers.MarkerName.FromBVH.val_T ;
+      Data = C3D_OBJECT.Points.Markers.MarkerName.FromBVH.Data ;
+    };
+    AnyDrawSphere UnfilteredTest ={
+      RGB={1,0,1};
+      ScaleXYZ={1,1,1}*0.01;
+      Position = .UnfilteredPosInterpol(..Driver.t);
+    };        
+  };
+  //<--Test
+    
   C3D_OBJECT.Points.Markers = 
   {
     AnyFolder MarkerName = 
@@ -244,17 +250,28 @@ FrameTime = Main.ModelSetup.C3DFileData.BVHFileData.Header.FrameTime)
   };  
   
   //Create the marker on the BVH stick figure
+  
   AnyFolder &MarkerInsertionNodeBVH = MarkerPlacementBVH;
-  MarkerInsertionNodeBVH = {
-    AnyRefNode MarkerName = {
+  MarkerInsertionNodeBVH = 
+  {
+    AnyRefNode MarkerName = 
+    {
       sRel = ..sRelOnBVH;
-      AnyDrawNode drw_node = {
+      //sRel = Main.ModelSetup.MocapDrivers.MarkerName.sRelOnBVH ;
+      AnyDrawNode drw_node = 
+      {
         RGB = {0, 1, 0};
         ScaleXYZ = 0.01*{1, 1, 1};        
       };
     };
-  };// InsertionNode
+  };//
   
+//  AnyObjectPtrVar pObjBVHSeg = &MarkerInsertionNodeBVH ;
+//  AnyString strBVHSeg = CompleteNameOf(pObjBVHSeg); 
+//  AnyMechObjectExcluder ExtraExcluder = 
+//  {
+//    Objects = ObjSearchRecursive(.strBVHSeg, "*","AnyMechObject");
+//  };
   
   //Create a measure to from global to the marker on stick figure 
   Main.Studies.BVH_CreateMarkerTrajectoriesStudy.MarkerOutput =
@@ -280,8 +297,6 @@ FrameTime = Main.ModelSetup.C3DFileData.BVHFileData.Header.FrameTime)
     AnyVector MarkerName##_Val_Z = iffun(eqfun(SizesOf(Main.Studies.BVH_CreateMarkerTrajectoriesStudy.MarkerOutput.MarkerName.Output_Z())[0],1),0*farr(0.0,1.0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep),Main.Studies.BVH_CreateMarkerTrajectoriesStudy.MarkerOutput.MarkerName.Output_Z());
     AnyVector MarkerName##_Val_T = iffun(eqfun(SizesOf(Main.Studies.BVH_CreateMarkerTrajectoriesStudy.MarkerOutput.MarkerName.Output_T())[0],1),0*farr(0.0,1.0,Main.Studies.BVH_CreateMarkerTrajectoriesStudy.nStep),Main.Studies.BVH_CreateMarkerTrajectoriesStudy.MarkerOutput.MarkerName.Output_T());
   };
-  
 
-  
 }; 
 
