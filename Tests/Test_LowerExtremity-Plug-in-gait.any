@@ -14,7 +14,6 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
-#define TLEM_VERSION "1.1"
 #endif
 
 
@@ -23,6 +22,10 @@
 #define N_STEP_PARAM_OPT 10
 #define N_STEP_KINEMATICS 197
 #define N_STEP 30
+
+#include "libdef.any"
+
+
 
 #include "<MOCAP_PATH_MAINFILE>"
 
