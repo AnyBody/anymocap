@@ -57,7 +57,7 @@ Main.HumanModel= {
    /// has the same structure as AMMR version >=1.7.0
    /// 
    /// It just links to the AnyMan file included under 
-   /// HumanModel.Scaling.Scaling where the AnyMan file was previously
+   /// HumanModel.Scaling.Scaling to where the AnyMan file was previously
    /// located
    AnyFolder AnthroDataSubject = {
     

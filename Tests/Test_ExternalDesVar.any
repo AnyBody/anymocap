@@ -4,6 +4,8 @@
 //]
 //ignore_errors = ['FileReader.FileName']
 
+#path MOCAP_PATH_MAINFILEDIR "../Examples/SpecialFeatures/"
+#define MOCAP_NAME_MAINFILEDIR "SpecialFeatures"
 
 #include "libdef.any"
 

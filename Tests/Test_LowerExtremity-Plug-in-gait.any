@@ -3,8 +3,6 @@
 //  {'TLEM_VERSION':'"2.0"'}, 
 //  {'TLEM_VERSION':'"1.1"'}, 
 //]
-#include "libdef.any"
-
 
 #path TEMP_PATH "Output"
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-LowerExtremity"
@@ -16,6 +14,7 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
+#define TLEM_VERSION "1.1"
 #endif
 
 
@@ -24,8 +23,6 @@
 #define N_STEP_PARAM_OPT 10
 #define N_STEP_KINEMATICS 197
 #define N_STEP 30
-
-#path TEMP_PATH "Output"
 
 #include "<MOCAP_PATH_MAINFILE>"
 
