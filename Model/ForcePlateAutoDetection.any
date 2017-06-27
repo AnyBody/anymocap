@@ -89,7 +89,7 @@
   
   AnyFixedRefFrame Corners ={
     AnyVar CoordinateSystemSize= 0.1;
-    #var AnyMatrix Data = C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data;
+    #var AnyFloat Data = C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data;
     #var AnyInt plate_idx=PLATE_NO-1;
     AnyRefNode c01={
       #var AnyInt i=0;
