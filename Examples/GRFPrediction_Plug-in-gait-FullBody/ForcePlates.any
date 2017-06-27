@@ -1,28 +1,62 @@
-Main.EnvironmentModel.ForcePlates = 
+Main.EnvironmentModel = 
 {
-
-  ForcePlateAutoDetection Plate1(
-    PLATE_NO=1,
-    HeightTolerance = 0.07,
-    VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 4
-    )
-  ={ };
   
-  ForcePlateAutoDetection Plate2(
-    PLATE_NO=2,
-    HeightTolerance = 0.07,
-    VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 4
-)
-  ={ };
   
-  ForcePlateAutoDetection Plate3 (
-    PLATE_NO=3,
-    HeightTolerance = 0.07,
-    VelThreshold = 2.2,
-    FORCEPLATE_TYPE = 4
-)
-  ={ };
-
+  //-------- Predictive forceplate for the right leg (see documentation to learn more: https://github.com/AnyBody/GRF-prediction) ----------------
+  FootPlateConditionalContact GRF_Prediction_Right(
+  NORMAL_DIRECTION = "Y",
+  NUMBER_OF_NODES = 25,
+  NODES_FOLDER = FootNodes,
+  PLATE_BASE_FRAME = Main.EnvironmentModel.GlobalRef) =
+  {
+    CreateFootContactNodes25 FootNodes(foot_ref = 
+    Main.HumanModel.BodyModel.Right.Leg.Seg.Foot) = {};
+    
+    // Additional force plate settings
+    Settings = 
+    {
+      Radius = 8; // Circular force plate of radius 8m, covers entire MoCap lab area                     
+      LimitDistHigh = 0.015; // Vertical height
+    };
+  };
+  
+  
+  
+  
+  
+  
+  
+  //-------- Predictive forceplate for the left leg (see documentation to learn more: https://github.com/AnyBody/GRF-prediction) ----------------
+  FootPlateConditionalContact GRF_Prediction_Left(
+  NORMAL_DIRECTION = "Y",
+  NUMBER_OF_NODES = 25,
+  NODES_FOLDER = FootNodes,
+  PLATE_BASE_FRAME = Main.EnvironmentModel.GlobalRef) =
+  {
+    CreateFootContactNodes25 FootNodes(foot_ref = 
+    Main.HumanModel.BodyModel.Left.Leg.Seg.Foot) = {};
+    
+    Settings = 
+    {
+      Radius = 8;  
+      LimitDistHigh = 0.015;
+    };
+  };
+  
+  
+  
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+

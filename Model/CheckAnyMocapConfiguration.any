@@ -28,9 +28,30 @@
 Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
-#ifndef MOCAP_HUMAN_GROUND_RESIDUALS
-#define MOCAP_HUMAN_GROUND_RESIDUALS "Pelvis"
+
+#ifndef USE_GRF_PREDICTION
+  #define USE_GRF_PREDICTION OFF
 #endif
+
+
+#ifndef MOCAP_HUMAN_GROUND_RESIDUALS
+ #if (USE_GRF_PREDICTION == ON)
+   #define MOCAP_HUMAN_GROUND_RESIDUALS "PelvisWeak"
+ #else
+   #define MOCAP_HUMAN_GROUND_RESIDUALS "Pelvis"
+ #endif
+#endif
+
+
+#if (USE_GRF_PREDICTION == ON) & (MOCAP_HUMAN_GROUND_RESIDUALS != "PelvisWeak")
+AnyMessage AnyMocap_msg1= 
+{
+  TriggerPreProcess  = 1; 
+  Type = MSG_Error;
+  Message = strformat("Do NOT manually define value for MOCAP_HUMAN_GROUND_RESIDUALS when using GRF prediction");
+};
+#endif
+
 
 #ifndef MOCAP_FORCE_PLATE_FILE 
 #path MOCAP_FORCE_PLATE_FILE "ExampleFiles/ForcePlates_Type2.any"

@@ -1,7 +1,3 @@
-Main.Studies.InverseDynamicStudy = {
-    MechObjectExclude = ObjSearch("ModelEnvironmentConnection.JointsAndDrivers.JntDriverTrunk.Reaction" );
-};  
-
 AnyFolder Residuals = {
   
   AnyFolder &Segment = ..BodyModel.Trunk.SegmentsLumbar.PelvisSeg;

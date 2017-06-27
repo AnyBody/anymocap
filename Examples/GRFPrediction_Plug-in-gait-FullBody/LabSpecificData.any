@@ -1,5 +1,8 @@
 Main.ModelSetup.LabSpecificData = {
-
+  
+ //------------- Set this to "ON" when GRF prediction is desired --------------------------------- 
+ #define USE_GRF_PREDICTION ON
+ 
  #path BODY_MODEL_CONFIG_FILE "BodyModelConfig.any"
  
  #path MOCAP_MARKER_PROTOCOL_FILE "MarkerProtocol.any"

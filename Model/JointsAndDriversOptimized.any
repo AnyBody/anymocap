@@ -1,5 +1,11 @@
 #include "helper_macros.any"
 
+  #if MOCAP_HUMAN_GROUND_RESIDUALS == "PelvisWeak" 
+    #include "GRFPrediction/WeakResiduals.any"     
+  #endif
+    
+
+
 
   // Dynamic balance residuals between the human and ground segments. 
   // This is also sometimes refered to as the 'Hand of God' in some biomechanical 
@@ -20,7 +26,15 @@
     AnyKinRotational Rot = { Type = RotAxesAngles; AnyRefFrame& ref = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg; };
     #endif
     
+    #if MOCAP_HUMAN_GROUND_RESIDUALS == "PelvisWeak" 
+    AnyKinLinear dummy_measure = 
+    {
+      AnyRefFrame &ref = Main.EnvironmentModel.GlobalRef;
+    };
+    #endif
   };
+  
+  
 
 AnyFolder JointsAndDrivers = {
 #ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
