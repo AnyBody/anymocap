@@ -12,6 +12,7 @@
  #include "TrialSubjectLabSpecificDataTemplates.any"
  #include "AutomaticInitialPositionOfBody.any"
  #include "Normalized_abscissa_template.any"
+ #include "GRFPrediction/FootPlateConditionalContact.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2.any"
 // #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3AutoDetection.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3.any"
