@@ -1,8 +1,9 @@
-Main.EnvironmentModel = 
+Main.EnvironmentModel.ForcePlates = 
 {
   
   
-  //-------- Predictive forceplate for the right leg (see documentation to learn more: https://github.com/AnyBody/GRF-prediction) ----------------
+  //-------- Predictive forceplate for the right leg
+  // See ( #include "<ANYMOCAP_MODEL_PATH>/GRFPrediction/FootPlateConditionalContact.any" )
   FootPlateConditionalContact GRF_Prediction_Right(
   NORMAL_DIRECTION = "Y",
   NUMBER_OF_NODES = 25,

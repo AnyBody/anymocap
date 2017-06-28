@@ -29,13 +29,13 @@ Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
 
-#ifndef USE_GRF_PREDICTION
-  #define USE_GRF_PREDICTION OFF
+#ifndef MOCAP_USE_GRF_PREDICTION
+  #define MOCAP_USE_GRF_PREDICTION OFF
 #endif
 
 
 #ifndef MOCAP_HUMAN_GROUND_RESIDUALS
- #if (USE_GRF_PREDICTION == ON)
+ #if (MOCAP_USE_GRF_PREDICTION == ON)
    #define MOCAP_HUMAN_GROUND_RESIDUALS "PelvisWeak"
  #else
    #define MOCAP_HUMAN_GROUND_RESIDUALS "Pelvis"
@@ -43,7 +43,7 @@ Main.Studies.ParameterIdentification = {AnyDesVar dummy = {Val = 0;};};
 #endif
 
 
-#if (USE_GRF_PREDICTION == ON) & (MOCAP_HUMAN_GROUND_RESIDUALS != "PelvisWeak")
+#if (MOCAP_USE_GRF_PREDICTION == ON) & (MOCAP_HUMAN_GROUND_RESIDUALS != "PelvisWeak")
 AnyMessage AnyMocap_msg1= 
 {
   TriggerPreProcess  = 1; 

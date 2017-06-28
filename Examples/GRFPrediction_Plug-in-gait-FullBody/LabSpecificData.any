@@ -1,7 +1,7 @@
 Main.ModelSetup.LabSpecificData = {
   
  //------------- Set this to "ON" when GRF prediction is desired --------------------------------- 
- #define USE_GRF_PREDICTION ON
+ #define MOCAP_USE_GRF_PREDICTION ON
  
  #path BODY_MODEL_CONFIG_FILE "BodyModelConfig.any"
  
