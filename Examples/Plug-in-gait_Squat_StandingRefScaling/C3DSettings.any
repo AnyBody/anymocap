@@ -5,6 +5,7 @@ Main.ModelSetup.C3DFileData = {
    
    ConstructModelOnOff = Off;
    ConstructChartOnOff = Off;
+   GapFillUsingResidualsOnOff = On;
    
    MarkerUseAllPointsOnOff = On; 
    MarkerUseCamMaskOnOff = Off;
