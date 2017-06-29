@@ -25,7 +25,11 @@
 
 #include "libdef.any"
 
-
+#ifndef AMMR_VERSION
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR1_"
+#else
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR2_"
+#endif
 
 #include "<MOCAP_PATH_MAINFILE>"
 

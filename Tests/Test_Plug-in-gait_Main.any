@@ -25,6 +25,13 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
 #endif
 
+#ifndef AMMR_VERSION
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR1_"
+#else
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR2_"
+#endif
+
+
 
 // Run Analysis with a reduced number of time steps
 // to make test go faster. 
