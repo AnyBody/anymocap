@@ -89,14 +89,14 @@
   
   AnyFixedRefFrame Corners ={
     AnyVar CoordinateSystemSize= 0.1;
-    
+    #var AnyFloat Data = C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data;
+    #var AnyInt plate_idx=PLATE_NO-1;
     AnyRefNode c01={
-      AnyInt i=0;
-      AnyInt plate_idx=PLATE_NO-1;
-      sRel=C3D_OBJECT.PointsScaleFactor*{
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][0],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][1],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][2]
+      #var AnyInt i=0;
+      #var sRel=C3D_OBJECT.PointsScaleFactor*{
+          .Data[.plate_idx][i][0],
+          .Data[.plate_idx][i][1],
+          .Data[.plate_idx][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -109,12 +109,11 @@
     };
     
     AnyRefNode c02={
-      AnyInt i=1;
-      AnyInt plate_idx=PLATE_NO-1;
-      sRel=C3D_OBJECT.PointsScaleFactor*{
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][0],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][1],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][2]
+      #var AnyInt i=1;
+      #var sRel=C3D_OBJECT.PointsScaleFactor*{
+          .Data[.plate_idx][i][0],
+          .Data[.plate_idx][i][1],
+          .Data[.plate_idx][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {
@@ -127,12 +126,11 @@
     };
     
     AnyRefNode c03={
-      AnyInt i=2;
-      AnyInt plate_idx=PLATE_NO-1;
-      sRel=C3D_OBJECT.PointsScaleFactor*{
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][0],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][1],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][2]
+      #var AnyInt i=2;
+      #var sRel=C3D_OBJECT.PointsScaleFactor*{
+          .Data[.plate_idx][i][0],
+          .Data[.plate_idx][i][1],
+          .Data[.plate_idx][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       
@@ -146,12 +144,11 @@
     };
     
     AnyRefNode c04={
-      AnyInt i=3;
-      AnyInt plate_idx=PLATE_NO-1;
-      sRel=C3D_OBJECT.PointsScaleFactor*{
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][0],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][1],
-          C3D_OBJECT.Groups.FORCE_PLATFORM.CORNERS.Data[plate_idx][i][2]
+      #var AnyInt i=3;
+      #var sRel=C3D_OBJECT.PointsScaleFactor*{
+          .Data[.plate_idx][i][0],
+          .Data[.plate_idx][i][1],
+          .Data[.plate_idx][i][2]
       };
       AnyDrawNode drw={ScaleXYZ=0.01*{1,1,1};RGB={1,0,0};};
       AnyDrawVector  DrawName = {

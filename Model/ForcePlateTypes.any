@@ -64,7 +64,7 @@
     AnyVec3 p3=0.5*(..Corners.c01.sRel+..Corners.c02.sRel);
     Axes0 =RotMat(p1,p2,p3);
     
-    AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
+    #var AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
     AnyVar z_check = iffun(gtfun(Origins[PLATEIDX][2], 0), 1, -1);
     AnyMessage Origin_Z_value_message= 
     {
@@ -74,10 +74,9 @@
     };    
     //Transducer location      
     AnyRefNode TransducerLocation ={
-      AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
-      AnyVar xdist=.z_check*Origins[PLATEIDX][0]*C3D_OBJECT.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
-      AnyVar ydist=.z_check*Origins[PLATEIDX][1]*C3D_OBJECT.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
-      AnyVar zdist=.z_check*Origins[PLATEIDX][2]*C3D_OBJECT.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
+      AnyVar xdist=.z_check*.Origins[PLATEIDX][0]*C3D_OBJECT.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
+      AnyVar ydist=.z_check*.Origins[PLATEIDX][1]*C3D_OBJECT.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
+      AnyVar zdist=.z_check*.Origins[PLATEIDX][2]*C3D_OBJECT.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
       sRel={xdist,ydist,zdist};
       AnyDrawRefFrame drw={ScaleXYZ=0.2*{1,1,1};RGB={1,0,0}; Visible=Off;};
     };
@@ -280,7 +279,7 @@
     AnyVec3 p3=0.5*(..Corners.c01.sRel+..Corners.c02.sRel);
     Axes0 =RotMat(p1,p2,p3);
     
-    AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
+    #var AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
     AnyVar z_check = iffun(gtfun(Origins[PLATEIDX][2], 0), 1, -1);
     AnyMessage Origin_Z_value_message= 
     {
@@ -290,10 +289,9 @@
     };    
     //Transducer location      
     AnyRefNode TransducerLocation ={
-      AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
-      AnyVar xdist=.z_check*Origins[PLATEIDX][0]*C3D_OBJECT.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
-      AnyVar ydist=.z_check*Origins[PLATEIDX][1]*C3D_OBJECT.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
-      AnyVar zdist=.z_check*Origins[PLATEIDX][2]*C3D_OBJECT.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
+      AnyVar xdist=.z_check*.Origins[PLATEIDX][0]*C3D_OBJECT.PointsScaleFactor;//distance from x axis on transducer to x axis of center of plate
+      AnyVar ydist=.z_check*.Origins[PLATEIDX][1]*C3D_OBJECT.PointsScaleFactor; //distance from y axis on transducer to y axis of center of plate
+      AnyVar zdist=.z_check*.Origins[PLATEIDX][2]*C3D_OBJECT.PointsScaleFactor;//distance from z axis on transducer to z surface of plate
       sRel={xdist,ydist,zdist};
       AnyDrawRefFrame drw={ScaleXYZ=0.2*{1,1,1};RGB={1,0,0};Visible=Off;};
     };
@@ -442,7 +440,7 @@
       Type = MSG_Message ;
       Message = "The Origin of this force plate is written as positive. So this value will be converted as negative automatically. Please refer to www.c3d.org/HTML/type31.htm ";
     };    
-    AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
+    #var AnyFloat Origins= C3D_OBJECT.Groups.FORCE_PLATFORM.ORIGIN.Data;
     AnyVar xdist=Origins[PLATEIDX][0];//distance from x axis on transducer to x axis of center of plate
     AnyVar ydist=Origins[PLATEIDX][1]; //distance from y axis on transducer to y axis of center of plate
     AnyVar zdist=z_check*Origins[PLATEIDX][2];//distance from z axis on transducer to z surface of plate
