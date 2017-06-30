@@ -3,6 +3,8 @@
 //  {'TLEM_VERSION':'"2.0"'}, 
 //  {'TLEM_VERSION':'"1.1"'}, 
 //]
+//ignore_errors = ['FileReader.FileName']
+
 
 #path TEMP_PATH "Output"
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-LowerExtremity"
@@ -14,6 +16,8 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
+#path AMMR_PATH "../ammr"
+#define TLEM_VERSION "1.1"
 #endif
 
 
