@@ -18,8 +18,10 @@ AMMR2.0_Tests:
   stage: test
 
   script:
+    - rm -rf ../ammr
     - git clone --depth 1 git@gitlab.com:anybody/beta/ammr.git ../ammr
     - pytest --ff --ammr=../ammr Tests
+    
   tags:
     - ams
     - python    
