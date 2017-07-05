@@ -32,7 +32,7 @@ Main =
     {    
       #include "KinematicStudyForParameterIdentification.any"  
     };
-
+    
     /// Overdeterminate kinematic study to generate joint angles for inv. dyn. study. 
     AnyKinStudy KinematicStudy = 
     {       

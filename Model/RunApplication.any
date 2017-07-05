@@ -10,7 +10,7 @@ Main = {
 //              "run"};
 //  };
 //  
-
+#if MOCAP_CREATE_PARAMETER_ID_SHORTCUT
 AnyOperationSequence RunParameterIdentification = 
   {
     AnyOperationSequence ParameterIdentification = 
@@ -22,6 +22,7 @@ AnyOperationSequence RunParameterIdentification =
       AnyOperationDummy placeholder_operation= {};
     };
   };
+#endif
   
   AnyOperationSequence RunAnalysis= {
     

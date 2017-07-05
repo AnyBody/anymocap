@@ -14,11 +14,11 @@ Main.ModelSetup.TrialSpecificData =
   
   // tStart specifies the time of the analysis. Setting this overrides 
   // the 'FirstFrame' value
-  tStart = FirstFrame * .BVHFileData.Header.FrameTime;
+  //tStart = FirstFrame * .BVHFileData.Header.FrameTime;
   
   // tEnd specifies the tEnd time of the analysis. Setting this overrides 
   // the 'LastFrame' value
-  tEnd = LastFrame * .BVHFileData.Header.FrameTime;
+  //tEnd = LastFrame * .BVHFileData.Header.FrameTime;
   
   // nStep specifies the number of steps used in the analysis. 
   // If not specified it defaults to: 1+(tEnd-tStart)*C3D_video_frame_rate

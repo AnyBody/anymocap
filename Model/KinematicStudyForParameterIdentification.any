@@ -20,9 +20,10 @@ AnyKinStudy KinematicStudyForParameterIdentification =
 
 };  
 
-
+#if MOCAP_CREATE_PARAMETER_ID_SHORTCUT
 Main.RunParameterIdentification.ParameterIdentification = 
 {
   AnyOperation& ParameterOptimization = Main.Studies.ParameterIdentification.ParameterOptimization;
 };
+#endif
 

@@ -10,28 +10,45 @@ AnyKinStudy BVH_CreateMarkerTrajectoriesStudy =
   AnyFolder &BVHData= Main.ModelSetup.BVHFileData ;
   
   //Environment around the human
-  AnyFolder& EnvironmentModel =  Main.EnvironmentModel;
+  //AnyFolder& EnvironmentModel =  Main.EnvironmentModel;
   
   Gravity = Main.ModelSetup.LabSpecificData.Gravity; 
   
   AnyIntVar FirstFrame = 0 ;
   AnyIntVar LastFrame  = Main.ModelSetup.BVHFileData.Header.FramesNo - 1  ;
-  
-  nStep  = LastFrame - FirstFrame + 1 ;
-  tStart = FirstFrame * Main.ModelSetup.BVHFileData.Header.FrameTime ;
-  tEnd   = LastFrame * Main.ModelSetup.BVHFileData.Header.FrameTime ;
-  
-  
-//      nStep   = ..ModelSetup.TrialSpecificData.nStep ;
-//      tStart = ..ModelSetup.TrialSpecificData.tStart ;
-//      tEnd   = ..ModelSetup.TrialSpecificData.tEnd   ;      
+
+//  nStep  = LastFrame - FirstFrame + 1 ;
+//  tStart = FirstFrame * Main.ModelSetup.BVHFileData.Header.FrameTime ;
+//  tEnd   = LastFrame * Main.ModelSetup.BVHFileData.Header.FrameTime ;
+
+      AnyFloat _FrameOffset = 8*Main.ModelSetup.BVHFileData.Header.FrameTime;
+      AnyFloat _tStart = max({0, ..ModelSetup.TrialSpecificData.tStart-_FrameOffset});
+      AnyFloat _tEnd = min({..ModelSetup.TrialSpecificData.tEnd+_FrameOffset, LastFrame * Main.ModelSetup.BVHFileData.Header.FrameTime});
+      AnyInt _nStep = round( (_tEnd - _tStart) / Main.ModelSetup.BVHFileData.Header.FrameTime);
+      nStep   = _nStep;
+      tStart = _tStart;
+      tEnd   = _tEnd;      
+      
 };//BVH_CreateMarkerTrajectoriesStudy    
     
+
+// Add exlcuder so Normal MoCap studies doesn't pick up the 
+// BVH stick-figure
+Main.ModelSetup.MocapDrivers = 
+{
+  AnyObjectPtrVar pObjBVHMechObjects = &.BVHFileData.Model ;
+  AnyString strBVHMechObjects = CompleteNameOf(pObjBVHMechObjects);     
+  
+  AnyMechObjectExcluder MechObjectExcluder = 
+  {
+    Objects = ObjSearchRecursive(.strBVHMechObjects, "*","AnyMechObject");
+  };    
+};
 
 
 Main = 
 {
-  AnyOperationSequence BVH_PreProcessSequence = 
+  AnyOperationSequence BVH_PreProcess = 
   {
     AnyOperation& BVH_ViewSetMacro = Main.ModelSetup.Views.SetViewMacros.BVHView;
     AnyOperation& BVH_CreateMarkerTrajectoriesStudy = Main.Studies.BVH_CreateMarkerTrajectoriesStudy.Kinematics;
@@ -39,7 +56,6 @@ Main =
     AnyOperation& BVH_UpdateValuesOperation = Main.ModelSetup.Macros.BVH_Preprocess.BVH_UpdateValuesOperation;
   };
 };
-
 
     
 Main.ModelSetup.Macros = {
