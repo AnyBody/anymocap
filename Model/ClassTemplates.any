@@ -5,7 +5,6 @@
  #include "JointsLimits_template.any"
 
  #include "CreateMarkerDriverClass.any"
- #include "CreateMarkerClass_BVH_AMMR_VirtualMarkers.any"
  #include "CreateConstraintClass.any"
  #include "RotationAxisAngles.any"
  #include "OptimizeAnthropometricsOnOff.any"
@@ -15,9 +14,7 @@
  #include "Normalized_abscissa_template.any"
  #include "GRFPrediction/FootPlateConditionalContact.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType2.any"
-// #include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3AutoDetection.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType3.any"
- //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType4AutoDetection.any"
  //#include "<ANYBODY_PATH_TOOLBOX>/Mocap/ForcePlateType4.any"
  
 #endif

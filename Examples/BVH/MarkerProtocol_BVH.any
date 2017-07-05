@@ -57,14 +57,15 @@
 #endif
 
 #ifdef _HEAD
-CreateMarkerDriverBVH  HEAD(
+CreateMarkerDriver  HEAD(
 MarkerName = HEAD,
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
 MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.1,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off") = 
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1) = 
 {
   sRelOpt =  {0.05, 0.14, 0};
   sRelOnBVH = {0.0,0,0};
@@ -72,15 +73,15 @@ ScaleMarkerPosOnOff ="Off") =
 #endif
 
 #ifdef _HEAD_R
-CreateMarkerDriverBVH  HEAD_R(
+CreateMarkerDriver  HEAD_R(
 MarkerName = HEAD_R,
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
 MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.1,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
-
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.05, 0.14, 0.1};
@@ -89,14 +90,15 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _HEAD_L
-CreateMarkerDriverBVH  HEAD_L(
+CreateMarkerDriver  HEAD_L(
 MarkerName = HEAD_L,
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,
 MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.1,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.05, 0.14, -0.1};
@@ -105,14 +107,15 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _SACR
-CreateMarkerDriverBVH SACR( 
+CreateMarkerDriver SACR( 
 MarkerName= SACR,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 MarkerPlacementBVH=Main.ModelSetup.BVHFileData.Model.Hips.Seg,
 OptX="Off", OptY="Off", OptZ="Off",
 WeightX=10,WeightY=10,WeightZ=10,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = {
   sRelOpt ={0.0, 0.0, 0.0};
   sRelOnBVH = Main.ModelSetup.BVHFileData.Model.Hips.Seg.Chest.sRel;
@@ -120,7 +123,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RHJC
-CreateMarkerDriverBVH RHJC(
+CreateMarkerDriver RHJC(
 MarkerName = RHJC,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 PlaceMarkerAt=Right.HipJoint,
@@ -128,7 +131,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0, 
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt = {0, 0, 0};
@@ -137,7 +141,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LHJC
-CreateMarkerDriverBVH LHJC(
+CreateMarkerDriver LHJC(
 MarkerName = LHJC,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
 PlaceMarkerAt=Left.HipJoint,
@@ -145,7 +149,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.Seg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt = {0, 0, 0};
@@ -154,7 +159,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _T1C7Jnt
-CreateMarkerDriverBVH T1C7Jnt(
+CreateMarkerDriver T1C7Jnt(
 MarkerName = T1C7Jnt,
 MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
 PlaceMarkerAt=T1C7JntNode,
@@ -162,7 +167,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=0.1,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0, 0, 0};
@@ -171,7 +177,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _SPINE
-CreateMarkerDriverBVH SPINE(
+CreateMarkerDriver SPINE(
 MarkerName = SPINE,
 MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
 PlaceMarkerAt=T1C7JntNode,
@@ -179,7 +185,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="On"
+ScaleMarkerPosOnOff ="On",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {-0.03,-0.13,0};
@@ -188,7 +195,7 @@ ScaleMarkerPosOnOff ="On"
 #endif
 
 #ifdef _L4
-CreateMarkerDriverBVH L4( 
+CreateMarkerDriver L4( 
 MarkerName= L4,
 MarkerPlacement=Trunk.SegmentsLumbar.L4Seg,
 PlaceMarkerAt = L3L4JntNode,
@@ -196,7 +203,8 @@ MarkerPlacementBVH=Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.Chest2,
 OptX="Off", OptY="Off", OptZ="Off",
 WeightX=2.0,WeightY=0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = {
   sRelOpt ={0.0, 0.0, 0.0};
   sRelOnBVH = {0,0,0};
@@ -204,7 +212,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _CHEST
-CreateMarkerDriverBVH CHEST(
+CreateMarkerDriver CHEST(
 MarkerName = CHEST,
 MarkerPlacement= Trunk.SegmentsThorax.ThoraxSeg,
 PlaceMarkerAt=ij,
@@ -212,7 +220,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2,WeightY=0.01,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.1, 0.0 ,0.0};
@@ -221,7 +230,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RSJC
-CreateMarkerDriverBVH RSJC(
+CreateMarkerDriver RSJC(
 MarkerName = RSJC,
 MarkerPlacement= Right.ShoulderArm.Seg.Scapula,
 PlaceMarkerAt =gh,
@@ -229,7 +238,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0, 0, 0};
@@ -238,7 +248,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _REJC
-CreateMarkerDriverBVH REJC(
+CreateMarkerDriver REJC(
 MarkerName = REJC,
 MarkerPlacement= Right.ShoulderArm.Seg.Humerus,
 PlaceMarkerAt=fe,
@@ -246,7 +256,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0, 0, 0};
@@ -255,7 +266,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RALE
-CreateMarkerDriverBVH RALE(
+CreateMarkerDriver RALE(
 MarkerName = RALE,
 MarkerPlacement= Right.ShoulderArm.Seg.Humerus,
 PlaceMarkerAt=REJC,
@@ -263,7 +274,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=0,WeightY=0,WeightZ=2,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.1, 0, 0};
@@ -272,7 +284,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RWRB
-CreateMarkerDriverBVH RWRB(
+CreateMarkerDriver RWRB(
 MarkerName = RWRB,
 MarkerPlacement= Right.ShoulderArm.Seg.Radius,
 PlaceMarkerAt=wj,
@@ -280,7 +292,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=0,WeightY=0,WeightZ=2,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.0, -0.1, 0};
@@ -289,7 +302,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RWJC
-CreateMarkerDriverBVH RWJC(
+CreateMarkerDriver RWJC(
 MarkerName = RWJC,
 MarkerPlacement= Right.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -297,7 +310,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -306,7 +320,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RHT1
-CreateMarkerDriverBVH RHT1(
+CreateMarkerDriver RHT1(
 MarkerName = RHT1,
 MarkerPlacement= Right.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -314,7 +328,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=1,WeightZ=1,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {-0.18, -0.1, 0};
@@ -323,7 +338,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RHT2
-CreateMarkerDriverBVH RHT2(
+CreateMarkerDriver RHT2(
 MarkerName = RHT2,
 MarkerPlacement= Right.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -331,7 +346,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=0.5,WeightY=0.5,WeightZ=0.5,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {-0.18, 0.05, 0};
@@ -340,7 +356,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LSJC
-CreateMarkerDriverBVH LSJC(
+CreateMarkerDriver LSJC(
 MarkerName = LSJC,
 MarkerPlacement= Left.ShoulderArm.Seg.Scapula,
 PlaceMarkerAt=gh,
@@ -348,7 +364,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -357,7 +374,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LEJC
-CreateMarkerDriverBVH LEJC(
+CreateMarkerDriver LEJC(
 MarkerName = LEJC,
 MarkerPlacement= Left.ShoulderArm.Seg.Humerus,
 PlaceMarkerAt =fe,
@@ -365,7 +382,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -374,7 +392,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LALE
-CreateMarkerDriverBVH LALE(
+CreateMarkerDriver LALE(
 MarkerName = LALE,
 MarkerPlacement= Left.ShoulderArm.Seg.Humerus,
 PlaceMarkerAt =fe,
@@ -382,7 +400,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {-0.1, 0, 0};
@@ -391,7 +410,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LWRB
-CreateMarkerDriverBVH LWRB(
+CreateMarkerDriver LWRB(
 MarkerName = LWRB,
 MarkerPlacement= Left.ShoulderArm.Seg.Radius,
 PlaceMarkerAt=wj,
@@ -399,7 +418,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2,WeightY=0,WeightZ=2,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
   sRelOpt =  {0.0, 0.1, 0};
@@ -408,7 +428,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LWJC
-CreateMarkerDriverBVH LWJC(
+CreateMarkerDriver LWJC(
 MarkerName = LWJC,
 MarkerPlacement= Left.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -416,7 +436,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -425,7 +446,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LHT1
-CreateMarkerDriverBVH LHT1(
+CreateMarkerDriver LHT1(
 MarkerName = LHT1,
 MarkerPlacement= Left.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -433,7 +454,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=0.5,WeightY=0.5,WeightZ=0.5,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {-0.18, -0.1, 0};
@@ -443,7 +465,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LHT2
-CreateMarkerDriverBVH LHT2(
+CreateMarkerDriver LHT2(
 MarkerName = LHT2,
 MarkerPlacement= Left.ShoulderArm.Seg.Hand,
 PlaceMarkerAt =Ref.wj,
@@ -451,7 +473,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=0.5,WeightY=0.5,WeightZ=0.5,
 FilterCutOffFrequency = 5,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {-0.18, 0.05, 0};
@@ -460,7 +483,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RKJC
-CreateMarkerDriverBVH RKJC(
+CreateMarkerDriver RKJC(
 MarkerName = RKJC,
 MarkerPlacement= Right.Leg.Seg.Thigh,
 PlaceMarkerAt =KneeJoint,
@@ -468,7 +491,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.Se
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -477,7 +501,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RKNE
-CreateMarkerDriverBVH RKNE(
+CreateMarkerDriver RKNE(
 MarkerName = RKNE,
 MarkerPlacement= Right.Leg.Seg.Thigh,
 PlaceMarkerAt =KneeJoint,
@@ -485,7 +509,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.01,WeightZ=0.01,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0.1};
@@ -494,7 +519,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RAJC
-CreateMarkerDriverBVH RAJC(
+CreateMarkerDriver RAJC(
 MarkerName = RAJC,
 MarkerPlacement= Right.Leg.Seg.Shank,
 PlaceMarkerAt =AnkleJoint,
@@ -502,7 +527,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.Ri
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0.0, 0};
@@ -511,7 +537,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RTOE
-CreateMarkerDriverBVH RTOE(
+CreateMarkerDriver RTOE(
 MarkerName = RTOE,
 MarkerPlacement= Right.Leg.Seg.Foot,
 PlaceMarkerAt=ToeJoint,
@@ -519,7 +545,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.Ri
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0.0, -0.02, -0.02};
@@ -528,7 +555,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _RTOE2
-CreateMarkerDriverBVH RTOE2(
+CreateMarkerDriver RTOE2(
 MarkerName = RTOE2,
 MarkerPlacement= Right.Leg.Seg.Foot,
 PlaceMarkerAt =RTOE,
@@ -536,7 +563,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.Ri
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0.0, 0.07};
@@ -545,7 +573,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LKJC
-CreateMarkerDriverBVH LKJC(
+CreateMarkerDriver LKJC(
 MarkerName = LKJC,
 MarkerPlacement= Left.Leg.Seg.Thigh,
 PlaceMarkerAt=KneeJoint,
@@ -553,7 +581,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.LeftKnee.Seg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -562,7 +591,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LKNE
-CreateMarkerDriverBVH LKNE(
+CreateMarkerDriver LKNE(
 MarkerName = LKNE,
 MarkerPlacement= Left.Leg.Seg.Thigh,
 PlaceMarkerAt=KneeJoint,
@@ -570,7 +599,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.Seg,
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.01,WeightZ=0.01,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, -0.1};
@@ -579,7 +609,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LAJC
-CreateMarkerDriverBVH LAJC(
+CreateMarkerDriver LAJC(
 MarkerName = LAJC,
 MarkerPlacement= Left.Leg.Seg.Shank,
 PlaceMarkerAt=AnkleJoint,
@@ -587,7 +617,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.LeftKnee.Left
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0, 0};
@@ -596,7 +627,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LTOE
-CreateMarkerDriverBVH LTOE(
+CreateMarkerDriver LTOE(
 MarkerName = LTOE,
 MarkerPlacement= Left.Leg.Seg.Foot,
 PlaceMarkerAt=ToeJoint,
@@ -604,7 +635,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.LeftKnee.Left
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=2.0,WeightY=2.0,WeightZ=2.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, -0.02, 0.02}; 
@@ -613,7 +645,7 @@ ScaleMarkerPosOnOff ="Off"
 #endif
 
 #ifdef _LTOE2
-CreateMarkerDriverBVH LTOE2(
+CreateMarkerDriver LTOE2(
 MarkerName = LTOE2,
 MarkerPlacement= Left.Leg.Seg.Foot,
 PlaceMarkerAt=LTOE,
@@ -621,7 +653,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.LeftHip.LeftKnee.Left
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off"
+ScaleMarkerPosOnOff ="Off",
+USE_BVH_INPUT = 1
 ) = 
 {
  sRelOpt =  {0, 0.0, -0.07};

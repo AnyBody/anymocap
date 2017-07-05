@@ -11,11 +11,6 @@ Main =
   // Mocap related setup
   #include "ModelSetup.any"
   
-  #if MOCAP_INPUT_DATA_TYPE == "BVH"
-  // Include files to preprocess inertial MoCap data.  
-  #include "BVH_ModelPreprocess.any"
-  #endif
-  
   // Include environment model
   // e.g. global reference, forceplates etc.
   #include "EnvironmentModel.any"
@@ -27,6 +22,10 @@ Main =
   
   AnyFolder Studies = 
   {
+    // PreProcess functionality for Inertial MoCap (BVH) studies.
+    #if MOCAP_INPUT_DATA_TYPE == "BVH"
+    #include "BVH_ModelPreprocess.any"
+    #endif
     
     /// Study for parameter identification of segment length and marker positions. 
     AnyOptKinStudy ParameterIdentification = 
