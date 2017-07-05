@@ -8,7 +8,9 @@ Main.EnvironmentModel.ForcePlates =
   NORMAL_DIRECTION = "Y",
   NUMBER_OF_NODES = 25,
   NODES_FOLDER = FootNodes,
-  PLATE_BASE_FRAME = Main.EnvironmentModel.GlobalRef) =
+  PLATE_BASE_FRAME = Main.EnvironmentModel.GlobalRef,
+  SHOW_TRIGGER_VOLUME = 1
+  ) =
   {
     CreateFootContactNodes25 FootNodes(foot_ref = 
     Main.HumanModel.BodyModel.Right.Leg.Seg.Foot) = {};
@@ -16,7 +18,7 @@ Main.EnvironmentModel.ForcePlates =
     // Additional force plate settings
     Settings = 
     {
-      Radius = 8; // Circular force plate of radius 8m, covers entire MoCap lab area                     
+      Radius = 15; // Circular force plate of radius 8m, covers entire MoCap lab area                     
       LimitDistHigh = 0.015; // Vertical height
     };
   };
@@ -38,7 +40,7 @@ Main.EnvironmentModel.ForcePlates =
     
     Settings = 
     {
-      Radius = 8;  
+      Radius = 15;  
       LimitDistHigh = 0.015;
     };
   };
