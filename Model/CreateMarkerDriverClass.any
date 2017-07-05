@@ -162,7 +162,7 @@
    	     	#var FilterForwardBackwardOnOff = On;
    	     	#var AutomaticInitialConditionOnOff = On;
    	     	N = FilterOrder;
-            W = {1/(C3D_OBJECT.Filter.Fs[0]*0.5)*FilterCutOffFrequency };
+              W = {1/(C3D_OBJECT.Header.VideoFrameRate*0.5)*FilterCutOffFrequency };
    	      Type = LowPass;
    	    };
   	  

@@ -31,7 +31,7 @@ C3D_OBJECT = Main.ModelSetup.C3DFileData,
 BVH_OBJECT = Main.ModelSetup.BVHFileData,
 BODY_MODEL_FOLDER = Main.HumanModel.BodyModel,
 PlaceMarkerAt = AnatomicalFrame,
-FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
+LINK_TO_BVH = 1)
 {
   
   #var AnyVar ConstMarkerWeightX = WeightX;
@@ -44,7 +44,11 @@ FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
   
   
   #var AnyVec3 sRelOpt ;  // Variable with obligatory initialization
+  
+  #if LINK_TO_BVH
   #var AnyVec3 sRelOnBVH ;  // Variable with obligatory initialization
+  #endif
+  
   #var AnyVec3 sRelOptDelta = {0, 0, 0};
   
   #if OptX =="Off" & OptY == "Off" & OptZ == "Off"
@@ -84,30 +88,34 @@ FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
   {
     AnyRefNode MarkerName = 
     {
-      //      #if UseAnatomicalFrameOnOff == "On"
-      //        #if ScaleMarkerPosOnOff == "On"
-      //          AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
-      //        #else
-      //          AnyVec3 MarkerOffset = (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
-      //        #endif
-      //        sRel = .PlaceMarkerAt.sRel + MarkerOffset;
-      //        ARel= .AnatomicalFrame.ARel;
-      //
-      //      #else
-      //
-      //       //bvh markers are not suppose to scale...always needs to be relative to joint or similar point and the dimension needs to match stickfigure dim
-      //       sRel = .PlaceMarkerAt.sRel + ..sRelOpt;
-      //    #endif
-      
-      #if ScaleMarkerPosOnOff == "On"
-      AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
-      sRel = .PlaceMarkerAt.sRel + MarkerOffset;
-      ARel= .AnatomicalFrame.ARel;
-      #else
-//      sRel = .PlaceMarkerAt.sRel + (..sRelOpt + ..sRelOptEdit )*.PlaceMarkerAt.ARel';
-//      ARel= .PlaceMarkerAt.ARel;
+#if LINK_TO_BVH
+       #if ScaleMarkerPosOnOff == "On"
+         AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+         sRel = .PlaceMarkerAt.sRel + MarkerOffset;
+         ARel= .AnatomicalFrame.ARel;
+       #else
+ //      sRel = .PlaceMarkerAt.sRel + (..sRelOpt + ..sRelOptEdit )*.PlaceMarkerAt.ARel';
+ //      ARel= .PlaceMarkerAt.ARel;
+         sRel = .PlaceMarkerAt.sRel + ..sRelOpt;
+       #endif
+#else
+       #if UseAnatomicalFrameOnOff == "On"
+         #if ScaleMarkerPosOnOff == "On"
+           AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+         #else
+           AnyVec3 MarkerOffset = (..sRelOpt + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
+         #endif
+         sRel = .PlaceMarkerAt.sRel + MarkerOffset;
+         ARel= .AnatomicalFrame.ARel;
+ 
+       #else
+ 
+        //bvh markers are not suppose to scale...always needs to be relative to joint or similar point and the dimension needs to match stickfigure dim
         sRel = .PlaceMarkerAt.sRel + ..sRelOpt;
-      #endif
+     #endif
+#endif
+      
+
       
       
       AnyRefNode Arrows = 
@@ -141,11 +149,15 @@ FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
   AnyKinDriverMarker Driver = 
   {
     AnyDrawKinMeasure Draw = {
-      #var Visible = On;
+      #var Visible = DesignVar(On);
       #var Opacity = 1;
       #var Label = Off;
       #var Size = 0.01;
-      #var Line = On;
+      #if LINK_TO_BVH
+        #var Line = DesignVar(Off);
+      #else
+        #var Line = On;
+      #endif
     };
     Linear.Ref=0;
     AnyRefFrame &MarkerRef = BODY_MODEL_FOLDER.MarkerPlacement.MarkerName;
@@ -153,14 +165,14 @@ FrameTime = Main.ModelSetup.BVHFileData.Header.FrameTime)
     
     #if FilterCutOffFrequency > 0
     /// A lowpass butterworth filter
-    AnyFunButterworthFilter LowPassFilter = {
-      #var FilterForwardBackwardOnOff = On;
-      #var AutomaticInitialConditionOnOff = On;
-      N = FilterOrder;
-      AnyVar SampleFreq=1/FrameTime;
-      W = {1/(SampleFreq*0.5)*(FilterCutOffFrequency) };
-      Type = LowPass;
-    };
+   	    AnyFunButterworthFilter LowPassFilter = 
+   	    {
+   	     	#var FilterForwardBackwardOnOff = On;
+   	     	#var AutomaticInitialConditionOnOff = On;
+   	     	N = FilterOrder;
+              W = {1/(C3D_OBJECT.Header.VideoFrameRate*0.5)*FilterCutOffFrequency };
+   	      Type = LowPass;
+   	    };
     
     // Filter the data
     //AnyMatrix FilteredPos = LowPassFilter(.InterpolFun.Data);

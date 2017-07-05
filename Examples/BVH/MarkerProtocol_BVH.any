@@ -79,8 +79,8 @@ MarkerPlacementBVH= Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.C
 OptX="Off",OptY="Off",OptZ="Off",  
 WeightX=1.0,WeightY=0.1,WeightZ=1.0,
 FilterCutOffFrequency = 3.0,
-ScaleMarkerPosOnOff ="Off",
-FrameTime=Main.ModelSetup.BVHFileData.Header.FrameTime
+ScaleMarkerPosOnOff ="Off"
+
 ) = 
 {
   sRelOpt =  {0.05, 0.14, 0.1};
