@@ -93,10 +93,11 @@ ModelSetup = {
 };
 
 
-
 AnyFolder ModelSetup = {};
 ModelSetup = 
 {
   AnyFolder Views = {};
 };
 
+
+#include "<BM_DRAWSETTINGS_FILE>"

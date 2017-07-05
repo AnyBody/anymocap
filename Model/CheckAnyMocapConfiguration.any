@@ -74,6 +74,17 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #define BM_CONFIG_VALUES ON
 #endif
 
+// AnyMocap has its own drawsettings file.
+// This setting ensure the human model does not use the default
+// one
+#ifndef BM_DRAWSETTINGS_SKIP
+#define BM_DRAWSETTINGS_SKIP ON
+#endif
+
+#ifndef BM_DRAWSETTINGS_FILE
+#path BM_DRAWSETTINGS_FILE "DrawSettings.any"
+#endif
+
 #if AMMR_VERSION_MAJOR < 2
 // Pre AMMR2
 // Create a stub for Main.HumanModel.AnthroDataSubject 
