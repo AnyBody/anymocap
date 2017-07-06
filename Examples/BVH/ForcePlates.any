@@ -19,7 +19,7 @@ Main.EnvironmentModel.ForcePlates =
     Settings = 
     {
       Radius = 12; // Circular force plate of radius 8m, covers entire MoCap lab area                     
-      LimitDistHigh = 0.015; // Vertical height
+      LimitDistHigh = 0.04; // Vertical height
     };
   };
   
@@ -41,7 +41,7 @@ Main.EnvironmentModel.ForcePlates =
     Settings = 
     {
       Radius = 12;  
-      LimitDistHigh = 0.015;
+      LimitDistHigh = 0.04;
     };
   };
   
