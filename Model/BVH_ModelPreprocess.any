@@ -54,9 +54,16 @@ Main =
     AnyOperation& BVH_CreateMarkerTrajectoriesStudy = Main.Studies.BVH_CreateMarkerTrajectoriesStudy.Kinematics;
     AnyOperation& BVH_SetValueOperation = Main.ModelSetup.Macros.BVH_Preprocess.BVH_SetValueOperation;
     AnyOperation& BVH_UpdateValuesOperation = Main.ModelSetup.Macros.BVH_Preprocess.BVH_UpdateValuesOperation;
+    AnyOperation& BVH_SaveTrajectories = Main.ModelSetup.Macros.BVH_Preprocess.Save_BVH_Trajectories;
+    
   };
 };
 
+
+Main.RunAnalysis.LoadParameters =  
+{
+    AnyOperation& BVH_LoadTrajectories = Main.ModelSetup.Macros.BVH_Preprocess.Load_BVH_Trajectories;
+};
     
 Main.ModelSetup.Macros = {
    AnyFolder BVH_Preprocess =
@@ -83,8 +90,23 @@ Main.ModelSetup.Macros = {
     {  
       MacroStr = ({ "classoperation Main" + strquote("Update Values") });  
     };//BVH_UpdateValuesOperation   
-   
-   };
+    
+    AnyOperationMacro Save_BVH_Trajectories = 
+    {
+      AnyFileVar SavePath = TEMP_PATH;
+      MacroStr  = {
+        "classoperation Main" + strquote("Save Values") +"--file=" + 
+        strquote(FilePathCompleteOf(SavePath) +"/"+  MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName +"_BVH_Trajectories.anyset" )
+      };
+    };
+    AnyOperationMacro Load_BVH_Trajectories = {
+      AnyFileVar SavePath = TEMP_PATH;
+      MacroStr  = {"classoperation Main" + strquote("Load Values") +"--file=" + 
+        strquote(FilePathCompleteOf(SavePath) +"/"+  MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName +"_BVH_Trajectories.anyset"),
+        "classoperation Main " + strquote("Update Values")
+      };
+    };    
+  };
 };
 
 
