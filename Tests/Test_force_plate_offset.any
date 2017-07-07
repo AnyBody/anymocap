@@ -9,6 +9,8 @@
 #define TLEM_VERSION "2.0"
 #endif
 
+#path MOCAP_PATH_MAINFILEDIR "../Examples/SpecialFeatures/"
+#define MOCAP_NAME_MAINFILEDIR "SpecialFeatures"
 
 #include "libdef.any"
 

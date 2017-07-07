@@ -75,10 +75,10 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 // Create a stub for Main.HumanModel.AnthroDataSubject 
 Main.HumanModel= {
    /// This folder is create by the AnyMocapModel, so the HumanModel 
-   /// has the same structure as AMMR version >=1.7.0
+   /// has the same structure as AMMR version >=2
    /// 
    /// It just links to the AnyMan file included under 
-   /// HumanModel.Scaling.Scaling where the AnyMan file was previously
+   /// HumanModel.Scaling.Scaling to where the AnyMan file was previously
    /// located
    AnyFolder AnthroDataSubject = {
     

@@ -54,10 +54,10 @@ This is just half a smoother step function which continues liniearly when it
 reaches it steepest value.
 float smoothramp(float edge0, float edge1, float x)
 {
-    // Scale, and clamp x to 0..1 range
-    x = clamp((x - edge0)/(2*(edge1 - edge0)), 0.0, 0.5);
     // Evaluate polynomial
     if (x < 0.5) {
+    // Scale, and clamp x to 0..1 range
+      x = clamp((x - edge0)/(2*(edge1 - edge0)), 0.0, 0.5);
     . return x*x*x*(x*(x*6 - 15) + 10)
     }
     else {

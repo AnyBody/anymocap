@@ -3,7 +3,7 @@
 //  {'TLEM_VERSION':'"2.0"'}, 
 //  {'TLEM_VERSION':'"1.1"'}, 
 //]
-#include "libdef.any"
+//ignore_errors = ['FileReader.FileName']
 
 
 #path TEMP_PATH "Output"
@@ -16,6 +16,8 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
+#path AMMR_PATH "../ammr"
+#define TLEM_VERSION "1.1"
 #endif
 
 
@@ -25,7 +27,13 @@
 #define N_STEP_KINEMATICS 197
 #define N_STEP 30
 
-#path TEMP_PATH "Output"
+#include "libdef.any"
+
+#ifndef AMMR_VERSION
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR1_"
+#else
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR2_"
+#endif
 
 #include "<MOCAP_PATH_MAINFILE>"
 

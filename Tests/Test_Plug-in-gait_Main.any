@@ -5,14 +5,6 @@
 //ignore_errors = ['FileReader.FileName']
 
 
-// Test related setup.
-#ifndef TLEM_VERSION
-#define TLEM_VERSION "2.0"
-#endif
-
-#include "libdef.any"
-
-
 #path TEMP_PATH "Output"
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-FullBody"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
@@ -23,7 +15,16 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
+#path AMMR_PATH "../ammr"
+#define TLEM_VERSION "1.1"
 #endif
+
+#ifndef AMMR_VERSION
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR1_"
+#else
+#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR2_"
+#endif
+
 
 
 // Run Analysis with a reduced number of time steps
@@ -31,6 +32,10 @@
 #define N_STEP_PARAM_OPT 10
 #define N_STEP_KINEMATICS 197
 #define N_STEP 30
+
+
+#include "libdef.any"
+
 
 #include "<MOCAP_PATH_MAINFILE>"
 
