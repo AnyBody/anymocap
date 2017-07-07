@@ -1,4 +1,4 @@
-AnyFolder Residuals = {
+AnyFolder HumanGroundResiduals = {
   
   AnyFolder &Segment = ..BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
   

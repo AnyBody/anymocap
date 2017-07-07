@@ -7,7 +7,7 @@
  #include "CreateMarkerDriverClass.any"
  #include "CreateConstraintClass.any"
  #include "RotationAxisAngles.any"
- #include "OptimizeAnthropometricsOnOffNew.any"
+ #include "OptimizeAnthropometricsOnOff.any"
  #include "ForcePlateAutoDetection.any"
  #include "TrialSubjectLabSpecificDataTemplates.any"
  #include "AutomaticInitialPositionOfBody.any"

@@ -334,7 +334,7 @@
     AnyVec3 P2= .Limb1.ToeLateralContactNode.r;
     AnyVar P2Vel= vnorm(.Limb1.HeelContactNodeLow.rDot,2);
     
-    #include "ContactDetectionNew.any"
+    #include "ContactDetection.any"
     
     AnyMuscleModelUsr1 InContactMuscle = {
       F0 = 0;
@@ -370,7 +370,7 @@
     AnyVec3 P2= .Limb2.ToeLateralContactNode.r;
     AnyVar P2Vel= vnorm(.Limb2.HeelContactNodeLow.rDot,2);
     
-    #include "ContactDetectionNew.any"
+    #include "ContactDetection.any"
     
     AnyMuscleModelUsr1 InContactMuscle = {
       F0 = 0;
