@@ -1,4 +1,3 @@
-#include "helper_macros.any"
 
   #if MOCAP_HUMAN_GROUND_RESIDUALS == "PelvisWeak" 
     #include "GRFPrediction/WeakResiduals.any"     
@@ -39,17 +38,18 @@ AnyFolder JointsAndDrivers = {
     // This allows us to specify a default joint angle drivers which are close to the 
     // load time position. 
     RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
+    
     /// The default data if no joint angles files have been generated.
-    FileReader.Data0 = { Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
-                         Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
-                         Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
-                         InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-                         0,0,0,0
-                         #ifndef _OLD_NECK_INTERFACE_
-                         ,0,0
-                         #endif
-                       }'* (ONES(1,FileReader.Length0));
-
+    FileReader.Data0 = repmat(1,FileReader.Length0, 
+       {Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
+        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
+        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
+        InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
+        0,0,0,0
+        #ifndef _OLD_NECK_INTERFACE_
+        ,0,0
+        #endif
+    });
     AnyKinMeasure &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasure &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
     AnyKinMeasure &PelvisPosZ = ...BodyModel.Interface.Trunk.PelvisPosZ;
@@ -58,16 +58,15 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &PelvisRotZ = ...BodyModel.Interface.Trunk.PelvisRotZ;
     AnyKinMeasure &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
     AnyKinMeasure &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
-    AnyKinMeasure &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;
+    AnyKinMeasure &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;  
     #ifdef _OLD_NECK_INTERFACE_
     AnyKinMeasure& NeckJoint = ...BodyModel.Interface.Trunk.NeckJoint;
-    Reaction.Type={Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};
     #else
     AnyKinMeasure& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasure& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
-    AnyKinMeasure& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation; 
-    Reaction.Type= {Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};    
+    AnyKinMeasure& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation;    
     #endif
+    Reaction.Type = repmat(nDim, Off);
   };
   
   #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
@@ -75,7 +74,7 @@ AnyFolder JointsAndDrivers = {
     
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
     
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -83,7 +82,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
     AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Left.SubTalarEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
   
@@ -92,7 +91,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLegTD = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
 
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -100,7 +99,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Right.AnklePlantarFlexion;
     AnyKinMeasure &SubTalarEversion = ...BodyModel.Interface.Right.SubTalarEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
 
@@ -110,7 +109,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftLeg = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
 
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Left.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Left.HipAbduction;
@@ -118,7 +117,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Left.KneeFlexion;
     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Left.AnklePlantarFlexion;
     AnyKinMeasure &AnkleEversion = ...BodyModel.Interface.Left.AnkleEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
   
@@ -127,7 +126,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightLeg = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
 
     AnyKinMeasure &HipFlexion = ...BodyModel.Interface.Right.HipFlexion;
     AnyKinMeasure &HipAbduction = ...BodyModel.Interface.Right.HipAbduction;
@@ -135,7 +134,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &KneeFlexion = ...BodyModel.Interface.Right.KneeFlexion;
     AnyKinMeasure &AnklePlantarFlexion = ...BodyModel.Interface.Right.AnklePlantarFlexion;
     AnyKinMeasure &AnkleEversion = ...BodyModel.Interface.Right.AnkleEversion;
-    Reaction.Type={Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
   
@@ -145,7 +144,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverLeftArm = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftarm.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
     
     AnyKinMeasure &SternoClavicularProtraction=...BodyModel.Interface.Left.SternoClavicularProtraction;
     AnyKinMeasure &SternoClavicularElevation=...BodyModel.Interface.Left.SternoClavicularElevation;
@@ -157,7 +156,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &ElbowPronation = ...BodyModel.Interface.Left.ElbowPronation;
     AnyKinMeasure &WristFlexion = ...BodyModel.Interface.Left.WristFlexion;
     AnyKinMeasure &WristAbduction = ...BodyModel.Interface.Left.WristAbduction;
-    Reaction.Type={Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
   
@@ -166,7 +165,7 @@ AnyFolder JointsAndDrivers = {
   AnyKinDriver JntDriverRightArm = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightarm.txt";
-    FileReader.Data0 = ZEROS(nDim, FileReader.Length0 );
+    FileReader.Data0 = zeros(nDim, FileReader.Length0 );
 
     AnyKinMeasure &SternoClavicularProtraction=...BodyModel.Interface.Right.SternoClavicularProtraction;
     AnyKinMeasure &SternoClavicularElevation=...BodyModel.Interface.Right.SternoClavicularElevation;
@@ -179,7 +178,7 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &ElbowPronation = ...BodyModel.Interface.Right.ElbowPronation;
     AnyKinMeasure &WristFlexion = ...BodyModel.Interface.Right.WristFlexion;
     AnyKinMeasure &WristAbduction = ...BodyModel.Interface.Right.WristAbduction;
-    Reaction.Type={Off,Off,Off,Off,Off,Off,Off,Off,Off,Off};
+    Reaction.Type = repmat(nDim, Off);
   };
   #endif
   

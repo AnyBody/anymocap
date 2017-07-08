@@ -1,6 +1,0 @@
-AnyOperationSequence RunApplication = {
-  AnyOperation &RunParameterIdentification = Main.Studies.ParameterIdentification.ParameterOptimization;
-  AnyOperation &RunKinematics = Main.Studies.KinematicStudy.Kinematics;
-  AnyOperation &RunInverseDynamics = Main.Studies.InverseDynamicStudy.InverseDynamics;
-
-};

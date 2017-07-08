@@ -1,7 +1,7 @@
 
 AnyFunInterpol InterpolatedData = 
 {
-  Type  = iffun(gtfun(.FileReader.Length0, 1), round(Obj2Num(&Bspline)) , round(Obj2Num(&ConstantValue)));
+  Type  = iffun(gtfun(.FileReader.Length0, 1), Bspline, ConstantValue);
   BsplineOrder = min({4,.FileReader.Length0});
   // Check if the start time is with the range of data in the file. 
   // We need to add/substract a tiny quantity from the read data,
@@ -17,13 +17,12 @@ AnyFunInterpol InterpolatedData =
 };
 
 AnyInputFile FileReader = {
-  //FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftlegtd.txt";
+  // FileName: This is by externally to this include.
   FileErrorContinueOnOff = On;
   ReloadOnOff = On;
   SuppressWarningsOnOff = On;
-  AnyInt Length0 = Main.Studies.KinematicStudy.nStep;
+  AnyInt Length0 = NumElemOf(Main.Studies.KinematicStudy.tArray);
   T0 = Main.Studies.KinematicStudy.tArray;
-  //Data0 = ZEROS(.nDim, Length0 )
 };
 
 #ifndef _ANYMOCAP_JOINT_ANGLE_WARNING_MSG_
