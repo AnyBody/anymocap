@@ -88,5 +88,21 @@ Main.HumanModel= {
      AnyFolder &AnthroSegmentLengths= Main.HumanModel.Scaling.Scaling.AnthroSegmentLengths;
    };
 };
+
+  #if BM_ARM_RIGHT == ON
+  Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Clavicula = 
+  {
+    AnyRefNode& AnatomicalFrame = ScalingNode;
+    AnyFunTransform3D& GeomScale = Scale;
+  };
+  #endif
+  #if BM_ARM_LEFT == ON
+  Main.HumanModel.BodyModel.Left.ShoulderArm.Seg.Clavicula = 
+  {
+    AnyRefNode& AnatomicalFrame = ScalingNode;
+    AnyFunTransform3D& GeomScale = Scale;
+  };
+  #endif
+
 #endif
 
