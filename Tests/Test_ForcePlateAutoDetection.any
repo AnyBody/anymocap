@@ -8,7 +8,7 @@
 //)
 
 #include "libdef.any"
-#include "..\Model\ForcePlateAutoDetection.any"
+#include "..\Model\ForcePlates\ForcePlateAutoDetection.any"
 
 
 #ifndef FP_TYPE
