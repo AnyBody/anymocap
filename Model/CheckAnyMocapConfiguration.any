@@ -85,5 +85,9 @@ Main.ModelSetup.TrialSpecificData.TrialFileName = "C3D_ExampleFile";
 #define BM_CONFIG_VALUES ON
 #endif
 
+#ifndef BM_DRAWSETTINGS_FILE
+#path BM_DRAWSETTINGS_FILE "DrawSettings.any"
+#endif
+
 
 
