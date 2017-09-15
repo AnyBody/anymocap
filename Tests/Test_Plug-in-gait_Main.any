@@ -15,7 +15,10 @@
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
-#path AMMR_PATH "../ammr"
+//#path AMMR_PATH "../ammr"
+#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr"
+//#path AMMR_PATH "C:\Program Files\AnyBody Technology\AnyBody.7.0\AMMR"
+
 #define TLEM_VERSION "1.1"
 #endif
 

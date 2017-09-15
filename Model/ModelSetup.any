@@ -25,10 +25,18 @@ ModelSetup = {
     #include "<BODY_MODEL_CONFIG_FILE>"
  };
  
- // This is the C3D file used for the analysis
+ #if MOCAP_INPUT_DATA_TYPE == "C3D"
  AnyInputC3D C3DFileData =  {};
  #include "<MOCAP_C3DSETTINGS>"
-
+ #endif
+ 
+ #if MOCAP_INPUT_DATA_TYPE == "BVH"
+ AnyFolder C3DFileData = { #include "BVH_C3dEmulation.any" };
+ AnyInputBVH BVHFileData = {}; 
+ #include "<MOCAP_BVHSETTINGS>" 
+ #endif
+ 
+ 
  AnyFolder MocapExtraDrivers = {
    #include "<MOCAP_EXTRA_DRIVERS_FILE>" 
  };
@@ -36,6 +44,8 @@ ModelSetup = {
  AnyFolder MocapDrivers = {
    #include "<MOCAP_MARKER_PROTOCOL_FILE>"
  };
+
+
  
  
  // Study for saving a loading the parameters from calibration trials 
@@ -76,7 +86,6 @@ ModelSetup = {
 };
 
 
-
 AnyFolder ModelSetup = {};
 ModelSetup = 
 {
@@ -84,4 +93,9 @@ ModelSetup =
 };
 
 
-
+#ifdef BM_DRAWSETTINGS_FILE
+// Ensure that HumanModel does not 
+// include DrawSettings as well. 
+#define BM_DRAWSETTINGS_SKIP ON
+#include "<BM_DRAWSETTINGS_FILE>"
+#endif
