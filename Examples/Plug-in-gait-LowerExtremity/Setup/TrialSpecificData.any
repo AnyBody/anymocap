@@ -40,7 +40,7 @@ Main.ModelSetup.TrialSpecificData =
 
   /// The following settings define the initial posture of the
   /// model (e.g. at load time)
-  InitialPositionOfBody= {
+  Main.HumanModel.Mannequin.Posture = {
     
     
     // This can be ommitted if AutoPelvisPos above is used. 

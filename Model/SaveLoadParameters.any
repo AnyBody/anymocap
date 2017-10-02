@@ -7,11 +7,11 @@
       };     
       AnyOperationSetValue TouchSegLength =  {
         Source = arrcat(
-          ObjSearch(CompleteNameOf(&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths)+".*","AnyValue"),
+          ObjSearch(CompleteNameOf(&Main.HumanModel.Anthropometrics.SegmentDimensions)+".*","AnyValue"),
           // It is not necessary to add the Left folder as it links to the right side values
-          {&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ThighLength, 
-           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ShankLength,
-           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.FootLength}
+          {&Main.HumanModel.Anthropometrics.SegmentDimensions.Right.ThighLength, 
+           &Main.HumanModel.Anthropometrics.SegmentDimensions.Right.ShankLength,
+           &Main.HumanModel.Anthropometrics.SegmentDimensions.Right.FootLength}
           );
         Target = Source;
       };   

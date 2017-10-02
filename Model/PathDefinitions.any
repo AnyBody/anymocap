@@ -44,10 +44,10 @@
  
   // Include the AMMR library
   #ifdef AMMR_PATH
-    #include "<AMMR_PATH>\Application\libdef.any"
+    #include "<AMMR_PATH>\libdef.any"
   #else
     #ifndef ANYBODY_APPLICATION_LIBRARY_NAME
-      #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
+      #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\libdef.any"
     #endif
   #endif
  

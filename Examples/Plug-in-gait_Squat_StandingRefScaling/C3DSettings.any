@@ -6,10 +6,7 @@ Main.ModelSetup.C3DFileData = {
    ConstructModelOnOff = Off;
    ConstructChartOnOff = Off;
    GapFillUsingResidualsOnOff = On;
-   
-   //#if ANYBODY_V1 >= 7
-   GapFillUsingResidualsOnOff = On;
-   //#endif
+  
    
    MarkerUseAllPointsOnOff = On; 
    MarkerUseCamMaskOnOff = Off;

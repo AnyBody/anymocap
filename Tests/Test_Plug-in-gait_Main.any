@@ -1,33 +1,29 @@
 //define = [
-//  {'TLEM_VERSION':'"2.0"'}, 
-//  {'TLEM_VERSION':'"1.1"'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM1_'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM2_'}, 
 //]
 //ignore_errors = ['FileReader.FileName']
 
+
+#ifndef TEST_NAME
+#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr"
+#endif
 
 #path TEMP_PATH "Output"
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-FullBody"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
 #define MOCAP_NAME_MAINFILEDIR "Plug-in-gait-FullBody"
 
+#include "libdef.any"
+
+
 
 #ifdef TEST_NAME
 #define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
-//#path AMMR_PATH "../ammr"
-#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr"
-//#path AMMR_PATH "C:\Program Files\AnyBody Technology\AnyBody.7.0\AMMR"
-
-#define TLEM_VERSION "1.1"
+#define BM_LEG_MODEL _LEG_MODEL_TLEM2_
 #endif
-
-#ifndef AMMR_VERSION
-#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR1_"
-#else
-#define MOCAP_OUTPUT_FILENAME_PREFIX "AMMR2_"
-#endif
-
 
 
 // Run Analysis with a reduced number of time steps
@@ -37,7 +33,6 @@
 #define N_STEP 30
 
 
-#include "libdef.any"
 
 
 #include "<MOCAP_PATH_MAINFILE>"

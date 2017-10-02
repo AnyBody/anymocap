@@ -34,21 +34,16 @@ AnyFolder JointsAndDrivers = {
     
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
-    // Get the rotation angles fromt the initial pelvis rotation matrix. 
-    // This allows us to specify a default joint angle drivers which are close to the 
-    // load time position. 
-    RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
     
     /// The default data if no joint angles files have been generated.
     FileReader.Data0 = repmat(1,FileReader.Length0, 
-       {Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
-        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
-        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
-        InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-        0,0,0,0
-        #ifndef _OLD_NECK_INTERFACE_
-        ,0,0
-        #endif
+       {Main.HumanModel.Mannequin.Posture.PelvisPosX,
+        Main.HumanModel.Mannequin.Posture.PelvisPosY,
+        Main.HumanModel.Mannequin.Posture.PelvisPosZ,
+        Main.HumanModel.Mannequin.Posture.PelvisRotX,
+        Main.HumanModel.Mannequin.Posture.PelvisRotY,
+        Main.HumanModel.Mannequin.Posture.PelvisRotZ,
+        0,0,0,0,0,0
     });
     AnyKinMeasure &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasure &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
@@ -59,13 +54,9 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
     AnyKinMeasure &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
     AnyKinMeasure &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;  
-    #ifdef _OLD_NECK_INTERFACE_
-    AnyKinMeasure& NeckJoint = ...BodyModel.Interface.Trunk.NeckJoint;
-    #else
     AnyKinMeasure& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasure& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
     AnyKinMeasure& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation;    
-    #endif
     Reaction.Type = repmat(nDim, Off);
   };
   

@@ -27,7 +27,7 @@ Main.ModelSetup.SubjectSpecificData =
 
 
 // This sets the arm positions for all trials
-Main.ModelSetup.TrialSpecificData.InitialPositionOfBody = 
+Main.HumanModel.Mannequin.Posture = 
 {
     Left = 
     {
