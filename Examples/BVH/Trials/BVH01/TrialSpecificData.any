@@ -38,7 +38,7 @@ Main.ModelSetup.TrialSpecificData =
    // This class_template calculates the load time position and orientation of 
    // the pelvis on.
    AutoPelvisPos AutoPos(FROM_MARKERS=OFF) = {
-      PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0;
+      PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0 + {-0.6, 0, 0};
       PelvisRotMat = RotMat(
           Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0, 
           Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0, 

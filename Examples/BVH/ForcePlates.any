@@ -9,7 +9,7 @@ Main.EnvironmentModel.ForcePlates =
   NUMBER_OF_NODES = 25,
   NODES_FOLDER = FootNodes,
   PLATE_BASE_FRAME = Main.EnvironmentModel.GlobalRef,
-  SHOW_TRIGGER_VOLUME = 1
+  SHOW_TRIGGER_VOLUME = OFF
   ) =
   {
     CreateFootContactNodes25 FootNodes(foot_ref = 
