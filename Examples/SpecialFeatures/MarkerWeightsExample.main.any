@@ -41,7 +41,7 @@ ModelSetup.MocapDrivers = {
       CreateMarkerDriver RSHO ( 
           MarkerName= RSHO ,
           MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
-          UseC3DWeightResiduals  = "On")
+          UseC3DWeightResiduals  = ON)
      = { sRelOpt = {0.0, 0.41, 0.19}; };
 
    };

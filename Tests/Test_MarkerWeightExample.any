@@ -1,11 +1,20 @@
 //define = [
-//  {'TLEM_VERSION':'"2.0"'}, 
-//  {'TLEM_VERSION':'"1.1"'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM_'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM2_'}, 
 //]
 //ignore_errors = ['FileReader.FileName']
+// Test related setup.
 
+#ifndef TEST_NAME
+#path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
+#endif
 
 #include "libdef.any"
+
+
+#ifndef BM_LEG_MODEL
+#define BM_LEG_MODEL_LEG_MODEL_TLEM2_
+#endif
 
 
 #path TEMP_PATH "Output"

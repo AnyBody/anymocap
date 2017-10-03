@@ -4,6 +4,11 @@
 //]
 //ignore_errors = ['FileReader.FileName']
 
+#ifndef TEST_NAME
+#path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
+#endif
+
+
 #include "libdef.any"
 
 #path MOCAP_PATH_MAINFILEDIR "../Examples/SpecialFeatures"

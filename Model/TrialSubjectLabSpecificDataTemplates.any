@@ -43,39 +43,6 @@
 #class_template CreateSubjectFolder {
 
 
- AnyFolder Anthropometrics={
-  #var AnyVar BodyMass = 72;
-  #var AnyVar BodyHeight = 1.82;
-  
-  
-  // These antrhopometric data will be used as initial guess for 
-  // the optimization alogorithm the optimization algoritm will
-  // allow changes to the segment lengths 
-  #var AnyVar ThighLengthIni= 0.41; 
-  #var AnyVar ShankLengthIni= 0.42;
-  #var AnyVar FootLengthIni=0.25;
-  #var AnyVar PelvisWidthIni=0.16; ///< distance between hip joints
-  
-  #var AnyVar HeadHeightIni = 0.14;///< height in neutral position from  C1HatNode to top of head
-  #var AnyVar NeckLengthIni = 0.1357;///< Distance from C7T1 joint to C1HatNode
-  #var AnyVar TrunkHeightIni = 0.620233;///< height in neautral position from  C1HatNode to L5SacrumJnt
-  #var AnyVar TrunkWidthIni = 0.332;
-  #var AnyVar UpperArmLengthIni = 0.30;
-  #var AnyVar LowerArmLengthIni =0.23;
-  #var AnyVar HandLengthIni = 0.182;
-  #var AnyVar HandBreadthIni = 0.085;
-  
-};
-
-
-
-
-
-
-
-
-
-
 
 
 };

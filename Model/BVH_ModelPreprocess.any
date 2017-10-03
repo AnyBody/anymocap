@@ -3,7 +3,6 @@
 
 AnyKinStudy BVH_CreateMarkerTrajectoriesStudy = 
 {  
-  #include "<BM_MANNEQUIN_FILE>"  
   
   AnyFolder MarkerOutput ={};
   

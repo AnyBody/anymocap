@@ -41,41 +41,16 @@
 // #define _LWRB
 // #define _RFIN
 // #define _LFIN
- 
-
-// The pelvis anatomical frame is redefined 
-// in AMMR > 1.6, thus we handle that here.
-#if AMMR_VERSION_MAJOR >= 2
-  #define RASIS_POS {0.025,-0.00, 0.125}
-  #define LASIS_POS {0.025,-0.00, -0.125}
-  #define RPSIS_POS {-0.14,0.02, 0.04}
-  #define LPSIS_POS {-0.14,0.02, -0.04}
-#else
-  #define RASIS_POS {0.14,-0.03, 0.125}
-  #define LASIS_POS {0.14,-0.03, -0.125}
-  #define RPSIS_POS {-0.035,0, 0.04}
-  #define LPSIS_POS {-0.035,0, -0.04}
-  
-  #if BM_TRUNK_NECK == OFF
-    Main.HumanModel.BodyModel.Trunk.SegmentsThorax.ThoraxSeg = 
-    {
-       AnyRefNode T1C7JntNode = {sRel = {0.01, 0.465, 0};};
-    };
-  #endif
-#endif
-
-
-
 
 #ifdef _LPSI
 // Marker on the Left Posterior Superior Iliac
 CreateMarkerDriver LPSI ( 
 MarkerName= LPSI,
-UseC3DWeightResiduals = "On",
+UseC3DWeightResiduals = ON,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On", OptY="Off", OptZ="On"
+OptX=ON, OptY=OFF, OptZ=ON
 ) = {
-  sRelOpt =LPSIS_POS;
+  sRelOpt ={-0.14,0.02, -0.04};
 };
 #endif
 
@@ -84,9 +59,9 @@ OptX="On", OptY="Off", OptZ="On"
 CreateMarkerDriver RPSI (
 MarkerName= RPSI, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg,
-OptX="On", OptY="Off", OptZ="On"
+OptX=ON, OptY=OFF, OptZ=ON
 ) = {
-  sRelOpt = RPSIS_POS;
+  sRelOpt = {-0.14,0.02, 0.04};
 };
 #endif
 
@@ -96,7 +71,7 @@ CreateMarkerDriver RASI (
 MarkerName= RASI, 
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 ) = {
-  sRelOpt = RASIS_POS;
+  sRelOpt = {0.025,-0.00, 0.125};
 };
 #endif
 
@@ -106,7 +81,7 @@ CreateMarkerDriver LASI (
 MarkerName= LASI ,
 MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 ) = {
-  sRelOpt = LASIS_POS;
+  sRelOpt = {0.025,-0.00, -0.125};
 };
 #endif
 
@@ -117,7 +92,7 @@ MarkerPlacement=Trunk.SegmentsLumbar.PelvisSeg
 CreateMarkerDriver RFHD (
 MarkerName= RFHD, 
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="Off",OptY="Off",OptZ="Off" 
+OptX=OFF,OptY=OFF,OptZ=OFF 
 ) = {
   sRelOpt = {0.11,0.06,0.045}; 
 };
@@ -128,7 +103,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver LFHD (
 MarkerName= LFHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {0.11,0.06,-0.045};
 };
@@ -139,7 +114,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver RBHD (
 MarkerName= RBHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg, 
-OptX="On" ,OptY="Off" ,OptZ="On" 
+OptX=ON ,OptY=OFF ,OptZ=ON 
 ) = {
   sRelOpt = {-0.07,0.05,0.08};
 };
@@ -150,7 +125,7 @@ OptX="On" ,OptY="Off" ,OptZ="On"
 CreateMarkerDriver LBHD (
 MarkerName= LBHD,  
 MarkerPlacement=Trunk.SegmentsThorax.SkullSeg,   
-OptX="On",OptY="Off",OptZ= "On" ,
+OptX=ON,OptY=OFF,OptZ= ON ,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt = {-0.07,0.05,-0.08};
@@ -164,7 +139,7 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0
 CreateMarkerDriver STRN (
 MarkerName= STRN,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX="On",OptY="On",OptZ="Off",  
+OptX=ON,OptY=ON,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0
 ) = {
   sRelOpt = {0.15,0.24,0.0};
@@ -176,7 +151,7 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 CreateMarkerDriver CLAV (
 MarkerName= CLAV,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX="On",OptY="On",OptZ="Off",  
+OptX=ON,OptY=ON,OptZ=OFF,  
 WeightX=10.0,WeightY=10.0,WeightZ=10.0
 ) = {
   sRelOpt = {0.085,0.42,0.0};
@@ -188,7 +163,7 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 CreateMarkerDriver T10 (
 MarkerName= T10,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX="Off",OptY="On",OptZ="Off"
+OptX=OFF,OptY=ON,OptZ=OFF
 ) = {
   sRelOpt = {-0.05,0.187,0};
 };
@@ -211,7 +186,7 @@ PlaceMarkerAt = T1C7JntNode
 // Marker on the Right Thigh
 CreateMarkerDriver RTHI ( 
 MarkerName=  RTHI,
-OptX="On",OptY="On",OptZ="On",
+OptX=ON,OptY=ON,OptZ=ON,
 MarkerPlacement =Right.Leg.Seg.Thigh)= {
   sRelOpt = {0.00, -0.15, 0.1};
 };
@@ -223,7 +198,7 @@ CreateMarkerDriver RKNE (
 MarkerName= RKNE,
 MarkerPlacement= Right.Leg.Seg.Thigh,
 PlaceMarkerAt = EpicondylusFemorisLateralis,
-OptX="Off",OptY="Off",OptZ="Off",
+OptX=OFF,OptY=OFF,OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt = {0.00, 0.0, 0.015};
@@ -235,7 +210,7 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0
 CreateMarkerDriver RTIB (
 MarkerName= RTIB, 
 MarkerPlacement=Right.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {0.0, -0.1, 0.05};
 };
@@ -247,7 +222,7 @@ CreateMarkerDriver RANK (
 MarkerName= RANK ,
 MarkerPlacement=Right.Leg.Seg.Shank,
 PlaceMarkerAt = LateralMalleolus,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {-0.00, -0.0, 0.015};
 };
@@ -259,7 +234,7 @@ CreateMarkerDriver RTOE (
 MarkerName= RTOE,  
 MarkerPlacement=Right.Leg.Seg.Foot,
 PlaceMarkerAt = MetatarsalJoint1Node,
-OptX="Off" , OptY="Off" , OptZ="Off",
+OptX=OFF , OptY=OFF , OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt = {0.015, 0.02, 0.00};
@@ -272,7 +247,7 @@ CreateMarkerDriver RHEE (
 MarkerName= RHEE ,
 MarkerPlacement=Right.Leg.Seg.Foot,
 PlaceMarkerAt = HeelNode,
-OptX="Off", OptY="Off" , OptZ="Off",
+OptX=OFF, OptY=OFF , OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt =  {-0.025, -0.0, -0.0};
@@ -286,7 +261,7 @@ CreateMarkerDriver RMT5 (
 MarkerName= RMT5,  
 MarkerPlacement=Right.Leg.Seg.Foot, 
 PlaceMarkerAt = MetatarsalJoint5Node,
-OptX="Off",OptY="Off",OptZ="Off",  
+OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
   sRelOpt =  {0.0, 0.01, 0.015};
 };
@@ -297,7 +272,7 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
 CreateMarkerDriver LTHI ( 
 MarkerName= LTHI ,
 MarkerPlacement=Left.Leg.Seg.Thigh,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {0.0, -0.28, -0.1}; 
 };
@@ -309,7 +284,7 @@ CreateMarkerDriver LKNE (
 MarkerName= LKNE ,
 MarkerPlacement=Left.Leg.Seg.Thigh,
 PlaceMarkerAt = EpicondylusFemorisLateralis,
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {0.00, -0.0, -0.015};
 };
@@ -320,7 +295,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver LTIB (
 MarkerName= LTIB,
 MarkerPlacement=Left.Leg.Seg.Shank,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {0.0, -0.1, -0.05};
 };
@@ -332,7 +307,7 @@ CreateMarkerDriver LANK (
 MarkerName= LANK,
 MarkerPlacement=Left.Leg.Seg.Shank,
 PlaceMarkerAt = LateralMalleolus,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {-0.0, -0.0, -0.015};
 };
@@ -344,7 +319,7 @@ CreateMarkerDriver LTOE (
 MarkerName= LTOE, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 PlaceMarkerAt = MetatarsalJoint1Node,
-OptX="Off",OptY="On" ,OptZ="Off"
+OptX=OFF,OptY=ON ,OptZ=OFF
 ) = {
   sRelOpt = {0.015, 0.02, 0.00};
 };
@@ -356,7 +331,7 @@ CreateMarkerDriver LHEE(
 MarkerName= LHEE, 
 MarkerPlacement=Left.Leg.Seg.Foot,
 PlaceMarkerAt = HeelNode,
-OptX="Off", OptY="Off", OptZ="Off",
+OptX=OFF, OptY=OFF, OptZ=OFF,
 WeightX=1.0,WeightY=1.0,WeightZ=1.0
 ) = {
   sRelOpt =  {-0.025, -0.0, 0.0};
@@ -369,7 +344,7 @@ CreateMarkerDriver LMT5 (
 MarkerName= LMT5,  
 MarkerPlacement=Left.Leg.Seg.Foot, 
 PlaceMarkerAt = MetatarsalJoint5Node,
-OptX="Off",OptY="Off",OptZ="Off",  
+OptX=OFF,OptY=OFF,OptZ=OFF,  
 WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
   sRelOpt =  {0.0, 0.01, -0.015};
 };
@@ -382,8 +357,8 @@ WeightX=1.0,WeightY=1.0,WeightZ=1.0) = {
 CreateMarkerDriver RSHO (
 MarkerName= RSHO,  
 MarkerPlacement=Right.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off",
-UseC3DWeightResiduals  = "On"
+OptX=ON,OptY=OFF,OptZ=OFF,
+UseC3DWeightResiduals  = ON
 ) = {
   sRelOpt = {0.00,0.00,-0.015};
 };
@@ -394,8 +369,8 @@ UseC3DWeightResiduals  = "On"
 CreateMarkerDriver LSHO (
 MarkerName= LSHO,  
 MarkerPlacement=Left.ShoulderArm.Seg.Scapula, 
-OptX="On",OptY="Off",OptZ="Off",
-UseC3DWeightResiduals  = "On"
+OptX=ON,OptY=OFF,OptZ=OFF,
+UseC3DWeightResiduals  = ON
 ) = {
   sRelOpt = {0.00,-0.00,-0.015};
 };
@@ -407,7 +382,7 @@ UseC3DWeightResiduals  = "On"
 CreateMarkerDriver RUPA (
 MarkerName= RUPA,  
 MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt ={0.03,-0.24,0.01}; 
 };
@@ -419,7 +394,7 @@ OptX="On",OptY="On",OptZ="On"
 CreateMarkerDriver LUPA (
 MarkerName= LUPA,  
 MarkerPlacement=Left.ShoulderArm.Seg.Humerus,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt ={-0.03,-0.19,0.01}; 
 };
@@ -431,7 +406,7 @@ OptX="On",OptY="On",OptZ="On"
 CreateMarkerDriver RELB (
 MarkerName= RELB,  
 MarkerPlacement=Right.ShoulderArm.Seg.Humerus, 
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {0.045,-0.35, 0.015};
 };
@@ -443,7 +418,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver LELB (
 MarkerName= LELB,  
 MarkerPlacement=Left.ShoulderArm.Seg.Humerus, 
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {-0.045,-0.35, 0.015};
 };
@@ -455,7 +430,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver LFRA (
 MarkerName= LFRA,  
 MarkerPlacement=Left.ShoulderArm.Seg.Radius,
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {-0.13, 0.03, 0.01};
 };
@@ -466,7 +441,7 @@ OptX="On",OptY="On",OptZ="On"
 CreateMarkerDriver RFRA (
 MarkerName= RFRA,  
 MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
-OptX="On",OptY="On",OptZ="On"
+OptX=ON,OptY=ON,OptZ=ON
 ) = {
   sRelOpt = {-0.13, -0.03, 0.01};
 };
@@ -477,7 +452,7 @@ OptX="On",OptY="On",OptZ="On"
 CreateMarkerDriver RWRA (
 MarkerName= RWRA,  
 MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {-0.22, -0.05, 0.00};
 };
@@ -488,7 +463,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver RWRB (
 MarkerName= RWRB,  
 MarkerPlacement=Right.ShoulderArm.Seg.Radius, 
-OptX="On" ,OptY="On",OptZ="Off",  
+OptX=ON ,OptY=ON,OptZ=OFF,  
 WeightX=0.1,WeightY=0.1,WeightZ=0.1
 ) = {
   sRelOpt = {-0.22, 0.05, 0.025};
@@ -500,7 +475,7 @@ WeightX=0.1,WeightY=0.1,WeightZ=0.1
 CreateMarkerDriver LWRA (
 MarkerName= LWRA,  
 MarkerPlacement=Left.ShoulderArm.Seg.Radius,
-OptX="Off",OptY="Off",OptZ="Off"
+OptX=OFF,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {-0.22, 0.05, 0.0};
 };
@@ -511,7 +486,7 @@ OptX="Off",OptY="Off",OptZ="Off"
 CreateMarkerDriver LWRB (
 MarkerName= LWRB,  
 MarkerPlacement=Left.ShoulderArm.Seg.Radius, 
-OptX="On"  ,OptY="On" ,OptZ="Off",  
+OptX=ON  ,OptY=ON ,OptZ=OFF,  
 WeightX=0.1,WeightY=0.1,WeightZ=0.1
 ) = {
   sRelOpt = {-0.22, -0.05, 0.025};
@@ -524,7 +499,7 @@ WeightX=0.1,WeightY=0.1,WeightZ=0.1
 CreateMarkerDriver RFIN (
 MarkerName= RFIN,  
 MarkerPlacement=Right.ShoulderArm.Seg.Hand, 
-OptX="Off" ,OptY="Off",OptZ="Off"
+OptX=OFF ,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {-0.065,-0.02,0.02};
 };
@@ -536,7 +511,7 @@ OptX="Off" ,OptY="Off",OptZ="Off"
 CreateMarkerDriver LFIN (
 MarkerName= LFIN,  
 MarkerPlacement=Left.ShoulderArm.Seg.Hand, 
-OptX="Off" ,OptY="Off",OptZ="Off"
+OptX=OFF ,OptY=OFF,OptZ=OFF
 ) = {
   sRelOpt = {-0.065,-0.02,-0.02};
 };

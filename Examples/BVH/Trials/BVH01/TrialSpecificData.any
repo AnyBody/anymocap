@@ -36,12 +36,19 @@ Main.ModelSetup.TrialSpecificData =
   
   
    // This class_template calculates the load time position and orientation of 
-   // the pelvis based on markers.
-   //AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) = {};
+   // the pelvis on.
+   AutoPelvisPos AutoPos(FROM_MARKERS=OFF) = {
+      PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0;
+      PelvisRotMat = RotMat(
+          Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0, 
+          Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0, 
+          Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg.r0
+        ) * RotMat(-pi/2, x) * RotMat(-pi/2, z);
+   };
 
   /// The following settings define the initial posture of the
   /// model (e.g. at load time)
-  InitialPositionOfBody= {
+  Main.HumanModel.Mannequin.Posture = {
     
 //    // This can be ommitted if AutoPelvisPos above is used. 
 //    PelvisPosX = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0[0];
@@ -51,16 +58,7 @@ Main.ModelSetup.TrialSpecificData =
 //    PelvisRotX = 0.0;
 //    PelvisRotY = -90.0;
 //    PelvisRotZ = 0.0;
-    
-    //AnyFloat PelvisRotMatrix= Main.ModelSetup.BVHFileData.Model.Hips.Seg.Axes0 ;
-    PelvisRotationMatrix = RotMat(
-    Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0, 
-    Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0, 
-    Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg.r0
-    ) * RotMat(-pi/2, x) * RotMat(-pi/2, z);
-    
-    PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0;
-    
+        
     PelvisThoraxExtension = 0;
     PelvisThoraxLateralBending = 0;
     PelvisThoraxRotation = 0;
