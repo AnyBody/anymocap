@@ -6,6 +6,13 @@ AnyFolder Push ={
     AnyRefFrame &StrengthObject=..StrengthObject;
   };
   
+  LinS.StrengthObject ={
+    AnyDrawSphere DrwSphere ={
+      ScaleXYZ =0.01*{1,1,1};
+      Opacity =...ContactStrengthSmoothed/....Strength;
+    };
+  };
+  
   AnyKinMeasureOrg LinMeasureOrg0 ={
     AnyKinLinear &ref=.LinS;
     MeasureOrganizer={..Direction[0]};
