@@ -6,14 +6,7 @@ cache:
     paths:
     - .cache/
     
-AMMR1.6_Tests:
-  stage: test
-  script:
-    - pytest --ff Tests 
-  tags:
-    - ams
-    - python    
-    
+   
 AMMR2.0_Tests:
   stage: test
 
