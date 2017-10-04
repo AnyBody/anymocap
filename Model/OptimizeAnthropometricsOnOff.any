@@ -17,8 +17,8 @@
   LEFT_HAND_LENGTH = 0,
   RIGHT_VARUS_VALGUS = 0,
   LEFT_VARUS_VALGUS = 0,
-  RIGHT_TIBIAL_TORSION = 0,
-  LEFT_TIBIAL_TORSION = 0,
+//  RIGHT_TIBIAL_TORSION = 0,
+//  LEFT_TIBIAL_TORSION = 0,
   LEFT_RIGHT_SYMMETRY = 1,
   PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification,
   SEGMENTS_LENGTHS = Main.HumanModel.Anthropometrics.SegmentDimensions,
@@ -226,32 +226,32 @@
     #endif    
     
     
-    
-    AnyDesVar RightTibialTorsionOffset = {
-      Val = HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
-      Min = 0.01;
-      Max = 1;
-    };
-    #if RIGHT_TIBIAL_TORSION
-    PARAMETER_OPT_STUDY = { AnyDesVar& RightTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.RightTibialTorsionOffset; };
-    #endif
-    
-    AnyDesVar LeftTibialTorsionOffset = {
-      Val = HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
-      Min = 0.01;
-      Max = 1;
-    };
-    #if LEFT_TIBIAL_TORSION
-    PARAMETER_OPT_STUDY = { AnyDesVar& LeftTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.LeftTibialTorsionOffset; };
-    #endif
-    
-    AnyDesMeasure TibialTorsionSymmetry = {
-      Val = .LeftTibialTorsionOffset.Val + .RightTibialTorsionOffset.Val;
-      Type = EqualToZero;
-    };
-    #if RIGHT_TIBIAL_TORSION & LEFT_TIBIAL_TORSION & LEFT_RIGHT_SYMMETRY
-    PARAMETER_OPT_STUDY = { AnyDesMeasure& TibialTorsionSymmetry = Main.ModelSetup.ParameterIdentification.TibialTorsionSymmetry; };
-    #endif      
+//    
+//    AnyDesVar RightTibialTorsionOffset = {
+//      Val = HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
+//      Min = 0.01;
+//      Max = 1;
+//    };
+//    #if RIGHT_TIBIAL_TORSION
+//    PARAMETER_OPT_STUDY = { AnyDesVar& RightTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.RightTibialTorsionOffset; };
+//    #endif
+//    
+//    AnyDesVar LeftTibialTorsionOffset = {
+//      Val = HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
+//      Min = 0.01;
+//      Max = 1;
+//    };
+//    #if LEFT_TIBIAL_TORSION
+//    PARAMETER_OPT_STUDY = { AnyDesVar& LeftTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.LeftTibialTorsionOffset; };
+//    #endif
+//    
+//    AnyDesMeasure TibialTorsionSymmetry = {
+//      Val = .LeftTibialTorsionOffset.Val + .RightTibialTorsionOffset.Val;
+//      Type = EqualToZero;
+//    };
+//    #if RIGHT_TIBIAL_TORSION & LEFT_TIBIAL_TORSION & LEFT_RIGHT_SYMMETRY
+//    PARAMETER_OPT_STUDY = { AnyDesMeasure& TibialTorsionSymmetry = Main.ModelSetup.ParameterIdentification.TibialTorsionSymmetry; };
+//    #endif      
     
     
     
@@ -278,7 +278,7 @@
       Val = .RightVarusValgusOffset.Val + .LeftVarusValgusOffset.Val;
       Type = EqualToZero;
     };
-    #if RIGHT_TIBIAL_TORSION & LEFT_TIBIAL_TORSION & LEFT_RIGHT_SYMMETRY
+    #if RIGHT_VARUS_VALGUS & LEFT_VARUS_VALGUS & LEFT_RIGHT_SYMMETRY
     PARAMETER_OPT_STUDY = { AnyDesMeasure& VarusValgusSymmetry = Main.ModelSetup.ParameterIdentification.VarusValgusSymmetry; };
     #endif      
         
