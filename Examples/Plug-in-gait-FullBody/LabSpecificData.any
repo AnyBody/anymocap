@@ -15,9 +15,6 @@ Main.ModelSetup.LabSpecificData = {
   // This adds different segment length as design variables to 
   // to the parameter identification study (Main.Studies.ParameterIdentification)
   // This allows the segment length to be optimized in based on the markers/motion
-  // This adds different segment length as design variables to 
-  // to the parameter identification study (Main.Studies.ParameterIdentification)
-  // This allows the segment length to be optimized in based on the markers/motion
   OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
     PELVIS_WIDTH = ON , 
     HEAD_HEIGHT = OFF, 
@@ -32,8 +29,8 @@ Main.ModelSetup.LabSpecificData = {
     LEFT_UPPERARM_LENGTH = ON,
     RIGHT_LOWERARM_LENGTH= ON, 
     LEFT_LOWERARM_LENGTH = ON,
-    RIGHT_HAND_LENGTH= ON, 
-    LEFT_HAND_LENGTH = ON,
+    RIGHT_HAND_LENGTH= OFF, 
+    LEFT_HAND_LENGTH = OFF,
     LEFT_RIGHT_SYMMETRY = ON
   ) ={};
   

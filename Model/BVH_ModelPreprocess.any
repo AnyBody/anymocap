@@ -116,14 +116,6 @@ Main.Studies.KinematicStudy =
 };
 
 
-Main.Studies.ParameterIdentification = 
-{
-  AnyDesVar DummyVar = 
-  {
-    Val = 0;
-  };
-};
-
 Main.ModelSetup.Views = 
 {
   DrawGroups = 

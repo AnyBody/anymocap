@@ -14,11 +14,12 @@ AnyFolder ExtraDrivers = {
   // --------------------------------------------------------------------------
   #define BM_MANNEQUIN_DRIVER_WEAK_SWITCH ON
   
-  // Weak extra drivers for the should is often nesesarry, with
-  // almost all MOCAP marker protocols
-  #define BM_MANNEQUIN_DRIVER_STERNO_CLAVICULAR_RIGHT ON
-  #define BM_MANNEQUIN_DRIVER_STERNO_CLAVICULAR_LEFT ON
-  
+  // Weak extra drivers for the shoulder is often nesesarry with
+  // most MOCAP marker protocols
+//  #define BM_MANNEQUIN_DRIVER_STERNO_CLAVICULAR_RIGHT ON
+//  #define BM_MANNEQUIN_DRIVER_STERNO_CLAVICULAR_LEFT ON
+
+
   // Weak extra drivers for the glenohumeral external rotation is 
   // often necessary when there is only one marker at the elbow joint.
   #define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_EXTERNAL_ROTATION_RIGHT ON
@@ -38,5 +39,28 @@ AnyFolder ExtraDrivers = {
   
   // This link to the mannequin drivers ensures they are picked up by the study.
   AnyFolder& MannequinDrivers = Main.HumanModel.DefaultMannequinDrivers;
+  
+  
+  
+  
+   AnyKinEqSimpleDriver SCAxialRotationDriver  ={
+    AnyKinMeasure &refR =Main.HumanModel.BodyModel.Interface.Right.SternoClavicularAxialRotation;
+    AnyKinMeasure &refL =Main.HumanModel.BodyModel.Interface.Left.SternoClavicularAxialRotation;
+    DriverPos = pi/180*{
+      Main.HumanModel.Mannequin.Posture.Right.SternoClavicularAxialRotation,
+      Main.HumanModel.Mannequin.Posture.Left.SternoClavicularAxialRotation
+    };
+    DriverVel = pi/180*{
+      Main.HumanModel.Mannequin.Posture.Right.SternoClavicularAxialRotation,
+      Main.HumanModel.Mannequin.Posture.Left.SternoClavicularAxialRotation
+    };
+    Reaction.Type={Off, Off};
+    AnyFolder Weights = {AnyFunConst Fun = {Value = DesignVar({1});};};
+    WeightFun = {&Weights.Fun, &Weights.Fun};
+    CType = {Soft, Soft};
+  };
+  
+  
+  
 
 };

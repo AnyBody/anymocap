@@ -6,7 +6,7 @@
 
 
 #ifndef TEST_NAME
-#path AMMR_PATH "C:\Users\mel\Documents\AMMRs\ammr"
+#path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
 #endif
 
 #path TEMP_PATH "Output"

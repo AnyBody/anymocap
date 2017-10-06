@@ -22,7 +22,7 @@ Main.ModelSetup.SubjectSpecificData =
           HandLength = 0.182;
           HandBreadth = 0.085;
           
-          ThighLength= 0.41; 
+//          ThighLength= 0.41; 
           ShankLength= 0.40;
           FootLength=0.22;    
        };

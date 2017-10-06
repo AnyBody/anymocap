@@ -36,7 +36,7 @@ Main.ModelSetup.TrialSpecificData =
   
    // This class template calculates and sets the PelvisPos and PelvisRotationMatrix
    // variables based on the marker names.
-//   AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) ={};
+   AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) ={};
 
   /// The following settings define the initial posture of the
   /// model (e.g. at load time)

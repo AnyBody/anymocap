@@ -1,7 +1,9 @@
 Analysis = 
 { 
   AnyOperation &ref = .KinematicStudyForParameterIdentification.Kinematics;
-};  
+};
+
+ParameterOptimization.ConvergenceTol = 1e-4;
 
 AnyKinStudy KinematicStudyForParameterIdentification = 
 {

@@ -36,7 +36,7 @@ Main.ModelSetup.TrialSpecificData =
   
    // This class_template calculates the load time position and orientation of 
    // the pelvis based on markers.
-   // AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) = {};
+   AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) = {};
 
   /// The following settings define the initial posture of the
   /// model (e.g. at load time)

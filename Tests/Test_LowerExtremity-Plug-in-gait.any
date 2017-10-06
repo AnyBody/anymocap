@@ -35,7 +35,8 @@
 #include "<MOCAP_PATH_MAINFILE>"
 
 Main = 
-{
+{  
+  
   AnyOperationSequence  RunTest = 
   {
     AnyOperation& ParameterId =  Main.RunParameterIdentification;
