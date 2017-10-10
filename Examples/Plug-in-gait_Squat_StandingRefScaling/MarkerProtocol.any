@@ -140,9 +140,9 @@ CreateMarkerDriver STRN (
 MarkerName= STRN,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
 OptX=ON,OptY=ON,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+WeightX=1,WeightY=1,WeightZ=1
 ) = {
-  sRelOpt = {0.15,0.24,0.0};
+  sRelOpt = {0.175,0.24,0.0};
 };
 #endif
 
@@ -151,10 +151,10 @@ WeightX=10.0,WeightY=10.0,WeightZ=10.0
 CreateMarkerDriver CLAV (
 MarkerName= CLAV,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg, 
-OptX=ON,OptY=ON,OptZ=OFF,  
-WeightX=10.0,WeightY=10.0,WeightZ=10.0
+OptX=ON,OptY=OFF,OptZ=OFF,  
+WeightX=1,WeightY=1,WeightZ=1
 ) = {
-  sRelOpt = {0.085,0.42,0.0};
+  sRelOpt = {0.11,0.42,0.0};
 };
 #endif
 
@@ -174,9 +174,10 @@ OptX=OFF,OptY=ON,OptZ=OFF
 CreateMarkerDriver C7 (
 MarkerName= C7,  
 MarkerPlacement=Trunk.SegmentsThorax.ThoraxSeg,
+OptX=OFF,OptY=ON,OptZ=OFF,  
 PlaceMarkerAt = T1C7JntNode
 ) = {
-  sRelOpt = {-0.05,0,0};
+  sRelOpt = {-0.065, 0.00, 0};
 };
 #endif
 

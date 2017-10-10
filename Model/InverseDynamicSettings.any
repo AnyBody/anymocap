@@ -36,10 +36,6 @@ Main.RunAnalysis.InverseDynamics =
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
  
- AnyVar vfreq = 1.0/C3DData.Header.VideoFrameRate;
- AnyVar tdiff = T_END-T_START;
- AnyVar nss = max({N_STEP-1,1});
- 
  AnyVar tFrame = (T_END-T_START)/(max({N_STEP-1,1}));
  
  

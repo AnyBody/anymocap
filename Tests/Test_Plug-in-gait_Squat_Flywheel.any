@@ -9,7 +9,6 @@
 #path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
 #endif
 
-#path TEMP_PATH "../Examples/Plug-in-gait_Squat_StandingRefScaling/Output"
 #path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait_Squat_StandingRefScaling/Trials/FlywheelSquat_1/"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
 #define MOCAP_NAME_MAINFILEDIR "FlywheelSquat_1"
@@ -19,7 +18,7 @@
 
 
 #ifdef TEST_NAME
-#define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
+#define  MOCAP_TEST_FILENAME_PREFIX  "Test_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
 #define BM_LEG_MODEL _LEG_MODEL_TLEM2_

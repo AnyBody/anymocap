@@ -3,24 +3,43 @@ AnyFunInterpol InterpolatedData =
 {
   Type  = iffun(gtfun(.FileReader.Length0, 1), Bspline, ConstantValue);
   BsplineOrder = min({4,.FileReader.Length0});
-  // Check if the start time is with the range of data in the file. 
-  // We need to add/substract a tiny quantity from the read data,
-  // since file data saved with 15 digit and thus could have lost some precession. . 
-  AnyInt ValidData = andfun( gteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[0]-1e-13),
-  lteqfun(Main.Studies.InverseDynamicStudy.tArray[0], .FileReader.T[NumElemOf(.FileReader.T)-1]+1e-13));
-  // `iffun` will select the shortest of its inputs as output size.
-  // If the largest array is returned it will get cropped, but data gets mangled since
-  // it crops the data outer dimesion. To avoid that we transpose the input and transform 
-  // it back again. 
-  Data = iffun({ValidData}, .FileReader.Data', .FileReader.Data0')';
-  T = iffun({ValidData}, .FileReader.T, .FileReader.T0);
+
+  Data = .FileReader.Data;
+  T = .FileReader.T;
 };
 
 AnyInputFile FileReader = {
-  // FileName: This is by externally to this include.
+  // Check if the start time is with the range of data in the file. 
+  
+  /// Number of data elements in the file
+  AnyInt nFile = NumElemOf(.FileReader.TFile);
+ 
+  AnyFloat tt = farr(0.0,1.0, iffun(ltfun(nFile,3), 4, 0));
+  
+  AnyFloat TFileMin = min(arrcat(TFile, {1e7}))-1e-13;
+  AnyFloat TFileMax = max(arrcat(TFile, {-1e7, -1e7}))+1e-13;
+  AnyInt ValidStartTime = andfun( gtfun(....tArray[0],TFileMin), ltfun(....tArray[0], TFileMax));
+
+    
+//  /// 'Copy' of TFile garantied to have at least two entries.
+   AnyFloat TFile2 = arrcat(TFile, TFileMax + farr(1.0, 2.0, ltfun(nFile,1) + ltfun(nFile,2)));
+  AnyInt nFile2 = NumElemOf(TFile2);
+  // Multiply time vector with the difference matrix.
+  AnyFloat TFileDiff = TFile2*(arrcat(zeros(1, nFile2-1), eye(nFile2-1,nFile2-1)) 
+                          -arrcat(eye(nFile2-1,nFile2-1), zeros(1, nFile2-1)));
+  AnyInt IsMonotoneIncreasing = gtfun(min(TFileDiff), 0);
+  
+  
+  AnyInt ValidData = 1;//andfun(ValidStartTime, IsMonotoneIncreasing);
+  
+  // If there is problems with the file data, force the use of default data. 
+  AlwaysUseData0 = not(ValidData); 
+  
+  // FileName: This is set externally to this include file.
   FileErrorContinueOnOff = On;
   ReloadOnOff = On;
   SuppressWarningsOnOff = On;
+  
   AnyInt Length0 = NumElemOf(Main.Studies.KinematicStudy.tArray);
   T0 = Main.Studies.KinematicStudy.tArray;
 };
@@ -31,15 +50,15 @@ AnyMessage AnyMocap_msg1=
 {
   AnyInt nDataFileIdx = max({0,.FileReader.nDataInFile-1});
   AnyVar maxtime =  .FileReader.T[min({nDataFileIdx, NumElemOf(.FileReader.T)})];
-  TriggerRuntime = andfun(.InterpolatedData.ValidData,
-                          andfun(....iStep, gtfun(....t,  maxtime ))); 
+  TriggerRuntime = andfun(.FileReader.ValidData,
+                          andfun(Main.Studies.InverseDynamicStudy.iStep, gtfun(Main.Studies.InverseDynamicStudy.t,  maxtime ))); 
   Type = MSG_Error;
   Message = DesignVar(strformat("\nNo kinematic joint angle data available after t = "+strval(maxtime,  "%.3g") + "s.\n " + 
   "Please re-run the complete kinematic analysis to recompute all joint angles and data."));
 };
 AnyMessage AnyMocap_msg2= 
 {                                          
-  TriggerRuntime = andfun(....iStep, not(.InterpolatedData.ValidData)); 
+  TriggerRuntime = andfun(....iStep, not(.FileReader.ValidData)); 
   Type = MSG_Error;
   Message = DesignVar(strformat("\nNo valid kinematic joint angle data available.\nPlease run the Kinematic analysis first"));
 };

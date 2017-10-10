@@ -8,9 +8,8 @@ Main.ModelSetup.SubjectSpecificData =
 // This sets the Anthropometrics for all trials for this subject
 Main.HumanModel.Anthropometrics = 
 {
-   BodyMass = 66;
-   BodyHeight = 1.75;
-   
+     BodyMass = 78.6;
+     BodyHeight = 1.74;   
    
    // These antrhopometric data will be used as initial guess for 
    // the optimization alogorithm for segment length. Default length 
@@ -18,7 +17,7 @@ Main.HumanModel.Anthropometrics =
    SegmentDimensions = 
    {
       PelvisWidth = 0.16; ///< distance between hip joints
-      HeadHeight = 0.13;///< height in neutral position from  C1HatNode to top of head
+      HeadHeight = 0.14;///< height in neutral position from  C1HatNode to top of head
       TrunkHeight = 0.60;///< height in neautral position from  C1HatNode to L5SacrumJnt
       
       Right =

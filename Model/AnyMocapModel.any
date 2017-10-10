@@ -61,6 +61,7 @@ Main =
       AnyFolder& EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection =
       {
+        #include "HumanGroundResiduals.any"
         #include "JointsAndDriversOptimized.any"
       }; 
       

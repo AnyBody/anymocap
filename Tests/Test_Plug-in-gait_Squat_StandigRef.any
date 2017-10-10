@@ -18,7 +18,7 @@
 #path TEMP_PATH "Output"
 
 #ifdef TEST_NAME
-#define  MOCAP_TEST_FILENAME_PREFIX  TEST_NAME + "_"
+#define  MOCAP_TEST_FILENAME_PREFIX  "Test_"
 #else
 #define  MOCAP_TEST_FILENAME_PREFIX  "GUI_"
 #define BM_LEG_MODEL _LEG_MODEL_TLEM2_

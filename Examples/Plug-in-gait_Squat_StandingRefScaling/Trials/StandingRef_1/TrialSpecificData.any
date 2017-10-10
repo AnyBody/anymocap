@@ -65,11 +65,11 @@ Main.ModelSetup.TrialSpecificData =
   
     Right = {
 
-      HipFlexion = 26.54894;
-      HipAbduction = 8.313687;
+      HipFlexion = 0;
+      HipAbduction = 0;
       HipExternalRotation = 0;
-      KneeFlexion = -2.131877;
-      AnklePlantarFlexion = 2.90032;
+      KneeFlexion = 0;
+      AnklePlantarFlexion = 0;
       SubTalarEversion = 0;
  
 ////    These Values are configure from the SubjectSpecificData.any
@@ -85,11 +85,11 @@ Main.ModelSetup.TrialSpecificData =
   };
     Left = {
     
-      HipFlexion = -24.09937;
-      HipAbduction = 0.6660672;
+      HipFlexion = 0;
+      HipAbduction = 0;
       HipExternalRotation = 0;
-      KneeFlexion = -0.1293966;
-      AnklePlantarFlexion = -9.499957;
+      KneeFlexion = 0;
+      AnklePlantarFlexion = 0;
       SubTalarEversion = 0;
     
 ////    These Values are configure from the SubjectSpecificData.any
