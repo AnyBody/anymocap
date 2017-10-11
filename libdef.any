@@ -1,0 +1,9 @@
+#path ANYMOCAP_MODEL "Model/AnyMocapModel.any"
+
+
+//#ifexist "<ANYBODY_PATH_MYFILES>\AMMRs\ammr\libdef.any"
+  #include  "<ANYBODY_PATH_MYFILES>\AMMRs\ammr\libdef.any"
+//#else
+//#include "<ANYBODY_PATH_INSTALLDIR>/AMMR/libdef.any"
+//#endif
+
