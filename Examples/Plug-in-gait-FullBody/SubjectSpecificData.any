@@ -15,7 +15,7 @@ Main.ModelSetup.SubjectSpecificData =
      {
        PelvisWidth = 0.16; ///< Distance between hip joints
        HeadHeight = 0.13; ///< Height in neutral position from  C1HatNode to top of head
-       TrunkHeight = 0.60;
+       TrunkHeight = 0.61;
      
        Right = 
        {

@@ -6,7 +6,7 @@
 
 
 #ifndef TEST_NAME
-#path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
+#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
 #endif
 
 #path TEMP_PATH "Output"
@@ -30,7 +30,7 @@
 // to make test go faster. 
 #define N_STEP_PARAM_OPT 10
 #define N_STEP_KINEMATICS 197
-#define N_STEP 30
+#define N_STEP 60
 
 
 

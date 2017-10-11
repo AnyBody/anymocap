@@ -20,7 +20,8 @@ AnyOperationSequence RunParameterIdentification =
     AnyOperationSequence SaveParameters = 
     {
       AnyOperationDummy placeholder_operation= {};
-    };
+    };    
+    
   };
 #endif
   

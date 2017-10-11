@@ -5,7 +5,7 @@ LASIS=LASI,
 BACK=RPSI,
 FROM_MARKERS=1,
 C3D_OBJECT=Main.ModelSetup.C3DFileData,
-T_START = Main.ModelSetup.TrialSpecificData.tStart,
+T_START = Main.Studies.InverseDynamicStudy.tStart,
 MANNEQUIN_FOLDER = Main.HumanModel.Mannequin
 ) {
     #if FROM_MARKERS == 1
@@ -50,7 +50,8 @@ MANNEQUIN_FOLDER = Main.HumanModel.Mannequin
        
     AnyFolder &InitPosRef= MANNEQUIN_FOLDER.Posture;    
     
-    InitPosRef= {
+    InitPosRef= 
+    {
       PelvisPosX = DesignVar(.PelvisPos[0]);
       PelvisPosY = DesignVar(.PelvisPos[1]);
       PelvisPosZ = DesignVar(.PelvisPos[2]);

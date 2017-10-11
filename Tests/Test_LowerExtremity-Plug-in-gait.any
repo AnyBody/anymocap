@@ -6,7 +6,7 @@
 //ignore_errors = ['FileReader.FileName']
 
 #ifndef TEST_NAME
-#path AMMR_PATH "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
+#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
 #endif
 
 #path TEMP_PATH "Output"

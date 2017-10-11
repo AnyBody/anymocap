@@ -1,7 +1,7 @@
-#ifndef AMMR_PATH
+#ifndef ANYBODY_PATH_AMMR
   #include "<ANYBODY_PATH_INSTALLDIR>/AMMR/libdef.any"
 #else
-  #include "<AMMR_PATH>/libdef.any"
+  #include "<ANYBODY_PATH_AMMR>/libdef.any"
 #endif
 
 
