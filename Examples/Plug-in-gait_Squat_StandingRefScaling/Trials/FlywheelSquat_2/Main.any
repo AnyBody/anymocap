@@ -1,4 +1,5 @@
 // ***************************** AnyMoCap ***********************************
+#include "../../../libdef.any"
 
 // Enter and edit Lab-Specific Data in this file:
 #path MOCAP_LAB_SPECIFIC_DATA "../../LabSpecificData.any"
@@ -13,5 +14,5 @@
 
 
 // Include the AnyMoCap Framwork
-#include "../../AnyMoCap.libdef.any"
+#include "<ANYMOCAP_MODEL>"
 

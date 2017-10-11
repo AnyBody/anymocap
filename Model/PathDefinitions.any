@@ -30,7 +30,7 @@
   
   // Path for saving intermediate files 
   #ifndef TEMP_PATH
-    #path TEMP_PATH "Tmp/"
+    #path TEMP_PATH "<ANYBODY_PATH_MAINFILEDIR>\Output"
   #endif
 
   // Path for saving model output files 

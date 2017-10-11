@@ -5,11 +5,6 @@
 //ignore_errors = ['FileReader.FileName']
 
 
-#ifndef TEST_NAME
-#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr\"
-#endif
-
-#path TEMP_PATH "Output"
 #path MOCAP_PATH_MAINFILEDIR "..\Examples\BVH\Trials\BVH01"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
 #define MOCAP_NAME_MAINFILEDIR "BVH01"

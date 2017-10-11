@@ -43,15 +43,15 @@ Main.ModelSetup.TrialSpecificData =
   Main.HumanModel.Mannequin.Posture = {
     
     
-    // This can be ommitted if AutoPelvisPos above is used. 
-    PelvisPosX = -0.08;
-    PelvisPosY = 0.89;
-    PelvisPosZ = -0.33;
-  
-    PelvisRotX = 0.0;
-    PelvisRotY = 0.0;
-    PelvisRotZ = 0.0;
-    
+  // This can be ommitted if AutoPelvisPos above is used. 
+   // PelvisPosX = -0.08;
+   // PelvisPosY = 0.89;
+   // PelvisPosZ = -0.33;
+   //  
+   // PelvisRotX = 0.0;
+   // PelvisRotY = 0.0;
+   // PelvisRotZ = 0.0;
+       
     
     
     PelvisThoraxExtension = 0;
