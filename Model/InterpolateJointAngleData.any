@@ -16,21 +16,13 @@ AnyInputFile FileReader = {
  
   AnyFloat tt = farr(0.0,1.0, iffun(ltfun(nFile,3), 4, 0));
   
-  AnyFloat TFileMin = min(arrcat(TFile, {1e7}))-1e-13;
-  AnyFloat TFileMax = max(arrcat(TFile, {-1e7, -1e7}))+1e-13;
+  AnyInt LastValidIndex = sum(eqfun(TFile,TFile))-1;
+  AnyFloat TFileMin = TFile[0]-1e-13;
+  AnyFloat TFileMax = TFile[max({LastValidIndex, 0})]+1e-13;
   AnyInt ValidStartTime = andfun( gtfun(....tArray[0],TFileMin), ltfun(....tArray[0], TFileMax));
 
     
-//  /// 'Copy' of TFile garantied to have at least two entries.
-   AnyFloat TFile2 = arrcat(TFile, TFileMax + farr(1.0, 2.0, ltfun(nFile,1) + ltfun(nFile,2)));
-  AnyInt nFile2 = NumElemOf(TFile2);
-  // Multiply time vector with the difference matrix.
-  AnyFloat TFileDiff = TFile2*(arrcat(zeros(1, nFile2-1), eye(nFile2-1,nFile2-1)) 
-                          -arrcat(eye(nFile2-1,nFile2-1), zeros(1, nFile2-1)));
-  AnyInt IsMonotoneIncreasing = gtfun(min(TFileDiff), 0);
-  
-  
-  AnyInt ValidData = 1;//andfun(ValidStartTime, IsMonotoneIncreasing);
+  AnyInt ValidData = andfun(ValidStartTime, TFileIsMonotoneIncreasing);
   
   // If there is problems with the file data, force the use of default data. 
   AlwaysUseData0 = not(ValidData); 

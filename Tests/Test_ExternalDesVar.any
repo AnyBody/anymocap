@@ -17,4 +17,4 @@
 
 #path TEMP_PATH "Output"
 
-#include "<ANYMOCAP_EXAMPLE>/SpecialFeatures/ExternalDesVars.main.any"
+#include "<ANYMOCAP_EXAMPLES>/SpecialFeatures/ExternalDesVars.main.any"

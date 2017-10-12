@@ -13,7 +13,7 @@
 #define BM_LEG_MODEL_LEG_MODEL_TLEM2_
 #endif
 
-#path MOCAP_PATH_MAINFILEDIR "../Examples/SpecialFeatures/"
+#path MOCAP_PATH_MAINFILEDIR "<ANYMOCAP_EXAMPLES>/SpecialFeatures/"
 #define MOCAP_NAME_MAINFILEDIR "SpecialFeatures"
 
 #include "libdef.any"
@@ -21,4 +21,4 @@
 
 #path TEMP_PATH "Output"
 
-#include "../Examples/SpecialFeatures/ForcePlateSurfaceOffset.main.any"
+#include "<ANYMOCAP_EXAMPLES>/SpecialFeatures/ForcePlateSurfaceOffset.main.any"
