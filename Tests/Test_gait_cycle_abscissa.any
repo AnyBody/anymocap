@@ -5,11 +5,7 @@
 //ignore_errors = ['FileReader.FileName']
 // Test related setup.
 
-#ifndef TEST_NAME
-#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
-#endif
-
-#include "libdef.any"
+#include "../libdef.any"
 
 
 #ifndef BM_LEG_MODEL
@@ -19,4 +15,4 @@
 
 #path TEMP_PATH "Output"
 
-#include "../Examples/SpecialFeatures/GaitCycleNormalization.main.any"
+#include "<ANYMOCAP_EXAMPLES>/SpecialFeatures/GaitCycleNormalization.main.any"

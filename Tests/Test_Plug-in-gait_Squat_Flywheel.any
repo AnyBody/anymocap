@@ -5,16 +5,11 @@
 //]
 //ignore_errors = ['FileReader.FileName']
 
-#ifndef TEST_NAME
-#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
-#endif
+#include "../libdef.any"
 
-#path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait_Squat_StandingRefScaling/Trials/FlywheelSquat_1/"
+#path MOCAP_PATH_MAINFILEDIR  "<ANYMOCAP_EXAMPLES>/Plug-in-gait_Squat_StandingRefScaling/Trials/FlywheelSquat_1/"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
 #define MOCAP_NAME_MAINFILEDIR "FlywheelSquat_1"
-
-
-#include "libdef.any"
 
 
 #ifdef TEST_NAME

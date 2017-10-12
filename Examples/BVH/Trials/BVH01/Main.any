@@ -15,5 +15,5 @@
 
 
 // Include the AnyMoCap Framwork
-#include "../../AnyMoCap.libdef.any"
+#include "<ANYMOCAP_MODEL>"
 

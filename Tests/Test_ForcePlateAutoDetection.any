@@ -7,13 +7,10 @@
 //  {'PLATE_LIMB_DISTANCE': 0.5}]
 //)
 
-#ifndef TEST_NAME
-#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
-#endif
 
+#include "../libdef.any"
 
-#include "libdef.any"
-#include "..\Model\ForcePlates\ForcePlateAutoDetection.any"
+#include "<ANYMOCAP_PATH>\ForcePlates\ForcePlateAutoDetection.any"
 
 
 #ifndef FP_TYPE

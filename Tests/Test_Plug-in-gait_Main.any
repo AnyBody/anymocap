@@ -5,16 +5,14 @@
 //ignore_errors = ['FileReader.FileName']
 
 
-#ifndef TEST_NAME
-#path ANYBODY_PATH_AMMR "<ANYBODY_PATH_MYFILES>\AMMRs\ammr"
-#endif
+
+#include "../libdef.any"
 
 #path TEMP_PATH "Output"
-#path MOCAP_PATH_MAINFILEDIR "../Examples/Plug-in-gait-FullBody"
+#path MOCAP_PATH_MAINFILEDIR "<ANYMOCAP_EXAMPLES>/Plug-in-gait-FullBody"
 #path MOCAP_PATH_MAINFILE "<MOCAP_PATH_MAINFILEDIR>/Main.any"
 #define MOCAP_NAME_MAINFILEDIR "Plug-in-gait-FullBody"
 
-#include "libdef.any"
 
 
 

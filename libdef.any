@@ -1,3 +1,8 @@
+#ifndef ANYMOCAP_LIBDEF_ANY
+#define ANYMOCAP_LIBDEF_ANY
+
+#path ANYMOCAP_EXAMPLES "Examples"
+#path ANYMOCAP_PATH "Model"
 #path ANYMOCAP_MODEL "Model/AnyMocapModel.any"
 
 
@@ -7,3 +12,4 @@
 //#include "<ANYBODY_PATH_INSTALLDIR>/AMMR/libdef.any"
 //#endif
 
+#endif
