@@ -30,8 +30,8 @@
   {    
     AnyDesVar PelvisWidth = {
       Val = SEGMENTS_LENGTHS.PelvisWidth;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if PELVIS_WIDTH
     PARAMETER_OPT_STUDY = { AnyDesVar& PelvisWidth = Main.ModelSetup.ParameterIdentification.PelvisWidth; };
@@ -39,8 +39,8 @@
     
     AnyDesVar HeadHeight = {
       Val = SEGMENTS_LENGTHS.HeadHeight;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if HEAD_HEIGHT
     PARAMETER_OPT_STUDY = { AnyDesVar& HeadHeight = Main.ModelSetup.ParameterIdentification.HeadHeight; };
@@ -48,8 +48,8 @@
     
     AnyDesVar TrunkHeight = {
       Val = SEGMENTS_LENGTHS.TrunkHeight;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.1;
+      Max = 1.5;
     };
     #if TRUNK_HEIGHT
     PARAMETER_OPT_STUDY = { AnyDesVar& TrunkHeight = Main.ModelSetup.ParameterIdentification.TrunkHeight; };
@@ -57,7 +57,7 @@
         
     AnyDesVar RightThighLength = {
       Val = SEGMENTS_LENGTHS.Right.ThighLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if RIGHT_THIGH_LENGTH
@@ -66,7 +66,7 @@
     
     AnyDesVar LeftThighLength = {
       Val = SEGMENTS_LENGTHS.Left.ThighLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if LEFT_THIGH_LENGTH
@@ -84,7 +84,7 @@
     
     AnyDesVar RightShankLength = {
       Val = SEGMENTS_LENGTHS.Right.ShankLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if RIGHT_SHANK_LENGTH
@@ -93,7 +93,7 @@
     
     AnyDesVar LeftShankLength = {
       Val = SEGMENTS_LENGTHS.Left.ShankLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if LEFT_SHANK_LENGTH
@@ -112,8 +112,8 @@
     
     AnyDesVar RightFootLength = {
       Val = SEGMENTS_LENGTHS.Right.FootLength;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if RIGHT_FOOT_LENGTH
     PARAMETER_OPT_STUDY = { AnyDesVar& RightFootLength = Main.ModelSetup.ParameterIdentification.RightFootLength; };
@@ -121,8 +121,8 @@
     
     AnyDesVar LeftFootLength = {
       Val = SEGMENTS_LENGTHS.Left.FootLength;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if LEFT_FOOT_LENGTH
     PARAMETER_OPT_STUDY = { AnyDesVar& LeftFootLength = Main.ModelSetup.ParameterIdentification.LeftFootLength; };
@@ -150,7 +150,7 @@
     
     AnyDesVar LeftUpperArmLength = {
       Val = SEGMENTS_LENGTHS.Left.UpperArmLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if LEFT_UPPERARM_LENGTH
@@ -170,7 +170,7 @@
     
     AnyDesVar RightLowerArmLength = {
       Val = SEGMENTS_LENGTHS.Right.LowerArmLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if RIGHT_LOWERARM_LENGTH
@@ -179,7 +179,7 @@
     
     AnyDesVar LeftLowerArmLength = {
       Val = SEGMENTS_LENGTHS.Left.LowerArmLength;
-      Min = 0.01;
+      Min = 0.1;
       Max = 1;
     };
     #if LEFT_LOWERARM_LENGTH
@@ -201,8 +201,8 @@
     
     AnyDesVar RightHandLength = {
       Val = SEGMENTS_LENGTHS.Right.HandLength;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if RIGHT_HAND_LENGTH
     PARAMETER_OPT_STUDY = { AnyDesVar& RightHandLength = Main.ModelSetup.ParameterIdentification.RightHandLength; };
@@ -210,8 +210,8 @@
     
     AnyDesVar LeftHandLength = {
       Val = SEGMENTS_LENGTHS.Left.HandLength;
-      Min = 0.01;
-      Max = 1;
+      Min = 0.05;
+      Max = 0.5;
     };
     #if LEFT_HAND_LENGTH
     PARAMETER_OPT_STUDY = { AnyDesVar& LeftHandLength = Main.ModelSetup.ParameterIdentification.LeftHandLength; };
@@ -229,8 +229,8 @@
 //    
 //    AnyDesVar RightTibialTorsionOffset = {
 //      Val = HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
-//      Min = 0.01;
-//      Max = 1;
+//      Min = -pi/4;
+//      Max = pi/4;
 //    };
 //    #if RIGHT_TIBIAL_TORSION
 //    PARAMETER_OPT_STUDY = { AnyDesVar& RightTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.RightTibialTorsionOffset; };
@@ -238,8 +238,8 @@
 //    
 //    AnyDesVar LeftTibialTorsionOffset = {
 //      Val = HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset;
-//      Min = 0.01;
-//      Max = 1;
+//      Min = -pi/4;
+//      Max = pi/4;
 //    };
 //    #if LEFT_TIBIAL_TORSION
 //    PARAMETER_OPT_STUDY = { AnyDesVar& LeftTibialTorsionOffset = Main.ModelSetup.ParameterIdentification.LeftTibialTorsionOffset; };
@@ -258,8 +258,8 @@
     
     AnyDesVar RightVarusValgusOffset = {
       Val = HUMAN_MODEL_FOLDER.BodyModel.Right.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation;
-      Min = 0.01;
-      Max = 1;
+      Min = -pi/4;
+      Max = pi/4;
     };
     #if RIGHT_VARUS_VALGUS
     PARAMETER_OPT_STUDY = { AnyDesVar& RightVarusValgusOffset = Main.ModelSetup.ParameterIdentification.RightVarusValgusOffset; };
@@ -267,8 +267,8 @@
     
     AnyDesVar LeftVarusValgusOffset = {
       Val = HUMAN_MODEL_FOLDER.BodyModel.Left.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation;
-      Min = 0.01;
-      Max = 1;
+      Min = -pi/4;
+      Max = pi/4;
     };
     #if LEFT_VARUS_VALGUS
     PARAMETER_OPT_STUDY = { AnyDesVar& LeftVarusValgusOffset = Main.ModelSetup.ParameterIdentification.LeftVarusValgusOffset; };
@@ -306,8 +306,8 @@
    {
      AnyDesVar NAME = {
        Val = PARAMETER;
-       Min = 0.01;
-       Max = 1;
+       #var Min = 0.01;
+       #var Max = 1;
      };
    };
    #if ENABLE
