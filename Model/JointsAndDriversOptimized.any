@@ -10,9 +10,9 @@ AnyFolder JointsAndDrivers = {
        {Main.HumanModel.Mannequin.Posture.PelvisPosX,
         Main.HumanModel.Mannequin.Posture.PelvisPosY,
         Main.HumanModel.Mannequin.Posture.PelvisPosZ,
-        Main.HumanModel.Mannequin.Posture.PelvisRotX,
-        Main.HumanModel.Mannequin.Posture.PelvisRotY,
-        Main.HumanModel.Mannequin.Posture.PelvisRotZ,
+        Main.HumanModel.Mannequin.Posture.PelvisRotX*pi/180,
+        Main.HumanModel.Mannequin.Posture.PelvisRotY*pi/180,
+        Main.HumanModel.Mannequin.Posture.PelvisRotZ*pi/180,
         0,0,0,0,0,0
     });
     AnyKinMeasure &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
