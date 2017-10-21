@@ -1,5 +1,5 @@
 //define = [
-//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM_'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM1_'}, 
 //  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM2_'}, 
 //]
 //ignore_errors = ['FileReader.FileName']
@@ -15,8 +15,6 @@
 
 #path MOCAP_PATH_MAINFILEDIR "<ANYMOCAP_EXAMPLES>/SpecialFeatures/"
 #define MOCAP_NAME_MAINFILEDIR "SpecialFeatures"
-
-#include "libdef.any"
 
 
 #path TEMP_PATH "Output"

@@ -1,6 +1,6 @@
 //define = [
-//  {'TLEM_VERSION':'"2.0"'}, 
-//  {'TLEM_VERSION':'"1.1"'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM1_'}, 
+//  {'BM_LEG_MODEL':'_LEG_MODEL_TLEM2_'}, 
 //]
 //ignore_errors = ['FileReader.FileName']
 

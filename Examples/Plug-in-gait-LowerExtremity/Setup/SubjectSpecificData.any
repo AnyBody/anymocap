@@ -11,32 +11,33 @@ Main.ModelSetup.SubjectSpecificData =
      // allow changes to the segment lengths 
      SegmentDimensions =
      {
-       PelvisWidth = 0.16; ///< Distance between hip joints
-       HeadHeight = 0.13; ///< Height in neutral position from  C1HatNode to top of head
-       TrunkHeight = 0.60;
+       PelvisWidth = DesignVar(0.16); ///< Distance between hip joints
+       HeadHeight = DesignVar(0.13); ///< Height in neutral position from  C1HatNode to top of head
+       TrunkHeight = DesignVar(0.60);
      
        Right = 
        {
-          UpperArmLength = 0.30;
-          LowerArmLength =0.23;
-          HandLength = 0.182;
-          HandBreadth = 0.085;
+          UpperArmLength = DesignVar(0.30);
+          LowerArmLength = DesignVar(0.23);
+          HandLength = DesignVar(0.182);
+          HandBreadth = DesignVar(0.085);
           
-//          ThighLength= 0.41; 
-          ShankLength= 0.40;
-          FootLength=0.22;    
+          ThighLength = DesignVar(0.41); 
+          ShankLength = DesignVar(0.40);
+          FootLength = DesignVar(0.22);
+          
        };
      
        Left = 
        {
-          UpperArmLength = 0.30;
-          LowerArmLength =0.23;
-          HandLength = 0.182;
-          HandBreadth = 0.085;
+          UpperArmLength = DesignVar(0.30);
+          LowerArmLength = DesignVar(0.23);
+          HandLength = DesignVar(0.182);
+          HandBreadth = DesignVar(0.085);
           
-          ThighLength= 0.41; 
-          ShankLength= 0.40;
-          FootLength=0.22;    
+          ThighLength = DesignVar(0.41); 
+          ShankLength = DesignVar(0.40);
+          FootLength = DesignVar(0.22);    
        };
      };
    }; //Main.HumanModel.Anthropometrics
