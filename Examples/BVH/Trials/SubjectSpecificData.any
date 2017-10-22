@@ -23,7 +23,7 @@ Main.ModelSetup.SubjectSpecificData =
                       + vnorm(BVH_MODEL.Hips.Chest.Chest2.Chest3.Chest4.Neck.Seg.Head.sRel));
         Right = 
         {
-          ThighLength = 0.9*vnorm(BVH_MODEL.Hips.RightHip.Seg.RightKnee.sRel);  
+          ThighLength = vnorm(BVH_MODEL.Hips.RightHip.Seg.RightKnee.sRel);  
           ShankLength = vnorm(BVH_MODEL.Hips.RightHip.RightKnee.Seg.RightAnkle.sRel);
           FootLength = vnorm(BVH_MODEL.Hips.RightHip.RightKnee.RightAnkle.Seg.RightToe.sRel) 
                        + vnorm(BVH_MODEL.Hips.RightHip.RightKnee.RightAnkle.RightToe.Seg.End_Site.sRel);
@@ -54,23 +54,23 @@ Main.HumanModel.Mannequin.Posture =
 {
     Left = 
     {
-      GlenohumeralFlexion = 10;
-      GlenohumeralAbduction = 10;
-      GlenohumeralExternalRotation = 0;
-      ElbowFlexion = 20;
-      ElbowPronation = 0;
-      WristFlexion = 0;
-      WristAbduction = 0;
+//      GlenohumeralFlexion = 10;
+//      GlenohumeralAbduction = 10;
+//      GlenohumeralExternalRotation = 0;
+//      ElbowFlexion = 20;
+//      ElbowPronation = 0;
+//      WristFlexion = 0;
+//      WristAbduction = 0;
     };
     
     Right = 
     {
-      GlenohumeralFlexion = 10;
-      GlenohumeralAbduction = 0;
-      GlenohumeralExternalRotation = 0;
-      ElbowFlexion = 20;
-      ElbowPronation = 0;
-      WristFlexion = 0;
-      WristAbduction = 0;
+//      GlenohumeralFlexion = 10;
+//      GlenohumeralAbduction = 0;
+//      GlenohumeralExternalRotation = 0;
+//      ElbowFlexion = 20;
+//      ElbowPronation = 0;
+//      WristFlexion = 0;
+//      WristAbduction = 0;
     };
 };

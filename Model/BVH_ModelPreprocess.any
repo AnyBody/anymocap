@@ -59,7 +59,7 @@ Main =
 };
 
 
-Main.RunAnalysis.LoadParameters =  
+Main.Studies.KinematicStudy.InitialConditions.PreOperation =  
 {
     AnyOperation& BVH_LoadTrajectories = Main.ModelSetup.Macros.BVH_Preprocess.Load_BVH_Trajectories;
 };
