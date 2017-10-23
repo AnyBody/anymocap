@@ -15,7 +15,7 @@ AnyInputFile FileReader = {
   AnyInt nFile = NumElemOf(.FileReader.TFile);
    
   AnyFloat TFileMin = arrcat(TFile, {0.0})[0];
-  AnyFloat TFileMax = arrcat(TFile, {0.0})[max({TFileNumRead-1,0})];
+  AnyFloat TFileMax = arrcat(TFile, {0.0})[ max({ min({TFileNumRead,Length0})-1,0})];
   AnyInt ValidStartTime = andfun( gtfun(....tArray[0],TFileMin-1e-13),
                                   ltfun(....tArray[0], TFileMax+1e-13));
 
