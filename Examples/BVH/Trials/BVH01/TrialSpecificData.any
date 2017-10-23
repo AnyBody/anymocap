@@ -6,11 +6,11 @@ Main.ModelSetup.TrialSpecificData =
   
   // This the C3D frame where the analysis starts
   // If not specified it defaults to the first frame of the C3D file
-  FirstFrame = 0 + 2000;
+  FirstFrame = 2000;
   
   // This the C3D frame where the analysis ends
   // If not specified it defaults the first frame of the C3D file
-  LastFrame = (.BVHFileData.Header.FramesNo - 1) - 1197;
+  LastFrame = 2196; //(.BVHFileData.Header.FramesNo - 1))
   
   // tStart specifies the time of the analysis. Setting this overrides 
   // the 'FirstFrame' value
