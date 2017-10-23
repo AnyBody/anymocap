@@ -27,15 +27,16 @@
   #ifndef ANYMOCAP_MODEL_PATH
     #path ANYMOCAP_MODEL_PATH "."
   #endif
-  
-  // Path for saving intermediate files 
-  #ifndef TEMP_PATH
-    #path TEMP_PATH "<ANYBODY_PATH_MAINFILEDIR>\Output"
-  #endif
+ 
 
   // Path for saving model output files 
   #ifndef ANYBODY_PATH_OUTPUT
     #path ANYBODY_PATH_OUTPUT "<MOCAP_PATH_MAINFILEDIR>"
+  #endif
+  
+  // Path for saving intermediate files 
+  #ifndef TEMP_PATH
+    #path TEMP_PATH "<ANYBODY_PATH_OUTPUT>"
   #endif
    
   #ifndef PROJECT_PATH
