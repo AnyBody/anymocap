@@ -1,7 +1,7 @@
 Main.ModelSetup.TrialSpecificData = 
 {
   // This is the name of the trial c3d file without extension
-  TrialFileName = "Plug-in-gait";
+  TrialFileName = "Plug-in-gait_fast";
   
   // This the C3D frame where the analysis starts
   // If not specified it defaults to the first frame of the C3D file
