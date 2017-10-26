@@ -1,5 +1,8 @@
 Main.ModelSetup.TrialSpecificData = 
 {
+  #define INCLUDE_UPPERBODY OFF
+  
+  
   // This is the name of the trial c3d file without extension
   TrialFileName = "Plug-in-gait_fast";
   
