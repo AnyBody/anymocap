@@ -7,7 +7,12 @@ Main.ModelSetup.LabSpecificData = {
  
  #path MOCAP_C3DSETTINGS "C3DSettings.any"
  
- #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
+ #ifdef USE_GRF_PREDICTION
+  #define MOCAP_USE_GRF_PREDICTION ON
+  #path MOCAP_FORCE_PLATE_FILE "ForcePlates_GRFPrediction.any"
+ #else
+  #path MOCAP_FORCE_PLATE_FILE "ForcePlates.any"
+ #endif
  
  Gravity = 9.81*{0,-1,0};
   
