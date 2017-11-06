@@ -52,10 +52,10 @@ Main =
     AnyOperation& RunTest = Main.TestRunApplication;
   #else
     #include "../Cameras.any"
-    AnyOperation& CameraInitPos = Main.Studies.MarkerTracking.InitialConditions;
-    LoadTimeCam.CameraLookAtPoint = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.r;
+    AnyOperation& CameraInitPos = Main.Studies.InverseDynamicStudy.InitialConditions;
+    LoadTimeCam.CameraLookAtPoint = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar.PelvisSeg.r +{0,-0.2,0};
     LoadTimeCam.CameraFieldOfView = DesignVar(2);
-    LoadTimeCam.CameraDirection  = {1,0.3,1};
+    LoadTimeCam.CameraDirection  = {-1,0.3,1};
   #endif  
   
 };

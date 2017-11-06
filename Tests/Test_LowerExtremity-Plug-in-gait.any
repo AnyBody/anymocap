@@ -20,6 +20,7 @@
 
 #ifdef CREATE_IMAGE
 #undef MOCAP_TEST_FILENAME_PREFIX
+#define MOCAP_TEST_FILENAME_PREFIX "LowerExtremity_"
 #path TEMP_PATH "<MOCAP_PATH_MAINFILEDIR>/Output"
 #endif
 
