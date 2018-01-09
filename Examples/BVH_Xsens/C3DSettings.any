@@ -14,13 +14,14 @@ Main.ModelSetup.C3DFileData = {
    
    ConstructModelOnOff = Off;
    ConstructChartOnOff = Off;
-   GapFillUsingResidualsOnOff = On;
    
    MarkerUseAllPointsOnOff = On; 
    MarkerUseCamMaskOnOff = Off;
    PointsScaleFactor = 1/1000;
    MarkerDrawOnOff = On;
    
+   AnyInt MarkerFilterOrder = 2; 
+   AnyInt AnalogFilterOrder = 2;
                                     
    MarkerFilterIndex = 0;
    AnalogFilterIndex = 1;    
@@ -28,17 +29,17 @@ Main.ModelSetup.C3DFileData = {
    MarkerBsplineOrder = 4;
    
    Filter =  {
-     N = .Main.ModelSetup.LabSpecificData.LowPassFilterSettings.MarkerFilterOrder;
-     Fc = {Main.ModelSetup.LabSpecificData.LowPassFilterSettings.MarkerFilterCutOffFrequency};
+     N = .MarkerFilterOrder;
+     Fc = {5};
      Type = LowPass;
    };
    
    /// This filter is used for the analog data
    AnyFunButterworthFilter LowPassFilter = {
-     FilterForwardBackwardOnOff = On;
+     FilterForwardBackwardOnOff = Off;
      AutomaticInitialConditionOnOff = On;
-     N = Main.ModelSetup.LabSpecificData.LowPassFilterSettings.ForceFilterOrder  ;
-     AnyVar CutOffFrequency=Main.ModelSetup.LabSpecificData.LowPassFilterSettings.ForceFilterCutOffFrequency;
+     N = .AnalogFilterOrder  ;
+     AnyVar CutOffFrequency=12;
      AnyVar SampleFreq=.Header.VideoFrameRate* .Header.NoAnalogSamplesPer3DFrame   ;
      W = {CutOffFrequency/(iffun(eqfun(SampleFreq,0),100.0,SampleFreq)*0.5)};
      Type = LowPass;

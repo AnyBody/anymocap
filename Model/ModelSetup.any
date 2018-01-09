@@ -12,13 +12,13 @@ ModelSetup = {
    #include "<MOCAP_SUBJECT_SPECIFIC_DATA>"
  };
  
- CreateLabFolder LabSpecificData = {
+ CreateLabFolder LabSpecificData= {
    #include "<MOCAP_LAB_SPECIFIC_DATA>"
  };
  
  // This file checks if all the defines statements 
  // are made correctly.
- #include "CheckAnyMocapConfiguration.any"
+ #include "CheckAnyMoCapConfiguration.any"
  
  
  Main = {
@@ -96,7 +96,6 @@ ModelSetup =
   DocumentationLink = AMMR_PATH_DOC + "/anymocap.html";
   AnyFolder Views = {};
 };
-
 
 
 #ifdef BM_DRAWSETTINGS_FILE
