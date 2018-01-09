@@ -1,5 +1,8 @@
 #include "ForcePlateTypes.any"
 
+// TIP: If you have a model with only one leg. 
+// Make both LIMB1 and LIMB1 point to the same foot
+
 
 #class_template ForcePlateAutoDetection (
     PLATE_NO,
@@ -221,6 +224,7 @@
             Shininess = 0.1;
             RGB = {1, 1, 1}*(1 - 0.7*......ColorScale);
           };
+          PickableZOrdering = -1;
           FileName = "box";
           ScaleXYZ= .Size/0.30;
           Face=-1;

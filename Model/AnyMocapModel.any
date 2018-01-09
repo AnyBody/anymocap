@@ -1,25 +1,29 @@
-// This is the main AnyMOCAP file. There should be no reason to change this file
-// directly. All user defined options can be configured in the application, by 
-// changing the files TrialSpcificData.any, SubjectSpecificData.any, LabSpecificData.any
+#include "../libdef.any"
 
+// This is the AnyMOCAP base model.
+// There should be no reason to change this file directly. 
+//
+// All user defined options can be configured in the application, by 
+// changing the files TrialSpcificData.any, SubjectSpecificData.any, LabSpecificData.any
 #include "PathDefinitions.any"
 #include "ClassTemplates.any"
 
 
 Main = 
 {
-  // Mocap related setup
+  // AnyMoCap related setup
   #include "ModelSetup.any"
+  
+  // Configure and include the human model. The configuration 
+  // is controlled by the file (#include "<BODY_MODEL_CONFIG_FILE>")
+  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
+  #include "BodyModelWithoutMuscles.any" 
   
   // Include environment model
   // e.g. global reference, forceplates etc.
   #include "EnvironmentModel.any"
   
-  // Configure and include the human model. The configuration 
-  // is controlled by the file(#include "<BODY_MODEL_CONFIG_FILE>")
-  #include "<ANYBODY_PATH_BODY>/HumanModel.any"
-  #include "BodyModelWithoutMuscles.any" 
-  
+
   AnyFolder Studies = 
   {
     // PreProcess functionality for Inertial MoCap (BVH) studies.
@@ -34,7 +38,7 @@ Main =
     };
     
     /// Overdeterminate kinematic study to generate joint angles for inv. dyn. study. 
-    AnyKinStudy KinematicStudy = 
+    AnyKinStudy MarkerTracking = 
     {       
       AnyFolder& C3DData= Main.ModelSetup.C3DFileData;
       AnyFolder& BodyModel = Main.HumanModel.BodyModelWithoutMuscles; 
@@ -47,7 +51,7 @@ Main =
       
       #include "JointAngleOutputs.any"
       
-      #include "KinematicStudySettings.any"      
+      #include "MarkerTrackingSettings.any"      
     };
     
     
@@ -60,6 +64,7 @@ Main =
       AnyFolder& EnvironmentModel = Main.EnvironmentModel;
       AnyFolder ModelEnvironmentConnection =
       {
+        #include "HumanGroundResiduals.any"
         #include "JointsAndDriversOptimized.any"
       }; 
       

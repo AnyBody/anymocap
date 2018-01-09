@@ -7,8 +7,10 @@
 //  {'PLATE_LIMB_DISTANCE': 0.5}]
 //)
 
-#include "libdef.any"
-#include "..\Model\ForcePlates\ForcePlateAutoDetection.any"
+
+#include "../libdef.any"
+
+#include "<ANYMOCAP_PATH>\ForcePlates\ForcePlateAutoDetection.any"
 
 
 #ifndef FP_TYPE

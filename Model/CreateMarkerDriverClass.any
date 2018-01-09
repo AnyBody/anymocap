@@ -3,41 +3,43 @@
 
 // MarkerName: 
 // MarkerPlacement,
-// Weight<X|Y|Z>: 
-// Opt<X|Y|Z>: 
-// ScaleMarkerPosOnOff: = "On",
+// Weight<X|Y|Z>: = 1
+// Opt<X|Y|Z>: = OFF
+// ScaleMarkerPosOnOff: = ON,
 // FilterCutOffFrequency: = 0,
 // FilterOrder: = 2,
-// UseC3DWeightResiduals = "Off",
+// UseC3DWeightResiduals = OFF,
 // PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification,
 // C3D_OBJECT = Main.ModelSetup.C3DFileData,
 // BODY_MODEL_FOLDER = Main.HumanModel.BodyModel,
-// PlaceMarkerAt = AnatomicalFrame
+// PlaceMarkerAt = AnatomicalFrame,
+// DRAW_SCALE = 1,
 
 
 
 #class_template CreateMarkerDriver (MarkerName,
                                     MarkerPlacement,
                                     WeightX=1, WeightY=1, WeightZ=1,
-                                    OptX="Off", OptY = "Off",OptZ="Off",
-                                    ScaleMarkerPosOnOff = "On",
+                                    OptX=0, OptY=0, OptZ=0,
+                                    ScaleMarkerPosOnOff = 1,
                                     FilterCutOffFrequency = 0,
                                     FilterOrder = 2,
-                                    UseC3DWeightResiduals = "Off",
+                                    UseC3DWeightResiduals = 0,
                                     PARAMETER_OPT_STUDY = Main.Studies.ParameterIdentification,
                                     C3D_OBJECT = Main.ModelSetup.C3DFileData,
                                     BODY_MODEL_FOLDER = Main.HumanModel.BodyModel,
                                     PlaceMarkerAt = AnatomicalFrame,
                                     USE_BVH_INPUT = 0,
                                     BVH_OBJECT = Main.ModelSetup.BVHFileData,
-                                    MarkerPlacementBVH = MUST_BE_SET
+                                    MarkerPlacementBVH = REQUIRED_FOR_BVH_INPUT,
+                                    DRAW_SCALE = 1
                                     ){
                                       
   #var AnyVar ConstMarkerWeightX = WeightX;  
   #var AnyVar ConstMarkerWeightY = WeightY;
   #var AnyVar ConstMarkerWeightZ = WeightZ;
   
-  #if (UseC3DWeightResiduals == "On") & (USE_BVH_INPUT != 0)
+  #if (UseC3DWeightResiduals == 1) & (USE_BVH_INPUT != 0)
     AnyFunSquareWaveThreshold MarkerWeightsFun = 
     {
       #var dT = {C3D_OBJECT.WeightTransitionTime};
@@ -67,7 +69,7 @@
 
   #var AnyVec3 sRelOptDelta = {0, 0, 0};
   
-  #if OptX =="Off" & OptY == "Off" & OptZ == "Off"
+  #if OptX ==0 & OptY == 0 & OptZ == 0
         AnyVec3 sRelOptEdit = DesignVar(sRelOptDelta); //make it a design var ! because it will not be otherwise
   #else
         AnyVec3 sRelOptEdit = sRelOptDelta; 
@@ -110,7 +112,7 @@
     
     AnyRefNode MarkerName={
 #if USE_BVH_INPUT
-       #if ScaleMarkerPosOnOff == "On"
+       #if ScaleMarkerPosOnOff == 1
          AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
          sRel = .PlaceMarkerAt.sRel + MarkerOffset;
          ARel= .AnatomicalFrame.ARel;
@@ -120,7 +122,7 @@
          sRel = .PlaceMarkerAt.sRel + ..sRelOpt;
        #endif
 #else
-      #if ScaleMarkerPosOnOff == "On"
+      #if ScaleMarkerPosOnOff == 1
         AnyVec3 MarkerOffset = (.GeomScale(..sRelOpt) + ..sRelOptEdit )*.AnatomicalFrame.ARel' ;
         sRel = .PlaceMarkerAt.sRel + MarkerOffset;
         ARel= .AnatomicalFrame.ARel;
@@ -141,20 +143,21 @@
       
       
       AnyRefNode Arrows = {  
+          #var AnyVar size = DRAW_SCALE*0.05;
           AnyDrawVector X =   {
-            AnyInt is_optimized = eqfun(OptX,"On");
+            AnyInt is_optimized = eqfun(OptX,1);
             Vec = {size,0, 0};            
             #include "DrawVector.any"
             #var Text="X";
           };
           AnyDrawVector Y =  {
-            AnyInt is_optimized = eqfun(OptY,"On");
+            AnyInt is_optimized = eqfun(OptY,1);
             Vec = {0,size, 0};
             #include "DrawVector.any"
             #var Text="Y";
           };
           AnyDrawVector Z =  {
-            AnyInt is_optimized = eqfun(OptZ,"On");
+            AnyInt is_optimized = eqfun(OptZ,1);
             Vec = {0,0,size};
             #include "DrawVector.any"
             #var Text="Z";
@@ -169,7 +172,7 @@
           #var Visible = On;
           #var Opacity = 1;
           #var Label = Off;
-          #var Size = 0.01;
+          #var Size = DRAW_SCALE*0.01;
           #if USE_BVH_INPUT
           #var Line = DesignVar(Off);
           #else
@@ -214,15 +217,15 @@
 
   PARAMETER_OPT_STUDY ={
 
-    #if OptX =="On" 
+    #if OptX ==1 
     AnyDesVar &MarkerName##_X =  Main.ModelSetup.ParameterIdentification.MarkerName##_X;
     #endif
     
-    #if OptY =="On"
+    #if OptY ==1
     AnyDesVar &MarkerName##_Y =  Main.ModelSetup.ParameterIdentification.MarkerName##_Y;
     #endif
     
-    #if OptZ =="On"
+    #if OptZ ==1
     AnyDesVar &MarkerName##_Z =  Main.ModelSetup.ParameterIdentification.MarkerName##_Z;
     #endif        
     
@@ -240,7 +243,8 @@
       Data = C3D_OBJECT.Points.Markers.MarkerName.FromBVH.Data ;
     };
     AnyDrawSphere UnfilteredTest ={
-      RGB={1,0,1};
+      RGB={0.8,0.2,0.8};
+      Opacity = 0.5;
       ScaleXYZ={1,1,1}*0.01;
       Position = .UnfilteredPosInterpol(..Driver.t);
     };        
@@ -282,8 +286,9 @@
       //sRel = Main.ModelSetup.MocapDrivers.MarkerName.sRelOnBVH ;
       AnyDrawNode drw_node = 
       {
-        RGB = {0, 1, 0};
-        ScaleXYZ = 0.01*{1, 1, 1};        
+        #var RGB = {0, 1, 0};
+        #var ScaleXYZ = 0.015*{1, 1, 1};     
+        #var Visible = On;
       };
     };
   };//

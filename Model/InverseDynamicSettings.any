@@ -6,6 +6,12 @@ Main.Studies.InverseDynamicStudy = {
  Kinematics.SolverType = KinSolOff;
  InitialConditions.SolverType = Kinematics.SolverType;
  
+ #if MOCAP_USE_GRF_PREDICTION == ON
+  // GRF prediction needs UpperBound = Off, because this 
+  // prevents solver change when residual "muscles" gets overloaded.
+  InverseDynamics.Criterion.UpperBoundOnOff = Off; 
+ #endif
+ 
 
 InitialConditions.PreOperation = 
 {
@@ -16,7 +22,7 @@ InitialConditions.PreOperation =
 // Add the Analysis to the Main.RunAnalysis sequence
 Main.RunAnalysis.InverseDynamics = 
 {
-  #if BM_LEG_MUSCLES_BOTH == CONST_MUSCLES_3E_HILL
+  #if BM_LEG_MUSCLES_RIGHT == _MUSCLES_3E_HILL_ | BM_LEG_MUSCLES_LEFT == _MUSCLES_3E_HILL_ 
     AnyOperationSequence &MuscleCalibration = Main.HumanModel.Calibration.CalibrationSequence;
   #endif      
   
@@ -36,11 +42,7 @@ Main.RunAnalysis.InverseDynamics =
  #define T_START Main.ModelSetup.TrialSpecificData.tStart
  #endif
  
- AnyVar vfreq = 1.0/C3DData.Header.VideoFrameRate;
- AnyVar tdiff = T_END-T_START;
- AnyVar nss = max({N_STEP-1,1});
- 
- AnyVar tFrame = (T_END-T_START)/(max({N_STEP-1,1}));
+ AnyVar tFrame = (T_END-T_START)/(max({Main.ModelSetup.TrialSpecificData.nStep-1,1}));
  
  
  Kinematics.ApproxVelAccPerturb = min({1.0/C3DData.Header.VideoFrameRate, tFrame});

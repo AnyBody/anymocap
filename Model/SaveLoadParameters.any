@@ -7,20 +7,20 @@
       };     
       AnyOperationSetValue TouchSegLength =  {
         Source = arrcat(
-          ObjSearch(CompleteNameOf(&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths)+".*","AnyValue"),
-          // It is not necessary to add the Left folder as it links to the right side values
-          {&Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ThighLength, 
-           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.ShankLength,
-           &Main.HumanModel.AnthroDataSubject.AnthroSegmentLengths.Right.FootLength}
-          );
-        Target = Source;
-      };   
-      AnyOperationSetValue TouchOtherValues =  {
-        Source = arrcat(ObjSearch("Main.HumanModel.BodyModel.*.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation"), 
-                        ObjSearch("Main.HumanModel.BodyModel.*.Leg.Seg.Shank.AnkleJoint.TibialTorsionOffset"));
+          ObjSearch("Main.HumanModel.Anthropometrics.SegmentDimensions.*","AnyValue"),
+          ObjSearch("Main.HumanModel.Anthropometrics.SegmentDimensions.Right.*","AnyValue"),
+          ObjSearch("Main.HumanModel.Anthropometrics.SegmentDimensions.Left.*","AnyValue"),
+          ObjSearchRecursive("Main.HumanModel.Anthropometrics.SegmentScaleFactors", "LengthScale", "AnyValue"),
+          ObjSearchRecursive("Main.HumanModel.Anthropometrics.SegmentScaleFactors", "DepthScale", "AnyValue"),
+          ObjSearchRecursive("Main.HumanModel.Anthropometrics.SegmentScaleFactors", "WidthScale", "AnyValue")
+        );
         Target = Source;
       };   
       
+      AnyOperationSetValue TouchOtherValues =  {
+        Source = ObjSearch("Main.HumanModel.BodyModel.*.Leg.Seg.Thigh.KneeJoint.VarusValgusRotation", "AnyValue");
+        Target = Source;
+      };   
       
       AnyOperationMacro SaveToFile = {
         AnyFileVar SavePath = TEMP_PATH;

@@ -1,0 +1,20 @@
+#ifndef ANYMOCAP_LIBDEF_ANY
+#define ANYMOCAP_LIBDEF_ANY
+
+// These ANYMOCAP_PATH and ANYMOCAP_PATH are
+// for the automated tests. 
+#ifndef ANYMOCAP_PATH
+#path ANYMOCAP_EXAMPLES "Examples"
+#endif
+#ifndef ANYMOCAP_PATH
+#path ANYMOCAP_PATH "Model"
+#endif
+///////
+
+#ifndef ANYMOCAP_MODEL
+#path ANYMOCAP_MODEL "Model/AnyMocapModel.any"
+#endif
+
+#include  "<ANYBODY_PATH_MYFILES>\AMMRs\ammr\libdef.any"
+
+#endif

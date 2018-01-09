@@ -2,6 +2,14 @@
 
 #var AnyVec3 Gravity = -9.81*{0,0,1};
 
+   AnyFolder LowPassFilterSettings = 
+   {
+     #var AnyVar MarkerFilterCutOffFrequency = 5.0;
+     #var AnyIntVar MarkerFilterOrder = 2;
+     #var AnyVar ForceFilterCutOffFrequency = 12;
+     #var AnyIntVar ForceFilterOrder = 2;
+   };
+
 };
 
 #class_template CreateTrialFolder {
@@ -37,168 +45,12 @@
 //AnyIntArray myval = iffun(lteqfun(idx, Sam), 0, 1);
 //AnyIntVar idx_tStart = eqfun( round(Main.ModelSetup.C3DFileData.Points.Abscissa.Sample), {round(Main.Main.ModelSetup.TrialSpecificData.tStart*.C3DFileData.Header.VideoFrameRate)});
    
-//ModelSetup.C3DFileData.Points.Abscissa.Sample(
-/// The following settings define the initial posture of the
-/// model (e.g. at load time)
-AnyFolder InitialPositionOfBody= {
-  
-  #var AnyVar PelvisPosX = 0.0;
-  #var AnyVar PelvisPosY = 0.0;
-  #var AnyVar PelvisPosZ = 0.0;
-  
-  #var AnyVar PelvisRotX = 0.0;
-  #var AnyVar PelvisRotY = 0.0;
-  #var AnyVar PelvisRotZ = 0.0;
-  
-  // Initial pelvis position
-  #var AnyVec3 PelvisPos = {PelvisPosX ,PelvisPosY,PelvisPosZ};
-  // Inital Pelvis rotation 
-  #var AnyMat33 PelvisRotationMatrix = RotMat(PelvisRotZ,z)*RotMat(PelvisRotY,y)*RotMat(PelvisRotX,x);
-    
-  #var AnyVar PelvisThoraxExtension = 0;
-  #var AnyVar PelvisThoraxLateralBending = 0;
-  #var AnyVar PelvisThoraxRotation = 0;
-  
-  #var AnyVar NeckExtension = 0;
-  #var AnyVar NeckLateralBending = 0;
-  #var AnyVar NeckRotation = 0;
-  
-  AnyFolder Right = {
-    
-    #var AnyVar HipFlexion = 0;
-    #var AnyVar HipAbduction = 0;
-    #var AnyVar HipExternalRotation = 0;
-    #var AnyVar KneeFlexion = 0;
-    #var AnyVar AnklePlantarFlexion = 0;
-    #var AnyVar SubTalarEversion = 0;
-    
-    #var AnyVar GlenohumeralFlexion = 0;
-    #var AnyVar GlenohumeralAbduction = 0;
-    #var AnyVar GlenohumeralExternalRotation = 0;
-    #var AnyVar ElbowFlexion = 0;
-    #var AnyVar ElbowPronation = 0;
-    #var AnyVar WristFlexion = 0;
-    #var AnyVar WristAbduction = 0;
-    
-    AnyFolder Finger1 ={
-        #var AnyVar CMCDeviation= 0;
-        #var AnyVar CMCFlexion= 0;
-        #var AnyVar MCPFlexion= 0;
-        #var AnyVar MCPDeviation=0;
-        #var AnyVar DIPFlexion=0;
-    };
+/// Convergence tolerance used in the parameter optimization.
+#var AnyVar ParameterOptimizationConvergenceTol = 1e-4;
 
-    AnyFolder Finger2 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger3 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger4 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger5 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };                 
-    
-  };
-  AnyFolder Left = {
-    
-    #var AnyVar HipFlexion = 0;
-    #var AnyVar HipAbduction = 0;
-    #var AnyVar HipExternalRotation = 0;
-    #var AnyVar KneeFlexion = 0;
-    #var AnyVar AnklePlantarFlexion = 0;
-    #var AnyVar SubTalarEversion = 0;
-    
-    #var AnyVar GlenohumeralFlexion = 0;
-    #var AnyVar GlenohumeralAbduction = 0;
-    #var AnyVar GlenohumeralExternalRotation = 0;
-    #var AnyVar ElbowFlexion = 0;
-    #var AnyVar ElbowPronation = 0;
-    #var AnyVar WristFlexion = 0;
-    #var AnyVar WristAbduction = 0;
-    
-    AnyFolder Finger1 ={
-      #var AnyVar CMCDeviation= 0;
-      #var AnyVar CMCFlexion= 0;
-      #var AnyVar MCPFlexion= 0;
-      #var AnyVar MCPDeviation=0;
-      #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger2 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger3 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger4 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };
-
-    AnyFolder Finger5 ={
-        #var AnyVar MCPFlexion=0;
-        #var AnyVar PIPFlexion=0;
-        #var AnyVar DIPFlexion=0;
-    };        
-  };//Left
- }; // InitialPositionOfBody
 };// Template
 
 #class_template CreateSubjectFolder {
-
-
- AnyFolder Anthropometrics={
-  #var AnyVar BodyMass = 72;
-  #var AnyVar BodyHeight = 1.82;
-  
-  
-  // These antrhopometric data will be used as initial guess for 
-  // the optimization alogorithm the optimization algoritm will
-  // allow changes to the segment lengths 
-  #var AnyVar ThighLengthIni= 0.41; 
-  #var AnyVar ShankLengthIni= 0.42;
-  #var AnyVar FootLengthIni=0.25;
-  #var AnyVar PelvisWidthIni=0.16; ///< distance between hip joints
-  
-  #var AnyVar HeadHeightIni = 0.14;///< height in neutral position from  C1HatNode to top of head
-  #var AnyVar NeckLengthIni = 0.1357;///< Distance from C7T1 joint to C1HatNode
-  #var AnyVar TrunkHeightIni = 0.620233;///< height in neautral position from  C1HatNode to L5SacrumJnt
-  #var AnyVar TrunkWidthIni = 0.332;
-  #var AnyVar UpperArmLengthIni = 0.30;
-  #var AnyVar LowerArmLengthIni =0.23;
-  #var AnyVar HandLengthIni = 0.182;
-  #var AnyVar HandBreadthIni = 0.085;
-  
-};
-
-
-
-
-
-
-
-
 
 
 

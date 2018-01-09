@@ -1,54 +1,19 @@
-
-  #if MOCAP_HUMAN_GROUND_RESIDUALS == "PelvisWeak" 
-    #include "GRFPrediction/WeakResiduals.any"     
-  #endif
-    
-  // Dynamic balance residuals between the human and ground segments. 
-  // This is also sometimes refered to as the 'Hand of God' in some biomechanical 
-  // text books.
-  #if MOCAP_HUMAN_GROUND_RESIDUALS == "Pelvis"
-  AnyReacForce HumanGroundResiduals = 
-  {
-    AnyKinMeasure &PelvisPosX = ..BodyModel.Interface.Trunk.PelvisPosX;
-    AnyKinMeasure &PelvisPosY = ..BodyModel.Interface.Trunk.PelvisPosY;
-    AnyKinMeasure &PelvisPosZ = ..BodyModel.Interface.Trunk.PelvisPosZ;
-    AnyKinMeasure &PelvisRotX = ..BodyModel.Interface.Trunk.PelvisRotX;
-    AnyKinMeasure &PelvisRotY = ..BodyModel.Interface.Trunk.PelvisRotY;
-    AnyKinMeasure &PelvisRotZ = ..BodyModel.Interface.Trunk.PelvisRotZ;
-  };
-  #endif
-  
-  #if MOCAP_HUMAN_GROUND_RESIDUALS == "Trunk"
-  AnyReacForce HumanGroundResiduals = 
-  {
-    AnyKinLinear Lin = { Ref = 0; AnyRefFrame& ref = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg; };
-    AnyKinRotational Rot = { Type = RotAxesAngles; AnyRefFrame& ref = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg; };
-  };
-  #endif
-  
-
 AnyFolder JointsAndDrivers = {
-#ifndef FORCE_MODEL_LOAD_WHEN_DATA_FILES_ARE_MISSING
   
   AnyKinDriver JntDriverTrunk = {
     
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-trunk.txt";
-    // Get the rotation angles fromt the initial pelvis rotation matrix. 
-    // This allows us to specify a default joint angle drivers which are close to the 
-    // load time position. 
-    RotAxisAnglesZYX InitPelvis(ROT = Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisRotationMatrix) = { };
     
     /// The default data if no joint angles files have been generated.
     FileReader.Data0 = repmat(1,FileReader.Length0, 
-       {Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[0],
-        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[1],
-        Main.ModelSetup.TrialSpecificData.InitialPositionOfBody.PelvisPos[2],
-        InitPelvis.xRot, InitPelvis.yRot, InitPelvis.zRot, 
-        0,0,0,0
-        #ifndef _OLD_NECK_INTERFACE_
-        ,0,0
-        #endif
+       {Main.HumanModel.Mannequin.Posture.PelvisPosX,
+        Main.HumanModel.Mannequin.Posture.PelvisPosY,
+        Main.HumanModel.Mannequin.Posture.PelvisPosZ,
+        Main.HumanModel.Mannequin.Posture.PelvisRotX*pi/180,
+        Main.HumanModel.Mannequin.Posture.PelvisRotY*pi/180,
+        Main.HumanModel.Mannequin.Posture.PelvisRotZ*pi/180,
+        0,0,0,0,0,0
     });
     AnyKinMeasure &PelvisPosX = ...BodyModel.Interface.Trunk.PelvisPosX;
     AnyKinMeasure &PelvisPosY = ...BodyModel.Interface.Trunk.PelvisPosY;
@@ -59,17 +24,13 @@ AnyFolder JointsAndDrivers = {
     AnyKinMeasure &PelvisThoraxExtension = ...BodyModel.Interface.Trunk.PelvisThoraxExtension;
     AnyKinMeasure &PelvisThoraxLateralBending = ...BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
     AnyKinMeasure &PelvisThoraxRotation = ...BodyModel.Interface.Trunk.PelvisThoraxRotation;  
-    #ifdef _OLD_NECK_INTERFACE_
-    AnyKinMeasure& NeckJoint = ...BodyModel.Interface.Trunk.NeckJoint;
-    #else
     AnyKinMeasure& SkullThoraxFlexion = ...BodyModel.Interface.Trunk.SkullThoraxFlexion;
     AnyKinMeasure& SkullThoraxLateralBending = ...BodyModel.Interface.Trunk.SkullThoraxLateralBending;
     AnyKinMeasure& SkullThoraxRotation = ...BodyModel.Interface.Trunk.SkullThoraxRotation;    
-    #endif
     Reaction.Type = repmat(nDim, Off);
   };
   
-  #if BM_LEG_LEFT == CONST_LEG_MODEL_TLEM  
+  #if BM_LEG_LEFT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
   AnyKinDriver JntDriverLeftLegTD = {
     
     #include "InterpolateJointAngleData.any"
@@ -87,7 +48,7 @@ AnyFolder JointsAndDrivers = {
   #endif
   
   
-  #if BM_LEG_RIGHT == CONST_LEG_MODEL_TLEM  
+  #if BM_LEG_RIGHT & (BM_LEG_MODEL == _LEG_MODEL_TLEM_ | BM_LEG_MODEL == _LEG_MODEL_TLEM2_)
   AnyKinDriver JntDriverRightLegTD = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX +  MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightlegtd.txt";
@@ -105,7 +66,7 @@ AnyFolder JointsAndDrivers = {
 
   
   
-  #if BM_LEG_LEFT == CONST_LEG_MODEL_Leg 
+  #if BM_LEG_LEFT & BM_LEG_MODEL == _LEG_MODEL_LEG_
   AnyKinDriver JntDriverLeftLeg = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-leftleg.txt";
@@ -122,7 +83,7 @@ AnyFolder JointsAndDrivers = {
   #endif
   
   
-  #if BM_LEG_RIGHT== CONST_LEG_MODEL_Leg 
+  #if BM_LEG_RIGHT & BM_LEG_MODEL == _LEG_MODEL_LEG_
   AnyKinDriver JntDriverRightLeg = {
     #include "InterpolateJointAngleData.any"
     FileReader.FileName = TEMP_PATH + "/" + MOCAP_TEST_FILENAME_PREFIX + MOCAP_OUTPUT_FILENAME_PREFIX + Main.ModelSetup.TrialSpecificData.TrialFileName + "-euler-rightleg.txt";
@@ -182,7 +143,6 @@ AnyFolder JointsAndDrivers = {
   };
   #endif
   
- #endif 
 };
 
 

@@ -14,18 +14,5 @@ Main.ModelSetup.LabSpecificData = {
   
  Gravity = -9.81*{0,1,0};
  
-  // This adds different segment length as design variables to 
-  // to the parameter identification study (Main.Studies.ParameterIdentification)
-  // This allows the segment length to be optimized in based on the markers/motion
-  OptimizeAnthropometricsOnOff OptimizeAntropometricsOnOff (
-    PelvisWidthOnOff = "Off" , 
-    ThighLengthOnOff= "Off", 
-    ShankLengthOnOff= "Off", 
-    FootLengthOnOff= "Off", 
-    HeadHeightOnOff= "Off", 
-    TrunkHeightOnOff= "Off", 
-    UpperArmLengthOnOff= "Off",
-    LowerArmLengthOnOff= "Off"
- ) ={};
-
+ 
 };

@@ -5,7 +5,7 @@
 
 // This file ensures that all necessary path statements 
 // are exist if they have not been set by the application 
-// that loads the AnyMocap model.
+// that loads the AnyMoCap model.
 
 
   #ifndef MOCAP_PATH_MAINFILE 
@@ -27,15 +27,16 @@
   #ifndef ANYMOCAP_MODEL_PATH
     #path ANYMOCAP_MODEL_PATH "."
   #endif
-  
-  // Path for saving intermediate files 
-  #ifndef TEMP_PATH
-    #path TEMP_PATH "Tmp/"
-  #endif
+ 
 
   // Path for saving model output files 
   #ifndef ANYBODY_PATH_OUTPUT
     #path ANYBODY_PATH_OUTPUT "<MOCAP_PATH_MAINFILEDIR>"
+  #endif
+  
+  // Path for saving intermediate files 
+  #ifndef TEMP_PATH
+    #path TEMP_PATH "<ANYBODY_PATH_OUTPUT>"
   #endif
    
   #ifndef PROJECT_PATH
@@ -43,11 +44,11 @@
   #endif
  
   // Include the AMMR library
-  #ifdef AMMR_PATH
-    #include "<AMMR_PATH>\Application\libdef.any"
+  #ifdef ANYBODY_PATH_AMMR
+    #include "<ANYBODY_PATH_AMMR>\libdef.any"
   #else
     #ifndef ANYBODY_APPLICATION_LIBRARY_NAME
-      #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\Application\libdef.any"
+      #include "<ANYBODY_PATH_INSTALLDIR>\AMMR\libdef.any"
     #endif
   #endif
  

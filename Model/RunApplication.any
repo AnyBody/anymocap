@@ -20,7 +20,8 @@ AnyOperationSequence RunParameterIdentification =
     AnyOperationSequence SaveParameters = 
     {
       AnyOperationDummy placeholder_operation= {};
-    };
+    };    
+    
   };
 #endif
   
@@ -31,7 +32,7 @@ AnyOperationSequence RunParameterIdentification =
       AnyOperationDummy placeholder_operation= {};
     };    
         
-    AnyOperationSequence KinematicAnalysis = 
+    AnyOperationSequence MarkerTracking = 
     {
       //Hackworkaround. Should be moved the preoperation when pre-op bug is fixed
 //      AnyOperation &SetView = Main.ModelSetup.Views.SetViewMacros.KinematicView; 
@@ -46,8 +47,13 @@ AnyOperationSequence RunParameterIdentification =
     };
     AnyOperationSequence SaveOuput = 
     {
-      AnyOperationDummy placeholder_operation= {};
-    };
-    
+      AnyOperation& SaveHDF5= Main.ModelSetup.Macros.SaveOutputToHDF;
+    };    
   };
+  
+  AnyOperationSequence LoadAndReplay= 
+  {
+      AnyOperation& LoadHDF5= Main.ModelSetup.Macros.LoadOutputFromHDF;
+      AnyOperation& Replay= Main.Studies.InverseDynamicStudy.Replay;
+  };  
 };

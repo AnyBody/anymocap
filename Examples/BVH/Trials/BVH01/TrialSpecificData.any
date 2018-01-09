@@ -1,16 +1,15 @@
 Main.ModelSetup.TrialSpecificData = 
 {
-  // This is the name of the trial c3d file without extension. 
-  // Here we assume the c3d file has the same name as the mainfile directory.
+  // Name of the BVH File
   TrialFileName = MOCAP_NAME_MAINFILEDIR;
   
   // This the C3D frame where the analysis starts
   // If not specified it defaults to the first frame of the C3D file
-  FirstFrame = 0 + 2000;
+  FirstFrame = 1800;
   
   // This the C3D frame where the analysis ends
   // If not specified it defaults the first frame of the C3D file
-  LastFrame = (.BVHFileData.Header.FramesNo - 1) - 1197;
+  LastFrame = 2050; //(.BVHFileData.Header.FramesNo - 1))
   
   // tStart specifies the time of the analysis. Setting this overrides 
   // the 'FirstFrame' value
@@ -35,15 +34,25 @@ Main.ModelSetup.TrialSpecificData =
   //#define MOCAP_OUTPUT_FILENAME_PREFIX ""
   
   
-   // This class_template calculates the load time position and orientation of 
-   // the pelvis based on markers.
-   //AutoPelvisPos AutoPos(RASIS=RASI, LASIS=LASI, BACK=RPSI) = {};
+   // This class_template calculates the load time position and orientation of the Pelvis
+   AutoPelvisPos AutoPos(DIRECT_PELVIS_POS=ON) = {
+      PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0 
+                  + PelvisRotMat'[0]*0.07
+                  - PelvisRotMat'[1]*0.04;
+      PelvisRotMat = RotMat(
+          Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0, 
+          Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0, 
+          Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg.r0
+        ) * RotMat(-pi/2, x) * RotMat(-pi/2, z);
+   };
+     
+   
 
   /// The following settings define the initial posture of the
   /// model (e.g. at load time)
-  InitialPositionOfBody= {
+  Main.HumanModel.Mannequin.Posture = {
     
-//    // This can be ommitted if AutoPelvisPos above is used. 
+    // These can be ommitted if AutoPelvisPos above is used. 
 //    PelvisPosX = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0[0];
 //    PelvisPosY = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0[1];
 //    PelvisPosZ = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0[2];
@@ -51,16 +60,7 @@ Main.ModelSetup.TrialSpecificData =
 //    PelvisRotX = 0.0;
 //    PelvisRotY = -90.0;
 //    PelvisRotZ = 0.0;
-    
-    //AnyFloat PelvisRotMatrix= Main.ModelSetup.BVHFileData.Model.Hips.Seg.Axes0 ;
-    PelvisRotationMatrix = RotMat(
-    Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0, 
-    Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.r0, 
-    Main.ModelSetup.BVHFileData.Model.Hips.RightHip.Seg.r0
-    ) * RotMat(-pi/2, x) * RotMat(-pi/2, z);
-    
-    PelvisPos = Main.ModelSetup.BVHFileData.Model.Hips.Seg.r0;
-    
+        
     PelvisThoraxExtension = 0;
     PelvisThoraxLateralBending = 0;
     PelvisThoraxRotation = 0;
@@ -69,28 +69,24 @@ Main.ModelSetup.TrialSpecificData =
     NeckLateralBending = 0;
     NeckRotation = 0;
   
-    Right = {
-
+    Right = 
+    {
       HipFlexion = 0;
       HipAbduction = 5;
       HipExternalRotation = 0;
       KneeFlexion = 5;
       AnklePlantarFlexion = 5;
       SubTalarEversion = 0;
- 
-////    These Values are configure from the SubjectSpecificData.any
-////    since it is shared by all trials
-//      GlenohumeralFlexion = 0;
-//      GlenohumeralAbduction = 0;
-//      GlenohumeralExternalRotation = 0;
-//      ElbowFlexion = 0;
-//      ElbowPronation = 0;
-//      WristFlexion = 0;
-//      WristAbduction = 0;
-    
-  };
-    Left = {
-    
+      GlenohumeralFlexion = 0;
+      GlenohumeralAbduction = 0;
+      GlenohumeralExternalRotation = 0;
+      ElbowFlexion = 0;
+      ElbowPronation = 0;
+      WristFlexion = 0;
+      WristAbduction = 0;
+    };
+    Left = 
+    {
       HipFlexion = 0;
       HipAbduction = 5;
       HipExternalRotation = 0;
@@ -98,19 +94,13 @@ Main.ModelSetup.TrialSpecificData =
       AnklePlantarFlexion = 5;
       SubTalarEversion = 0;
     
-////    These Values are configure from the SubjectSpecificData.any
-////    since it is shared by all trials
-//      GlenohumeralFlexion = 0;
-//      GlenohumeralAbduction = 0;
-//      GlenohumeralExternalRotation = 0;
-//      ElbowFlexion = 0;
-//      ElbowPronation = 0;
-//      WristFlexion = 0;
-//      WristAbduction = 0;
-    
-  };
-  
-  
+      GlenohumeralFlexion = 0;
+      GlenohumeralAbduction = 0;
+      GlenohumeralExternalRotation = 0;
+      ElbowFlexion = 0;
+      ElbowPronation = 0;
+      WristFlexion = 0;
+      WristAbduction = 0;
+    };
   }; // InitialPositionOfBody
-
 };

@@ -1,65 +1,12 @@
 Main.ModelSetup.SubjectSpecificData = 
 {
 
-  Anthropometrics=
+  Main.HumanModel.Anthropometrics = 
   {
      BodyMass = 75.4;
      BodyHeight = 1.73;
      
-     
-     // These antrhopometric data will be used as initial guess for 
-     // the optimization alogorithm the optimization algoritm will
-     // allow changes to the segment lengths 
-     ThighLengthIni = (-1)*Main.ModelSetup.BVHFileData.Data.Hips.RightHip.RightKnee.OFFSET[1]*Main.ModelSetup.BVHFileData.TranslationScale;  
-     ShankLengthIni= (-1)*Main.ModelSetup.BVHFileData.Data.Hips.RightHip.RightKnee.RightAnkle.OFFSET[1]*Main.ModelSetup.BVHFileData.TranslationScale;
-     FootLengthIni=1.0*vnorm(Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.RightAnkle.Seg.RightToe.sRel) +vnorm(Main.ModelSetup.BVHFileData.Model.Hips.RightHip.RightKnee.RightAnkle.RightToe.Seg.End_Site.sRel);
+     #include "../CalculateSegmentDimensionsFromBVH.any"
 
-     PelvisWidthIni=(-2)*Main.ModelSetup.BVHFileData.Data.Hips.RightHip.OFFSET[0]*Main.ModelSetup.BVHFileData.TranslationScale; ///< distance between hip joints
-     
-     HeadHeightIni  = 0.75*vnorm( Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Head.Seg.End_Site.sRel);///< height in neutral position from  C1HatNode to top of head
-     TrunkHeightIni = 1.05*(vnorm(   Main.ModelSetup.BVHFileData.Model.Hips.Seg.Chest.sRel) +
-                              vnorm(    Main.ModelSetup.BVHFileData.Model.Hips.Chest.Seg.Chest2.sRel) +
-                              vnorm(    Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Seg.Chest3.sRel) +
-                              vnorm(     Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Seg.Neck.sRel)+
-                              vnorm(Main.ModelSetup.BVHFileData.Model.Hips.Chest.Chest2.Chest3.Chest4.Neck.Seg.Head.sRel));
-                              
-     UpperArmLengthIni = (-1)*Main.ModelSetup.BVHFileData.Data.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.RightElbow.OFFSET[0]*Main.ModelSetup.BVHFileData.TranslationScale ;
-     LowerArmLengthIni = (-1)*Main.ModelSetup.BVHFileData.Data.Hips.Chest.Chest2.Chest3.Chest4.RightCollar.RightShoulder.RightElbow.RightWrist.OFFSET[0]*Main.ModelSetup.BVHFileData.TranslationScale ;
-     HandLengthIni = 0.18;
-     HandBreadthIni = 0.085;
-     
    };
-
-};
-
-
-// This sets the arm positions for all trials
-Main.ModelSetup.TrialSpecificData.InitialPositionOfBody = 
-{
-    Left = 
-    {
-      GlenohumeralFlexion = 10;
-      GlenohumeralAbduction = 10;
-      GlenohumeralExternalRotation = 0;
-      ElbowFlexion = 20;
-      ElbowPronation = 0;
-      WristFlexion = 0;
-      WristAbduction = 0;
-      
-    };
-    
-    Right = 
-    {
-      GlenohumeralFlexion = 10;
-      GlenohumeralAbduction = 0;
-      GlenohumeralExternalRotation = 0;
-      ElbowFlexion = 20;
-      ElbowPronation = 0;
-      WristFlexion = 0;
-      WristAbduction = 0;
-      
-      
-    };
-
-
 };

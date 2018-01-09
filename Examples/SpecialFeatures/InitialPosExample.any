@@ -1,7 +1,8 @@
 // Example of using the AutomaticFullBodyInitialPosition  class 
 // for setting the initial posture of human from the marker postions. .
+#include "../libdef.any"
 
-#include "../../Model/AnyMocapModel.any"
+#include "<ANYMOCAP_MODEL>"
 
 Main = {
   

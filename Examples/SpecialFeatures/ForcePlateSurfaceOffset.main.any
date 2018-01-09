@@ -1,7 +1,8 @@
 // Example of specifying an offset to the force plate surface. 
 
+#include "../libdef.any"
 
-#include "../../Model/AnyMocapModel.any"
+#include "<ANYMOCAP_MODEL>"
 
 Main = {
 
