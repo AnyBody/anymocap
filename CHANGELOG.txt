@@ -14,6 +14,7 @@ Current development
   * Use the TLEM 2 lower body model in the example. 
   * Disable upper bounds for the muscle recruitment ``Criterion.UpperBoundOnOff = Off;`` to improve the stability of the simulations. 
   
+* Fix bug in ``CreateMarkerDriver``  class template which prevented the ``UseC3DWeightResiduals`` from having any effect.
 
 
 
