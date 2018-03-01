@@ -16,6 +16,14 @@ Current development
   
 * Fix bug in ``CreateMarkerDriver``  class template which prevented the ``UseC3DWeightResiduals`` from having any effect.
 
+* BVH example is updated: 
+
+  * The example now uses its own BVH settings file instead of the default file
+    in the AnyMoCap folder
+
+  * Pre-processing the BVH data is now a separate operation which saves the
+    vitual marker positions to a file. Thus, this step can be skipped the next
+    time the model is reloaded. 
 
 
 
