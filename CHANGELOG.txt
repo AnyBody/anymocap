@@ -23,7 +23,17 @@ Current development
 
   * Pre-processing the BVH data is now a separate operation which saves the
     vitual marker positions to a file. Thus, this step can be skipped the next
-    time the model is reloaded. 
+    time the model is reloaded.
+  
+* Use the defualt kinematic solver for the InverseDynamic analysis
+
+* Support for using the Shoulder Rhythm with MoCap model. 
+
+* Change the set of joint drivers used for transferring the joint angles from the
+  over-determinate marker tracking to the inverse dynamic analysis. Instead of
+  Sterno Clavicula Elevation the Scapula Thorax Elevation is used to make the 
+  the kinematics of scapula more robust in the inverse dynamic analysis.
+
 
 
 
