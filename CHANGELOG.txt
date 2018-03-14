@@ -34,7 +34,10 @@ Current development
   Sterno Clavicula Elevation the Scapula Thorax Elevation is used to make the 
   the kinematics of scapula more robust in the inverse dynamic analysis.
 
-
+* Changed the default velocity threshold value for the ForcePlateAutodetection
+  class template.   This prevents the accidental contact detection of the
+  collateral leg in the swing phase.   The new velocity threshold is set to 1 m/s,
+  or 3.6 km/h.
 
 
 2.0.0
