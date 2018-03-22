@@ -37,7 +37,12 @@ Current development
 * Added an option to the ForcePlateAutoDetection class template to make the limb1/2 contact detection 
   mutually exclusive. Setting the option ``ALLOW_MULTI_LIMB_CONTACT=OFF`` will ensure that both legs cant 
   be in contact with the plate at the same time. This can prevent accidental contact detection 
-  for the collateral leg in the swing phase. 
+  for the collateral leg in the swing phase.
+
+* Add support for the detailed hand model.
+
+* Add option to specify the contact nodes in ForcePlateAutoDetection class template. This makes the class usefull
+  for connecting to other limbs than the feet. 
 
 
 2.0.0
