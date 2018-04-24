@@ -74,9 +74,10 @@ Main =
       {
         Objects = ObjSearchRecursive(CompleteNameOf(&Main.ModelSetup.MocapDrivers),"*","AnyKinEq");
       };
-
+      
       #include "InverseDynamicSettings.any"
     };
+    
   };  
   
   // Macros to excute the model
