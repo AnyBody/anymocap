@@ -5,6 +5,12 @@ Changelog
 Current development
 ===================
 
+* Add zero phase filtering of force plate forces for BVH and Multi trial example. 
+  This is an important change to ensure that the forces are in sync with kinematic data. 
+
+
+2.1
+===================
 
 * AnyMoCap: New argument ``DRAW_SCALE`` in the ``CreateMarkerDriver`` template to control the visual size of markers.
 
