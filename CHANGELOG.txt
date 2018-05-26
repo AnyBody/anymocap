@@ -15,7 +15,10 @@ Current development
   is saved with the wrong dimensionality. This can for example happen if the c3d files
   are created manually in MATLAB. 
 * New ``GroundVelocity`` setting added to the ``ForcePlateAutoDetection`` class_template, which
-  makes class usable with instrumented treadmills. 
+  makes class usable with instrumented treadmills.
+* Enhanced the multi trial MoCap example for best practice for
+  MoCap trials with multiple subjects and trials. The example now shows how  deal with multiple 
+  subjects and storing the c3d files in a separate folder. 
 
 2.1
 ===================
