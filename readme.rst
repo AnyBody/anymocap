@@ -2,6 +2,9 @@
 The AnyMoCap Framework
 ######################
 
+.. note::  The AnyMoCap model is now `part of the AMMR <https://anyscript.org/ammr-doc/anymocap.html>`__. 
+   So there is no more need to use this repository unless you rely on modifing the AnyMoCap implemenation. 
+
 The AnyMoCap model is an effort to create a simple and unified framework for
 doing any kind of mocap analysis with the `AnyBody Modeling
 System <http://anybodytech.com>`__.
