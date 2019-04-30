@@ -1,0 +1,88 @@
+
+ 
+Main.Studies.InverseDynamicStudy.Kinematics.PreOperation = 
+{
+  
+    // This operation hides the handbones and muscles when running an analysis. This purely to make the
+    // model look nicer
+    AnyOperationSetValue hide_hand_muscles = {
+    AnySwitchVar ov = Off;
+  
+    Source = {&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov,&ov};
+    Target = {
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Seg.Hand.DrwSurf.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Extensor_Digiti_Minimi.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit4.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit3.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit2.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Digitorum_Produndus__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Digitorum_Superficialis__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Extensor_Digitorum__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Flexor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Extensor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Abductor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Extensor_Pollicis_Brevis.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Hand.DrwSurf.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Extensor_Digiti_Minimi.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit4.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit3.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Digitorum_Profundus__Digit2.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Digitorum_Produndus__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Digitorum_Superficialis__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Extensor_Digitorum__Digit5.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Flexor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Extensor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.Abductor_Pollicis_Longus.DrwMus.Visible,
+    &Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.Extensor_Pollicis_Brevis.DrwMus.Visible
+   };
+  };
+};
+
+
+
+ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Hand = 
+ {
+   AnyRefNode BoxingGlove =
+   {
+     ARel = RotMat(20*pi/180,z);
+     sRel = {0.00,0.01,0};
+     AnyDrawSurf draw = {
+       AnyStyleDrawMaterial1 material = 
+       {
+         EnableCreasing = Off;
+         EnableSmoothing = On;
+         Opacity = 1;//;
+         DiffuseRGB = 0.5*{0.4,0.0,0.0};
+         EmissionRGB = 0.8*{0.4,0.0,0.0};
+         SpecularRGB = 0.8*{0.5,0.5,0.5};
+         Shininess = 0.5;
+         RGB = {0.4, 0.0, 0.0};
+       };
+       FileName = "Boxing_glove2";
+       ScaleXYZ = 0.004*({1,1.0,1})*..Mirror;
+     };
+   };
+ };
+ Main.HumanModel.BodyModel.Left.ShoulderArm.Seg.Hand = 
+ {
+   AnyRefNode BoxingGlove =
+   {
+     ARel = RotMat(20*pi/180,z);
+     sRel = {0.00,0.01,0};
+     AnyDrawSurf draw = {
+       AnyStyleDrawMaterial1 material = 
+       {
+         EnableCreasing = Off;
+         EnableSmoothing = On;
+         Opacity = 1;//;
+         DiffuseRGB = 0.5*{0.4,0.0,0.0};
+         EmissionRGB = 0.8*{0.4,0.0,0.0};
+         SpecularRGB = 0.8*{0.5,0.5,0.5};
+         Shininess = 0.5;
+         RGB = {0.4, 0.0, 0.0};
+       };
+       FileName = "Boxing_glove2";
+       ScaleXYZ = 0.004*({1,1.0,1})*..Mirror;
+     };
+   };
+ };
